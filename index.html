@@ -6,16 +6,55 @@
 <a class="brand" href="./"><img src="assets/logo.png" alt="EYIMF logo"><span class="name">Examine Yourselves International Mission Foundation</span></a>
 <div class="navlinks"><a href="about.html">About</a><a href="updates.html">Updates</a><a href="give.html" class="cta">Donate</a></div>
 </div></nav>
-<header class="header"><div class="container">
-<div class="logo-hero">
-  <img src="assets/logo.png" alt="EYIMF logo large" style="max-width:180px;margin:20px auto;display:block;">
-</div>
-<span class="badge">Philippines Outreach</span>
-<h1>Feeding the hungry, clothing the poor, and teaching the Word of God.</h1>
-<p>EYIMF serves communities in the Philippines through Gospel-centered discipleship and practical care.</p>
-<div class="buttons"><a class="btn solid" href="give.html">Give Now</a><a class="btn" href="about.html">Learn More</a></div>
-<div class="hero-photo"><img src="assets/photos/hero.jpg" alt="EYIMF outreach" style="max-width:100%;border-radius:12px;margin-top:20px;"></div>
-</div></header>
+<header class="header rotating-hero">
+  <div class="hero-container">
+    <div class="hero-slide active" style="background-image: url('assets/banners/herobanner1.png');">
+      <div class="overlay">
+        <span class="badge">Philippines Outreach</span>
+        <h1>Making Disciples Who Live the Gospel</h1>
+        <p>Examine Yourselves International Mission Foundation serves the Philippines and beyond—preaching Christ, training believers, and mobilizing compassionate action.</p>
+        <div class="buttons">
+          <a class="btn solid" href="give.html">Give Now</a>
+          <a class="btn" href="about.html">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image: url('assets/banners/herobanner2.png');">
+      <div class="overlay">
+        <span class="badge">Philippines Outreach</span>
+        <h1>Faith in Action Across the Islands</h1>
+        <p>From home churches to recycling plants, we build lives on the Rock of Christ.</p>
+        <div class="buttons">
+          <a class="btn solid" href="give.html">Give Now</a>
+          <a class="btn" href="about.html">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide" style="background-image: url('assets/banners/herobanner3.png');">
+      <div class="overlay">
+        <span class="badge">Philippines Outreach</span>
+        <h1>Train the Next Generation of Warriors of the Cross</h1>
+        <p>Raising up disciplined, joyful servants who carry the Gospel into every province.</p>
+        <div class="buttons">
+          <a class="btn solid" href="give.html">Give Now</a>
+          <a class="btn" href="about.html">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Simple auto-rotation every 2 seconds
+  let current = 0;
+  const slides = document.querySelectorAll('.hero-slide');
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 2000);
+</script>
+
 <section class="section"><div class="container"><h2 class="h2">What We Do</h2>
 <div class="grid cols-3">
 <div class="card"><img src="assets/photos/teach.jpg" alt="Bible teaching" style="width:100%;border-radius:8px;margin-bottom:10px;"><h3>Teach the Word</h3><p>We proclaim Christ and equip believers with Scripture-centered discipleship.</p></div>
