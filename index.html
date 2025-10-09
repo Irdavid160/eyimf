@@ -51,15 +51,31 @@
 
 
 <script>
-  // Simple auto-rotation every 4 seconds
-  let current = 0;
-  const slides = document.querySelectorAll('.hero-slide');
-  setInterval(() => {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.hero-slide');
+
+    // If we somehow only have one slide, just show it and stop.
+    if (slides.length === 1) {
+      slides[0].classList.add('active');
+      return;
+    }
+
+    // Make sure there is at least one slide
+    if (slides.length === 0) return;
+
+    // Start by showing the first slide
+    let current = 0;
     slides[current].classList.add('active');
-  }, 4000);
+
+    // Rotate every 4 seconds
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000);
+  });
 </script>
+
 
 <section class="section"><div class="container"><h2 class="h2">What We Do</h2>
 <div class="grid cols-3">
