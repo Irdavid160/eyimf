@@ -295,3 +295,46 @@ header.header:not(.rotating-hero) { display: none !important; }
   margin-top: 20px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }
+
+/* Tagline: clean white text, no box */
+.tagline{
+  display:inline-block;
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  color:#fff !important;
+  font-size:clamp(16px,2.5vw,22px);
+  font-weight:600;
+  text-align:center;
+  margin-top:20px;
+  text-shadow:0 2px 4px rgba(0,0,0,.6);
+  padding:0 !important;
+}
+
+/* Hero nav links: plain white text, centered */
+.hero-links{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  display:flex; flex-wrap:wrap;
+  gap:clamp(12px,2vw,24px);
+  justify-content:center; align-items:center;
+  z-index:10;
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  padding:0 !important;
+}
+.hero-links a{
+  color:#fff !important;
+  background:transparent !important;
+  border:none !important;
+  padding:0 !important;
+  font-weight:600;
+  font-size:clamp(15px,1.6vw,18px);
+  letter-spacing:.02em;
+  text-decoration:none;
+  text-shadow:0 2px 4px rgba(0,0,0,.6);
+}
+.hero-links a:hover{ text-decoration:underline; color:#f4d35e !important; }
