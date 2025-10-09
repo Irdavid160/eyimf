@@ -315,7 +315,7 @@ header.header:not(.rotating-hero) { display: none !important; }
 .hero-links{
   position:absolute;
   left:50%;
-  top:70%;
+  top:50%;
   transform:translate(-50%,-50%);
   display:flex; flex-wrap:wrap;
   gap:clamp(12px,2vw,24px);
@@ -338,3 +338,6 @@ header.header:not(.rotating-hero) { display: none !important; }
   text-shadow:0 2px 4px rgba(0,0,0,.6);
 }
 .hero-links a:hover{ text-decoration:underline; color:#f4d35e !important; }
+
+html{ scroll-behavior:smooth; }
+#about,#updates,#what-we-do,#media,#contact{ scroll-margin-top:70px; }
