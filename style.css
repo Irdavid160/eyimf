@@ -88,3 +88,5 @@ nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e6
   margin: 0 0.5rem;
 }
 /* === End Rotating Hero Section === */
+/* Kill any legacy header hero that isn't our rotating one */
+header.header:not(.rotating-hero) { display: none !important; }
