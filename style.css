@@ -224,3 +224,48 @@ header.header:not(.rotating-hero) { display: none !important; }
 
 /* hide only the old hero buttons (keep your top Donate button) */
 .header.rotating-hero .buttons { display: none; }
+
+/* ===== Hero fixes (height + link styling) ===== */
+
+/* Make the hero a bit taller so the bottom line isn't cut off */
+.header.rotating-hero {
+  height: 76vh !important;     /* adjust 72–80vh to taste */
+  min-height: 560px !important;/* extra breathing room for text */
+}
+
+/* Ensure overlay content can breathe vertically */
+.header.rotating-hero .overlay {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding-bottom: 28px;         /* nudge content up from the bottom edge */
+}
+
+/* If the image crops important bottom text, shift focus upward slightly */
+.hero-slide {
+  background-position: center 15% !important; /* try 10–20% as needed */
+}
+
+/* ------ Make the hero links plain white text (no box) ------ */
+.hero-links {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  z-index: 10;
+}
+
+.hero-links a {
+  color: #fff !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-weight: 600;
+  text-decoration: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6); /* readability on photos */
+}
+
+.hero-links a:hover {
+  text-decoration: underline;
+  color: #f4d35e !important; /* your hover yellow */
+}
