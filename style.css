@@ -28,7 +28,7 @@ nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e6
 .hero-container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100;
 }
 
 .hero-slide {
@@ -114,8 +114,8 @@ header.header:not(.rotating-hero) { display: none !important; }
   margin-right: calc(50% - 50vw) !important;
 
   /* height */
-  height: 100vh !important;
-  min-height: 640px;
+  height: 70vh !important;
+  min-height: 500px;
   padding: 0 !important;
   position: relative;
   overflow: hidden;
@@ -143,21 +143,28 @@ header.header:not(.rotating-hero) { display: none !important; }
 .hero-links {
   position: absolute;
   left: 50%;
-  top: 58%;              /* adjust 50–65% to taste */
-  transform: translateX(-50%);
-  display: flex; flex-wrap: wrap;
-  gap: clamp(8px, 2vw, 20px);
-  justify-content: center; align-items: center;
+  top: 50%;  /* 👈 this centers it vertically */
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 24px);
+  justify-content: center;
+  align-items: center;
 }
+
 .hero-links a {
-  color: #fff; text-decoration: none; font-weight: 700;
-  letter-spacing: .02em;
-  padding: .5rem .9rem;
-  border-radius: 9999px;
-  background: rgba(0,0,0,.35);
-  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  transition: color 0.2s ease;
 }
-.hero-links a:hover { background: rgba(255,255,255,.2); }
+
+.hero-links a:hover {
+  color: #f4d35e; /* 👈 or pick a highlight color you like */
+  text-decoration: underline;
+}
 
 /* Hide the old nav text links but KEEP the Donate button */
 .navlinks a:not(.cta) { display: none; }
