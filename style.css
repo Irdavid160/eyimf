@@ -354,3 +354,17 @@ html{ scroll-behavior:smooth; }
   text-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }
 
+/* FORCE override footer badge styling */
+footer .badge,
+.footer .badge {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: clamp(18px, 2.2vw, 22px) !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6) !important;
+  display: inline !important;
+}
