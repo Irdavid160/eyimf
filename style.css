@@ -269,3 +269,14 @@ header.header:not(.rotating-hero) { display: none !important; }
   text-decoration: underline;
   color: #f4d35e !important; /* your hover yellow */
 }
+
+/* ===== Clean up bottom tagline ===== */
+.footer .badge {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #fff !important;           /* white text */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);  /* readability over banner */
+  font-weight: 600;
+  padding: 0 !important;
+}
