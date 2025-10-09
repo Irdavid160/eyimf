@@ -90,3 +90,18 @@ nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e6
 /* === End Rotating Hero Section === */
 /* Kill any legacy header hero that isn't our rotating one */
 header.header:not(.rotating-hero) { display: none !important; }
+/* Force the rotating hero to be full screen */
+.header.rotating-hero {
+  height: 100vh !important;   /* full viewport height */
+  min-height: 600px;          /* safety for short viewports */
+  padding: 0 !important;      /* kill any inherited padding */
+}
+
+/* Make sure the inner layers fill the height */
+.header.rotating-hero .hero-container { height: 100%; }
+.header.rotating-hero .hero-slide { height: 100%; }
+
+/* (Optional) mobile: slightly shorter so content below peeks in */
+@media (max-width: 640px) {
+  .header.rotating-hero { height: 85vh; }
+}
