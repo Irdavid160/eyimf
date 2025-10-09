@@ -374,3 +374,18 @@ footer .badge,
   text-shadow: 0 2px 4px rgba(0,0,0,0.6) !important;
   display: inline !important;
 }
+
+/* Make the site name pop over the banner */
+nav .brand .name {
+  color: #fff !important;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-shadow:
+    0 3px 10px rgba(0,0,0,0.9),
+    0 0 2px rgba(0,0,0,0.9) !important; /* strong soft glow */
+}
+
+/* (optional) also brighten the small logo image next to it */
+nav .brand img {
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.7));
+}
