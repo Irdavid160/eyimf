@@ -341,3 +341,16 @@ header.header:not(.rotating-hero) { display: none !important; }
 
 html{ scroll-behavior:smooth; }
 #about,#updates,#what-we-do,#media,#contact{ scroll-margin-top:70px; }
+
+/* Remove box styling from footer tagline */
+.footer .badge {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-weight: 600;
+  font-size: clamp(16px, 2vw, 20px);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
