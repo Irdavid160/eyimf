@@ -105,3 +105,64 @@ header.header:not(.rotating-hero) { display: none !important; }
 @media (max-width: 640px) {
   .header.rotating-hero { height: 85vh; }
 }
+/* ===== Full-bleed, full-height rotating hero ===== */
+.header.rotating-hero.full-bleed {
+  /* break out of any page max-width wrapper */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+
+  /* height */
+  height: 100vh !important;
+  min-height: 640px;
+  padding: 0 !important;
+  position: relative;
+  overflow: hidden;
+}
+.header.rotating-hero .hero-container { height: 100%; }
+.header.rotating-hero .hero-slide { height: 100%; }
+
+/* Make background images bias toward the top so text isn't cropped */
+.header.rotating-hero .hero-slide {
+  background-size: cover;
+  background-position: center top;
+}
+
+/* Center overlay content */
+.header.rotating-hero .overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 1rem;
+  background: rgba(0,0,0,0.45); /* keep if you like the dark veil */
+  color: #fff;
+}
+
+/* Links across the middle of the banner */
+.hero-links {
+  position: absolute;
+  left: 50%;
+  top: 58%;              /* adjust 50–65% to taste */
+  transform: translateX(-50%);
+  display: flex; flex-wrap: wrap;
+  gap: clamp(8px, 2vw, 20px);
+  justify-content: center; align-items: center;
+}
+.hero-links a {
+  color: #fff; text-decoration: none; font-weight: 700;
+  letter-spacing: .02em;
+  padding: .5rem .9rem;
+  border-radius: 9999px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.25);
+}
+.hero-links a:hover { background: rgba(255,255,255,.2); }
+
+/* Hide the old nav text links but KEEP the Donate button */
+.navlinks a:not(.cta) { display: none; }
+
+/* (Optional) tidy the Donate button vertical alignment */
+.navlinks .cta { display:inline-flex; align-items:center; line-height:1; }
+
+/* Keep the fade logic you already have for .hero-slide/.active */
