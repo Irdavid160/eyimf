@@ -45,14 +45,14 @@
 </header>
 
 <script>
-  // Simple auto-rotation every 2 seconds
+  // Simple auto-rotation every 4 seconds
   let current = 0;
   const slides = document.querySelectorAll('.hero-slide');
   setInterval(() => {
     slides[current].classList.remove('active');
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
-  }, 2000);
+  }, 4000);
 </script>
 
 <section class="section"><div class="container"><h2 class="h2">What We Do</h2>
