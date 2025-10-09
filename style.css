@@ -280,3 +280,18 @@ header.header:not(.rotating-hero) { display: none !important; }
   font-weight: 600;
   padding: 0 !important;
 }
+
+/* ===== Tagline styling inside hero ===== */
+.tagline {
+  display: inline-block;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 600;
+  text-align: center;
+  padding: 0 !important;
+  margin-top: 20px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
