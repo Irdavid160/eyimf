@@ -3,13 +3,19 @@
 a{color:var(--navy);text-decoration:none}a:hover{text-decoration:underline}
 .container{width:min(1100px,92%);margin:0 auto}
 nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e6e9f2}
-.navbar{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-.navbar .brand{display:flex;gap:10px;align-items:center}.brand img{width:36px;height:36px}..brand .name {
-  font-weight: 800;
-  letter-spacing: 0.4px;
-  color: white;                                /* make the text bright */
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);     /* soft dark glow behind it */
+.navbar {
+  background-color: #5a2e0d; /* warm earthy brown - adjust as you like */
+  padding: 0.75rem 1rem;
 }
+
+.navbar .brand .name {
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  color: #fff; /* white text for contrast */
+  text-transform: uppercase;
+}
+
 
 body {
   background-color: #f8f5f0; /* warm beige */
