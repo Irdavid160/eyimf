@@ -389,3 +389,6 @@ nav .brand .name {
 nav .brand img {
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.7));
 }
+
+/* show all nav links in the top bar */
+.navlinks a { display: inline-flex !important; }
