@@ -5,19 +5,30 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.hero-slide');
+    const taglineEl = document.getElementById('heroTagline');
 
-    if (slides.length === 0) return;
+    // Optional: per-slide taglines (edit these to whatever you want)
+    const taglines = [
+      'Serving souls, meeting needs, glorifying Christ.',
+      'The Gospel is not just words — it is power.',
+      'Raising warriors of the Cross for a new generation.'
+    ];
+
+    if (!slides.length) return;
 
     let current = 0;
     slides[current].classList.add('active');
+    if (taglineEl) taglineEl.textContent = taglines[current];
 
     setInterval(() => {
       slides[current].classList.remove('active');
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
-    }, 4000); // 4 seconds
+      if (taglineEl) taglineEl.textContent = taglines[current];
+    }, 4000);
   });
 </script>
+
 
 <body><nav>
   <div class="container navbar">
@@ -35,54 +46,26 @@
 
 <header class="header rotating-hero">
   <div class="hero-container">
+    <!-- Slides: background only -->
+    <div class="hero-slide" style="background-image: url('assets/banners/herobanner1.png');"></div>
+    <div class="hero-slide" style="background-image: url('assets/banners/herobanner2.png');"></div>
+    <div class="hero-slide" style="background-image: url('assets/banners/herobanner3.png');"></div>
 
-    <!-- Slide 1 -->
-    <div class="hero-slide" style="background-image: url('assets/banners/herobanner1.png');">
-      <div class="overlay">
+    <!-- One shared overlay above ALL slides -->
+    <div class="overlay">
+      <span class="tagline" id="heroTagline">Serving souls, meeting needs, glorifying Christ.</span>
 
-        <!-- NAV LINKS (plain text) -->
-       <nav class="hero-links">
-  <a href="about.html">About</a>
-  <a href="updates.html">Updates</a>
-  <a href="whatwedo.html">What We Do</a>
-  <a href="media.html">Media</a>
-  <a href="contact.html">Contact</a>
-</nav>
-
-      </div>
+      <nav class="hero-links">
+        <a href="about.html">About</a>
+        <a href="updates.html">Updates</a>
+        <a href="whatwedo.html">What We Do</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
-
-    <!-- Slide 2 -->
-    <div class="hero-slide" style="background-image: url('assets/banners/herobanner2.png');">
-      <div class="overlay">
-       
-
-<div class="navlinks">
-  <a href="about.html">About</a>
-  <a href="updates.html">Updates</a>
-  <a href="whatwedo.html">What We Do</a>
-  <a href="media.html">Media</a>
-  <a href="contact.html" class="cta">Contact</a>
-</div>
-
-
-    <!-- Slide 3 -->
-    <div class="hero-slide" style="background-image: url('assets/banners/herobanner3.png');">
-      <div class="overlay">
-        
-
-        <nav class="hero-links">
-          <a href="#about">About</a>
-          <a href="#updates">Updates</a>
-          <a href="#what-we-do">What We Do</a>
-          <a href="#media">Media</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </div>
-
   </div>
 </header>
+
 
 
 
