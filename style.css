@@ -453,4 +453,8 @@ nav, .navbar {
   padding: 1rem 2rem;
 }
 
+/* Add breathing room on the left and right sides of the navbar */
+.navbar {
+  padding: 0.75rem 2rem;  /* top-bottom: 0.75rem | left-right: 2rem */
+}
 
