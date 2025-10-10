@@ -449,4 +449,8 @@ nav, .navbar {
 
 .navlinks a:hover {
   color: #f1c40f;  /* soft gold on hover */
+  .navbar {
+  padding: 1rem 2rem;
 }
+
+
