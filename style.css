@@ -1,590 +1,302 @@
-:root{--navy:#0b2a4a;--gold:#d3a437;--ink:#0d1321;--bg:#ffffff;--muted:#f5f7fb}
-*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-a{color:var(--navy);text-decoration:none}a:hover{text-decoration:underline}
-.container{width:min(1100px,92%);margin:0 auto}
-nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e6e9f2}
-.navlinks a {
-  color: #ffffff !important;  /* bright white text */
-  margin-left: 1rem;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+:root {
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --color-primary: #7b1111;
+  --color-primary-dark: #3f0707;
+  --color-sand: #f6f1eb;
+  --color-ink: #1f1a17;
+  --color-muted: #5c5148;
 }
 
-.navlinks a:hover {
-  color: #f1c40f;  /* soft gold hover */
+* {
+  box-sizing: border-box;
 }
 
-
+html,
 body {
-  background-color: #f8f5f0; /* warm beige */
-  color: #222; /* dark text for readability */
-}
-
-.navlinks{display:flex;gap:16px}.cta{background:var(--navy);color:#fff;border-radius:999px;padding:10px 16px}
-.header{background:linear-gradient(135deg,#0b2a4a 0%,#184a7a 50%,#0b2a4a 100%);color:#fff;padding:80px 0}
-.header h1{font-size:44px;line-height:1.1;margin:0 0 10px}.header p{font-size:18px;opacity:.95;margin:0 0 24px}
-.header .buttons{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-block;border-radius:10px;padding:12px 18px;border:2px solid #fff;color:#fff}
-.btn.solid{background:#fff;color:var(--navy);border-color:#fff}
-.grid{display:grid;gap:20px}.cols-3{grid-template-columns:repeat(3,1fr)}.card{background:#fff;border:1px solid #e6e9f2;border-radius:14px;padding:18px}
-.section{padding:50px 0;background:var(--bg)}.section.alt{background:var(--muted)}
-.h2{font-size:28px;margin:0 0 14px}
-.footer{padding:36px 0;background:#0b2a4a;color:#fff;margin-top:40px}.footer a{color:#fff;text-decoration:underline}
-.badge{display:inline-block;padding:4px 10px;background:var(--gold);color:#0b2a4a;border-radius:999px;font-weight:700;font-size:12px}
-.hero-stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px}.stat{background:#0b2a4a22;border:1px solid #ffffff50;color:#fff;border-radius:12px;padding:10px 14px}
-@media(max-width:800px){.cols-3{grid-template-columns:1fr}.header{padding:56px 0}}
-
-/* === Rotating Hero Section === */
-.rotating-hero {
-  position: relative;
-  height: 90vh;
-  overflow: hidden;
-}
-
-.hero-container {
-  position: relative;
-  width: 100%;
-  height: 100;
-}
-
-.hero-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center 20%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.hero-slide.active {
-  opacity: 1;
-  z-index: 1;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem;
-}
-
-.overlay .badge {
-  background: #fff;
-  color: #111;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  margin-bottom: 1rem;
-}
-
-.overlay h1 {
-  font-size: 2.5rem;
-  max-width: 700px;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.overlay p {
-  max-width: 700px;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-}
-
-.overlay .buttons .btn {
-  margin: 0 0.5rem;
-}
-/* === End Rotating Hero Section === */
-/* Kill any legacy header hero that isn't our rotating one */
-header.header:not(.rotating-hero) { display: none !important; }
-/* Force the rotating hero to be full screen */
-.header.rotating-hero {
-  height: 100vh !important;   /* full viewport height */
-  min-height: 600px;          /* safety for short viewports */
-  padding: 0 !important;      /* kill any inherited padding */
-}
-
-/* Make sure the inner layers fill the height */
-.header.rotating-hero .hero-container { height: 100%; }
-.header.rotating-hero .hero-slide { height: 100%; }
-
-/* (Optional) mobile: slightly shorter so content below peeks in */
-@media (max-width: 640px) {
-  .header.rotating-hero { height: 85vh; }
-}
-/* ===== Full-bleed, full-height rotating hero ===== */
-.header.rotating-hero.full-bleed {
-  /* break out of any page max-width wrapper */
-  width: 100vw !important;
-  max-width: 100vw !important;
-  margin-left: calc(50% - 50vw) !important;
-  margin-right: calc(50% - 50vw) !important;
-
-  /* height */
-  height: 70vh !important;
-  min-height: 500px;
-  padding: 0 !important;
-  position: relative;
-  overflow: hidden;
-}
-.header.rotating-hero .hero-container { height: 100%; }
-.header.rotating-hero .hero-slide { height: 100%; }
-
-/* Make background images bias toward the top so text isn't cropped */
-.header.rotating-hero .hero-slide {
-  background-size: cover;
-  background-position: center top;
-}
-
-/* Center overlay content */
-.header.rotating-hero .overlay {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center; padding: 1rem;
-  background: rgba(0,0,0,0.45); /* keep if you like the dark veil */
-  color: #fff;
-}
-
-/* Links across the middle of the banner */
-.hero-links {
-  position: absolute;
-  left: 50%;
-  top: 50%;  /* 👈 this centers it vertically */
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(12px, 2vw, 24px);
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: 0.03em;
-  transition: color 0.2s ease;
-}
-
-.hero-links a:hover {
-  color: #f4d35e; /* 👈 or pick a highlight color you like */
-  text-decoration: underline;
-}
-
-/* Hide the old nav text links but KEEP the Donate button */
-.navlinks a:not(.cta) { display: none; }
-
-/* (Optional) tidy the Donate button vertical alignment */
-.navlinks .cta { display:inline-flex; align-items:center; line-height:1; }
-
-/* Keep the fade logic you already have for .hero-slide/.active */
-
-/* === Rotating Hero: minimal, safe add-on === */
-.header.rotating-hero {
-  /* full width */
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-
-  /* height (adjust 60–80vh to taste) */
-  height: 70vh;
-  min-height: 500px;
-
-  position: relative;
+  margin: 0;
   padding: 0;
-  overflow: hidden;
-}
-.header.rotating-hero .hero-container,
-.header.rotating-hero .hero-slide { height: 100%; }
-
-/* slide fade */
-.hero-slide {
-  background-size: cover;
-  background-position: center 20%; /* tweak 10–30% to avoid cutting text */
-  opacity: 0;
-  transition: opacity 0.9s ease-in-out;
-}
-.hero-slide.active { opacity: 1; z-index: 1; }
-
-/* overlay center */
-.header.rotating-hero .overlay {
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  text-align: center; padding: 16px;
-  color: #fff; background: rgba(0,0,0,0.45);
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: var(--color-sand);
 }
 
-/* centered text links (not buttons) */
-.hero-links {
-  position: absolute; left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex; flex-wrap: wrap; gap: 16px;
-  justify-content: center; align-items: center; z-index: 10;
-}
-.hero-links a {
-  color: #fff; text-decoration: none; font-weight: 600;
-}
-.hero-links a:hover { text-decoration: underline; }
-
-/* hide only the old hero buttons (keep your top Donate button) */
-.header.rotating-hero .buttons { display: none; }
-
-/* ===== Hero fixes (height + link styling) ===== */
-
-/* Make the hero a bit taller so the bottom line isn't cut off */
-.header.rotating-hero {
-  height: 76vh !important;     /* adjust 72–80vh to taste */
-  min-height: 560px !important;/* extra breathing room for text */
+a {
+  color: inherit;
 }
 
-/* Ensure overlay content can breathe vertically */
-.header.rotating-hero .overlay {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  padding-bottom: 28px;         /* nudge content up from the bottom edge */
+a:hover,
+a:focus {
+  color: var(--color-primary);
 }
 
-/* If the image crops important bottom text, shift focus upward slightly */
-.hero-slide {
-  background-position: center 15% !important; /* try 10–20% as needed */
+img {
+  max-width: 100%;
+  display: block;
 }
 
-/* ------ Make the hero links plain white text (no box) ------ */
-.hero-links {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  padding: 0 !important;
-  z-index: 10;
-}
-
-.hero-links a {
-  color: #fff !important;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  font-weight: 600;
-  text-decoration: none;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.6); /* readability on photos */
-}
-
-.hero-links a:hover {
-  text-decoration: underline;
-  color: #f4d35e !important; /* your hover yellow */
-}
-
-/* ===== Clean up bottom tagline ===== */
-.footer .badge {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  color: #fff !important;           /* white text */
-  text-shadow: 0 2px 4px rgba(0,0,0,0.6);  /* readability over banner */
-  font-weight: 600;
-  padding: 0 !important;
-}
-
-/* ===== Tagline styling inside hero ===== */
-.tagline {
-  display: inline-block;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  color: #fff !important;
-  font-size: clamp(16px, 2.5vw, 22px);
-  font-weight: 600;
-  text-align: center;
-  padding: 0 !important;
-  margin-top: 20px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-}
-
-/* Tagline: clean white text, no box */
-.tagline{
-  display:inline-block;
-  background:transparent !important;
-  border:none !important;
-  box-shadow:none !important;
-  color:#fff !important;
-  font-size:clamp(16px,2.5vw,22px);
-  font-weight:600;
-  text-align:center;
-  margin-top:20px;
-  text-shadow:0 2px 4px rgba(0,0,0,.6);
-  padding:0 !important;
-}
-
-/* Hero nav links: plain white text, centered */
-.hero-links{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  display:flex; flex-wrap:wrap;
-  gap:clamp(12px,2vw,24px);
-  justify-content:center; align-items:center;
-  z-index:10;
-  background:transparent !important;
-  border:none !important;
-  box-shadow:none !important;
-  padding:0 !important;
-}
-.hero-links a{
-  color:#fff !important;
-  background:transparent !important;
-  border:none !important;
-  padding:0 !important;
-  font-weight:600;
-  font-size:clamp(15px,1.6vw,18px);
-  letter-spacing:.02em;
-  text-decoration:none;
-  text-shadow:0 2px 4px rgba(0,0,0,.6);
-}
-.hero-links a:hover{ text-decoration:underline; color:#f4d35e !important; }
-
-html{ scroll-behavior:smooth; }
-#about,#updates,#what-we-do,#media,#contact{ scroll-margin-top:70px; }
-
-/* Remove box styling from footer tagline */
-.footer .badge {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  color: #fff !important;
-  font-weight: 600;
-  font-size: clamp(16px, 2vw, 20px);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-}
-
-/* FORCE override footer badge styling */
-footer .badge,
-.footer .badge {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  color: #ffffff !important;
-  font-weight: 600 !important;
-  font-size: clamp(18px, 2.2vw, 22px) !important;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.6) !important;
-  display: inline !important;
-}
-
-/* Make the site name pop over the banner */
-nav .brand .name {
-  color: #fff !important;
-  font-weight: 800;
-  letter-spacing: 0.4px;
-  text-shadow:
-    0 3px 10px rgba(0,0,0,0.9),
-    0 0 2px rgba(0,0,0,0.9) !important; /* strong soft glow */
-}
-
-/* (optional) also brighten the small logo image next to it */
-nav .brand img {
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.7));
-}
-
-/* show all nav links in the top bar */
-.navlinks a { display: inline-flex !important; }
-
-/* Make navbar full width */
-nav, .navbar {
-  background-color: #2c3e50 !important;
-  width: 100%;
-}
-
-.navbar .container {
-  max-width: 1200px;    /* keeps your content nicely centered */
+.container {
+  width: min(1100px, 92vw);
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
-/* === Navbar Alignment Fix === */
+nav {
+  background-color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.brand .name {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.4vw, 1.35rem);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .navlinks {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  margin-top: 0; /* remove stacking offset */
+  gap: 12px;
 }
 
-.navlinks a {
-  color: #ffffff !important;  /* bright white text */
-  margin-left: 1rem;
+.navlinks .cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 10px 20px;
   text-decoration: none;
+  background-color: var(--color-primary);
+  color: white;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.navlinks a:hover {
-  color: #f1c40f;  /* soft gold on hover */
-  .navbar {
-  padding: 1rem 2rem;
+.navlinks .cta:hover,
+.navlinks .cta:focus {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
 }
 
-/* Add breathing room on the left and right sides of the navbar */
-.navbar {
-  padding: 0.75rem 2rem;  /* top-bottom: 0.75rem | left-right: 2rem */
+.header.rotating-hero {
+  position: relative;
+  background-color: black;
+  overflow: hidden;
+  min-height: clamp(320px, 60vh, 520px);
 }
 
-/* Move site name inward from the left edge */
-.brand {
-  margin-left: 2rem;   /* pushes the logo + text inward */
+.hero-container {
+  position: relative;
+  height: 100%;
 }
 
-/* ===== Mobile polish (drop at the VERY bottom) ===== */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1s ease, transform 1.8s ease;
+}
 
-/* Tablet & small laptops */
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.overlay {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 8vw, 80px) 20px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.35));
+  min-height: clamp(320px, 60vh, 520px);
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.hero-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  text-decoration: none;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-links a:hover,
+.hero-links a:focus {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.section {
+  padding: clamp(48px, 10vw, 80px) 0;
+}
+
+.h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  text-align: center;
+  color: var(--color-primary);
+  margin: 0 0 clamp(24px, 6vw, 40px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  gap: clamp(20px, 5vw, 32px);
+}
+
+.cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  background-color: white;
+  border-radius: 16px;
+  padding: clamp(20px, 4vw, 28px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+}
+
+.card p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.footer {
+  background-color: #111;
+  color: #f1ede6;
+  padding: clamp(40px, 8vw, 60px) 0;
+}
+
+.footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.footer .container > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .container > div:first-child > div {
+  min-width: min(260px, 100%);
+}
+
+.footer div:last-child {
+  margin-top: 18px;
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
+  nav {
+    position: static;
+  }
 
-  /* Navbar spacing + readable title */
-  .navbar { padding: 0.6rem 1rem; }
-  .brand { margin-left: 1rem; }
-  .brand .name { font-size: 1rem; line-height: 1.2; }
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
 
-  /* Put nav links on their own row, centered, good tap targets */
   .navlinks {
     width: 100%;
     justify-content: center;
-    gap: 12px;
-    margin-top: 8px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .navlinks a {
-    padding: 8px 10px;
-    font-size: 15px;
   }
 
-  /* Hero: slightly shorter, links/text sized down a touch */
-  .header.rotating-hero { height: 60vh; min-height: 420px; }
-  .hero-links { top: 50%; gap: 12px; }
-  .hero-links a { font-size: 14px; }
-  .tagline { font-size: clamp(14px, 2.8vw, 18px); margin-top: 10px; }
-
-  /* 3-up grids => single column on mobile-ish widths */
-  .grid.cols-3 { grid-template-columns: 1fr !important; }
-  .grid { gap: 12px; }
-
-  /* Story section images that were floated: unfloat and center */
-  .story-section img[style*="float"] {
-    float: none !important;
-    max-width: 100% !important;
-    margin: 12px auto !important;
-    display: block !important;
-  }
-}
-
-/* Phones */
-@media (max-width: 480px) {
-
-  .brand .name { font-size: 0.95rem; letter-spacing: 0.3px; }
-  .navlinks a { font-size: 14px; margin-left: 0; }
-
-  /* Slightly lower hero links on very small screens */
-  .hero-links { top: 52%; }
-
-  /* Comfortable padding for content cards/sections */
-  .section .container { padding: 16px; }
-
-  /* Story/article wrapper: tighter padding, nice margins */
-  .story-section {
-    padding: 24px 14px !important;
-    border-radius: 10px;
-    margin: 24px 12px !important;
+  .overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.6));
+    padding-block: clamp(60px, 18vw, 80px);
   }
 
-  img { height: auto; }
-}
-
-/* ===== Mobile polish (portrait) ===== */
-html, body { overflow-x: hidden; }  /* stop sideways scroll */
-
-/* iPhones & small phones */
-@media (max-width: 430px) {
-
-  /* Navbar: spacing + readable title */
-  .navbar { padding: 0.6rem 1rem; }
-  .brand { margin-left: 0.5rem; }
-  .brand .name {
-    font-size: 0.95rem;       /* smaller so it fits one/two lines */
-    line-height: 1.15;
-    letter-spacing: 0.3px;
-    max-width: 75vw;          /* prevents super long wrap */
-    display: block;
-  }
-
-  /* Put nav links on their own row, centered, tappable */
-  .navlinks {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  .hero-links {
     gap: 10px;
-    margin-top: 8px;
-  }
-  .navlinks a {
-    color: #fff !important;
-    font-size: 14px;
-    padding: 8px 10px;
   }
 
-  /* Hero sizing & text */
-  .header.rotating-hero { height: 58vh; min-height: 380px; }
-  .hero-container, .hero-slide { height: 100%; }
-  .hero-links { top: 54%; gap: 10px; }
-  .hero-links a { font-size: 14px; }
-  .tagline { font-size: 15px; margin-top: 8px; }
+  .hero-links a {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+}
 
-  /* Cards/grids collapse to single column */
-  .grid.cols-3 { grid-template-columns: 1fr !important; }
-  .grid { gap: 12px; }
-
-  /* Story/article wrapper */
-  .story-section {
-    padding: 24px 14px !important;
-    border-radius: 10px;
-    margin: 24px 12px !important;
+@media (max-width: 540px) {
+  .brand .name {
+    font-size: clamp(1rem, 4.6vw, 1.1rem);
   }
 
-  /* Unfloat magazine images so text doesn't cram */
-  .story-section img[style*="float"] {
-    float: none !important;
-    max-width: 100% !important;
-    margin: 12px auto !important;
-    display: block !important;
+  .overlay {
+    padding-inline: 16px;
   }
 
-  img { height: auto; max-width: 100%; }
+  .hero-links {
+    flex-direction: column;
+  }
+
+  .hero-links a {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .footer .container > div:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-height: 580px) and (orientation: landscape) {
+  .header.rotating-hero,
+  .overlay {
+    min-height: 360px;
+  }
+
+  .hero-links a {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+  }
 }
