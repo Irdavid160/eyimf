@@ -462,3 +462,68 @@ nav, .navbar {
 .brand {
   margin-left: 2rem;   /* pushes the logo + text inward */
 }
+
+/* ===== Mobile polish (drop at the VERY bottom) ===== */
+
+/* Tablet & small laptops */
+@media (max-width: 768px) {
+
+  /* Navbar spacing + readable title */
+  .navbar { padding: 0.6rem 1rem; }
+  .brand { margin-left: 1rem; }
+  .brand .name { font-size: 1rem; line-height: 1.2; }
+
+  /* Put nav links on their own row, centered, good tap targets */
+  .navlinks {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .navlinks a {
+    padding: 8px 10px;
+    font-size: 15px;
+  }
+
+  /* Hero: slightly shorter, links/text sized down a touch */
+  .header.rotating-hero { height: 60vh; min-height: 420px; }
+  .hero-links { top: 50%; gap: 12px; }
+  .hero-links a { font-size: 14px; }
+  .tagline { font-size: clamp(14px, 2.8vw, 18px); margin-top: 10px; }
+
+  /* 3-up grids => single column on mobile-ish widths */
+  .grid.cols-3 { grid-template-columns: 1fr !important; }
+  .grid { gap: 12px; }
+
+  /* Story section images that were floated: unfloat and center */
+  .story-section img[style*="float"] {
+    float: none !important;
+    max-width: 100% !important;
+    margin: 12px auto !important;
+    display: block !important;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+
+  .brand .name { font-size: 0.95rem; letter-spacing: 0.3px; }
+  .navlinks a { font-size: 14px; margin-left: 0; }
+
+  /* Slightly lower hero links on very small screens */
+  .hero-links { top: 52%; }
+
+  /* Comfortable padding for content cards/sections */
+  .section .container { padding: 16px; }
+
+  /* Story/article wrapper: tighter padding, nice margins */
+  .story-section {
+    padding: 24px 14px !important;
+    border-radius: 10px;
+    margin: 24px 12px !important;
+  }
+
+  img { height: auto; }
+}
