@@ -412,3 +412,34 @@ nav {
   /* Prevent sideways scroll on small screens */
   html, body { overflow-x: hidden; }
 }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo {
+  max-height: clamp(32px, 6vh, 60px); /* grows within a safe range */
+  width: auto;
+  display: block;
+}
+
+/* 📱 Tablet adjustments */
+@media (max-width: 768px) {
+  .brand-logo {
+    max-height: 40px;   /* comfortable size on tablets/phones */
+  }
+}
+
+/* 📱 Phone adjustments */
+@media (max-width: 540px) {
+  .brand-logo {
+    max-height: 32px;   /* smaller but still visible */
+  }
+
+  .brand .name {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    line-height: 1.2;
+  }
+}
