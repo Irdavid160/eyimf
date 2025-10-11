@@ -350,3 +350,41 @@ nav {
   /* make sure page doesn’t scroll sideways */
   html, body { overflow-x: hidden; }
 }
+
+/* === Mobile hero: show full banner image (no cropping) === */
+@media (max-width: 480px) {
+  /* Shorter hero so the image isn’t zoomed-in */
+  .header.rotating-hero,
+  .hero-container,
+  .hero-slide {
+    height: 52vh;
+    min-height: 340px;
+  }
+
+  /* Key change: fit the whole banner on screen */
+  .hero-slide {
+    background-size: contain !important;   /* show entire image */
+    background-repeat: no-repeat !important;
+    background-position: center top !important; /* keep title area visible */
+    background-color: #000;                /* fill letterbox with black */
+  }
+
+  /* Keep overlay transparent and links visible */
+  .overlay {
+    background: transparent !important;
+    padding: 24px 12px;
+  }
+
+  .hero-links {
+    gap: 10px;
+  }
+  .hero-links a {
+    color: #fff !important;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.6);
+  }
+
+  /* Prevent sideways scroll on small screens */
+  html, body { overflow-x: hidden; }
+}
