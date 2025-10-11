@@ -326,3 +326,27 @@ nav {
 .hero-links a:hover {
   color: #f1c40f !important;            /* soft gold hover */
 }
+
+/* ——— Hero sizing/position ——— */
+.hero-slide {
+  background-size: cover;
+  background-position: 50% 35%; /* show a bit more top on desktop */
+  height: 70vh;
+  min-height: 480px;
+}
+
+/* Phones (portrait) */
+@media (max-width: 430px) {
+  .header.rotating-hero,
+  .hero-container,
+  .hero-slide {
+    height: 58vh;              /* shorter = less zoom, more width visible */
+    min-height: 380px;
+  }
+  .hero-slide {
+    background-position: center top;  /* keep key text near top in view */
+  }
+
+  /* make sure page doesn’t scroll sideways */
+  html, body { overflow-x: hidden; }
+}
