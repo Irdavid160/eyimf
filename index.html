@@ -1,36 +1,168 @@
+<!DOCTYPE html>
 <!doctype html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examine Yourselves Ministries</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #f5f0e6;
+      color: #2d2d2d;
+    }
+
+    header {
+      text-align: center;
+      background-color: #fff;
+      padding: 40px 20px 20px;
+    }
+
+    header img {
+      max-width: 220px;
+    }
+
+    nav {
+      background-color: #2d2d2d;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+    }
+
+    .hero {
+      background-color: #8a1c1c;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      max-width: 960px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      font-size: 1.8em;
+      color: #8a1c1c;
+      margin-bottom: 15px;
+    }
+
+    .section p {
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      padding: 20px;
+      background-color: #2d2d2d;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.8em;
+      }
+
+      .hero p, .section p {
+        font-size: 1em;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EYIMF • Examine Yourselves International Mission Foundation</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css?v=20251011a">
 </head>
+<body>
+  <header>
+    <img src="logo.png" alt="Examine Yourselves Ministries Logo">
+  </header>
 
 <body>
   <nav>
+    <a href="#devotions">Devotions</a>
+    <a href="#mission">Philippines</a>
+    <a href="#support">Support</a>
+    <a href="#contact">Contact</a>
     <div class="container navbar">
-      <!-- LEFT SIDE: brand text -->
       <div class="brand">
         <span class="name">Examine Yourselves International Mission Foundation</span>
       </div>
-
-      <!-- RIGHT SIDE: Donate button -->
       <div class="navlinks">
         <a href="give.html" class="cta">Donate</a>
       </div>
     </div>
   </nav>
 
+  <div class="hero">
+    <h1>Let a man examine himself.</h1>
+<p style="font-size: 0.9em; font-style: italic; margin-top: -10px;">
+  — 1 Corinthians 11:28
+</p>
+    <p>A ministry of conviction, calling, and commission.</p>
+  </div>
+
+  <section id="devotions" class="section">
+    <h2>Devotions from the Furnace</h2>
+    <p>These are not devotionals written from a distance. They are born in the fire—when God deals with me directly. If you're hungry for truth and tired of shallow encouragement, you're in the right place.</p>
+ 
+  <section id="devotions" class="section">
+  <h2>Daily Devotions</h2>
+  <p>Each devotion is born from real conversations with God—through trials, repentance, and clarity. Watch below, and allow the Spirit to search your heart.</p>
+
+  <div style="margin-top: 20px; text-align: center;">
+    <iframe width="100%" height="400"
+      src="https://www.youtube.com/embed/videoseries?list=PLnQmd9SVdUWPKW61b85XVfAoBVqSXGDhE"
+      title="Examine Yourselves Devotions"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      style="max-width: 720px; width: 100%; border-radius: 8px;">
+    </iframe>
+  </div>
+
+  <p style="margin-top: 20px; font-size: 0.95em; text-align: center;">
+    Want to support this ministry? Visit our <a href="https://www.patreon.com/YOURPATREON" target="_blank" style="color: #8a1c1c; font-weight: bold;">Patreon page</a> to join the mission.
+  </p>
+</section>
+
+  </section>
   <header class="header rotating-hero">
     <div class="hero-container">
-      <!-- Slides -->
       <div class="hero-slide" style="background-image: url('assets/banners/herobanner1.png');"></div>
       <div class="hero-slide" style="background-image: url('assets/banners/herobanner2.png');"></div>
       <div class="hero-slide" style="background-image: url('assets/banners/herobanner3.png');"></div>
 
-      <!-- Overlay links -->
       <div class="overlay">
         <nav class="hero-links">
           <a href="about.html">About</a>
@@ -43,96 +175,134 @@
     </div>
   </header>
 
-<section id="what-we-do" class="section">
-  <div class="container"><h2 class="h2">What We Do</h2>
-    <div class="grid cols-3">
-      <div class="card">
-        <img src="assets/photos/teach.jpg" alt="Bible teaching" style="width:100%;border-radius:8px;margin-bottom:10px;">
-        <h3>Teach the Word</h3>
-        <p>We proclaim Christ and equip believers with Scripture-centered discipleship.</p>
-      </div>
-      <div class="card">
-        <img src="assets/photos/feed.jpg" alt="Feeding outreach" style="width:100%;border-radius:8px;margin-bottom:10px;">
-        <h3>Feed the Hungry</h3>
-        <p>Food packs delivered to families in need, with local leaders guiding the outreach.</p>
-      </div>
-      <div class="card">
-        <img src="assets/photos/clothe.jpg" alt="Clothing distribution" style="width:100%;border-radius:8px;margin-bottom:10px;">
-        <h3>Clothe the Poor</h3>
-        <p>Clothing distributions with dignity—carefully organized and locally led.</p>
-      </div>
-    </div>
+  <section id="mission" class="section">
+    <h2>Philippines Mission</h2>
+    <p>Our heart beats for the Philippines. We are building a ministry training school, planting home churches across the islands, and preparing to launch youth camps that teach Scripture and service through joyful discipleship.</p>
+  </section>
+<div style="margin-top: 20px; text-align: center;">
+  <iframe width="100%" height="360" 
+          src="https://www.youtube.com/embed/hh5ZLNN_D8Q" 
+          title="Children's Church Intro" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen 
+          style="max-width: 720px; width: 100%; border-radius: 8px;">
+  </iframe>
+</div>
+
+  <section id="support" class="section">
+  <h2>Support the Work</h2>
+  <p>We don’t ask for pity. We ask for partners. This ministry exists to challenge, equip, and call the Body of Christ to deeper faith and obedience—through devotions, mission work, and training the next generation.</p>
+
+  <div style="margin-top: 20px; text-align: center;">
+    <iframe width="100%" height="360"
+      src="https://www.youtube.com/embed/nC4jFqglqcc"
+      title="Support the Ministry on Patreon"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      style="max-width: 720px; width: 100%; border-radius: 8px;">
+    </iframe>
   </div>
+
+  <p style="margin-top: 20px; font-size: 0.95em; text-align: center;">
+    If you'd like to help this ministry grow and reach more people, visit our <a href="https://patreon.com/ExamineYourselvesMinistries?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink" target="_blank" style="color: #8a1c1c; font-weight: bold;">Patreon page</a> to partner with us.
+  </p>
 </section>
 
-<footer id="contact" class="footer">
-  <div class="container">
-    <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;">
-      <div>
-        <strong>Examine Yourselves International Mission Foundation</strong><br>
-        Email: <a href="mailto:info@eyimf.org">info@eyimf.org</a>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Have a prayer request? Want to partner or connect? Email us at <strong>contact@examineyourselves.org</strong>.</p>
+  <section id="what-we-do" class="section">
+    <div class="container">
+      <h2 class="h2">What We Do</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <img src="assets/photos/teach.jpg" alt="Bible teaching">
+          <h3>Teach the Word</h3>
+          <p>We proclaim Christ and equip believers with Scripture-centered discipleship.</p>
+        </div>
+        <div class="card">
+          <img src="assets/photos/feed.jpg" alt="Feeding outreach">
+          <h3>Feed the Hungry</h3>
+          <p>Food packs delivered to families in need, with local leaders guiding the outreach.</p>
+        </div>
+        <div class="card">
+          <img src="assets/photos/clothe.jpg" alt="Clothing distribution">
+          <h3>Clothe the Poor</h3>
+          <p>Clothing distributions with dignity—carefully organized and locally led.</p>
+        </div>
       </div>
-      <div>“Serving souls, meeting needs, glorifying Christ.”</div>
     </div>
-    <div style="margin-top:16px;opacity:.8">
-      © <span id="yr"></span> EYIMF • Built for GitHub Pages
+  </section>
+
+  <footer>
+    &copy; 2025 Examine Yourselves Ministries. All Rights Reserved.
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div>
+        <div>
+          <strong>Examine Yourselves International Mission Foundation</strong><br>
+          Email: <a href="mailto:info@eyimf.org">info@eyimf.org</a>
+        </div>
+        <div>“Serving souls, meeting needs, glorifying Christ.”</div>
+      </div>
+      <div>
+        © <span id="yr"></span> EYIMF • Built for GitHub Pages
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
 
-<!-- ✅ Move your rotating hero taglines script here -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const slides = document.querySelectorAll('.hero-slide');
-    const taglineEl = document.getElementById('heroTagline');
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('.hero-slide');
+      const taglineEl = document.getElementById('heroTagline');
 
-    const taglines = [
-      'Serving souls, meeting needs, glorifying Christ.',
-      'The Gospel is not just words — it is power.',
-      'Raising warriors of the Cross for a new generation.'
-    ];
+      const taglines = [
+        'Serving souls, meeting needs, glorifying Christ.',
+        'The Gospel is not just words — it is power.',
+        'Raising warriors of the Cross for a new generation.'
+      ];
 
-    if (!slides.length) return;
+      if (!slides.length) return;
 
-    let current = 0;
-    slides[current].classList.add('active');
-    if (taglineEl) taglineEl.textContent = taglines[current];
-
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
+      let current = 0;
       slides[current].classList.add('active');
       if (taglineEl) taglineEl.textContent = taglines[current];
-    }, 4000);
-  });
-</script>
 
-<!-- ✅ Second script: rotating hero without tagline -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const slides = document.querySelectorAll('.hero-slide');
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+        if (taglineEl) taglineEl.textContent = taglines[current];
+      }, 4000);
+    });
+  </script>
 
-    if (slides.length === 1) {
-      slides[0].classList.add('active');
-      return;
-    }
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('.hero-slide');
 
-    if (slides.length === 0) return;
+      if (slides.length === 1) {
+        slides[0].classList.add('active');
+        return;
+      }
 
-    let current = 0;
-    slides[current].classList.add('active');
+      if (slides.length === 0) return;
 
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
+      let current = 0;
       slides[current].classList.add('active');
-    }, 4000);
-  });
-</script>
 
-</body>
-</html>
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 4000);
+    });
+  </script>
+</body></html>
