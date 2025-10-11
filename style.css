@@ -528,7 +528,63 @@ nav, .navbar {
   img { height: auto; }
 }
 
-@media (max-width: 480px) {
-  /* TEMP: remove me after testing */
-  body { outline: 3px solid red !important; }
+/* ===== Mobile polish (portrait) ===== */
+html, body { overflow-x: hidden; }  /* stop sideways scroll */
+
+/* iPhones & small phones */
+@media (max-width: 430px) {
+
+  /* Navbar: spacing + readable title */
+  .navbar { padding: 0.6rem 1rem; }
+  .brand { margin-left: 0.5rem; }
+  .brand .name {
+    font-size: 0.95rem;       /* smaller so it fits one/two lines */
+    line-height: 1.15;
+    letter-spacing: 0.3px;
+    max-width: 75vw;          /* prevents super long wrap */
+    display: block;
+  }
+
+  /* Put nav links on their own row, centered, tappable */
+  .navlinks {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .navlinks a {
+    color: #fff !important;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  /* Hero sizing & text */
+  .header.rotating-hero { height: 58vh; min-height: 380px; }
+  .hero-container, .hero-slide { height: 100%; }
+  .hero-links { top: 54%; gap: 10px; }
+  .hero-links a { font-size: 14px; }
+  .tagline { font-size: 15px; margin-top: 8px; }
+
+  /* Cards/grids collapse to single column */
+  .grid.cols-3 { grid-template-columns: 1fr !important; }
+  .grid { gap: 12px; }
+
+  /* Story/article wrapper */
+  .story-section {
+    padding: 24px 14px !important;
+    border-radius: 10px;
+    margin: 24px 12px !important;
+  }
+
+  /* Unfloat magazine images so text doesn't cram */
+  .story-section img[style*="float"] {
+    float: none !important;
+    max-width: 100% !important;
+    margin: 12px auto !important;
+    display: block !important;
+  }
+
+  img { height: auto; max-width: 100%; }
 }
