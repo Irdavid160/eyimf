@@ -64,6 +64,30 @@ nav {
   line-height: 1.35;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between logo and text */
+}
+
+.brand-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+/* 📱 Mobile adjustments */
+@media (max-width: 540px) {
+  .brand-logo {
+    height: 36px;       /* slightly smaller on phones */
+  }
+
+  .brand .name {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    line-height: 1.2;
+  }
+}
+
 .navlinks {
   display: flex;
   align-items: center;
