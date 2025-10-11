@@ -420,7 +420,7 @@ nav {
 }
 
 .brand-logo {
-  max-height: clamp(32px, 6vh, 60px); /* grows within a safe range */
+  max-height: clamp(42px, 8vh, 80px); /* increased min & max */
   width: auto;
   display: block;
 }
@@ -428,18 +428,18 @@ nav {
 /* 📱 Tablet adjustments */
 @media (max-width: 768px) {
   .brand-logo {
-    max-height: 40px;   /* comfortable size on tablets/phones */
+    max-height: 52px;   /* larger on tablets */
   }
 }
 
 /* 📱 Phone adjustments */
 @media (max-width: 540px) {
   .brand-logo {
-    max-height: 32px;   /* smaller but still visible */
+    max-height: 40px;   /* slightly larger than before */
   }
 
   .brand .name {
-    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    font-size: clamp(0.95rem, 4.5vw, 1.25rem);
     line-height: 1.2;
   }
 }
