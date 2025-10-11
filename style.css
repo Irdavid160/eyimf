@@ -300,3 +300,29 @@ nav {
     padding: 8px 14px;
   }
 }
+
+/* ——— HERO overlay/link fixes ——— */
+.header.rotating-hero .overlay {
+  background: transparent !important;   /* no white panel */
+  box-shadow: none !important;
+}
+
+.hero-links {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 12px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.hero-links a {
+  color: #ffffff !important;            /* visible on banner */
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.hero-links a:hover {
+  color: #f1c40f !important;            /* soft gold hover */
+}
