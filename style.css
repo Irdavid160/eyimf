@@ -443,3 +443,26 @@ nav {
     line-height: 1.2;
   }
 }
+
+.hero-title {
+  color: white;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 4vw, 2.8rem);
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Adjust for mobile */
+@media (max-width: 540px) {
+  .hero-title {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+}
