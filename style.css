@@ -498,3 +498,31 @@ nav {
     max-width: 280px;
   }
 }
+
+/* === Tighter, centered hero title === */
+.hero-title {
+  /* make the title narrower and force it to wrap within center area */
+  max-width: min(760px, 78vw);
+  margin: 0 auto 18px;
+  padding: 0 12px;
+
+  /* smaller, denser type so it doesn’t sprawl */
+  font-size: clamp(1.1rem, 3.2vw, 2.1rem);
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+
+  /* keep it readable over bright images */
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+  text-align: center;
+}
+
+/* phones: even narrower & smaller */
+@media (max-width: 540px) {
+  .hero-title {
+    max-width: 90vw;
+    font-size: clamp(1rem, 5vw, 1.4rem);
+    line-height: 1.25;
+    margin-bottom: 14px;
+    padding: 0 8px;
+  }
+}
