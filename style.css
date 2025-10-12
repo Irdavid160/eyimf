@@ -718,3 +718,32 @@ nav {
     display: block !important;
   }
 }
+
+/* === Mobile photo carousel (for story sections) === */
+.mobile-carousel { display: none; }
+
+@media (max-width: 540px) {
+  /* Hide stacked photos on small screens, show carousel */
+  .stacked-photos { display: none !important; }
+  .mobile-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    margin-top: 10px;
+  }
+  .mobile-carousel img {
+    flex: 0 0 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    scroll-snap-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  /* optional: hide scrollbar for a cleaner look */
+  .mobile-carousel::-webkit-scrollbar { display: none; }
+  .mobile-carousel { scrollbar-width: none; }
+}
