@@ -694,3 +694,9 @@ nav {
     text-shadow: 0 2px 8px rgba(0,0,0,.85);
   }
 }
+
+/* === Nudge hero title + links down slightly === */
+.hero-content {
+  position: relative;
+  top: 1.2em;  /* adjust this value to move it down — try 1em, 1.5em, etc. */
+}
