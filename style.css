@@ -700,3 +700,12 @@ nav {
   position: relative;
   top: 1.2em;  /* adjust this value to move it down — try 1em, 1.5em, etc. */
 }
+
+@media (max-width: 540px) {
+  .story-section img[style*="float"] {
+    float: none !important;
+    max-width: 100% !important;
+    margin: 12px auto !important;
+    display: block !important;
+  }
+}
