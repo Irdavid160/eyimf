@@ -559,3 +559,89 @@ nav {
     padding: 0 8px;
   }
 }
+
+/* === Mobile fixes: hero title + links (override) === */
+@media (max-width: 540px) {
+  /* Narrower, smaller title so it doesn't run into side images */
+  .hero-title {
+    max-width: 84vw;
+    font-size: clamp(1rem, 4.2vw, 1.3rem);
+    line-height: 1.25;
+    margin: 0 auto 12px;
+    padding: 0 6px;
+  }
+
+  /* Lay links out in a row, allow wrapping to a 2nd line if needed */
+  .hero-links {
+    display: flex;
+    flex-direction: row;          /* not stacked */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Force links to be plain text (no button styling) */
+  .hero-links a {
+    display: inline !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 6px rgba(0,0,0,.7);
+  }
+
+  .hero-links a:hover,
+  .hero-links a:focus {
+    color: #f1c40f !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.85);
+  }
+}
+
+/* === Mobile fixes: hero title + links (override) === */
+@media (max-width: 540px) {
+  /* Narrower, smaller title so it doesn't run into side images */
+  .hero-title {
+    max-width: 84vw;
+    font-size: clamp(1rem, 4.2vw, 1.3rem);
+    line-height: 1.25;
+    margin: 0 auto 12px;
+    padding: 0 6px;
+  }
+
+  /* Lay links out in a row, allow wrapping to a 2nd line if needed */
+  .hero-links {
+    display: flex;
+    flex-direction: row;          /* not stacked */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Force links to be plain text (no button styling) */
+  .hero-links a {
+    display: inline !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 6px rgba(0,0,0,.7);
+  }
+
+  .hero-links a:hover,
+  .hero-links a:focus {
+    color: #f1c40f !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.85);
+  }
+}
