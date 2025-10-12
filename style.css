@@ -645,3 +645,52 @@ nav {
     text-shadow: 0 2px 8px rgba(0,0,0,.85);
   }
 }
+
+/* === Mobile: single-line hero links (no buttons) === */
+@media (max-width: 540px) {
+  /* keep title tighter so it stays in the safe center area */
+  .hero-title {
+    max-width: 80vw;
+    font-size: clamp(0.95rem, 4vw, 1.2rem);
+    line-height: 1.2;
+    margin: 0 auto 10px;
+    padding: 0 4px;
+  }
+
+  /* one line, horizontally scrollable if needed */
+  .hero-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;                /* single line */
+    justify-content: center;
+    gap: 12px;
+    overflow-x: auto;                 /* allow sideways scroll if needed */
+    -webkit-overflow-scrolling: touch;
+    padding: 2px 6px;
+    scrollbar-width: none;            /* hide scrollbar (Firefox) */
+  }
+  .hero-links::-webkit-scrollbar { display: none; } /* hide scrollbar (WebKit) */
+
+  /* plain text links (no button styles) */
+  .hero-links a {
+    display: inline-block !important;
+    white-space: nowrap;              /* keep each link unbroken */
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 12.5px;                /* tighter to fit one line */
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 6px rgba(0,0,0,.7);
+  }
+
+  .hero-links a:hover,
+  .hero-links a:focus {
+    color: #f1c40f !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.85);
+  }
+}
