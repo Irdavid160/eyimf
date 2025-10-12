@@ -169,8 +169,9 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(12px, 2vw, 24px);
+  gap: 16px; /* spacing between text links */
 }
+
 
 
 .hero-links a {
@@ -192,6 +193,33 @@ nav {
   color: #f1c40f;             /* gold hover color */
 }
 
+.hero-links a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  padding: 0;
+  border: none;
+  background: none;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);  /* ✨ soft glow behind text */
+}
+
+.hero-links a:hover,
+.hero-links a:focus {
+  color: #f1c40f;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85); /* a little stronger on hover */
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
 
 
 .hero-links a:hover,
