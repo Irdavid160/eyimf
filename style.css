@@ -144,12 +144,25 @@ nav {
   position: relative;
   z-index: 10;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;        /* stack vertically */
+  align-items: center;           /* center horizontally */
+  justify-content: center;      /* center vertically */
   text-align: center;
   padding: clamp(40px, 8vw, 80px) 20px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.35));
   min-height: clamp(320px, 60vh, 520px);
+}
+
+.hero-title {
+  color: white;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 4vw, 2.8rem);
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  max-width: 90%;
 }
 
 .hero-links {
@@ -158,6 +171,7 @@ nav {
   justify-content: center;
   gap: clamp(12px, 2vw, 24px);
 }
+
 
 .hero-links a {
   display: inline-flex;
