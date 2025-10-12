@@ -734,16 +734,13 @@ nav {
     padding-bottom: 8px;
     margin-top: 10px;
   }
-  .mobile-carousel img {
-    flex: 0 0 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    scroll-snap-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-
-  /* optional: hide scrollbar for a cleaner look */
-  .mobile-carousel::-webkit-scrollbar { display: none; }
-  .mobile-carousel { scrollbar-width: none; }
+ .mobile-carousel img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 250px;              /* ✅ fixed height to keep everything consistent */
+  object-fit: cover;          /* ✅ keeps the photo’s natural proportions */
+  object-position: center;    /* ✅ centers the crop nicely */
+  border-radius: 10px;
+  scroll-snap-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
