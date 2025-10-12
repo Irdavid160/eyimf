@@ -744,3 +744,7 @@ nav {
   scroll-snap-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
+/* Revert: disable mobile carousel and show stacked images */
+.mobile-carousel { display: none !important; }
+.stacked-photos { display: block !important; }
