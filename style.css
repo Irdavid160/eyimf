@@ -174,20 +174,24 @@ nav {
 
 
 .hero-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: inline-block;
   color: white;
   text-decoration: none;
   font-size: clamp(0.9rem, 2.5vw, 1.05rem);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease;
+  padding: 0;                 /* remove button padding */
+  border: none;               /* remove border */
+  background: none;           /* remove background */
 }
+
+.hero-links a:hover,
+.hero-links a:focus {
+  color: #f1c40f;             /* gold hover color */
+}
+
 
 
 .hero-links a:hover,
