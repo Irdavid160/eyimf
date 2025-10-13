@@ -768,3 +768,7 @@ nav {
     display: block;
   }
 }
+
+.story-section { padding: 44px 0; }
+.story-section .container { max-width: 1000px; }
+.story-section + .story-section { padding-top: 20px; }
