@@ -748,3 +748,15 @@ nav {
 /* Revert: disable mobile carousel and show stacked images */
 .mobile-carousel { display: none !important; }
 .stacked-photos { display: block !important; }
+
+  .text-link {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.text-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
