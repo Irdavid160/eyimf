@@ -760,3 +760,11 @@ nav {
   text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+  figure {
+    float: none !important;
+    margin: 16px auto !important;
+    max-width: 90% !important;
+    display: block;
+  }
+}
