@@ -969,3 +969,56 @@ nav {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ===== About page side decor (lightweight & mobile-safe) ===== */
+.about-page .about .container { position: relative; z-index: 1; }
+.about-page .about .side-decors {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0; /* behind text */
+}
+
+/* generic style for all decor images */
+.about-page .about .side-decors .deco {
+  position: absolute;
+  opacity: 0.12;                          /* subtle */
+  filter: grayscale(35%) contrast(92%);
+  width: 26vw;                            /* responsive width */
+  max-width: 420px;                       /* don’t get too big */
+  min-width: 220px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* placements — alternate sides down the page */
+.about-page .about .side-decors .d1 { left:  -44px; top:  140px; transform: rotate(-5deg); }
+.about-page .about .side-decors .d2 { right: -48px; top:  520px; transform: rotate(4deg);  }
+.about-page .about .side-decors .d3 { left:  -36px; top:  900px; transform: rotate(-3deg); }
+.about-page .about .side-decors .d4 { right: -44px; top: 1280px; transform: rotate(3deg);  }
+.about-page .about .side-decors .d5 { left:  -40px; top: 1660px; transform: rotate(-4deg); }
+.about-page .about .side-decors .d6 { right: -46px; top: 2040px; transform: rotate(2deg);  }
+.about-page .about .side-decors .d7 { left:  -38px; top: 2420px; transform: rotate(-2deg); }
+.about-page .about .side-decors .d8 { right: -42px; top: 2800px; transform: rotate(3deg);  }
+
+/* gentle inner-edge gradient to keep text super readable near edges */
+.about-page .about .container::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(246,241,235,0.92) 0%,
+      rgba(246,241,235,0.00) 18%,
+      rgba(246,241,235,0.00) 82%,
+      rgba(246,241,235,0.92) 100%);
+}
+
+/* mobile: hide the decor to keep it clean & fast */
+@media (max-width: 900px) {
+  .about-page .about .side-decors .deco { opacity: 0.08; width: 32vw; }
+}
+@media (max-width: 700px) {
+  .about-page .about .side-decors { display: none; }
+}
