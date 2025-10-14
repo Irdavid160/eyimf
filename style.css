@@ -230,7 +230,7 @@ nav {
 }
 
 .section {
-  padding: clamp(20px, 5vw, 50px) 0;
+  padding: clamp(18px, 4.5vw, 45px) 0;
 }
 
 
