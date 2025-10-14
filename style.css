@@ -1076,3 +1076,40 @@ section.about-page .about-content::before {
   section.about-page { padding-bottom: 60px; }
 }
 
+/* === ABOUT PAGE: fix list bullets and the Partner card === */
+
+/* Make lists left-aligned and tighten bullet gap */
+section.about-page .about-content ul,
+section.about-page .about-content ol {
+  text-align: left;               /* override parent centering */
+  margin: 0.75rem auto 1rem;
+  padding-left: 1.1rem;           /* reasonable indent */
+  list-style-position: outside;   /* bullets outside, clean wrap */
+}
+
+section.about-page .about-content li {
+  margin: 0.35rem 0;
+  line-height: 1.55;
+}
+
+/* If you still see too much gap, switch to inside bullets: */
+/* section.about-page .about-content ul,
+section.about-page .about-content ol { list-style-position: inside; padding-left: 0.5rem; } */
+
+/* Partner box: left-align content and bullets inside it */
+section.about-page .about-content .card {
+  text-align: left;           /* override .card’s center text */
+  align-items: stretch;       /* cancel center alignment */
+}
+
+section.about-page .about-content .card ul,
+section.about-page .about-content .card ol {
+  padding-left: 1.1rem;
+  margin: 0.5rem 0 0.75rem;
+  list-style: disc outside;
+}
+
+section.about-page .about-content .card li {
+  margin: 0.3rem 0;
+  line-height: 1.5;
+}
