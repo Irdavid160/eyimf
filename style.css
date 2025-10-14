@@ -1275,3 +1275,6 @@ nav {
   opacity: 0.18;
   z-index: 0;
 }
+:is(section.about-page, body.about-page) .side-decors .d5 {
+  display: none !important;
+}
