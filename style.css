@@ -1250,3 +1250,28 @@ nav {
   opacity: 0.18;
   z-index: 0;
 }
+
+/* 1) Keep the whole stack higher and distribute items without extra bottom slack */
+:is(section.about-page, body.about-page) .side-decors {
+  justify-content: space-between !important; /* was space-evenly */
+  bottom: 360px !important;                  /* reserve more space above footer */
+}
+
+/* 2) Nudge the bottom-left image up (adjust value to taste) */
+:is(section.about-page, body.about-page) .side-decors .d5 {
+  align-self: flex-start;
+  transform: translateX(-60px) rotate(-3deg) translateY(-160px) !important;
+  /* make -160px more negative (e.g., -200px) to raise it further */
+}
+
+/* 3) Keep the top-right image fixed where you liked it */
+:is(section.about-page, body.about-page) .side-decors .d6 {
+  position: absolute !important;
+  top: 40px;      /* adjust as needed */
+  right: 60px;    /* adjust as needed */
+  transform: rotate(2deg);
+  width: 18vw;
+  max-width: 240px;
+  opacity: 0.18;
+  z-index: 0;
+}
