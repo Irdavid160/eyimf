@@ -856,13 +856,25 @@ nav {
   padding: 8px;
 }
 
-.whatwedo .section:first-of-type .card img,
-.section:first-of-type .card img {
-  max-height: 150px;         /* ↓ image height so the grid is shorter */
-  margin-bottom: 6px;
-  object-fit: cover;
-  border-radius: 6px;
+/* Adjust link card box size while keeping the images intact */
+.section .card {
+  max-width: 280px;       /* smaller card width */
+  padding: 8px;           /* compact padding inside */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+/* Keep images fully visible but make them smaller */
+.section .card img {
+  width: 100%;
+  height: auto;           /* keeps original aspect ratio */
+  max-height: 160px;      /* controls how tall they can get */
+  object-fit: contain;    /* ensures full image fits inside */
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
 
 .whatwedo .section:first-of-type .card h3,
 .section:first-of-type .card h3 {
