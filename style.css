@@ -775,3 +775,7 @@ nav {
 
 .story-section { scroll-margin-top: 90px; } /* keeps headings below sticky nav */
 
+.story-section {
+  margin-top: 80px;   /* space above each section */
+  margin-bottom: 80px; /* space below each section */
+}
