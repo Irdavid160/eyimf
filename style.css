@@ -891,3 +891,81 @@ nav {
 
 /* 4) Ensure the anchor jump doesn't hide under sticky nav anywhere */
 .story-section { scroll-margin-top: 90px; }
+
+/* =========================
+   🌐 GLOBAL MOBILE RESPONSIVE BASE
+   ========================= */
+
+/* Small screens — mobile */
+@media (max-width: 768px) {
+
+  /* General Section Padding */
+  .section {
+    padding: 20px 10px;
+  }
+
+  /* Headings and Paragraphs */
+  h1, h2, h3 {
+    text-align: center;
+  }
+  p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Navbar adjustments */
+  nav .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .navlinks {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Grid cards on ministry page */
+  .grid.cols-3 {
+    display: grid;
+    grid-template-columns: 1fr; /* stack cards vertically on mobile */
+    gap: 20px;
+  }
+
+  /* Link cards */
+  .card {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 8px;
+  }
+  .card img {
+    max-height: 180px; /* Keeps the image visible but not overpowering */
+    object-fit: contain;
+  }
+
+  /* Story sections */
+  .story-section {
+    padding: 30px 10px;
+    margin-top: 20px;
+  }
+
+  /* Keep anchor links from hiding behind the fixed nav */
+  :target {
+    scroll-margin-top: 80px; 
+  }
+
+  /* Footer adjustments if needed */
+  footer {
+    text-align: center;
+    padding: 20px;
+  }
+}
+
+/* Medium screens — tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid.cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
