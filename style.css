@@ -1238,3 +1238,15 @@ nav {
   :is(section.about-page, body.about-page) .side-decors { bottom: 260px !important; }
 }
 :is(section.about-page, body.about-page) .side-decors { outline: 1px dashed rgba(0,0,0,0.25); }
+
+/* Move the last decorative photo to the top-right corner */
+:is(section.about-page, body.about-page) .side-decors .d6 {
+  position: absolute !important;
+  top: 40px;           /* distance from top — adjust as needed */
+  right: 60px;         /* distance from right — adjust as needed */
+  transform: rotate(2deg);
+  width: 18vw;
+  max-width: 240px;
+  opacity: 0.18;
+  z-index: 0;
+}
