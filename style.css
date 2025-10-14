@@ -773,8 +773,5 @@ nav {
 .story-section .container { max-width: 1000px; }
 .story-section + .story-section { padding-top: 20px; }
 
-.story-section { scroll-margin-top: 90px; }
+.story-section { scroll-margin-top: 90px; } /* keeps headings below sticky nav */
 
-.story-section { scroll-margin-top: 90px; }
-
-.story-section { scroll-margin-top: 90px; }
