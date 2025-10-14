@@ -1147,3 +1147,16 @@ section.about-page .about-content .card li {
 .update-card summary::-webkit-details-marker { display: none; }
 
 .update-body p { margin: 8px 0; line-height: 1.6; }
+
+/* Devotions */
+.devotion-wrap .btn {
+  display: inline-flex; align-items:center; justify-content:center;
+  border: 1px solid rgba(0,0,0,.15);
+  background: #fff; color: var(--color-ink);
+  padding: 8px 14px; border-radius: 999px;
+  cursor: pointer; font-weight: 600;
+}
+.devotion-wrap .btn:hover { background:#f6f1eb; }
+.devotion-wrap .badge {
+  background:#eee; color:#333; padding:4px 10px; border-radius:999px; font-size:.85rem;
+}
