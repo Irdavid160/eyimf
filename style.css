@@ -783,3 +783,21 @@ nav {
   margin-bottom: 80px;
   padding-top: 20px;  /* optional, just adds breathing room inside */
 }
+
+.grid.cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* space between cards */
+}
+
+@media (max-width: 768px) {
+  .grid.cols-3 {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid.cols-3 {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+  }
+}
