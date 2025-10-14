@@ -1113,3 +1113,37 @@ section.about-page .about-content .card li {
   margin: 0.3rem 0;
   line-height: 1.5;
 }
+
+/* Updates page extras */
+.updates-grid .update-card img {
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.update-meta { text-align: left; width: 100%; }
+.update-meta .date {
+  display: inline-block;
+  background: #eee;
+  color: #333;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  margin: 8px 0 6px;
+}
+
+.update-card details {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.update-card summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-primary);
+  list-style: none;
+  outline: none;
+}
+.update-card summary::-webkit-details-marker { display: none; }
+
+.update-body p { margin: 8px 0; line-height: 1.6; }
