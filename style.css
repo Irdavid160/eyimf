@@ -821,3 +821,61 @@ nav {
     grid-template-columns: 1fr; /* 1 column on mobile */
   }
 }
+
+/* --- WHAT WE DO: compact top section so all 6 cards fit above the fold --- */
+
+/* 1) Tighten top section padding (safe even if body doesn't have .whatwedo) */
+.whatwedo .section:first-of-type,
+.section:first-of-type {
+  padding-top: clamp(0px, 1vw, 12px);
+  padding-bottom: 0;
+}
+
+/* 2) Make the heading + intro more compact */
+.whatwedo .section:first-of-type h1,
+.section:first-of-type h1 {
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  margin: 4px 0 6px;
+}
+
+.whatwedo .section:first-of-type > .container > p,
+.section:first-of-type > .container > p {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+/* 3) Make the grid/cards smaller specifically in the first section */
+.whatwedo .section:first-of-type .grid.cols-3,
+.section:first-of-type .grid.cols-3 {
+  gap: 10px; /* tighter rows */
+}
+
+.whatwedo .section:first-of-type .card,
+.section:first-of-type .card {
+  padding: 8px;
+}
+
+.whatwedo .section:first-of-type .card img,
+.section:first-of-type .card img {
+  max-height: 110px;         /* ↓ image height so the grid is shorter */
+  margin-bottom: 6px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.whatwedo .section:first-of-type .card h3,
+.section:first-of-type .card h3 {
+  font-size: 0.95rem;
+  margin: 4px 0 2px;
+}
+
+.whatwedo .section:first-of-type .card p,
+.section:first-of-type .card p {
+  font-size: 0.82rem;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* 4) Ensure the anchor jump doesn't hide under sticky nav anywhere */
+.story-section { scroll-margin-top: 90px; }
