@@ -784,20 +784,24 @@ nav {
   padding-top: 20px;  /* optional, just adds breathing room inside */
 }
 
+/* 🌐 3x3 Responsive Grid Layout */
 .grid.cols-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 20px; /* space between cards */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+  gap: 20px; /* space between the cards */
+  margin-top: 16px;
 }
 
-@media (max-width: 768px) {
+/* 📱 Tablet view (medium screens) */
+@media (max-width: 1024px) {
   .grid.cols-3 {
-    grid-template-columns: 1fr; /* 1 column on mobile */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
   }
 }
 
-@media (max-width: 1024px) {
+/* 📱 Mobile view (small screens) */
+@media (max-width: 600px) {
   .grid.cols-3 {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    grid-template-columns: 1fr; /* 1 column on mobile */
   }
 }
