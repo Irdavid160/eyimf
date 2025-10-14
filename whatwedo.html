@@ -475,5 +475,39 @@
     </div>
     <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
   </footer>
+
+  <script>
+  // Smooth-scroll to the correct section, ignoring default hash jump.
+  document.addEventListener('DOMContentLoaded', function () {
+    var cards = document.querySelectorAll('.grid.cols-3 a.card[href^="#"]');
+    var headerOffset = 90; // adjust if your sticky navbar is taller/shorter
+
+    function scrollToId(id) {
+      var target = document.getElementById(id);
+      if (!target) return;
+      var y = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    // Intercept clicks on the top link cards
+    cards.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var href = a.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          scrollToId(href.slice(1));
+        }
+      });
+    });
+
+    // If someone lands with a hash in the URL, fix that too
+    if (window.location.hash) {
+      var id = window.location.hash.slice(1);
+      // Let the page paint first, then correct the position
+      setTimeout(function () { scrollToId(id); }, 0);
+    }
+  });
+</script>
+
 </body>
 </html>
