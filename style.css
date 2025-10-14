@@ -1076,3 +1076,38 @@ nav {
   line-height: 1.8;
   padding: 0 20px;         /* Gives it some breathing room on mobile */
 }
+
+.about-page .side-decors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 100%;
+  pointer-events: none; /* prevents image from interfering with text */
+}
+
+.about-page .side-decors .deco {
+  position: absolute;
+  opacity: 0.18;
+  width: 18vw;
+  max-width: 240px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.d1 { top: 80px; left: -80px; }
+.d2 { top: 200px; right: -90px; }
+.d3 { top: 320px; left: -60px; }
+.d4 { top: 440px; right: -70px; }
+.d5 { top: 560px; left: -80px; }
+.d6 { top: 680px; right: -90px; }
+
+@media (max-width: 768px) {
+  .about-page .side-decors .deco {
+    width: 30vw;
+    max-width: 160px;
+    opacity: 0.15;
+  }
+}
