@@ -775,7 +775,11 @@ nav {
 
 .story-section { scroll-margin-top: 90px; } /* keeps headings below sticky nav */
 
+}
+
 .story-section {
-  margin-top: 100px;   /* space above each section */
-  margin-bottom: 100px; /* space below each section */
+  scroll-margin-top: 100px;  /* ensures anchor stops below navbar */
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding-top: 20px;  /* optional, just adds breathing room inside */
 }
