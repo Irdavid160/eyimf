@@ -1173,3 +1173,14 @@ nav {
 @media (max-width: 700px) {
   .about-page .side-decors { display: none; } /* keep mobile clean & fast */
 }
+
+/* Raise the entire side-decor group so the last image sits higher */
+.about-page .side-decors {
+  /* previously: inset: 0; */
+  inset: 0 0 280px 0;   /* top right bottom left → add a bottom offset */
+  /* you can tweak 280px to 240/320/etc until it looks perfect */
+}
+
+@media (max-width: 900px) {
+  .about-page .side-decors { inset: 0 0 220px 0; }
+}
