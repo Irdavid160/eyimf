@@ -44,6 +44,13 @@
   </nav>
 
   <section class="section">
+  <div class="container">
+    <h1>Daily Devotion</h1>
+    <div id="daily-devotion"></div>
+  </div>
+</section>
+
+  <section class="section">
     <div class="container">
       <h1>Updates</h1>
       <p style="text-align:center; max-width:700px; margin:10px auto 24px;">
@@ -151,5 +158,29 @@
     </div>
     <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
   </footer>
+
+  <script>
+  fetch('assets/devotions/devotions.json')
+    .then(response => response.json())
+    .then(devotions => {
+      const today = new Date().toISOString().split('T')[0];
+      const devotion = devotions.find(d => d.date === today);
+
+      const container = document.getElementById('daily-devotion');
+
+      if (devotion) {
+        container.innerHTML = `
+          <h2>${devotion.title}</h2>
+          <p>${devotion.body}</p>
+        `;
+      } else {
+        container.innerHTML = `<p>No devotion posted for today.</p>`;
+      }
+    })
+    .catch(error => {
+      console.error('Error loading devotions:', error);
+    });
+</script>
+
 </body>
 </html>
