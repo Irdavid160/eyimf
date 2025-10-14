@@ -1022,3 +1022,16 @@ nav {
 @media (max-width: 700px) {
   .about-page .about .side-decors { display: none; }
 }
+
+/* ===== About page side decor (smaller & more visible) ===== */
+.about-page .about .side-decors .deco {
+  position: absolute;
+  opacity: 0.18;                          /* increased visibility */
+  filter: grayscale(25%) contrast(95%);
+  width: 18vw;                            /* was 26vw — smaller */
+  max-width: 300px;                       /* was 420px */
+  min-width: 160px;                       /* was 220px */
+  height: auto;
+  object-fit: cover;
+  border-radius: 14px;
+}
