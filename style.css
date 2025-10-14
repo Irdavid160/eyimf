@@ -230,8 +230,9 @@ nav {
 }
 
 .section {
-  padding: clamp(24px, 6vw, 60px) 0;
+  padding: clamp(20px, 5vw, 50px) 0;
 }
+
 
 .h2 {
   font-family: var(--font-heading);
