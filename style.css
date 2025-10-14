@@ -858,7 +858,7 @@ nav {
 
 .whatwedo .section:first-of-type .card img,
 .section:first-of-type .card img {
-  max-height: 110px;         /* ↓ image height so the grid is shorter */
+  max-height: 120px;         /* ↓ image height so the grid is shorter */
   margin-bottom: 6px;
   object-fit: cover;
   border-radius: 6px;
