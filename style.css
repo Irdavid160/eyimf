@@ -1466,8 +1466,6 @@ section.about-page .about-content .card li {
   font-size: 1.1em;        /* Slightly larger font */
   white-space: normal;     /* Allow wrapping */
   overflow: visible;       /* Prevent truncation */
-  flex-shrink: 0;          /* Prevent shrinking */
-  max-width: 60vw;         /* Responsive max width */
   padding-left: 0.5em;     /* Padding on left side */
 }
 .navlinks {
