@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daily Devotions • EYIMF</title>
   <link rel="icon" href="assets/favicon.png">
- <link rel="stylesheet" href="style.css?v=devotions2">
+  <link rel="stylesheet" href="style.css?v=devotions2">
 </head>
 <body class="devotion-page">
   <nav>
     <div class="container navbar">
-      <div class="brand"><span class="name">Examine Yourselves International Mission Foundation</span></div>
+      <div class="brand center-right"><span class="name">Examine Yourselves International Mission Foundation</span></div>
       <div class="navlinks">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -24,7 +24,7 @@
 
   <section class="section">
     <div class="container">
-      <h1 style="text-align:center;margin-bottom:8px;">Daily Devotion</h1>
+      <h1 style="text-align:center;margin-bottom:8px;">Daily Devotions – Examine Yourselves International Mission Foundation</h1>
       <div id="devotion" class="devotion-container">
         <p class="no-devotion">Loading today's devotion...</p>
       </div>
@@ -62,11 +62,11 @@
         const d = devs.find(x => x.date === todayISO) || devs[(new Date().getDate()-1) % devs.length];
         const el = document.getElementById('devotion');
         if (!d) { el.innerHTML = '<p class="no-devotion">No devotion posted for today.</p>'; return; }
-       const body = (d.body || '')
-  .replace(/\\n/g, '<br>')        // turn \n into line breaks
-  .split(/<br>\s*<br>/)           // split on double breaks for paragraphs
-  .map(p => `<p>${p.trim()}</p>`) // wrap each paragraph
-  .join('');
+        const body = (d.body || '')
+          .replace(/\\n/g, '<br>')        // turn \n into line breaks
+          .split(/<br>\s*<br>/)           // split on double breaks for paragraphs
+          .map(p => `<p>${p.trim()}</p>`) // wrap each paragraph
+          .join('');
         el.innerHTML = `
           <h2>${d.title||'Devotion'}</h2>
           <div class="scripture">${d.scripture||''}</div>
