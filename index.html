@@ -128,5 +128,36 @@
   });
 </script>
 
+  <script>
+  // 📜 Location of your devotions JSON file
+  const DEVOTIONS_JSON = 'assets/devotions/devotions.json?v=2';
+
+  fetch(DEVOTIONS_JSON)
+    .then(response => response.json())
+    .then(devotions => {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      const todayISO = `${yyyy}-${mm}-${dd}`;
+
+      // Find today's devotion or fallback if missing
+      const devotion = devotions.find(d => d.date === todayISO) || devotions[(today.getDate()-1) % devotions.length];
+
+      const linkEl = document.querySelector('#daily-devotion-link a');
+      if (devotion) {
+        linkEl.textContent = `Today’s Daily Devotion: ${devotion.title}`;
+        linkEl.href = `devotions.html?date=${todayISO}`;
+      } else {
+        linkEl.textContent = `Today’s Daily Devotion`;
+        linkEl.href = `devotions.html`;
+      }
+    })
+    .catch(err => {
+      console.error('Error loading daily devotion:', err);
+      document.querySelector('#daily-devotion-link a').textContent = `Today’s Daily Devotion`;
+    });
+</script>
+
 </body>
 </html>
