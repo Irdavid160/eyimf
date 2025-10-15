@@ -1300,21 +1300,31 @@ section.about-page .about-content .card li {
 .devotion-page .navbar .navlinks a {
   font-size: clamp(0.85rem, 1.4vw, 1rem);
   white-space: nowrap;
-}
+/* === Mobile Navbar Wrapping Fix === */
 @media (max-width: 920px) {
   .devotion-page .navbar {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
 
   .devotion-page .navbar .brand .name {
+    white-space: normal;        /* allow wrapping on phones */
+    overflow: visible;          /* no clipping */
+    text-overflow: unset;
+    font-size: clamp(1rem, 4vw, 1.4rem);
     max-width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
   }
 
   .devotion-page .navbar .navlinks {
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
     max-width: 100%;
   }
+
+  .devotion-page .navbar .navlinks a {
+    font-size: 0.95rem;
+  }
 }
+
