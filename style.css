@@ -1198,3 +1198,11 @@ section.about-page .about-content .card li {
   font-style: italic;
   color: #777;
 }
+
+.devotion-container {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.devotion-container.loaded {
+  opacity: 1;
+}
