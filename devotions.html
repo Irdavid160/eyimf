@@ -62,7 +62,11 @@
         const d = devs.find(x => x.date === todayISO) || devs[(new Date().getDate()-1) % devs.length];
         const el = document.getElementById('devotion');
         if (!d) { el.innerHTML = '<p class="no-devotion">No devotion posted for today.</p>'; return; }
-        const body = (d.body||'').split(/\n\s*\n/).map(p=>`<p>${p.trim()}</p>`).join('');
+       const body = (d.body || '')
+  .replace(/\\n/g, '<br>')        // turn \n into line breaks
+  .split(/<br>\s*<br>/)           // split on double breaks for paragraphs
+  .map(p => `<p>${p.trim()}</p>`) // wrap each paragraph
+  .join('');
         el.innerHTML = `
           <h2>${d.title||'Devotion'}</h2>
           <div class="scripture">${d.scripture||''}</div>
