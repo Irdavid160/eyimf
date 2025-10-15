@@ -7,21 +7,46 @@
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css?v=devotions2">
   <style>
-  .devotion-brand {
-    padding-left: 13em;
-  }
-</style>
+    /* Only affects devotions.html via .devotion-page body class */
+    .devotion-page .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+    .devotion-page .brand {
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: left;
+      white-space: normal;
+      overflow: visible;
+      flex-shrink: 1;
+      max-width: 60vw; /* Ensures wrapping if needed */
+    }
+    .devotion-page .navlinks {
+      display: flex;
+      gap: 1.5em;
+    }
+    @media (max-width: 700px) {
+      .devotion-page .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .devotion-page .navlinks {
+        margin-top: 0.5em;
+      }
+    }
+  </style>
 </head>
 <body class="devotion-page">
   <nav>
     <div class="container navbar">
-      <div class="brand devotion-brand"><span class="name">Examine Yourselves International Mission Foundation</span></div>
-        <span class="name">Examine Yourselves International Mission Foundation</span>
-      </div>
+      <div class="brand"><span class="name">Examine Yourselves International Mission Foundation</span></div>
       <div class="navlinks">
         <a href="index.html">Home</a>
-        <a href="updates.html">Updates</a>
+        <a href="about.html">About</a>
         <a href="whatwedo.html">What We Do</a>
+        <a href="updates.html">Updates</a>
         <a href="media.html">Media</a>
         <a href="contact.html">Contact</a>
       </div>
@@ -30,7 +55,7 @@
 
   <section class="section">
     <div class="container">
-      <h1 style="text-align:center;margin-bottom:8px;">Daily Devotions</h1>
+      <h1 style="text-align:center;margin-bottom:8px;">Daily Devotions – Examine Yourselves International Mission Foundation</h1>
       <div id="devotion" class="devotion-container">
         <p class="no-devotion">Loading today's devotion...</p>
       </div>
