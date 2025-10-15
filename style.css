@@ -1430,3 +1430,25 @@ section.about-page .about-content .card li {
   align-items: center;
   flex-wrap: wrap;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em; /* Optional: Adds space between brand and navlinks */
+}
+
+.brand {
+  text-align: left;
+  font-size: 1.1em;
+  white-space: normal; /* Allow wrapping, not truncating */
+  overflow: visible;
+  padding-left: 0.5em;
+  flex-shrink: 0; /* Prevent shrinking */
+  max-width: 60vw; /* Ensure enough space for long name */
+}
+.navlinks {
+  display: flex;
+  gap: 1em;
+}
