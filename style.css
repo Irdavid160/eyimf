@@ -1219,3 +1219,12 @@ section.about-page .about-content .card li {
   color: #6a4210;
   border-color: #6a4210;
 }
+
+.devotion-page h1 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin-bottom: 20px;
+}
