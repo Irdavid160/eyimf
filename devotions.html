@@ -8,27 +8,32 @@
   <link rel="stylesheet" href="style.css?v=devotions2">
   <style>
     /* Only affects devotions.html via .devotion-page body class */
-    .devotion-page .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: nowrap;
-    }
-    .devotion-page .brand {
-      font-weight: bold;
-      font-size: 1.2em;
-      text-align: left;
-      white-space: normal;
-      overflow: visible;
-      flex-shrink: 1;
-      max-width: 60vw;
-      /* No padding-left! */
-    }
-    .devotion-page .navlinks {
-      display: flex;
-      gap: 1.5em;
-    }
-    @media (max-width: 700px) {
+.devotion-page .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.devotion-page .brand {
+  font-weight: bold;
+  font-size: 2em;           /* Make it large */
+  text-align: left;
+  white-space: normal;      /* Allow wrapping */
+  overflow: visible;        /* Show all text */
+  flex: 1;                  /* Take up remaining space */
+  /* REMOVE max-width, overflow:hidden, text-overflow, white-space:nowrap */
+}
+
+.devotion-page .brand .name {
+  /* No max-width or ellipsis */
+}
+
+.devotion-page .navlinks {
+  display: flex;
+  gap: 1.5em;
+  flex-shrink: 0;           /* Don't shrink navlinks */
+}    @media (max-width: 700px) {
       .devotion-page .navbar {
         flex-direction: column;
         align-items: flex-start;
