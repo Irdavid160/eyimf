@@ -1452,3 +1452,25 @@ section.about-page .about-content .card li {
   display: flex;
   gap: 1em;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em; /* Adds space between brand and navlinks */
+}
+
+.brand {
+  text-align: left;        /* Align text to left */
+  font-size: 1.1em;        /* Slightly larger font */
+  white-space: normal;     /* Allow wrapping */
+  overflow: visible;       /* Prevent truncation */
+  flex-shrink: 0;          /* Prevent shrinking */
+  max-width: 60vw;         /* Responsive max width */
+  padding-left: 0.5em;     /* Padding on left side */
+}
+.navlinks {
+  display: flex;
+  gap: 1em;
+}
