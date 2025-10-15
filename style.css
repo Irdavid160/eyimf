@@ -1272,3 +1272,49 @@ section.about-page .about-content .card li {
     white-space: normal;
   }
 }
+/* NAVBAR — Devotions Page adjustments */
+.devotion-page .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* this allows wrapping gracefully on smaller screens */
+  padding: 10px 15px;
+}
+
+.devotion-page .navbar .brand .name {
+  font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+  max-width: 60%;           /* keeps it from eating the nav space */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.devotion-page .navbar .navlinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;                /* reduce spacing between links */
+  justify-content: flex-end;
+  max-width: 40%;           /* balance with brand name */
+}
+
+.devotion-page .navbar .navlinks a {
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  white-space: nowrap;
+}
+@media (max-width: 920px) {
+  .devotion-page .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .devotion-page .navbar .brand .name {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .devotion-page .navbar .navlinks {
+    justify-content: center;
+    max-width: 100%;
+  }
+}
