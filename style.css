@@ -1248,3 +1248,47 @@ section.about-page .about-content .card li {
 .hero-links a:hover {
   color: #f3c13a;
 }
+
+/* ===============================
+   NAVBAR FIXES FOR DEVOTIONS PAGE
+   =============================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 15px 20px;
+}
+
+.navbar .brand .name {
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+.navbar .navlinks {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.navbar .navlinks a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.navbar .navlinks a:hover {
+  color: #f3c13a; /* your highlight color */
+}
+
+/* Remove button style from Contact link */
+.navbar .navlinks .cta {
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 500;
+}
