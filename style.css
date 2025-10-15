@@ -1415,3 +1415,18 @@ section.about-page .about-content .card li {
     font-size: 0.95rem;
   }
 }
+/* Add to your CSS file */
+.brand.center-right {
+  text-align: right;
+  width: 100%;
+  font-size: 1.1em;
+  white-space: normal;
+  overflow: visible;
+  padding-right: 0.5em;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
