@@ -1474,3 +1474,26 @@ section.about-page .about-content .card li {
   display: flex;
   gap: 1em;
 }
+
+.devotion-page .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.devotion-page .brand {
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: left;
+  white-space: normal;
+  overflow: visible;
+  flex-shrink: 1;
+  max-width: 60vw;
+  /* REMOVE padding-left: 12em; */
+}
+
+.devotion-page .navlinks {
+  display: flex;
+  gap: 1.5em;
+}
