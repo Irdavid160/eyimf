@@ -146,6 +146,16 @@
     </div>
   </section>
 
+  <section class="section">
+  <div class="container">
+    <h1>Daily Devotion</h1>
+    <div id="daily-devotion" class="devotion-container">
+      <p class="no-devotion">Loading today's devotion...</p>
+    </div>
+  </div>
+</section>
+
+
   <footer class="footer" id="contact">
     <div class="container">
       <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;">
@@ -182,5 +192,36 @@
     });
 </script>
 
+  <script>
+  fetch('assets/devotions/devotions.json?v=1')
+    .then(response => response.json())
+    .then(devotions => {
+      const today = new Date().toISOString().split('T')[0];
+      const devotion = devotions.find(d => d.date === today);
+      const container = document.getElementById('daily-devotion');
+
+      if (devotion) {
+        const paragraphs = devotion.body
+          .split(/\n\s*\n/)
+          .map(p => `<p>${p.trim()}</p>`)
+          .join('');
+
+        container.innerHTML = `
+          <h2>${devotion.title}</h2>
+          <div class="scripture">${devotion.scripture || ''}</div>
+          ${paragraphs}
+        `;
+      } else {
+        container.innerHTML = `<p class="no-devotion">No devotion posted for today.</p>`;
+      }
+    })
+    .catch(error => {
+      console.error('Error loading devotions:', error);
+      document.getElementById('daily-devotion').innerHTML =
+        `<p class="no-devotion">Unable to load today's devotion.</p>`;
+    });
+</script>
+
+  
 </body>
 </html>
