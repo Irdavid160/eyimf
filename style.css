@@ -1163,7 +1163,7 @@ section.about-page .about-content .card li {
 
 /* === Daily Devotion Styling (Updates Page) === */
 .devotion-container {
-  max-width: 1600px; /* or larger, or remove max-width */
+  max-width: 800px; /* or larger, or remove max-width */
   width: 100%;
   margin: 0 auto;
   padding: 40px 20px;
