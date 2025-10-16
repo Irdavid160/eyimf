@@ -1488,3 +1488,6 @@ section.about-page .about-content .card li {
   display: flex;
   gap: 1.5em;
 }
+.about-content {
+  margin-top: -2in;
+}
