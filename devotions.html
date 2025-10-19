@@ -32,16 +32,37 @@
 .devotion-page .navlinks {
   display: flex;
   gap: 1.5em;
-  flex-shrink: 0;           /* Don't shrink navlinks */
-}    @media (max-width: 700px) {
-      .devotion-page .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .devotion-page .navlinks {
-        margin-top: 0.5em;
-      }
-    }
+}
+
+/* small styles for the date and nav above the devotion */
+.devotion-meta {
+  text-align: center;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.devotion-meta .devotion-date {
+  color: #6e5d48;
+  font-style: italic;
+  font-weight: 500;
+}
+.devotion-meta .dev-nav a {
+  color: #4b2e05;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  padding-bottom: 2px;
+}
+.devotion-meta .dev-nav a:hover {
+  border-color: #4b2e05;
+}
+
+/* fallback small-screen adjustments */
+@media (max-width: 540px) {
+  .devotion-meta { gap: 8px; }
+}
   </style>
 </head>
 <body class="devotion-page">
@@ -61,10 +82,27 @@
 
   <section class="section">
     <div class="container">
-      <h1 style="text-align:center;margin-bottom:8px;">Daily Devotions – Examine Yourselves International Mission Foundation</h1>
+     <h1 style="text-align:center;margin-bottom:8px;">Daily Devotion</h1>
+
+     <!-- Prev / Browse / Next navigation -->
+     <div class="devotion-meta" aria-hidden="false">
+       <div class="dev-nav">
+         <a id="devotion-prev" href="#" style="display:none;">← Previous</a>
+       </div>
+
+       <div class="devotion-date" id="devotion-date" aria-live="polite" aria-atomic="true">
+         <!-- formatted date will appear here -->
+       </div>
+
+       <div class="dev-nav">
+         <a id="devotion-next" href="#" style="display:none;">Next →</a>
+       </div>
+     </div>
+
       <div id="devotion" class="devotion-container">
         <p class="no-devotion">Loading today's devotion...</p>
       </div>
+
       <p style="text-align:center;margin-top:10px;">
         <a class="text-link" href="updates.html">← Back to Updates</a>
       </p>
@@ -85,35 +123,106 @@
   </footer>
 
   <script>
-    // minimal: shows today's devotion (with fallback)
+    // devotions loader: supports ?date=YYYY-MM-DD and shows previous/next navigation;
+    // also displays a formatted date above the devotion title.
+
     const JSON_URL = 'assets/devotions/devotions.json?v=1';
     const pad = n => String(n).padStart(2,'0');
-    const todayISO = (() => {
+
+    // Format ISO date (YYYY-MM-DD) to readable form: e.g. October 18, 2025
+    function formatDateISO(iso) {
+      try {
+        const parts = iso.split('-');
+        if (parts.length !== 3) return iso;
+        const d = new Date(iso + 'T00:00:00');
+        return d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+      } catch (e) {
+        return iso;
+      }
+    }
+
+    function getQueryDate() {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('date');
+      if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return q;
+      // default to today
       const d = new Date();
       return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-    })();
+    }
 
     fetch(JSON_URL, {cache:'no-store'})
       .then(r => r.json())
       .then(devs => {
-        const d = devs.find(x => x.date === todayISO) || devs[(new Date().getDate()-1) % devs.length];
+        if (!Array.isArray(devs) || devs.length === 0) {
+          document.getElementById('devotion').innerHTML = '<p class="no-devotion">No devotion posted.</p>';
+          return;
+        }
+
+        // sort ascending by date so prev/next are easy to calculate
+        devs.sort((a,b) => a.date.localeCompare(b.date));
+
+        const requestedDate = getQueryDate();
+        let idx = devs.findIndex(x => x.date === requestedDate);
+
+        // fallback logic if date not found: prefer today's date, otherwise last entry
+        if (idx === -1) {
+          const todayISO = (new Date()).toISOString().split('T')[0];
+          idx = devs.findIndex(x => x.date === todayISO);
+          if (idx === -1) idx = Math.max(0, devs.length - 1);
+        }
+
+        const d = devs[idx];
         const el = document.getElementById('devotion');
-        if (!d) { el.innerHTML = '<p class="no-devotion">No devotion posted for today.</p>'; return; }
+        const dateEl = document.getElementById('devotion-date');
+
+        if (!d) {
+          el.innerHTML = '<p class="no-devotion">No devotion available.</p>';
+          dateEl.textContent = '';
+          return;
+        }
+
+        // set the date above the title
+        dateEl.textContent = formatDateISO(d.date);
+
+        // render body into paragraphs (double-line breaks create paragraphs)
         const body = (d.body || '')
-          .replace(/\\n/g, '<br>')        // turn \n into line breaks
-          .split(/<br>\s*<br>/)           // split on double breaks for paragraphs
-          .map(p => `<p>${p.trim()}</p>`) // wrap each paragraph
+          .replace(/\r/g,'')
+          .replace(/\n/g, '<br>')
+          .split(/<br>\s*<br>/)
+          .map(p => `<p>${p.trim()}</p>`)
           .join('');
+
         el.innerHTML = `
-          <h2>${d.title||'Devotion'}</h2>
-          <div class="scripture">${d.scripture||''}</div>
+          <h2>${d.title || 'Devotion'}</h2>
+          <div class="scripture">${d.scripture || ''}</div>
           ${body}
         `;
-        el.classList.add('loaded'); // if you added the fade-in CSS
+        el.classList.add('loaded');
+
+        // Prev / Next links
+        const prevLink = document.getElementById('devotion-prev');
+        const nextLink = document.getElementById('devotion-next');
+
+        if (idx > 0) {
+          prevLink.style.display = 'inline';
+          prevLink.href = `devotions.html?date=${devs[idx-1].date}`;
+          prevLink.title = devs[idx-1].title || devs[idx-1].date;
+        } else {
+          prevLink.style.display = 'none';
+        }
+
+        if (idx < devs.length - 1) {
+          nextLink.style.display = 'inline';
+          nextLink.href = `devotions.html?date=${devs[idx+1].date}`;
+          nextLink.title = devs[idx+1].title || devs[idx+1].date;
+        } else {
+          nextLink.style.display = 'none';
+        }
       })
       .catch(() => {
         document.getElementById('devotion').innerHTML =
           '<p class="no-devotion">Unable to load today’s devotion.</p>';
+        document.getElementById('devotion-date').textContent = '';
       });
   </script>
 </body>
