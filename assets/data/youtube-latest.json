@@ -1,1 +1,32 @@
-
+{
+  "PLnQmd9SVdUWPDKLOagL8py76eadsWkYrX": {
+    "key": "children_church",
+    "lastVideoId": "https://youtu.be/SQWbSlUfVdE?si=xsbg-PgiF58AJSwo",
+    "lastPublishedAt": "2025-10-19T10:00:00Z"
+  },
+  "PLnQmd9SVdUWM7yLdYblLB6dcpWtGK5BGj": {
+    "key": "adult_church",
+    "lastVideoId": "https://youtu.be/i776Mp_ZMWg?si=65CtRb3oM4p7a8td",
+    "lastPublishedAt": "2025-10-18T12:00:00Z"
+  },
+  "PLnQmd9SVdUWN4XXts-9mBmHrWUenrTbgn": {
+    "key": "full_sermons",
+    "lastVideoId": "https://youtu.be/Sa1OJnXGl8Y?si=BhlrnLZrt0t0qtW9",
+    "lastPublishedAt": "2025-10-19T09:00:00Z"
+  },
+  "PLnQmd9SVdUWNAeOMoYXJTnClgxE6o3RHv": {
+    "key": "micro_devotions",
+    "lastVideoId": "acNc33yJsK9VE9Mu",
+    "lastPublishedAt": "2025-10-15T08:00:00Z"
+  },
+  "PLnQmd9SVdUWPKW61b85XVfAoBVqSXGDhE": {
+    "key": "daily_devotions",
+    "lastVideoId": "VxIA2F5uDBzMIWHz",
+    "lastPublishedAt": "2025-10-17T07:30:00Z"
+  },
+  "PLnQmd9SVdUWNb6JX4EX3t7hy_0UJ8ePLU": {
+    "key": "philippine_adventures",
+    "lastVideoId": "l00k4AWhWa7I1NK5",
+    "lastPublishedAt": "2025-10-16T11:00:00Z"
+  }
+}
