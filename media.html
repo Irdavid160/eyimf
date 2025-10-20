@@ -44,27 +44,37 @@
       <p class="intro">YouTube playlists and media from EYIMF. Click any card to open the playlist on YouTube. Thumbnails are placeholders and can be replaced later.</p>
     </header>
 
-    <section aria-labelledby="playlists">
-      <h2 id="playlists" style="font-size:1.1rem;margin:0 0 10px">Playlists</h2>
-      <div class="grid">
-        <!-- Example card: replace href and text as needed -->
-        <div class="media-card">
-  <img alt="Children's Church service in the Philippines" src="assets/photos/childrenschurch1.jpg">
-  <h3>Children's Church (Philippines)</h3>
-  <p>These Children’s Church Services in the Philippines are joyful, powerful moments — teaching the next generation about Jesus with songs and stories.</p>
-  <a class="btn-link" href="https://www.youtube.com/playlist?list=PLnQmd9SVdUWPDKLOagL8py76eadsWkYrX" target="_blank" rel="noopener">Open Playlist</a>
-</div>
-        </div>
+   <!-- Replace the existing <section aria-labelledby="playlists"> ... </section> with this corrected version.
+    Note: both cards are inside the same .grid container (your earlier snippet had an extra closing </div>). -->
+<section aria-labelledby="playlists">
+  <h2 id="playlists" style="font-size:1.1rem;margin:0 0 10px">Playlists</h2>
 
-       <div class="media-card"> <img alt="Adult Church service in the Philippines" src="assets/photos/adultservice4.jpg">
-         <h3>Adult Church Services (Philippines)</h3>
-         <p>Powerful gatherings where the Word is proclaimed with boldness — times of worship, conviction, and life change.</p>
-         <a class="btn-link" href="https://www.youtube.com/playlist?list=PLnQmd9SVdUWM7yLdYblLB6dcpWtGK5BGj" target="_blank" rel="noopener">Open Playlist</a>
-       </div>
+  <div class="grid">
+    <!-- Children's Church (card links the whole card like "what we do") -->
+    <a href="https://www.youtube.com/playlist?list=PLnQmd9SVdUWPDKLOagL8py76eadsWkYrX"
+       class="card"
+       style="text-decoration:none;color:inherit;display:block;">
+      <img src="assets/photos/childrenschurch1.jpg"
+           alt="Children's Church service in the Philippines"
+           style="width:100%;border-radius:8px;margin-bottom:10px;">
+      <h3>Children's Church (Philippines)</h3>
+      <p>These Children’s Church Services in the Philippines are joyful, powerful moments — teaching the next generation about Jesus with songs and stories.</p>
+    </a>
 
-        <!-- Add more cards here the same way; I can populate the rest for you -->
-      </div>
-    </section>
+    <!-- Adult Church (card links the whole card) -->
+    <a href="https://www.youtube.com/playlist?list=PLnQmd9SVdUWM7yLdYblLB6dcpWtGK5BGj"
+       class="card"
+       style="text-decoration:none;color:inherit;display:block;">
+      <img src="assets/photos/adultservice4.jpg"
+           alt="Adult Church service in the Philippines"
+           style="width:100%;border-radius:8px;margin-bottom:10px;">
+      <h3>Adult Church Services (Philippines)</h3>
+      <p>Powerful gatherings where the Word is proclaimed with boldness — times of worship, conviction, and life change.</p>
+    </a>
+
+    <!-- Add further cards here in the same way -->
+  </div>
+</section>
   </main>
 
   <footer>
