@@ -5,23 +5,69 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Media • EYIMF</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* minimal page-specific styles */
-    body{font-family:system-ui,Arial,Helvetica,sans-serif;margin:0;color:#222}
-    .container{max-width:980px;margin:24px auto;padding:0 16px}
-    nav{background:#faf5ef;padding:12px 0;border-bottom:1px solid #eee}
-    .navlinks a{margin-right:12px;color:#4b2e05;text-decoration:none}
-    h1{margin:18px 0 6px;font-size:1.6rem}
-    .intro{color:#555;margin-bottom:18px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-    .card{border:1px solid #eee;border-radius:6px;overflow:hidden;background:#fff}
-    .card img{width:100%;height:120px;object-fit:cover;display:block}
-    .card-body{padding:10px}
-    .card h3{margin:0 0 8px;font-size:1rem}
-    .card p{margin:0 0 10px;color:#444;font-size:.95rem}
-    .btn{display:inline-block;padding:8px 10px;background:#4b2e05;color:#fff;border-radius:6px;text-decoration:none;font-size:.9rem}
-    footer{margin:28px 0 40px;color:#666;font-size:.9rem;text-align:center}
-  </style>
+<style>
+  /* tweakable values */
+  :root {
+    --thumb-height: 160px; /* change this to 140px / 180px etc. to adjust picture height */
+    --gap: 12px;
+  }
+
+  /* Grid: three equal columns on wide screens, 2 columns on medium, 1 on small */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  /* Responsive breakpoints */
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Card container — stretch to match heights so rows align */
+  .card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  /* Thumbnail image — keeps aspect and crops consistently */
+  .card img,
+  .media-card img {
+    width: 100%;
+    height: var(--thumb-height);
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* Title and paragraph spacing */
+  .card h3 { margin: 0 0 8px; font-size: 1rem; }
+  .card p { margin: 0; color: #444; font-size: .95rem; }
+
+  /* If you have buttons (Open Playlist), keep them pinned to the bottom */
+  .card .btn-link {
+    margin-top: 12px;
+    align-self: flex-start; /* keeps button under text */
+  }
+</style>
 </head>
 <body>
   <nav>
@@ -51,7 +97,7 @@
 
   <div class="grid">
     <!-- Children's Church (card links the whole card like "what we do") -->
-    <a href="https://www.youtube.com/playlist?list=PLnQmd9SVdUWPDKLOagL8py76eadsWkYrX"
+    <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWPDKLOagL8py76eadsWkYrX&si=5Ti7Zr7EH24xftQA"
        class="card"
        style="text-decoration:none;color:inherit;display:block;">
       <img src="assets/photos/childrenschurch1.jpg"
@@ -62,7 +108,7 @@
     </a>
 
     <!-- Adult Church (card links the whole card) -->
-    <a href="https://www.youtube.com/playlist?list=PLnQmd9SVdUWM7yLdYblLB6dcpWtGK5BGj"
+    <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWM7yLdYblLB6dcpWtGK5BGj&si=0uF9HC8dHlPjuyav"
        class="card"
        style="text-decoration:none;color:inherit;display:block;">
       <img src="assets/photos/adultservice4.jpg"
@@ -73,7 +119,7 @@
     </a>
 
    <!-- Full Length Sermons — inline embed card -->
-<a href="https://www.youtube.com/playlist?list=PLnQmd9SVdUWN4XXts-9mBmHrWUenrTbgn"
+<a href="https://youtube.com/playlist?list=PLnQmd9SVdUWN4XXts-9mBmHrWUenrTbgn&si=b3ek67ED5yEhmTP8"
    class="card"
    style="text-decoration:none;color:inherit;display:block;">
 <img src="assets/photos/fullsermons.png"
@@ -83,7 +129,7 @@
   <p>Deep, convicting messages designed to strengthen and equip.</p>
 </a>
     <!-- Micro Devotions — matched to the linked-card style used for other playlists -->
-<a href="https://www.youtube.com/playlist?list=PLnQmd9SVdUWNAeOMoYXJTnClgxE6o3RHv"
+<a href="https://youtube.com/playlist?list=PLnQmd9SVdUWNAeOMoYXJTnClgxE6o3RHv&si=fEHX9MJ0n0gSoU9X"
    class="card"
    style="text-decoration:none;color:inherit;display:block;">
   <img src="assets/photos/microdevotions.jpeg"
@@ -93,7 +139,7 @@
   <p>Micro Devotions are 30 to 40 second, Bible-based messages designed to pierce through the noise of daily life and draw your heart back to the feet of Jesus.</p>
 </a>
     <!-- Daily Devotions — matched to the other playlist cards -->
-<a href="https://www.youtube.com/playlist?list=PLnQmd9SVdUWPKW61b85XVfAoBVqSXGDhE"
+<a href="https://youtube.com/playlist?list=PLnQmd9SVdUWPKW61b85XVfAoBVqSXGDhE&si=VnzqHlYL4bJCbJig"
    class="card"
    style="text-decoration:none;color:inherit;display:block;">
   <img src="assets/photos/dailydevotions.jpeg"
@@ -103,7 +149,7 @@
   <p>These Daily Devotions are more than gentle reflections; they are spiritual wake-up calls. In 3–4 minutes each, they examine the heart, align us with God’s Word, and call believers to live with holy conviction.</p>
 </a>
     <!-- My Philippine Adventures — matched to the other playlist cards -->
-<a href="https://youtube.com/playlist?list=PLnQmd9SVdUWNb6JX4EX3t7hy_0UJ8ePLU&si=xfomYZi9AKyk7Ey8"
+<a href="https://youtube.com/playlist?list=PLnQmd9SVdUWNb6JX4EX3t7hy_0UJ8ePLU&si=4PXMi_x3-IXclwt_"
    class="card"
    target="_blank" rel="noopener"
    style="text-decoration:none;color:inherit;display:block;">
@@ -159,6 +205,6 @@
   border-radius:4px;
   vertical-align:middle;
 }
-</style>
+</style
 </body>
 </html>
