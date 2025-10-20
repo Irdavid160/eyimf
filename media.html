@@ -6,38 +6,40 @@
   <title>Media • EYIMF</title>
   <link rel="stylesheet" href="style.css" />
 <style>
-  /* tweakable values */
   :root {
-    --thumb-height: 160px; /* change this to 140px / 180px etc. to adjust picture height */
+    --card-width: 300px;   /* width of each card — change to 280px or 320px if you prefer */
+    --thumb-height: 160px; /* image height (keeps previous setting) */
     --gap: 12px;
   }
 
-  /* Grid: three equal columns on wide screens, 2 columns on medium, 1 on small */
+  /* Grid: 3 fixed-width columns, centered */
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, var(--card-width));
     gap: var(--gap);
+    justify-content: center; /* center the 3 columns inside the container */
     align-items: start;
   }
 
-  /* Responsive breakpoints */
+  /* 2 columns on medium screens */
   @media (max-width: 900px) {
     .grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, min(var(--card-width), 1fr));
+      justify-content: center;
     }
   }
+
+  /* 1 column on small screens */
   @media (max-width: 600px) {
     .grid {
       grid-template-columns: 1fr;
     }
   }
 
-  /* Card container — stretch to match heights so rows align */
+  /* Card container */
   .card {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
-    color: inherit;
     background: #fff;
     border: 1px solid #eee;
     border-radius: 8px;
@@ -46,7 +48,7 @@
     height: 100%;
   }
 
-  /* Thumbnail image — keeps aspect and crops consistently */
+  /* Thumbnail image */
   .card img,
   .media-card img {
     width: 100%;
@@ -58,16 +60,11 @@
     display: block;
   }
 
-  /* Title and paragraph spacing */
   .card h3 { margin: 0 0 8px; font-size: 1rem; }
   .card p { margin: 0; color: #444; font-size: .95rem; }
-
-  /* If you have buttons (Open Playlist), keep them pinned to the bottom */
-  .card .btn-link {
-    margin-top: 12px;
-    align-self: flex-start; /* keeps button under text */
-  }
+  .card .btn-link { margin-top: 12px; align-self: flex-start; }
 </style>
+  
 </head>
 <body>
   <nav>
