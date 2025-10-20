@@ -117,6 +117,34 @@
 </section>
   </main>
 
+  <script>
+(async function showYouTubeBadges() {
+  try {
+    const res = await fetch('assets/data/youtube-latest.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    const data = await res.json();
+    const daysNew = 1; // how many days to mark as New
+    document.querySelectorAll('a.card[data-playlist-id]').forEach(a => {
+      const pid = a.getAttribute('data-playlist-id');
+      const info = data[pid];
+      if (!info || !info.lastPublishedAt) return;
+      const published = new Date(info.lastPublishedAt);
+      const diffDays = (Date.now() - published.getTime()) / (1000 * 60 * 60 * 24);
+      if (diffDays <= daysNew) {
+        const badge = document.createElement('span');
+        badge.className = 'badge-new';
+        badge.textContent = 'New';
+        // put the badge after the title (h3)
+        const title = a.querySelector('h3');
+        if (title) title.appendChild(badge);
+      }
+    });
+  } catch (err) {
+    console.error('Error loading youtube-latest.json', err);
+  }
+})();
+</script>
+
   <footer>
     © <span id="yr"></span> Examine Yourselves International Mission Foundation
     <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
