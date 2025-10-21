@@ -1,128 +1,14 @@
-<!doctype html>
+<<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About • EYIMF</title>
   <link rel="icon" href="assets/favicon.png" />
-  <!-- Keep a single stylesheet reference (edit version token as needed) -->
+  <!-- single stylesheet link -->
   <link rel="stylesheet" href="style.css?v=about-fix3" />
-
-  <!-- Page-specific styles for the About page (keeps only scoped rules;
-       decorative side-decors rules were moved to style.css) -->
-  <style>
-    /* === About page scoped styles === */
-    :root{
-      --accent:#4b2e05;
-      --muted:#f7f4f1;
-      --max-width:1100px;
-      --card-gap:14px;
-    }
-
-    .about-page {
-      position:relative;
-      padding: 28px 0 60px;
-      background: #fff;
-    }
-
-    .about-content {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 24px;
-      box-sizing:border-box;
-    }
-
-    /* Page title: larger and prominent */
-    .about-content h1.page-title {
-      font-size: 2.2rem;
-      line-height: 1.02;
-      font-weight: 700;
-      margin: 0 0 12px;
-      color: var(--accent);
-    }
-
-    /* Intro paragraph */
-    .about-content p.lead {
-      margin: 0 0 18px;
-      font-size: 1.05rem;
-      color: #333;
-    }
-
-    /* Section headings inside about content */
-    .about-content h2 {
-      font-size: 1.1rem;
-      margin: 18px 0 8px;
-      font-weight: 700;
-      color: #333;
-    }
-    .about-content h3 {
-      font-size: 1rem;
-      margin: 12px 0 8px;
-      font-weight: 600;
-      color: #333;
-    }
-
-    /* Two-column layout for the main body on wide screens */
-    .about-columns {
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 28px;
-      align-items:start;
-    }
-    @media(max-width:980px){
-      .about-columns { grid-template-columns: 1fr; }
-    }
-
-    /* Right column: quick facts / contact CTA */
-    .about-aside {
-      background: var(--muted);
-      border-radius: 10px;
-      padding: 16px;
-      border: 1px solid #eee;
-    }
-    .about-aside .card-title { font-weight:700; color:var(--accent); margin:0 0 8px; }
-    .about-aside p { margin:0 0 10px; color:#333; font-size:0.98rem; }
-
-    /* Main column framed look (match aside) */
-    .about-main {
-      background: var(--muted);
-      border-radius: 10px;
-      padding: 16px;
-      border: 1px solid #eee;
-      box-sizing: border-box;
-    }
-
-    /* Centered "Get Involved" block (outside the grid) */
-    .get-involved-centered {
-      max-width: 920px;
-      margin: 28px auto 8px;
-      text-align: center;
-      padding: 18px 20px;
-      box-sizing: border-box;
-    }
-    .get-involved-centered h2 { margin: 0 0 8px; font-size: 1.15rem; }
-    .get-involved-centered p { margin: 0 0 12px; color: #444; font-size: 1rem; }
-    .get-involved-centered .btn { display:inline-block; margin: 0 auto; padding: 10px 14px; }
-
-    /* Small utilities */
-    .btn {
-      display:inline-block;
-      background:var(--accent);
-      color:#fff;
-      padding:8px 12px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:600;
-      margin-top:8px;
-    }
-    .muted { color:#666; font-size:0.95rem; }
-    .spacer { height:12px; }
-
-    /* footer-box note: style for the boxed footer lives in style.css */
-  </style>
 </head>
 <body>
-  <!-- KEEP the nav exactly as you wanted -->
   <nav>
     <div class="container navbar">
       <div class="brand">
@@ -138,7 +24,6 @@
     </div>
   </nav>
 
-  <!-- About section with decorative photos (HTML present; CSS in style.css) -->
   <section class="about-page">
     <div class="side-decors" aria-hidden="true">
       <img src="assets/photos/ph2.jpeg"  class="deco d1" alt="">
@@ -155,7 +40,7 @@
       <p class="lead">
         Examine Yourselves International Mission Foundation exists to glorify the Lord Jesus Christ through
         Gospel-centered evangelism, discipleship, and practical compassion. By God’s grace, we serve local Filipino
-        communities with food, clothing, and by strengthening the Church through the Word of God. We are not here to build a church. We are intentionally focused on building the Kingdom of God. Read <a href="#our-story" class="link-inline">Our Story</a>.
+        communities with food, clothing, and by strengthening the Church through the Word of God. We are intentionally focused on building the Kingdom of God. Read <a href="#our-story" class="link-inline">Our Story</a>.
       </p>
 
       <div class="about-columns">
@@ -215,7 +100,7 @@
     </div>
   </section>
 
-  <!-- Compact boxed footer (matches What We Do page) -->
+  <!-- Compact boxed footer (replace any previous footer) -->
   <footer class="footer" id="contact">
     <div class="container">
       <div class="footer-box">
@@ -230,39 +115,31 @@
         <div style="margin-top:12px;opacity:.8">© <span id="yr"></span> EYIMF</div>
       </div>
     </div>
-
-    <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
   </footer>
-<script>
+
+  <script>
+    // set copyright year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+  // size the side-decor container so decors stop close to the Get Involved block
   (function(){
     function updateDecorsHeight(){
       var aboutPage = document.querySelector('.about-page');
       var decors = document.querySelector('.about-page .side-decors');
       var gi = document.querySelector('.get-involved-centered');
       if(!aboutPage || !decors || !gi) return;
-      // top of about-page relative to document
       var pageTop = aboutPage.getBoundingClientRect().top + window.scrollY;
-      // bottom of Get Involved relative to document
       var giBottom = gi.getBoundingClientRect().bottom + window.scrollY;
-      // compute height from top of about-page down to bottom of get-involved (+ small padding)
       var height = Math.max( (giBottom - pageTop) + 12, 120 );
-      // limit to a reasonable max to avoid overlapping footer
       var maxAllowed = Math.min(window.innerHeight * 0.8, 900);
       height = Math.min(height, maxAllowed);
-      // set CSS variable on about-page (used by CSS)
       aboutPage.style.setProperty('--decors-height', Math.round(height) + 'px');
     }
-
-    // run after load and after a short delay (images may affect layout)
-    window.addEventListener('load', function(){
-      updateDecorsHeight();
-      // also run after images load in case they change heights
-      setTimeout(updateDecorsHeight, 250);
-    });
-    window.addEventListener('resize', function(){
-      updateDecorsHeight();
-    });
+    window.addEventListener('load', function(){ updateDecorsHeight(); setTimeout(updateDecorsHeight, 250); });
+    window.addEventListener('resize', updateDecorsHeight);
   })();
-</script>
+  </script>
 </body>
 </html>
