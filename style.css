@@ -1539,3 +1539,14 @@ section.about-page .about-content .card li {
     font-size: 1.8rem;
   }
 }
+/* Center & nudge down the Get Involved block (keeps two-column grid intact) */
+.about-content .get-involved {
+  text-align: center;
+  margin-top: 22px;   /* lower the block slightly */
+  padding: 0 12px;
+}
+
+.about-content .get-involved .btn {
+  display: inline-block;
+  margin: 12px auto 0; /* center the button */
+}
