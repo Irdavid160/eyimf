@@ -1582,53 +1582,52 @@ section.about-page .about-content .card li {
   .footer-box { padding: 12px; }
   .footer-box > div:first-child { gap:12px; }
 }
-/* Side decorative photos (subtle, clouded, angled on left/right from top down) */
-.about-page { position: relative; } /* already present but ensure it is relative */
-.about-content { position: relative; z-index: 2; } /* keep content above decors */
+/* Side decorative photos: grouped and limited to the Get Involved area.
+   Replace previous .about-page .side-decors rules with this block. */
 
+.about-page { position: relative; } /* ensure positioning context */
+.about-content { position: relative; z-index: 2; } /* content sits above decors */
+
+/* container height is set via CSS variable --decors-height (JS updates that) */
 .about-page .side-decors {
   display: block;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  /* stretch decor area from the very top down toward the columns (responsive) */
-  height: min(62vh, 760px);
+  height: var(--decors-height, min(52vh, 640px)); /* default if JS not present */
   pointer-events: none;
-  opacity: 0.08; /* subtle overall opacity */
+  opacity: 0.08;
   z-index: 1;
   overflow: visible;
 }
 
-/* small images, slightly clouded */
+/* images smaller and grouped (closer to columns) */
 .about-page .side-decors img {
-  width: 120px;
-  max-width: 140px;
+  width: 110px;
+  max-width: 130px;
   position: absolute;
   object-fit: cover;
   border-radius: 8px;
   filter: blur(0.6px) saturate(0.85) contrast(0.97) brightness(0.95) grayscale(0.12);
   transform-origin: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-  transition: transform .18s ease; /* tiny transition if layout changes */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
 }
 
-/* left-side pieces (descending) */
-.about-page .side-decors .d1 { left: -40px;  top: 10px;  transform: rotate(-8deg) scale(.96); }
-.about-page .side-decors .d5 { left: 140px;  top: 40px;  transform: rotate(3deg)  scale(.92); }
-.about-page .side-decors .d3 { left: -10px;  top: 220px; transform: rotate(4deg)  scale(.90); }
+/* LEFT (grouped close to left column) */
+.about-page .side-decors .d1 { left: -10px;  top: 20px;  transform: rotate(-8deg) scale(.98); }
+.about-page .side-decors .d5 { left: 80px;   top: 60px;  transform: rotate(3deg)  scale(.94); }
+.about-page .side-decors .d3 { left: 6px;    top: 160px; transform: rotate(4deg)  scale(.92); }
 
-/* right-side pieces (descending) */
-.about-page .side-decors .d2 { right: -40px; top: 90px;  transform: rotate(5deg)  scale(.95); }
-.about-page .side-decors .d6 { right: 140px; top: 180px; transform: rotate(-2deg) scale(.9); }
-.about-page .side-decors .d4 { right: -10px; top: 300px; transform: rotate(-4deg) scale(.9); }
+/* RIGHT (grouped close to right column) */
+.about-page .side-decors .d2 { right: -10px; top: 70px;  transform: rotate(5deg)  scale(.98); }
+.about-page .side-decors .d6 { right: 80px;  top: 150px; transform: rotate(-2deg) scale(.92); }
+.about-page .side-decors .d4 { right: 6px;   top: 230px; transform: rotate(-4deg) scale(.92); }
 
-/* small screens: hide decorations for clarity and smaller real estate */
+/* responsive: hide on smaller screens */
 @media (max-width: 980px) {
   .about-page .side-decors { display: none; }
 }
-
-/* optional tweak: when printing, don't show them */
 @media print {
   .about-page .side-decors { display: none !important; }
 }
