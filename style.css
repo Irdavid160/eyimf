@@ -1582,12 +1582,113 @@ section.about-page .about-content .card li {
   .footer-box { padding: 12px; }
   .footer-box > div:first-child { gap:12px; }
 }
-/* Side decorative photos: grouped and limited to the Get Involved area.
-   Replace previous .about-page .side-decors rules with this block. */
+/* style.css for About page and site basics
+   Replace existing style.css with this (or merge). */
 
-.about-page { position: relative; } /* ensure positioning context */
-.about-content { position: relative; z-index: 2; } /* content sits above decors */
+/* ===== Variables & base ===== */
+:root{
+  --accent:#4b2e05;
+  --muted:#f7f4f1;
+  --max-width:1100px;
+  --card-gap:14px;
+}
 
+/* simple reset/box-sizing */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
+  background: #fff;
+  line-height: 1.45;
+}
+
+/* container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+/* NAV basics (kept simple) */
+.navbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+}
+.navlinks a { margin-left:12px; color:#333; text-decoration:none; font-weight:600; }
+.brand .name { font-weight:700 }
+
+/* ===== About page layout ===== */
+.about-page {
+  position: relative;
+  padding: 80px 0; /* single definitive .about-page rule */
+  background: #fff;
+}
+
+/* ensure content sits above decors */
+.about-content { position: relative; z-index: 2; padding: 24px 0; }
+
+/* title & lead */
+.page-title { font-size: 2.2rem; line-height:1.02; margin:0 0 12px; color:var(--accent); }
+.lead { margin:0 0 18px; font-size:1.05rem; color:#333; }
+
+/* columns */
+.about-columns {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 28px;
+  align-items:start;
+  margin-top: 8px;
+}
+@media (max-width:980px) {
+  .about-columns { grid-template-columns: 1fr; }
+}
+
+/* framed left + right columns */
+.about-main {
+  background: var(--muted);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid #eee;
+}
+.about-aside {
+  background: var(--muted);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid #eee;
+}
+.card-title { font-weight:700; color:var(--accent); margin:0 0 8px; }
+.about-aside p, .about-main p { margin:0 0 10px; color:#333; font-size:0.98rem; }
+.spacer { height:12px; }
+
+/* get involved centered */
+.get-involved-centered {
+  max-width: 920px;
+  margin: 28px auto 8px;
+  text-align: center;
+  padding: 18px 20px;
+  box-sizing: border-box;
+}
+.get-involved-centered h2 { margin:0 0 8px; font-size:1.15rem; }
+.get-involved-centered p { margin:0 0 12px; color:#444; font-size:1rem; }
+
+/* button */
+.btn {
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* muted text */
+.muted { color:#666; font-size:0.95rem; }
+
+/* ===== Side decorative photos ===== */
 /* container height is set via CSS variable --decors-height (JS updates that) */
 .about-page .side-decors {
   display: block;
@@ -1595,7 +1696,7 @@ section.about-page .about-content .card li {
   top: 0;
   left: 0;
   right: 0;
-  height: var(--decors-height, min(52vh, 640px)); /* default if JS not present */
+  height: var(--decors-height, min(52vh, 640px));
   pointer-events: none;
   opacity: 0.08;
   z-index: 1;
@@ -1628,6 +1729,21 @@ section.about-page .about-content .card li {
 @media (max-width: 980px) {
   .about-page .side-decors { display: none; }
 }
-@media print {
-  .about-page .side-decors { display: none !important; }
+
+/* ===== Footer boxed style ===== */
+.footer-box {
+  background: var(--muted);
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid #eee;
+  margin: 26px 0 14px;
+}
+.footer-box a { color: var(--accent); text-decoration: none; font-weight:600; }
+.footer { padding: 18px 0; }
+
+/* small screens adjustments */
+@media (max-width:700px) {
+  .footer-box { padding: 12px; }
+  .about-content { padding: 12px; }
+  .container { padding: 0 12px; }
 }
