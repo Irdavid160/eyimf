@@ -1505,11 +1505,11 @@ section.about-page .about-content .card li {
 
   /* === Heading Size Override === */
 .about-content h1 {
-  font-size: 1.1rem !important;   /* match the size of your section headings */
+  font-size: 2rem !important;   /* match the size of your section headings */
   font-weight: 600 !important;
 }
 
 .about-content h2 {
-  font-size: 2rem !important;     /* make section headings the original h1 size */
+  font-size: 1.1rem !important;     /* make section headings the original h1 size */
   font-weight: 700 !important;
 }
