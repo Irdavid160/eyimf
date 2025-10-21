@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Support the Mission</title>
+  <style>
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; margin: 0; padding: 2rem; background:#f7f7f8; }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    h1 { margin-bottom: .25rem; }
+    p.lead { color:#555; margin-top:0; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: 1.5rem 0; }
+    .card { background:white; padding:1rem; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,.05); }
+    .btn { display:inline-block; padding:.75rem 1rem; border-radius:999px; text-decoration:none; border:1px solid #111; }
+    .btn.primary { background:#111; color:#fff; border-color:#111; }
+    small { color:#666; display:block; margin-top:.5rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Support the Mission</h1>
+    <p class="lead">Choose a one-time gift or a monthly partnership level.</p>
+
+    <div class="card">
+      <h2>One-Time Donation</h2>
+      <p>Your gift goes directly to the work on the ground.</p>
+      <!-- Replace with your PayPal Donate link -->
+      <a class="btn primary" href="https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID" target="_blank" rel="noopener">
+        Give a One-Time Gift
+      </a>
+      <small>You can enter any amount on the PayPal page.</small>
+    </div>
+
+    <h2>Monthly Partnership</h2>
+    <div class="grid">
+      <!-- Repeat or adjust tiers as you like -->
+      <div class="card">
+        <h3>$10 / month</h3>
+        <a class="btn" href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=PLAN_ID_10" target="_blank" rel="noopener">Subscribe $10</a>
+      </div>
+      <div class="card">
+        <h3>$25 / month</h3>
+        <a class="btn" href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=PLAN_ID_25" target="_blank" rel="noopener">Subscribe $25</a>
+      </div>
+      <div class="card">
+        <h3>$50 / month</h3>
+        <a class="btn" href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=PLAN_ID_50" target="_blank" rel="noopener">Subscribe $50</a>
+      </div>
+      <div class="card">
+        <h3>$100 / month</h3>
+        <a class="btn" href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=PLAN_ID_100" target="_blank" rel="noopener">Subscribe $100</a>
+      </div>
+    </div>
+
+    <p><small>All payments are processed securely by PayPal.</small></p>
+  </div>
+</body>
+</html>
