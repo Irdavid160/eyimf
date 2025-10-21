@@ -1550,3 +1550,37 @@ section.about-page .about-content .card li {
   display: inline-block;
   margin: 12px auto 0; /* center the button */
 }
+/* Centered Get Involved block (outside the two-column grid) */
+.get-involved-centered {
+  max-width: 920px;         /* constrains width on large screens */
+  margin: 28px auto 8px;    /* push down from columns and center */
+  text-align: center;
+  padding: 18px 20px;
+  box-sizing: border-box;
+}
+
+.get-involved-centered h2 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.get-involved-centered p {
+  margin: 0 0 12px;
+  color: #444;
+  font-size: 1rem;
+}
+
+/* Ensure the button centers and keeps comfortable padding */
+.get-involved-centered .btn {
+  display:inline-block;
+  margin: 0 auto;
+  padding: 10px 14px;
+}
+
+/* Optional: a subtle visual separation from the columns */
+.get-involved-centered { background: transparent; }
+
+/* Responsive tweak for very small screens */
+@media (max-width:420px) {
+  .get-involved-centered { padding: 12px 12px; margin: 18px auto; }
+}
