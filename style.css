@@ -1617,12 +1617,12 @@ section.about-page .about-content .card li {
 /* LEFT (grouped close to left column) */
 .about-page .side-decors .d1 { left: -10px;  top: 20px;  transform: rotate(-8deg) scale(.98); }
 .about-page .side-decors .d5 { left: 80px;   top: 60px;  transform: rotate(3deg)  scale(.94); }
-.about-page .side-decors .d3 { left: 6px;    top: 160px; transform: rotate(4deg)  scale(.92); }
+.about-page .side-decors .d3 { left: 6px;    top: 100px; transform: rotate(4deg)  scale(.92); }
 
 /* RIGHT (grouped close to right column) */
-.about-page .side-decors .d2 { right: -10px; top: 70px;  transform: rotate(5deg)  scale(.98); }
-.about-page .side-decors .d6 { right: 80px;  top: 150px; transform: rotate(-2deg) scale(.92); }
-.about-page .side-decors .d4 { right: 6px;   top: 230px; transform: rotate(-4deg) scale(.92); }
+.about-page .side-decors .d2 { right: -10px; top: 40px;  transform: rotate(5deg)  scale(.98); }
+.about-page .side-decors .d6 { right: 80px;  top: 80px; transform: rotate(-2deg) scale(.92); }
+.about-page .side-decors .d4 { right: 6px;   top: 130px; transform: rotate(-4deg) scale(.92); }
 
 /* responsive: hide on smaller screens */
 @media (max-width: 980px) {
