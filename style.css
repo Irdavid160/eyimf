@@ -904,14 +904,25 @@ nav {
     padding: 20px 10px;
   }
 
-  /* Headings and Paragraphs */
-  h1, h2, h3 {
-    text-align: center;
-  }
-  p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
+/* Headings and Paragraphs */
+h1, h2, h3 {
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.1rem;   /* Make the main title the same size as your section headings */
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;     /* Make section headings the original h1 size (or bigger if you prefer) */
+  font-weight: 700;
+}
+
+p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
 
   /* Navbar adjustments */
   nav .container {
