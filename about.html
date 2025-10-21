@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About • EYIMF</title>
   <link rel="icon" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=1.0" />
+  <!-- Keep a single stylesheet reference (edit version token as needed) -->
   <link rel="stylesheet" href="style.css?v=about-fix3" />
 
-  <!-- Page-specific styles for the About page.
-       Paste these into your global style.css later if you prefer centralization. -->
+  <!-- Page-specific styles for the About page (keeps only scoped rules;
+       decorative side-decors rules were moved to style.css) -->
   <style>
     /* === About page scoped styles === */
     :root{
@@ -23,19 +23,6 @@
       position:relative;
       padding: 28px 0 60px;
       background: #fff;
-    }
-
-    /* side decor images (kept from your original structure) */
-    .about-page .side-decors { display:none; } /* hidden by default to avoid overlap */
-    @media(min-width:1100px){
-      .about-page .side-decors { display:block; position:absolute; inset:0; pointer-events:none; opacity:0.09; }
-      .about-page .side-decors img { max-width:180px; position:absolute; object-fit:cover; border-radius:8px; }
-      .about-page .side-decors .d1 { left: -30px; top: 60px; transform: rotate(-6deg); }
-      .about-page .side-decors .d2 { right: -30px; top: 140px; transform: rotate(4deg); }
-      .about-page .side-decors .d3 { left: -10px; bottom: 80px; transform: rotate(3deg); }
-      .about-page .side-decors .d4 { right: -10px; bottom: 40px; transform: rotate(-4deg); }
-      .about-page .side-decors .d5 { left: 140px; top: 20px; transform: rotate(2deg); }
-      .about-page .side-decors .d6 { right: 140px; bottom: 120px; transform: rotate(-2deg); }
     }
 
     .about-content {
@@ -96,6 +83,42 @@
     .about-aside .card-title { font-weight:700; color:var(--accent); margin:0 0 8px; }
     .about-aside p { margin:0 0 10px; color:#333; font-size:0.98rem; }
 
+    /* Main column framed look (match aside) */
+    .about-main {
+      background: var(--muted);
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid #eee;
+      box-sizing: border-box;
+    }
+
+    /* Centered "Get Involved" block (outside the grid) */
+    .get-involved-centered {
+      max-width: 920px;
+      margin: 28px auto 8px;
+      text-align: center;
+      padding: 18px 20px;
+      box-sizing: border-box;
+    }
+    .get-involved-centered h2 { margin: 0 0 8px; font-size: 1.15rem; }
+    .get-involved-centered p { margin: 0 0 12px; color: #444; font-size: 1rem; }
+    .get-involved-centered .btn { display:inline-block; margin: 0 auto; padding: 10px 14px; }
+
+    /* Small utilities */
+    .btn {
+      display:inline-block;
+      background:var(--accent);
+      color:#fff;
+      padding:8px 12px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      margin-top:8px;
+    }
+    .muted { color:#666; font-size:0.95rem; }
+    .spacer { height:12px; }
+
+    /* footer-box note: style for the boxed footer lives in style.css */
   </style>
 </head>
 <body>
@@ -115,17 +138,16 @@
     </div>
   </nav>
 
-  <!-- Rebuilt content from here down.
-       The side-decors area (images) is kept and positioned lightly in large viewports. -->
+  <!-- About section with decorative photos (HTML present; CSS in style.css) -->
   <section class="about-page">
-<div class="side-decors" aria-hidden="true">
-  <img src="assets/photos/ph2.jpeg"  class="deco d1" alt="">
-  <img src="assets/photos/ph4.JPEG"  class="deco d2" alt="">
-  <img src="assets/photos/ph6.JPEG"  class="deco d3" alt="">
-  <img src="assets/photos/ph10.jpg"  class="deco d4" alt="">
-  <img src="assets/photos/ph12.JPEG" class="deco d5" alt="">
-  <img src="assets/photos/ph14.jpg"  class="deco d6" alt="">
-</div>
+    <div class="side-decors" aria-hidden="true">
+      <img src="assets/photos/ph2.jpeg"  class="deco d1" alt="">
+      <img src="assets/photos/ph4.JPEG"  class="deco d2" alt="">
+      <img src="assets/photos/ph6.JPEG"  class="deco d3" alt="">
+      <img src="assets/photos/ph10.jpg"  class="deco d4" alt="">
+      <img src="assets/photos/ph12.JPEG" class="deco d5" alt="">
+      <img src="assets/photos/ph14.jpg"  class="deco d6" alt="">
+    </div>
 
     <div class="about-content container">
       <h1 class="page-title">About EYIMF</h1>
@@ -135,81 +157,81 @@
         Gospel-centered evangelism, discipleship, and practical compassion. By God’s grace, we serve local Filipino
         communities with food, clothing, and by strengthening the Church through the Word of God. We are not here to build a church. We are intentionally focused on building the Kingdom of God. Read <a href="#our-story" class="link-inline">Our Story</a>.
       </p>
-      
 
-     <div class="about-columns">
-  <!-- main column -->
-  <div class="about-main">
-    <h2>Our Mission</h2>
-    <p class="muted">To proclaim Christ, equip believers with an understanding of Scripture, and mobilize compassionate action—so that families, churches, and communities are transformed for the glory of God.</p>
+      <div class="about-columns">
+        <!-- main column -->
+        <div class="about-main">
+          <h2>Our Mission</h2>
+          <p class="muted">To proclaim Christ, equip believers with an understanding of Scripture, and mobilize compassionate action—so that families, churches, and communities are transformed for the glory of God.</p>
 
-    <h2>Our Vision</h2>
-    <p class="muted">A God-glorifying Church in every community, disciples multiplying disciples, and lives transformed by the gospel.</p>
+          <h2>Our Vision</h2>
+          <p class="muted">A God-glorifying Church in every community, disciples multiplying disciples, and lives transformed by the gospel.</p>
 
-    <h2>What We Do</h2>
-    <p class="muted">We serve through local evangelism and discipleship, practical compassion (food, clothing, community projects), and supporting local churches with biblical training and resources.</p>
+          <h2>What We Do</h2>
+          <p class="muted">We serve through local evangelism and discipleship, practical compassion (food, clothing, community projects), and supporting local churches with biblical training and resources.</p>
 
-    <div class="spacer"></div>
-  </div> <!-- END main column -->
+          <div class="spacer"></div>
+        </div> <!-- END main column -->
 
-  <!-- aside column -->
-  <aside class="about-aside" aria-labelledby="quick-facts">
-    <h3 id="quick-facts" class="card-title">Quick Facts</h3>
-    <p><strong>Founded:</strong> 2024</p>
-    <p><strong>Base:</strong> Manila, Philippines</p>
-    <p><strong>Focus:</strong> Evangelism, Discipleship, Compassion</p>
+        <!-- aside column -->
+        <aside class="about-aside" aria-labelledby="quick-facts">
+          <h3 id="quick-facts" class="card-title">Quick Facts</h3>
+          <p><strong>Founded:</strong> 2024</p>
+          <p><strong>Base:</strong> Manila, Philippines</p>
+          <p><strong>Focus:</strong> Evangelism, Discipleship, Compassion</p>
 
-    <div style="height:10px;"></div>
+          <div style="height:10px;"></div>
 
-    <h3 class="card-title">Visit & Watch</h3>
-    <p>See our latest videos and playlists on the Media page.</p>
-    <a href="media.html" class="btn" aria-label="Visit media page">View Media</a>
+          <h3 class="card-title">Visit & Watch</h3>
+          <p>See our latest videos and playlists on the Media page.</p>
+          <a href="media.html" class="btn" aria-label="Visit media page">View Media</a>
 
-    <div style="height:12px;"></div>
+          <div style="height:12px;"></div>
 
-    <h3 class="card-title">Stay Updated</h3>
-    <p class="muted">Sign up on the Updates page for newsletter notices about upcoming outreaches and resources.</p>
-    <a href="updates.html" class="btn" aria-label="Sign up">Updates</a>
-  </aside>
-</div> <!-- END .about-columns -->
-      
-<!-- Add this directly after the closing </div> of .about-columns -->
-<div class="get-involved-centered" role="region" aria-labelledby="get-involved-centered-title">
-  <h2 id="get-involved-centered-title">Get Involved</h2>
-  <p class="muted">Join us in prayer, support a project, or volunteer. Every gift and hour helps bring the gospel and practical care to families in need.</p>
-  <a href="contact.html" class="btn" aria-label="Contact & Support">Contact & Support</a>
-</div>
-  </section>
-  <section id="our-story" class="about-story">
-  <div class="about-content container">
-    <h2>Our Story</h2>
-    <p>Never in a million years did I imagine I would one day be a missionary in the Philippines. Though I’ve always had a heart for missions and supported many missionaries over the years, I never intended to serve long-term in a foreign country. But when I first visited the Philippines, I not only found the love of my precious soulmate; I also fell in love with the wonderful people of her homeland.</p>
+          <h3 class="card-title">Stay Updated</h3>
+          <p class="muted">Sign up on the Updates page for newsletter notices about upcoming outreaches and resources.</p>
+          <a href="updates.html" class="btn" aria-label="Sign up">Updates</a>
+        </aside>
+      </div> <!-- END .about-columns -->
 
-    <p>What began as a plan to bring Myrna to America became God’s plan to bring me here. I wrestled with this calling more than anything the Lord has ever asked of me. My life back home is sweet. I’m very close to my family, immediate and extended, and being part of the largest family in the state of Ohio means there are many loved ones to miss. My children and grandchildren are my world, and I treasure every moment with them.</p>
-
-    <p>But I came to understand something deeply: God’s work is more important than anything else in this life. I don’t see my obedience as a loss, I see it as an investment in eternity. I believe God will give me forever with my family, and I long for the day when I can introduce them to those I’ve led to Christ from this mission field. My desire isn’t for wealth, fame, or power. My greatest joy will be to enter Heaven with a multitude of souls won for the glory of His Kingdom.</p>
-  </div>
-</section>
-
-  <!-- Optional: site footer (keep existing footer if you have one) -->
-  <!-- Site footer: paste this just before </body> -->
-<!-- Compact boxed footer (replace previous footer block with this) -->
-<footer class="footer" id="contact">
-  <div class="container">
-    <div class="footer-box">
-      <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;">
-        <div>
-          <strong>Examine Yourselves International Mission Foundation</strong><br />
-          Email: <a href="mailto:info@eyimf.org">info@eyimf.org</a>
-        </div>
-        <div style="opacity:.95">“Serving souls, meeting needs, glorifying Christ.”</div>
+      <!-- Centered Get Involved block (outside the grid) -->
+      <div class="get-involved-centered" role="region" aria-labelledby="get-involved-centered-title">
+        <h2 id="get-involved-centered-title">Get Involved</h2>
+        <p class="muted">Join us in prayer, support a project, or volunteer. Every gift and hour helps bring the gospel and practical care to families in need.</p>
+        <a href="contact.html" class="btn" aria-label="Contact & Support">Contact & Support</a>
       </div>
 
-      <div style="margin-top:12px;opacity:.8">© <span id="yr"></span> EYIMF</div>
-    </div>
-  </div>
+    </div> <!-- end .about-content -->
+  </section>
 
-  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
-</footer>
+  <section id="our-story" class="about-story">
+    <div class="about-content container">
+      <h2>Our Story</h2>
+      <p>Never in a million years did I imagine I would one day be a missionary in the Philippines. Though I’ve always had a heart for missions and supported many missionaries over the years, I never intended to serve long-term in a foreign country. But when I first visited the Philippines, I not only found the love of my precious soulmate; I also fell in love with the wonderful people of her homeland.</p>
+
+      <p>What began as a plan to bring Myrna to America became God’s plan to bring me here. I wrestled with this calling more than anything the Lord has ever asked of me. My life back home is sweet. I’m very close to my family, immediate and extended, and being part of the largest family in the state of Ohio means there are many loved ones to miss. My children and grandchildren are my world, and I treasure every moment with them.</p>
+
+      <p>But I came to understand something deeply: God’s work is more important than anything else in this life. I don’t see my obedience as a loss, I see it as an investment in eternity. I believe God will give me forever with my family, and I long for the day when I can introduce them to those I’ve led to Christ from this mission field. My desire isn’t for wealth, fame, or power. My greatest joy will be to enter Heaven with a multitude of souls won for the glory of His Kingdom.</p>
+    </div>
+  </section>
+
+  <!-- Compact boxed footer (matches What We Do page) -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-box">
+        <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;">
+          <div>
+            <strong>Examine Yourselves International Mission Foundation</strong><br />
+            Email: <a href="mailto:info@eyimf.org">info@eyimf.org</a>
+          </div>
+          <div style="opacity:.95">“Serving souls, meeting needs, glorifying Christ.”</div>
+        </div>
+
+        <div style="margin-top:12px;opacity:.8">© <span id="yr"></span> EYIMF</div>
+      </div>
+    </div>
+
+    <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  </footer>
 </body>
 </html>
