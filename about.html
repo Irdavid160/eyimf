@@ -233,5 +233,36 @@
 
     <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
   </footer>
+<script>
+  (function(){
+    function updateDecorsHeight(){
+      var aboutPage = document.querySelector('.about-page');
+      var decors = document.querySelector('.about-page .side-decors');
+      var gi = document.querySelector('.get-involved-centered');
+      if(!aboutPage || !decors || !gi) return;
+      // top of about-page relative to document
+      var pageTop = aboutPage.getBoundingClientRect().top + window.scrollY;
+      // bottom of Get Involved relative to document
+      var giBottom = gi.getBoundingClientRect().bottom + window.scrollY;
+      // compute height from top of about-page down to bottom of get-involved (+ small padding)
+      var height = Math.max( (giBottom - pageTop) + 12, 120 );
+      // limit to a reasonable max to avoid overlapping footer
+      var maxAllowed = Math.min(window.innerHeight * 0.8, 900);
+      height = Math.min(height, maxAllowed);
+      // set CSS variable on about-page (used by CSS)
+      aboutPage.style.setProperty('--decors-height', Math.round(height) + 'px');
+    }
+
+    // run after load and after a short delay (images may affect layout)
+    window.addEventListener('load', function(){
+      updateDecorsHeight();
+      // also run after images load in case they change heights
+      setTimeout(updateDecorsHeight, 250);
+    });
+    window.addEventListener('resize', function(){
+      updateDecorsHeight();
+    });
+  })();
+</script>
 </body>
 </html>
