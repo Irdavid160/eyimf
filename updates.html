@@ -23,10 +23,13 @@
     </div>
   </nav>
 
+  <!-- Top: This Month's Ministry Report (replaced Daily Devotion) -->
   <section class="section">
     <div class="container">
-      <h1>Daily Devotion</h1>
-      <div id="daily-devotion"></div>
+      <h1>This Month's Ministry Report</h1>
+      <div id="monthly-report">
+        <p class="no-report">Loading this month's ministry report...</p>
+      </div>
     </div>
   </section>
 
@@ -38,18 +41,27 @@
         and the day-to-day ways the Lord is opening doors in our barangay.
       </p>
 
-      <!-- Small info cards (first card renamed to Ministry Goals linking to anchor) -->
+      <!-- Small info cards (Ministry Goals + Monthly Report + Gallery) -->
       <div class="grid cols-3" style="margin-bottom:18px;">
-<!-- Option A: Image above the title (large, responsive) -->
-<div class="card">
-  <a href="#ministry-goals" style="display:block; text-decoration:none; color:inherit;">
-    <img src="assets/photos/housechurch.png" alt="House Church" loading="lazy"
-         style="width:100%; height:auto; max-height:160px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
-    <strong>Ministry Goals</strong>
-  </a>
-  <p>Overview of our aims and priorities. Click to jump to the full ministry goals section below.</p>
-</div>
-        <div class="card"><strong>Devotion</strong><p>Use a consistent format and include a KJV verse.</p></div>
+        <div class="card">
+          <a href="#ministry-goals" style="display:block; text-decoration:none; color:inherit;">
+            <img src="assets/photos/housechurch.png" alt="House Church" loading="lazy"
+                 style="width:100%; height:auto; max-height:160px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
+            <strong>Ministry Goals</strong>
+          </a>
+          <p>Overview of our aims and priorities. Click to jump to the full ministry goals section below.</p>
+        </div>
+
+        <!-- Monthly Report card with monthlyreport.png -->
+        <div class="card">
+          <a href="#monthly-report" style="display:block; text-decoration:none; color:inherit;">
+            <img src="assets/photos/monthlyreport.png" alt="Monthly Ministry Report" loading="lazy"
+                 style="width:100%; height:auto; max-height:160px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
+            <strong>This Month's Ministry Report</strong>
+          </a>
+          <p>Click to view the latest monthly ministry report and highlights.</p>
+        </div>
+
         <div class="card"><strong>Gallery</strong><p>Add photos under <code>assets/</code> and reference them in your posts.</p></div>
       </div>
 
@@ -130,14 +142,6 @@
 
       </div>
 
-      <!-- Pagination (optional) -->
-      <!--
-      <div class="updates-pager">
-        <a class="btn" href="#">← Newer</a>
-        <span>Page 1 of 3</span>
-        <a class="btn" href="#">Older →</a>
-      </div>
-      -->
     </div>
   </section>
 
@@ -238,15 +242,14 @@
     </div>
   </section>
 
-  <section class="section">
+  <!-- Monthly Report anchor section (below ministry goals) -->
+  <section class="section" id="monthly-report" aria-labelledby="monthly-report-heading">
     <div class="container">
-      <h1>Daily Devotion</h1>
-      <div id="daily-devotion" class="devotion-container">
-        <p class="no-devotion">Loading today's devotion...</p>
-      </div>
+      <h2 id="monthly-report-heading">This Month's Ministry Report</h2>
+      <p class="no-report">Loading this month's ministry report...</p>
+      <!-- Replace the paragraph above with the actual report content (paste HTML or text here). -->
     </div>
   </section>
-
 
   <footer class="footer" id="contact">
     <div class="container">
@@ -260,39 +263,6 @@
     </div>
     <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
   </footer>
-
-  <script>
-  // Load and render today's devotion (tries two versions for backward compatibility)
-  (function() {
-    function renderDevotion(devotion) {
-      const container = document.getElementById('daily-devotion');
-      if (!devotion) {
-        container.innerHTML = '<p class="no-devotion">No devotion posted for today.</p>';
-        return;
-      }
-      const paragraphs = (devotion.body || '')
-        .split(/\n\s*\n/)
-        .map(p => '<p>' + p.trim() + '</p>')
-        .join('');
-      container.innerHTML = '<h2>' + (devotion.title || '') + '</h2>' +
-                            '<div class="scripture">' + (devotion.scripture || '') + '</div>' +
-                            paragraphs;
-    }
-
-    fetch('assets/devotions/devotions.json?v=1')
-      .then(response => response.json())
-      .then(devotions => {
-        const today = new Date().toISOString().split('T')[0];
-        const devotion = devotions.find(d => d.date === today);
-        renderDevotion(devotion);
-      })
-      .catch(err => {
-        console.error('Error loading devotions:', err);
-        document.getElementById('daily-devotion').innerHTML =
-          '<p class="no-devotion">Unable to load today\'s devotion.</p>';
-      });
-  })();
-  </script>
 
 </body>
 </html>
