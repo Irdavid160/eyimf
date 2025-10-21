@@ -1499,57 +1499,7 @@ section.about-page .about-content .card li {
   display: flex;
   gap: 1.5em;
 
-.about-content {
-  margin-top: -2in;
-}
 
-/* === About page title & section heading sizes ===
-   Paste these at the end of your style.css (after other rules) so they take precedence.
-   Targets the headings inside the about-page / about-content section.
-*/
-
-.about-page .about-content h1 {
-  font-size: 2.2rem;       /* main title size — increase/decrease to taste */
-  line-height: 1.05;
-  font-weight: 700;
-  margin: 0 0 10px;
-  color: #4b2e05;
-  text-align: center;        /* change to center if you want it centered */
-}
-
-.about-page .about-content h2,
-.about-page .about-content h3 {
-  font-weight: 600;
-  color: #333;
-}
-
-.about-page .about-content h2 {
-  font-size: 1.1rem;       /* section heading size (smaller than the main title) */
-  margin: 0 0 8px;
-}
-
-.about-page .about-content h3 {
-  font-size: 1rem;
-  margin: 0 0 6px;
-}
-
-/* responsive tweak: reduce main title on small screens */
-@media (max-width: 600px) {
-  .about-page .about-content h1 {
-    font-size: 1.8rem;
-  }
-}
-/* Center & nudge down the Get Involved block (keeps two-column grid intact) */
-.about-content .get-involved {
-  text-align: center;
-  margin-top: 22px;   /* lower the block slightly */
-  padding: 0 12px;
-}
-
-.about-content .get-involved .btn {
-  display: inline-block;
-  margin: 12px auto 0; /* center the button */
-}
 /* Centered Get Involved block (outside the two-column grid) */
 .get-involved-centered {
   max-width: 920px;         /* constrains width on large screens */
