@@ -40,10 +40,15 @@
 
       <!-- Small info cards (first card renamed to Ministry Goals linking to anchor) -->
       <div class="grid cols-3" style="margin-bottom:18px;">
-        <div class="card">
-          <strong><a href="#ministry-goals" style="color:inherit; text-decoration:none;">Ministry Goals</a></strong>
-          <p>Overview of our aims and priorities. Click to jump to the full ministry goals section below.</p>
-        </div>
+<!-- Option A: Image above the title (large, responsive) -->
+<div class="card">
+  <a href="#ministry-goals" style="display:block; text-decoration:none; color:inherit;">
+    <img src="assets/photos/housechurch.png" alt="House Church" loading="lazy"
+         style="width:100%; height:auto; max-height:160px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
+    <strong>Ministry Goals</strong>
+  </a>
+  <p>Overview of our aims and priorities. Click to jump to the full ministry goals section below.</p>
+</div>
         <div class="card"><strong>Devotion</strong><p>Use a consistent format and include a KJV verse.</p></div>
         <div class="card"><strong>Gallery</strong><p>Add photos under <code>assets/</code> and reference them in your posts.</p></div>
       </div>
