@@ -1,4 +1,4 @@
-<<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -123,22 +123,49 @@
   </script>
 
   <script>
-  // size the side-decor container so decors stop close to the Get Involved block
+  // safer decor-sizing script: limits decor area to bottom of Get Involved (or columns),
+  // and prevents crossing into #our-story. Recalculates on load/resize.
   (function(){
     function updateDecorsHeight(){
       var aboutPage = document.querySelector('.about-page');
       var decors = document.querySelector('.about-page .side-decors');
       var gi = document.querySelector('.get-involved-centered');
-      if(!aboutPage || !decors || !gi) return;
+      var cols = document.querySelector('.about-columns');
+      var ourStory = document.getElementById('our-story');
+
+      if(!aboutPage || !decors) return;
+
       var pageTop = aboutPage.getBoundingClientRect().top + window.scrollY;
-      var giBottom = gi.getBoundingClientRect().bottom + window.scrollY;
-      var height = Math.max( (giBottom - pageTop) + 12, 120 );
+
+      var giBottom = gi ? (gi.getBoundingClientRect().bottom + window.scrollY) : 0;
+      var colsBottom = cols ? (cols.getBoundingClientRect().bottom + window.scrollY) : 0;
+      var targetBottom = Math.max(giBottom, colsBottom);
+
+      var ourStoryTop = ourStory ? (ourStory.getBoundingClientRect().top + window.scrollY) : Infinity;
+
+      var safetyMargin = 14;
+      var computedBottom = Math.min(targetBottom, ourStoryTop - safetyMargin);
+
+      if(!computedBottom || computedBottom <= pageTop) {
+        var defaultH = Math.min(window.innerHeight * 0.52, 640);
+        aboutPage.style.setProperty('--decors-height', Math.round(defaultH) + 'px');
+        return;
+      }
+
+      var height = Math.max( (computedBottom - pageTop), 120 );
       var maxAllowed = Math.min(window.innerHeight * 0.8, 900);
       height = Math.min(height, maxAllowed);
+
       aboutPage.style.setProperty('--decors-height', Math.round(height) + 'px');
     }
-    window.addEventListener('load', function(){ updateDecorsHeight(); setTimeout(updateDecorsHeight, 250); });
+
+    window.addEventListener('load', function(){
+      updateDecorsHeight();
+      setTimeout(updateDecorsHeight, 250);
+      setTimeout(updateDecorsHeight, 800);
+    });
     window.addEventListener('resize', updateDecorsHeight);
+    window.addEventListener('orientationchange', updateDecorsHeight);
   })();
   </script>
 </body>
