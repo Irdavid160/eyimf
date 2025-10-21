@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact • EYIMF</title>
+  <link rel="icon" href="assets/favicon.png" />
+  <!-- single stylesheet link (match other pages) -->
+  <link rel="stylesheet" href="style.css?v=about-fix3" />
+</head>
+<body>
+  <!-- NAV (keeps same structure as other pages) -->
+  <nav>
+    <div class="container navbar">
+      <div class="brand">
+        <span class="name">Examine Yourselves International Mission Foundation</span>
+      </div>
+      <div class="navlinks" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="updates.html">Updates</a>
+        <a href="whatwedo.html">What We Do</a>
+        <a href="media.html">Media</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="contact-page" role="main">
+    <div class="container contact-content">
+      <h1 class="page-title">Contact & Support</h1>
+      <p class="lead">Questions, prayer requests, or want to partner with us? Use the form below or contact us directly by email.</p>
+
+      <div class="about-columns contact-columns">
+        <!-- main column: contact form -->
+        <div class="about-main" aria-labelledby="contact-form-title">
+          <h2 id="contact-form-title">Send us a message</h2>
+
+          <!-- Note: replace action attribute with your server endpoint when ready -->
+          <form id="contact-form" action="#" method="post" novalidate>
+            <label for="name">Name</label><br />
+            <input id="name" name="name" type="text" required aria-required="true" placeholder="Your full name" style="width:100%;padding:8px;margin:6px 0 12px;border-radius:6px;border:1px solid #ddd;" />
+
+            <label for="email">Email</label><br />
+            <input id="email" name="email" type="email" required aria-required="true" placeholder="you@example.com" style="width:100%;padding:8px;margin:6px 0 12px;border-radius:6px;border:1px solid #ddd;" />
+
+            <label for="subject">Subject</label><br />
+            <input id="subject" name="subject" type="text" placeholder="Subject" style="width:100%;padding:8px;margin:6px 0 12px;border-radius:6px;border:1px solid #ddd;" />
+
+            <label for="message">Message</label><br />
+            <textarea id="message" name="message" rows="7" required aria-required="true" placeholder="Write your message here..." style="width:100%;padding:8px;margin:6px 0 12px;border-radius:6px;border:1px solid #ddd;"></textarea>
+
+            <div style="display:flex;gap:10px;align-items:center;">
+              <button type="submit" class="btn" aria-label="Send message">Send Message</button>
+              <small class="muted" style="margin-left:6px;">We will reply as soon as possible.</small>
+            </div>
+          </form>
+
+          <p class="muted" style="margin-top:14px;">
+            If you prefer, email us directly at
+            <a href="mailto:info@eyimf.org">info@eyimf.org</a>
+          </p>
+        </div>
+
+        <!-- aside column: quick contact + visiting info -->
+        <aside class="about-aside" aria-labelledby="contact-quick">
+          <h3 id="contact-quick" class="card-title">Quick Contact</h3>
+          <p><strong>Email:</strong> <a href="mailto:info@eyimf.org">info@eyimf.org</a></p>
+          <p><strong>Base:</strong> Manila, Philippines</p>
+          <p><strong>Phone:</strong> (insert phone)</p>
+
+          <div style="height:12px;"></div>
+
+          <h3 class="card-title">Support & Giving</h3>
+          <p class="muted">To support our work financially or to discuss partnerships, please contact the address above or use the form. We steward gifts with integrity and report to donors regularly.</p>
+          <a href="updates.html" class="btn" aria-label="Updates">Sign up for updates</a>
+
+          <div style="height:12px;"></div>
+
+          <h3 class="card-title">Visit</h3>
+          <p class="muted">We're based in Manila — for visit details and ministry schedules please email us first.</p>
+        </aside>
+      </div> <!-- END .contact-columns -->
+
+      <!-- small map placeholder (optional) -->
+      <div style="margin-top:18px;">
+        <div style="width:100%;height:220px;border-radius:8px;border:1px solid #eee;background:#fafafa;display:flex;align-items:center;justify-content:center;color:#999;">
+          Map placeholder — add embed or iframe here
+        </div>
+      </div>
+    </div> <!-- end .contact-content -->
+  </main>
+
+  <!-- footer (consistent with other pages) -->
+  <footer class="footer" id="contact-footer">
+    <div class="container">
+      <div class="footer-box">
+        <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;">
+          <div>
+            <strong>Examine Yourselves International Mission Foundation</strong><br />
+            Email: <a href="mailto:info@eyimf.org">info@eyimf.org</a>
+          </div>
+          <div style="opacity:.95">“Serving souls, meeting needs, glorifying Christ.”</div>
+        </div>
+
+        <div style="margin-top:12px;opacity:.8">© <span id="yr"></span> EYIMF</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // set copyright year (keeps consistent behavior with other pages)
+    var y = document.getElementById('yr');
+    if (y) y.textContent = new Date().getFullYear();
+
+    // simple front-end form handler (placeholder)
+    // Replace with your server endpoint or mailing service integration.
+    (function(){
+      var form = document.getElementById('contact-form');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        // basic client-side validation
+        var name = form.name.value.trim();
+        var email = form.email.value.trim();
+        var message = form.message.value.trim();
+        if(!name || !email || !message){
+          alert('Please complete name, email, and message.');
+          return;
+        }
+        // For now we'll open the user's email client as a fallback. Replace with AJAX POST to your server.
+        var subject = encodeURIComponent(form.subject.value || 'Message from website');
+        var body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\n' + message);
+        window.location.href = 'mailto:info@eyimf.org?subject=' + subject + '&body=' + body;
+      });
+    })();
+  </script>
+</body>
+</html>
