@@ -1,5 +1,19 @@
 [
   {
+    "weekLabel": "Week of 2025-10-19 through 2025-10-25",
+    "date": "2025-10-21",
+    "adultAttendance": 12,
+    "childrenAttendance": 40,
+    "teenAttendance": 12,
+    "confessions": 5,
+    "baptisms": "",
+    "foodPacks": 36,
+    "donations": "250.00",
+    "expenses": "0.00",
+    "notes": "I cannot wait to get there and start putting real numbers into this Ministry Report.",
+    "expenseDetailsUrl": ""
+  },
+  {
     "weekLabel": "Week of 2025-10-19",
     "date": "2025-10-19",
     "adultAttendance": 48,
