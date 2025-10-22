@@ -5,404 +5,408 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Report Editor • EYIMF</title>
   <link rel="icon" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=report-editor-2" />
+  <link rel="stylesheet" href="style.css?v=report-editor-merged-1" />
   <style>
-    .grid-form { display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:900px; }
-    .controls { margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
-    textarea { min-height:80px; }
-    .reports-list { margin-top:18px; max-width:900px; }
-    .reports-list table { width:100%; border-collapse:collapse; }
-    .reports-list th, .reports-list td { padding:8px; border-bottom:1px solid #eee; text-align:left; }
-    .archive-controls { margin-top:16px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
-    .small { font-size:0.9em; color:#555 }
-    @media print { .navlinks, .controls, .reports-list, .archive-controls { display:none } }
+    .grid { display:grid; gap:8px; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+    .controls { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+    table { width:100%; border-collapse:collapse; margin-top:8px; }
+    th,td { padding:8px; border:1px solid #eee; text-align:left; }
+    .muted { color:#666; font-size:.95rem; }
+    .actions { display:flex; gap:6px; }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="container navbar">
-      <div class="brand"><span class="name">EYIMF — Report Editor</span></div>
-      <div class="navlinks"><a href="updates.html">Back to Updates</a><a href="ministry-report.html">View Report</a></div>
-    </div>
-  </nav>
-
   <main class="section">
     <div class="container">
-      <h1>Weekly Ministry Report Editor</h1>
-      <p>Enter weekly values, save them locally, and finalize (archive) months when ready. Use <strong>Export JSON</strong> to create the file to upload to <code>assets/reports/reports.json</code>.</p>
+      <h1>Report Editor</h1>
+      <p class="muted">Add weekly reports, export to publish, and archive completed months.</p>
 
-      <form id="report-form">
-        <div class="grid-form">
+      <form id="entry-form" autocomplete="off">
+        <div class="grid">
           <div>
-            <label>Week label / date (e.g., "Week of 2025-10-19")<br>
-              <input name="weekLabel" type="text" style="width:100%" placeholder="Week of 2025-10-19">
-            </label>
+            <label>Week label (eg "Week of 2025-10-19")</label>
+            <input id="weekLabel" type="text" placeholder="Week of YYYY-MM-DD" />
           </div>
-
           <div>
-            <label>ISO date (YYYY-MM-DD)<br>
-              <input name="date" type="date" style="width:100%">
-            </label>
+            <label>Date (YYYY-MM-DD)</label>
+            <input id="date" type="date" />
           </div>
-
           <div>
-            <label>Sunday Adult Service Attendance<br>
-              <input name="adultAttendance" type="number" min="0" style="width:100%">
-            </label>
+            <label>Adult attendance</label>
+            <input id="adultAttendance" type="number" min="0" />
           </div>
-
           <div>
-            <label>Children's Church Attendance<br>
-              <input name="childrenAttendance" type="number" min="0" style="width:100%">
-            </label>
+            <label>Children attendance</label>
+            <input id="childrenAttendance" type="number" min="0" />
           </div>
-
           <div>
-            <label>Teen Outreach Attendance<br>
-              <input name="teenAttendance" type="number" min="0" style="width:100%">
-            </label>
+            <label>Teen attendance</label>
+            <input id="teenAttendance" type="number" min="0" />
           </div>
-
           <div>
-            <label>New Confessions of Faith<br>
-              <input name="confessions" type="number" min="0" style="width:100%">
-            </label>
+            <label>Confessions</label>
+            <input id="confessions" type="number" min="0" />
           </div>
-
           <div>
-            <label>Baptisms<br>
-              <input name="baptisms" type="number" min="0" style="width:100%">
-            </label>
+            <label>Baptisms</label>
+            <input id="baptisms" type="number" min="0" />
           </div>
-
           <div>
-            <label>Food Packs Distributed<br>
-              <input name="foodPacks" type="number" min="0" style="width:100%">
-            </label>
+            <label>Food packs</label>
+            <input id="foodPacks" type="number" min="0" />
           </div>
-
           <div>
-            <label>Financial Donations (USD)<br>
-              <input name="donations" type="number" step="0.01" min="0" style="width:100%">
-            </label>
+            <label>Donations (USD)</label>
+            <input id="donations" type="number" min="0" step="0.01" />
           </div>
-
           <div>
-            <label>Expenses (USD)<br>
-              <input name="expenses" type="number" step="0.01" min="0" style="width:100%">
-            </label>
+            <label>Expenses (USD)</label>
+            <input id="expenses" type="number" min="0" step="0.01" />
           </div>
-
-          <div style="grid-column:1 / -1;">
-            <label>Notes / Summary<br>
-              <textarea name="notes" style="width:100%" placeholder="Short summary and prayer requests..."></textarea>
-            </label>
+          <div style="grid-column:1/-1">
+            <label>Notes</label>
+            <textarea id="notes" rows="3"></textarea>
           </div>
-
-          <div style="grid-column:1 / -1;">
-            <label>Detailed expense report URL (optional)<br>
-              <input name="expenseDetailsUrl" type="url" style="width:100%" placeholder="https://...">
-            </label>
+          <div style="grid-column:1/-1">
+            <label>Expense details URL (optional)</label>
+            <input id="expenseDetailsUrl" type="url" placeholder="https://..." />
           </div>
         </div>
-
         <div class="controls">
-          <button type="button" id="btn-add">Add / Save Entry</button>
-          <button type="button" id="btn-clear">Clear Form</button>
-          <button type="button" id="btn-export">Export JSON (download)</button>
-          <button type="button" id="btn-copy">Copy JSON to clipboard</button>
-          <button type="button" id="btn-load-sample">Load sample into form</button>
+          <button id="btn-add" type="button">Add / Save Entry</button>
+          <button id="btn-clear-form" type="button">Clear Form</button>
+          <button id="btn-load-sample" type="button">Load Sample</button>
         </div>
       </form>
 
-      <div class="archive-controls">
-        <label for="archive-month">Finalize / Archive month:</label>
-        <input id="archive-month" type="month" />
-        <button id="btn-finalize">Finalize & Download Archive</button>
-        <label class="small"><input id="chk-clear-after" type="checkbox"> Clear archived weeks from active reports</label>
-        <button id="btn-print-month">Print Month</button>
+      <h2>Saved Reports (local)</h2>
+      <div class="controls" style="margin-bottom:6px;">
+        <button id="btn-export-json" type="button">Export JSON (download)</button>
+        <button id="btn-copy-json" type="button">Copy JSON to clipboard</button>
+        <input id="file-input" type="file" accept=".json" style="display:none" />
+        <button id="btn-import-json" type="button">Import JSON file (merge)</button>
+        <button id="btn-show-local" type="button">Show localStorage contents</button>
       </div>
 
-      <div class="reports-list">
-        <h2>Saved Reports (local)</h2>
-        <div id="saved-reports"></div>
-        <h3>Archived Months (local)</h3>
-        <div id="archived-list" class="small"></div>
+      <table id="saved-table" aria-live="polite">
+        <thead><tr><th>Week</th><th>Date</th><th>Adults</th><th>Children</th><th>Food packs</th><th>Donations</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+
+      <h3>Archive / Finalize month</h3>
+      <div class="controls" style="align-items:center;">
+        <label for="archive-month">Month:</label>
+        <input id="archive-month" type="month" />
+        <label><input id="archive-clear" type="checkbox" /> Remove archived weeks from active reports after finalize</label>
+        <button id="btn-finalize" type="button">Finalize & Download Archive</button>
       </div>
+
+      <h3>Local archives</h3>
+      <div class="controls" style="margin-bottom:8px;">
+        <button id="btn-download-archives" type="button">Download All Archives (zip not provided)</button>
+        <button id="btn-clear-active" type="button">Clear active reports (danger)</button>
+      </div>
+      <div id="archives-list"></div>
+
+      <p class="muted" style="margin-top:10px;">
+        When you are ready to publish: Export JSON (download) and replace <code>assets/reports/reports.json</code> in this repo (web UI or git). The public page reads that file and shows weekly/monthly/year totals.
+      </p>
     </div>
   </main>
 
 <script>
 (function(){
-  const STORAGE_KEY = 'eyimf_reports_v1';
-  const ARCHIVE_KEY = 'eyimf_reports_archive_v1';
+  const LOCAL_KEY = 'eyimf_reports_v1';
+  const ARCHIVE_KEY = 'eyimf_archives_v1';
+  const form = document.getElementById('entry-form');
+  const inputs = {
+    weekLabel: document.getElementById('weekLabel'),
+    date: document.getElementById('date'),
+    adultAttendance: document.getElementById('adultAttendance'),
+    childrenAttendance: document.getElementById('childrenAttendance'),
+    teenAttendance: document.getElementById('teenAttendance'),
+    confessions: document.getElementById('confessions'),
+    baptisms: document.getElementById('baptisms'),
+    foodPacks: document.getElementById('foodPacks'),
+    donations: document.getElementById('donations'),
+    expenses: document.getElementById('expenses'),
+    notes: document.getElementById('notes'),
+    expenseDetailsUrl: document.getElementById('expenseDetailsUrl')
+  };
+  const btnAdd = document.getElementById('btn-add');
+  const btnClearForm = document.getElementById('btn-clear-form');
+  const btnExport = document.getElementById('btn-export-json');
+  const btnCopy = document.getElementById('btn-copy-json');
+  const btnImportFile = document.getElementById('btn-import-json');
+  const fileInput = document.getElementById('file-input');
+  const btnLoadSample = document.getElementById('btn-load-sample');
+  const savedTableBody = document.querySelector('#saved-table tbody');
+  const btnShowLocal = document.getElementById('btn-show-local');
+  const archiveMonth = document.getElementById('archive-month');
+  const btnFinalize = document.getElementById('btn-finalize');
+  const archiveClear = document.getElementById('archive-clear');
+  const archivesList = document.getElementById('archives-list');
+  const btnDownloadArchives = document.getElementById('btn-download-archives');
+  const btnClearActive = document.getElementById('btn-clear-active');
 
-  function loadReports() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch { return []; }
+  // Categories mirror the public page
+  const KEYS = ['weekLabel','date','adultAttendance','childrenAttendance','teenAttendance','confessions','baptisms','foodPacks','donations','expenses','notes','expenseDetailsUrl'];
+
+  function loadState(){
+    try {
+      const val = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
+      const archives = JSON.parse(localStorage.getItem(ARCHIVE_KEY) || '[]');
+      return { reports: Array.isArray(val)?val:[], archives: Array.isArray(archives)?archives:[] };
+    } catch(e){
+      console.error(e);
+      return { reports: [], archives: [] };
+    }
   }
-  function saveReports(reports) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(reports, null, 2));
-    renderSavedReports();
-  }
-  function loadArchives() {
-    try { return JSON.parse(localStorage.getItem(ARCHIVE_KEY) || '[]'); } catch { return []; }
-  }
-  function saveArchives(ar) {
-    localStorage.setItem(ARCHIVE_KEY, JSON.stringify(ar, null, 2));
-    renderArchivedList();
+  function saveState(reports, archives){
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(reports, null, 2));
+    localStorage.setItem(ARCHIVE_KEY, JSON.stringify(archives, null, 2));
   }
 
-  const form = document.getElementById('report-form');
-  const savedContainer = document.getElementById('saved-reports');
-  const archivedContainer = document.getElementById('archived-list');
+  function renderSaved(){
+    const { reports, archives } = loadState();
+    const sorted = reports.slice().sort((a,b)=> (a.date||'') < (b.date||'') ? 1 : -1);
+    savedTableBody.innerHTML = '';
+    for(const r of sorted){
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${escapeHtml(r.weekLabel||'')}</td><td>${escapeHtml(r.date||'')}</td><td>${r.adultAttendance||0}</td><td>${r.childrenAttendance||0}</td><td>${r.foodPacks||0}</td><td>${r.donations||'0.00'}</td>
+        <td class="actions">
+          <button data-action="edit" data-date="${r.date}">Edit</button>
+          <button data-action="delete" data-date="${r.date}">Delete</button>
+        </td>`;
+      savedTableBody.appendChild(tr);
+    }
+    renderArchivesList(archives);
+  }
 
-  function getFormData() {
-    const fd = new FormData(form);
-    const obj = {};
-    for (const [k,v] of fd.entries()) obj[k] = v;
-    ['adultAttendance','childrenAttendance','teenAttendance','confessions','baptisms','foodPacks'].forEach(k => {
-      if (obj[k] !== undefined && obj[k] !== '') obj[k] = parseInt(obj[k],10) || 0;
+  function renderArchivesList(archives){
+    if(!archives.length){ archivesList.textContent = 'No local archives.'; return; }
+    archivesList.innerHTML = archives.map(a=>{
+      return `<div style="margin-bottom:6px;border:1px solid #eee;padding:8px;border-radius:6px;">
+        <strong>${a.month}</strong> — archivedAt: ${a.archivedAt} — <button data-archive="${a.month}">Download JSON</button> <button data-archive-csv="${a.month}">Download CSV</button>
+      </div>`;
+    }).join('');
+  }
+
+  function escapeHtml(s){ if(!s) return ''; return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+
+  function addEntry(){
+    const r = {};
+    KEYS.forEach(k => {
+      const el = inputs[k];
+      if(!el) return;
+      let v = el.value;
+      if(k === 'donations' || k === 'expenses'){ v = v ? Number(v).toFixed(2) : "0.00"; }
+      if(k === 'adultAttendance' || k === 'childrenAttendance' || k === 'teenAttendance' || k === 'confessions' || k === 'baptisms' || k === 'foodPacks'){ v = v ? Number(v) : 0; }
+      r[k] = v;
     });
-    ['donations','expenses'].forEach(k => {
-      if (obj[k] !== undefined && obj[k] !== '') obj[k] = (parseFloat(obj[k]) || 0).toFixed(2);
-    });
-    if (!obj.date && obj.weekLabel) {
-      const m = obj.weekLabel.match(/(\d{4}-\d{2}-\d{2})/);
-      if (m) obj.date = m[1];
-    }
-    return obj;
+    // minimal validation
+    if(!r.date){ alert('Please set a date for the week (YYYY-MM-DD)'); return; }
+    const state = loadState();
+    // ensure no duplicate date (replace if same date)
+    const filtered = state.reports.filter(x => x.date !== r.date);
+    filtered.unshift(r); // newest first
+    saveState(filtered, state.archives);
+    renderSaved();
+    alert('Saved to local reports. When ready, export JSON to publish.');
   }
 
-  function resetForm() { form.reset(); }
-
-  function monthKeyFromDate(d){ if(!d) return ''; return d.split('-').slice(0,2).join('-'); }
-
-  function renderSavedReports() {
-    const reports = loadReports();
-    if (!reports.length) { savedContainer.innerHTML = '<p><em>No saved reports</em></p>'; return; }
-    const rows = reports.map((r, idx) => `
-      <tr>
-        <td>${r.weekLabel || r.date || ''}</td>
-        <td>${r.adultAttendance || 0}</td>
-        <td>${r.childrenAttendance || 0}</td>
-        <td>${r.foodPacks || 0}</td>
-        <td style="white-space:nowrap;">
-          <button data-idx="${idx}" class="btn-view">View</button>
-          <button data-idx="${idx}" class="btn-edit">Edit</button>
-          <button data-idx="${idx}" class="btn-delete">Delete</button>
-        </td>
-      </tr>
-    `).join('');
-    savedContainer.innerHTML = `<table><thead><tr><th>Week</th><th>Adults</th><th>Children</th><th>Food Packs</th><th>Actions</th></tr></thead><tbody>${rows}</tbody></table>`;
-    for (const btn of savedContainer.querySelectorAll('.btn-view')) {
-      btn.addEventListener('click', e => {
-        const r = loadReports()[parseInt(e.target.dataset.idx,10)];
-        const pretty = Object.entries(r).map(([k,v])=>`${k}: ${v}`).join('\n');
-        alert(pretty);
-      });
-    }
-    for (const btn of savedContainer.querySelectorAll('.btn-edit')) {
-      btn.addEventListener('click', e => {
-        const r = loadReports()[parseInt(e.target.dataset.idx,10)];
-        for (const k in r) {
-          if (form.elements[k]) form.elements[k].value = r[k];
-        }
-        window.scrollTo({top:0,behavior:'smooth'});
-      });
-    }
-    for (const btn of savedContainer.querySelectorAll('.btn-delete')) {
-      btn.addEventListener('click', e => {
-        const idx = parseInt(e.target.dataset.idx,10);
-        const reports = loadReports();
-        if (!confirm(`Delete report "${reports[idx].weekLabel || reports[idx].date}"?`)) return;
-        reports.splice(idx,1);
-        saveReports(reports);
-      });
-    }
+  function clearForm(){
+    KEYS.forEach(k => { if(inputs[k]) inputs[k].value = ''; });
   }
 
-  function renderArchivedList(){
-    const archives = loadArchives();
-    if(!archives.length){ archivedContainer.innerHTML = '<div><em>No archived months</em></div>'; return; }
-    archivedContainer.innerHTML = archives.map(a=>`<div>${a.month} — ${a.reports.length} week(s) — <a href="${a.fileName}" download>Download JSON</a></div>`).join('');
+  function loadSample(){
+    inputs.weekLabel.value = 'Week of 2025-10-19';
+    inputs.date.value = '2025-10-19';
+    inputs.adultAttendance.value = 48;
+    inputs.childrenAttendance.value = 24;
+    inputs.teenAttendance.value = 12;
+    inputs.confessions.value = 3;
+    inputs.baptisms.value = 1;
+    inputs.foodPacks.value = 36;
+    inputs.donations.value = '500.00';
+    inputs.expenses.value = '120.00';
+    inputs.notes.value = 'Hosted community meal; prayer requests for family A.';
+    inputs.expenseDetailsUrl.value = '';
   }
 
-  document.getElementById('btn-add').addEventListener('click', () => {
-    const obj = getFormData();
-    if (!obj.date && !obj.weekLabel) { alert('Please provide a date or week label'); return; }
-    const reports = loadReports();
-    reports.unshift(obj); // newest first
-    saveReports(reports);
-  });
-
-  document.getElementById('btn-clear').addEventListener('click', (e) => { e.preventDefault(); resetForm(); });
-
-  document.getElementById('btn-export').addEventListener('click', () => {
-    const reports = loadReports();
+  function exportJSON(){
+    const { reports } = loadState();
     const blob = new Blob([JSON.stringify(reports, null, 2)], {type:'application/json'});
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'reports.json';
-    document.body.appendChild(a); a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  });
-
-  document.getElementById('btn-copy').addEventListener('click', async () => {
-    const reports = loadReports();
-    try {
-      await navigator.clipboard.writeText(JSON.stringify(reports, null, 2));
-      alert('Reports JSON copied to clipboard. Paste into assets/reports/reports.json in the repo.');
-    } catch (e) {
-      alert('Copy failed. You can also Export JSON and upload it.');
-    }
-  });
-
-  document.getElementById('btn-load-sample').addEventListener('click', () => {
-    const sample = {
-      weekLabel: 'Week of 2025-10-19',
-      date: '2025-10-19',
-      adultAttendance: 48,
-      childrenAttendance: 24,
-      teenAttendance: 12,
-      confessions: 3,
-      baptisms: 1,
-      foodPacks: 36,
-      donations: '500.00',
-      expenses: '120.00',
-      notes: 'Hosted community meal; prayer requests for family A.',
-      expenseDetailsUrl: ''
-    };
-    for (const k in sample) if (form.elements[k]) form.elements[k].value = sample[k];
-  });
-
-  // Finalize / Archive month
-  document.getElementById('btn-finalize').addEventListener('click', ()=> {
-    const monthInput = document.getElementById('archive-month').value;
-    if(!monthInput){ alert('Choose a month to finalize.'); return; }
-    const monthKey = monthInput.slice(0,7); // YYYY-MM
-    const reports = loadReports();
-    const toArchive = reports.filter(r => monthKeyFromDate(r.date) === monthKey);
-    if(!toArchive.length){ alert('No weekly reports found for this month.'); return; }
-
-    // Build archive object
-    const timestamp = new Date().toISOString();
-    const archive = {
-      month: monthKey,
-      archivedAt: timestamp,
-      reports: toArchive
-    };
-
-    const fileName = `reports-archive-${monthKey}.json`;
-    // save into local archive list
-    const archives = loadArchives();
-    archives.unshift({ month: monthKey, archivedAt: timestamp, reportsCount: toArchive.length, fileName, reports: toArchive });
-    saveArchives(archives);
-
-    // offer download
-    const blob = new Blob([JSON.stringify(archive, null, 2)], {type:'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href = url; a.download = fileName; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-
-    // also create CSV download for bookkeeping
-    const csv = toCSV(toArchive);
-    const blob2 = new Blob([csv], {type:'text/csv'}); const url2 = URL.createObjectURL(blob2);
-    const a2 = document.createElement('a'); a2.href = url2; a2.download = `reports-${monthKey}.csv`; document.body.appendChild(a2); a2.click(); a2.remove(); URL.revokeObjectURL(url2);
-
-    // Optionally clear archived weeks from active reports
-    const clearAfter = document.getElementById('chk-clear-after').checked;
-    if(clearAfter){
-      if(!confirm('This will remove the archived weeks from your active saved reports. Proceed?')) return;
-      const remaining = reports.filter(r => monthKeyFromDate(r.date) !== monthKey);
-      saveReports(remaining);
-      alert('Archived weeks removed from active reports. You now have a fresh start for the next month.');
-    } else {
-      alert('Month archived locally and downloaded. Active reports unchanged.');
-    }
-  });
-
-  // Print month: opens a print-friendly new window with aggregated month content and triggers print
-  document.getElementById('btn-print-month').addEventListener('click', ()=> {
-    const monthInput = document.getElementById('archive-month').value;
-    const monthKey = monthInput ? monthInput.slice(0,7) : null;
-    const reports = loadReports();
-    const filtered = monthKey ? reports.filter(r => monthKeyFromDate(r.date) === monthKey) : reports;
-    if(!filtered.length){ alert('No reports to print for that month.'); return; }
-    const aggregated = aggregateReports(filtered);
-    const html = buildPrintableHTML(aggregated, filtered, monthKey || 'All');
-    const w = window.open('', '_blank', 'width=900,height=700');
-    w.document.write(html);
-    w.document.close();
-    setTimeout(()=> w.print(), 400);
-  });
-
-  function aggregateReports(reports){
-    return reports.reduce((acc,r)=>{
-      acc.adultAttendance += parseInt(r.adultAttendance||0,10);
-      acc.childrenAttendance += parseInt(r.childrenAttendance||0,10);
-      acc.teenAttendance += parseInt(r.teenAttendance||0,10);
-      acc.confessions += parseInt(r.confessions||0,10);
-      acc.baptisms += parseInt(r.baptisms||0,10);
-      acc.foodPacks += parseInt(r.foodPacks||0,10);
-      acc.donations = (parseFloat(acc.donations) + parseFloat(r.donations||0)).toFixed(2);
-      acc.expenses = (parseFloat(acc.expenses) + parseFloat(r.expenses||0)).toFixed(2);
-      return acc;
-    }, {adultAttendance:0,childrenAttendance:0,teenAttendance:0,confessions:0,baptisms:0,foodPacks:0,donations:0,expenses:0});
+    const a = document.createElement('a'); a.href = url; a.download = 'reports.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
   }
 
-  function buildPrintableHTML(agg, reports, label){
-    const rows = reports.map(r=>`<li><strong>${r.weekLabel||r.date}</strong> — Adults: ${r.adultAttendance||0}, Children: ${r.childrenAttendance||0}, Food packs: ${r.foodPacks||0}</li>`).join('');
-    return `
-      <!doctype html><html><head><title>Monthly Report - ${label}</title>
-      <style>body{font-family:Arial,Helvetica,sans-serif;padding:18px} table{width:100%;border-collapse:collapse} th,td{padding:8px;border:1px solid #eee;text-align:left}</style>
-      </head><body>
-      <h1>Monthly Report — ${label}</h1>
-      <table>
-        <tbody>
-          <tr><th>Total Adult Attendance</th><td>${agg.adultAttendance}</td></tr>
-          <tr><th>Total Children's Attendance</th><td>${agg.childrenAttendance}</td></tr>
-          <tr><th>Total Teen Attendance</th><td>${agg.teenAttendance}</td></tr>
-          <tr><th>Total New Confessions</th><td>${agg.confessions}</td></tr>
-          <tr><th>Total Baptisms</th><td>${agg.baptisms}</td></tr>
-          <tr><th>Food Packs Distributed</th><td>${agg.foodPacks}</td></tr>
-          <tr><th>Donations (USD)</th><td>${agg.donations}</td></tr>
-          <tr><th>Expenses (USD)</th><td>${agg.expenses}</td></tr>
-        </tbody>
-      </table>
-      <h3 style="margin-top:14px">Weekly breakdown</h3><ul>${rows}</ul>
-      <p style="margin-top:24px">Generated: ${new Date().toLocaleString()}</p>
-      </body></html>`;
+  async function copyJSON(){
+    const { reports } = loadState();
+    try{
+      await navigator.clipboard.writeText(JSON.stringify(reports, null, 2));
+      alert('Reports JSON copied to clipboard. Paste into assets/reports/reports.json in your repo to publish.');
+    }catch(e){
+      alert('Failed to copy to clipboard: ' + e.message);
+    }
+  }
+
+  function importJSONFile(file){
+    const reader = new FileReader();
+    reader.onload = (ev)=>{
+      try {
+        const json = JSON.parse(ev.target.result);
+        if(!Array.isArray(json)){ alert('Imported file must be an array of report objects.'); return; }
+        mergeAndSave(json);
+      } catch(e){
+        alert('Invalid JSON file: ' + e.message);
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  function mergeAndSave(newReports){
+    // merge: prefer newest per date, keep all unique dates
+    const state = loadState();
+    const combined = [...newReports, ...state.reports];
+    const deduped = combined.reduce((acc, obj) => {
+      if(!obj.date) return acc;
+      acc[obj.date] = acc[obj.date] ? (new Date(obj.date) > new Date(acc[obj.date].date) ? obj : acc[obj.date]) : obj;
+      return acc;
+    }, {});
+    const arr = Object.values(deduped).sort((a,b)=> (a.date||'') < (b.date||'') ? 1 : -1);
+    saveState(arr, state.archives);
+    renderSaved();
+    alert('Imported and merged. Check "Saved Reports (local)". Export to publish.');
+  }
+
+  function finalizeArchive(){
+    const month = archiveMonth.value;
+    if(!month){ alert('Select a month to finalize/archive'); return; }
+    const state = loadState();
+    const monthReports = state.reports.filter(r => (r.date||'').slice(0,7) === month);
+    if(!monthReports.length){ alert('No reports for that month'); return; }
+    const archiveObj = { month: month, archivedAt: new Date().toISOString(), reports: monthReports };
+    // save archive locally
+    const archives = state.archives.slice();
+    archives.unshift(archiveObj);
+    let remaining = state.reports.slice();
+    if(archiveClear.checked){
+      remaining = remaining.filter(r => (r.date||'').slice(0,7) !== month);
+    }
+    saveState(remaining, archives);
+    renderSaved();
+    // offer downloads
+    const filename = `reports-archive-${month}.json`;
+    const blob = new Blob([JSON.stringify(archiveObj, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+
+    // CSV
+    const csv = toCSV(monthReports);
+    const blob2 = new Blob([csv], {type:'text/csv'});
+    const url2 = URL.createObjectURL(blob2);
+    const a2 = document.createElement('a'); a2.href = url2; a2.download = `reports-${month}.csv`; document.body.appendChild(a2); a2.click(); a2.remove(); URL.revokeObjectURL(url2);
+
+    alert('Archive created and downloaded. To publish the cleaned active dataset, Export JSON and update assets/reports/reports.json in the repo.');
   }
 
   function toCSV(reports){
-    const keys = ['weekLabel','date','adultAttendance','childrenAttendance','teenAttendance','confessions','baptisms','foodPacks','donations','expenses','notes','expenseDetailsUrl'];
+    const keys = KEYS;
     const lines = [keys.join(',')];
     for(const r of reports){
-      const row = keys.map(k=>`"${String(r[k]||'').replace(/"/g,'""')}"`).join(',');
+      const row = keys.map(k => `"${String(r[k]||'').replace(/"/g,'""')}"`).join(',');
       lines.push(row);
     }
     return lines.join('\n');
   }
 
-  // initial render
-  renderSavedReports();
-  renderArchivedList();
+  // events
+  btnAdd.addEventListener('click', addEntry);
+  btnClearForm.addEventListener('click', ()=>{ clearForm(); });
+  btnLoadSample.addEventListener('click', loadSample);
+  btnExport.addEventListener('click', exportJSON);
+  btnCopy.addEventListener('click', copyJSON);
+  btnImportFile.addEventListener('click', ()=> fileInput.click());
+  fileInput.addEventListener('change', (e)=> {
+    if(e.target.files && e.target.files[0]) importJSONFile(e.target.files[0]);
+    fileInput.value = '';
+  });
 
-  // attempt to import existing reports.json into local (optional)
-  fetch('assets/reports/reports.json')
-    .then(r => r.ok ? r.json() : null)
-    .then(data => {
-      if (Array.isArray(data) && data.length) {
-        if (!loadReports().length) {
-          if (confirm('Import existing reports.json into editor local storage?')) {
-            saveReports(data);
-            alert('Imported existing reports into editor local storage.');
-          }
-        }
-      }
-    })
-    .catch(()=>{ /* ignore */ });
+  savedTableBody.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    const action = btn.dataset.action;
+    const date = btn.dataset.date;
+    if(action==='edit'){
+      const { reports } = loadState();
+      const item = reports.find(r => r.date === date);
+      if(!item) return;
+      KEYS.forEach(k => { if(inputs[k]) inputs[k].value = item[k] || ''; });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if(action==='delete'){
+      if(!confirm('Delete this week from active reports?')) return;
+      const state = loadState();
+      const remaining = state.reports.filter(r => r.date !== date);
+      saveState(remaining, state.archives);
+      renderSaved();
+    }
+  });
+
+  btnShowLocal.addEventListener('click', ()=>{
+    const s = loadState();
+    alert('Active reports: ' + s.reports.length + '\\nArchives: ' + s.archives.length + '\\n(See console for details)');
+    console.log('Active reports', s.reports);
+    console.log('Archives', s.archives);
+  });
+
+  btnFinalize.addEventListener('click', finalizeArchive);
+
+  archivesList.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    const month = btn.dataset.archive || btn.dataset.archiveCsv;
+    const s = loadState();
+    const archive = s.archives.find(a=>a.month===month);
+    if(!archive) return;
+    if(btn.dataset.archive){
+      const blob = new Blob([JSON.stringify(archive, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = `reports-archive-${month}.json`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    } else {
+      const csv = toCSV(archive.reports || []);
+      const blob = new Blob([csv], {type:'text/csv'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = `reports-${month}.csv`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+  });
+
+  btnDownloadArchives.addEventListener('click', ()=>{
+    const s = loadState();
+    const blob = new Blob([JSON.stringify(s.archives || [], null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'reports-archives-all.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    alert('All archives downloaded. Note: To publish, use Export JSON on active reports.');
+  });
+
+  btnClearActive.addEventListener('click', ()=>{
+    if(!confirm('Clear all active reports from localStorage? This cannot be undone.')) return;
+    const s = loadState();
+    saveState([], s.archives);
+    renderSaved();
+  });
+
+  // initial render
+  renderSaved();
+
+  // populate month input default to latest active report month
+  (function setDefaultMonth(){
+    const s = loadState();
+    if(!s.reports.length) return;
+    const sorted = s.reports.slice().sort((a,b)=> (a.date||'') < (b.date||'') ? 1 : -1);
+    const m = (sorted[0].date||'').slice(0,7);
+    if(m) archiveMonth.value = m;
+  })();
 
 })();
 </script>
