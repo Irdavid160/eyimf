@@ -5,9 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ministry Report • EYIMF</title>
   <link rel="icon" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=ministry-report-1" />
+  <link rel="stylesheet" href="style.css?v=ministry-report-merged-1" />
   <style>
     .report-actions{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+    .tally-table { width:100%; max-width:100%; border-collapse:collapse; margin-top:12px; }
+    .tally-table th, .tally-table td { border:1px solid #eee; padding:6px 8px; text-align:right; }
+    .tally-table th { background:#fafafa; text-align:center; font-weight:600; }
+    .tally-table td.left { text-align:left; }
+    .tally-summary { margin-top:10px; font-size:0.95rem; color:#333; }
+    .summary-grid { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
+    .summary-card { background:#fff; border:1px solid #eee; padding:10px 12px; border-radius:6px; min-width:160px; }
+    .summary-card h3 { margin:0 0 6px 0; font-size:1rem }
     @media print{ .navlinks,.footer,.report-actions{display:none} body{background:#fff} }
   </style>
 </head>
@@ -37,8 +45,11 @@
           <button id="btn-load-month">Load</button>
           <button id="btn-print">Print</button>
           <button id="btn-download-csv">Download CSV</button>
+          <button id="btn-download-archive">Download Archive (JSON)</button>
         </div>
       </div>
+
+      <div id="summary-cards" class="summary-grid" aria-hidden="false"></div>
 
       <div id="report-container">
         <p class="no-report">Loading the latest ministry report…</p>
@@ -70,11 +81,24 @@
   const btnLoad = document.getElementById('btn-load-month');
   const btnPrint = document.getElementById('btn-print');
   const btnCSV = document.getElementById('btn-download-csv');
+  const btnArchive = document.getElementById('btn-download-archive');
+  const summaryCards = document.getElementById('summary-cards');
 
-  function monthKeyFromDate(d){ // d: YYYY-MM-DD -> YYYY-MM
-    if(!d) return '';
-    return d.split('-').slice(0,2).join('-');
-  }
+  const CATEGORIES = [
+    { key: 'adultAttendance', label: "Sunday Adult Service Attendance", type: 'int' },
+    { key: 'childrenAttendance', label: "Children's Church Attendance", type: 'int' },
+    { key: 'teenAttendance', label: "Teen Outreach Attendance", type: 'int' },
+    { key: 'confessions', label: "New Confessions of Faith", type: 'int' },
+    { key: 'baptisms', label: "Baptisms", type: 'int' },
+    { key: 'foodPacks', label: "Food Packs Distributed", type: 'int' },
+    { key: 'donations', label: "Financial Donations (USD)", type: 'money' },
+    { key: 'expenses', label: "Expenses (USD)", type: 'money' }
+  ];
+
+  function monthKeyFromDate(d){ if(!d) return ''; return d.split('-').slice(0,2).join('-'); }
+  function yearFromDate(d){ if(!d) return ''; return d.split('-')[0]; }
+  function fmtNumber(n){ return Number(n||0).toLocaleString(); }
+  function fmtMoney(n){ return Number(n||0).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}); }
 
   function renderReport(report){
     if(!report){ container.innerHTML = '<p class="no-report">No ministry report found.</p>'; return; }
@@ -82,14 +106,11 @@
       <h2>${report.weekLabel || report.date || 'Weekly Report'}</h2>
       <table style="width:100%;max-width:820px;border-collapse:collapse;margin-top:8px;">
         <tbody>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Sunday Adult Service Attendance</th><td style="padding:8px;border-bottom:1px solid #eee;">${report.adultAttendance||0}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Children's Church Attendance</th><td style="padding:8px;border-bottom:1px solid #eee;">${report.childrenAttendance||0}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Teen Outreach Attendance</th><td style="padding:8px;border-bottom:1px solid #eee;">${report.teenAttendance||0}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">New Confessions of Faith</th><td style="padding:8px;border-bottom:1px solid #eee;">${report.confessions||0}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Baptisms</th><td style="padding:8px;border-bottom:1px solid #eee;">${report.baptisms||0}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Food Packs Distributed</th><td style="padding:8px;border-bottom:1px solid #eee;">${report.foodPacks||0}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Financial Donations (USD)</th><td style="padding:8px;border-bottom:1px solid #eee;">${report.donations||'0.00'}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Expenses (USD)</th><td style="padding:8px;border-bottom:1px solid #eee;">${report.expenses||'0.00'}</td></tr>
+          ${CATEGORIES.map(cat => {
+            const val = report[cat.key] !== undefined ? report[cat.key] : (cat.type === 'money' ? '0.00' : 0);
+            const display = cat.type === 'money' ? fmtMoney(val) : fmtNumber(val);
+            return `<tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">${cat.label}</th><td style="padding:8px;border-bottom:1px solid #eee;">${display}</td></tr>`;
+          }).join('')}
         </tbody>
       </table>
       <div style="margin-top:12px;"><strong>Notes:</strong><div style="margin-top:6px;">${(report.notes||'').replace(/\n/g,'<br>')||'<em>No additional notes.</em>'}</div></div>
@@ -99,41 +120,99 @@
   }
 
   function renderMonth(reports, monthKey){
-    // pick the latest report in month or show aggregated month total and list
-    const monthReports = reports.filter(r => monthKeyFromDate(r.date) === monthKey);
-    if(!monthReports.length){ container.innerHTML = '<p class="no-report">No reports for this month.</p>'; return; }
-    // aggregated totals
-    const agg = monthReports.reduce((acc,r)=>{
-      acc.adultAttendance += parseInt(r.adultAttendance||0,10);
-      acc.childrenAttendance += parseInt(r.childrenAttendance||0,10);
-      acc.teenAttendance += parseInt(r.teenAttendance||0,10);
-      acc.confessions += parseInt(r.confessions||0,10);
-      acc.baptisms += parseInt(r.baptisms||0,10);
-      acc.foodPacks += parseInt(r.foodPacks||0,10);
-      acc.donations = (parseFloat(acc.donations)+parseFloat(r.donations||0)).toFixed(2);
-      acc.expenses = (parseFloat(acc.expenses)+parseFloat(r.expenses||0)).toFixed(2);
-      return acc;
-    }, {adultAttendance:0,childrenAttendance:0,teenAttendance:0,confessions:0,baptisms:0,foodPacks:0,donations:0,expenses:0});
+    const monthReports = reports.filter(r => monthKeyFromDate(r.date) === monthKey)
+                                .sort((a,b) => (a.date||'') > (b.date||'') ? 1 : -1);
+    if(!monthReports.length){ container.innerHTML = '<p class="no-report">No reports for this month.</p>'; summaryCards.innerHTML = ''; return; }
 
-    const rows = monthReports.map(r=>`<li><strong>${r.weekLabel||r.date}</strong> — Adults: ${r.adultAttendance||0}, Children: ${r.childrenAttendance||0}, Food packs: ${r.foodPacks||0}</li>`).join('');
+    // week labels and matrix
+    const weekLabels = monthReports.map(r => r.weekLabel || r.date || r.date);
+    const matrix = {};
+    CATEGORIES.forEach(cat => {
+      matrix[cat.key] = monthReports.map(r => {
+        if (r[cat.key] === undefined || r[cat.key] === null) return (cat.type === 'money' ? 0.00 : 0);
+        return (cat.type === 'money') ? parseFloat(r[cat.key]) : parseInt(r[cat.key],10) || 0;
+      });
+    });
+    const totals = {};
+    CATEGORIES.forEach(cat => { totals[cat.key] = matrix[cat.key].reduce((s,v)=>s + (Number(v)||0), 0); });
 
-    container.innerHTML = `
-      <h2>Monthly Summary — ${monthKey}</h2>
-      <table style="width:100%;max-width:820px;border-collapse:collapse;margin-top:8px;">
-        <tbody>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Total Adult Attendance</th><td style="padding:8px;border-bottom:1px solid #eee;">${agg.adultAttendance}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Total Children's Attendance</th><td style="padding:8px;border-bottom:1px solid #eee;">${agg.childrenAttendance}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Total Teen Attendance</th><td style="padding:8px;border-bottom:1px solid #eee;">${agg.teenAttendance}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Total New Confessions</th><td style="padding:8px;border-bottom:1px solid #eee;">${agg.confessions}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Total Baptisms</th><td style="padding:8px;border-bottom:1px solid #eee;">${agg.baptisms}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Food Packs Distributed</th><td style="padding:8px;border-bottom:1px solid #eee;">${agg.foodPacks}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Donations (USD)</th><td style="padding:8px;border-bottom:1px solid #eee;">${agg.donations}</td></tr>
-          <tr><th style="text-align:left;padding:8px;border-bottom:1px solid #eee;">Expenses (USD)</th><td style="padding:8px;border-bottom:1px solid #eee;">${agg.expenses}</td></tr>
-        </tbody>
-      </table>
-      <div style="margin-top:12px;"><strong>Weekly breakdown:</strong><ul>${rows}</ul></div>
-    `;
+    // build tally table
+    let table = `<table class="tally-table" aria-label="Monthly tally table"><thead><tr><th class="left">Category</th>`;
+    weekLabels.forEach(lbl => table += `<th>${escapeHtml(lbl)}</th>`);
+    table += `<th>Monthly Total</th></tr></thead><tbody>`;
+
+    CATEGORIES.forEach(cat => {
+      table += `<tr><td class="left">${cat.label}</td>`;
+      matrix[cat.key].forEach(val => {
+        const display = (cat.type === 'money') ? fmtMoney(val) : fmtNumber(val);
+        table += `<td>${display}</td>`;
+      });
+      const totalDisplay = (cat.type === 'money') ? fmtMoney(totals[cat.key]) : fmtNumber(totals[cat.key]);
+      table += `<td><strong>${totalDisplay}</strong></td></tr>`;
+    });
+
+    // weekly subtotal row for numeric categories
+    const numericCats = CATEGORIES.filter(c=>c.type==='int').map(c=>c.key);
+    table += `<tr><td class="left"><em>Weekly total (attendees/units)</em></td>`;
+    for(let i=0;i<weekLabels.length;i++){
+      let wkSum = 0; numericCats.forEach(k => wkSum += Number(matrix[k][i]||0)); table += `<td><strong>${fmtNumber(wkSum)}</strong></td>`;
+    }
+    // monthly sum
+    let monthlySum = 0; for(let i=0;i<weekLabels.length;i++){ numericCats.forEach(k => monthlySum += Number(matrix[k][i]||0)); }
+    table += `<td><strong>${fmtNumber(monthlySum)}</strong></td></tr>`;
+
+    table += `</tbody></table>`;
+
+    // breakdown
+    const breakdown = monthReports.map(r=>`<li><strong>${r.weekLabel || r.date}</strong> — ${numericCats.map(k=>`${shortLabel(k)}: ${fmtNumber(r[k]||0)}`).join(', ')}</li>`).join('');
+
+    container.innerHTML = `<h2>Monthly Summary — ${monthKey}</h2>` + table +
+      `<div class="tally-summary"><strong>Weekly breakdown:</strong><ul style="margin-top:6px;">${breakdown}</ul></div>`;
+
+    // show summary cards (month totals and YTD)
+    renderSummaryCards(reports, monthKey, totals);
   }
+
+  function renderSummaryCards(allReports, monthKey, monthTotals){
+    // compute YTD and yearly totals for the year of monthKey
+    const year = monthKey.split('-')[0];
+    const yearReports = allReports.filter(r => yearFromDate(r.date) === year);
+    const ytdTotals = {};
+    CATEGORIES.forEach(cat => ytdTotals[cat.key] = 0);
+    yearReports.forEach(r => { CATEGORIES.forEach(cat => { const v = r[cat.key]||0; ytdTotals[cat.key] += (cat.type==='money'?parseFloat(v||0):Number(v||0)); }); });
+
+    // total for the month already provided in monthTotals
+    let html = '';
+    // month totals card
+    html += `<div class="summary-card"><h3>Month (${monthKey})</h3>`;
+    CATEGORIES.forEach(cat => {
+      const display = cat.type==='money'?fmtMoney(monthTotals[cat.key]):fmtNumber(monthTotals[cat.key]);
+      html += `<div><strong>${escapeHtml(cat.label.split(' ')[0])}:</strong> ${display}</div>`;
+    });
+    html += `</div>`;
+
+    // YTD card
+    html += `<div class="summary-card"><h3>Year to Date (${year})</h3>`;
+    CATEGORIES.forEach(cat => {
+      const display = cat.type==='money'?fmtMoney(ytdTotals[cat.key]):fmtNumber(ytdTotals[cat.key]);
+      html += `<div><strong>${escapeHtml(cat.label.split(' ')[0])}:</strong> ${display}</div>`;
+    });
+    html += `</div>`;
+
+    // year totals card (same as YTD for calendar year dataset)
+    const yearTotals = {}; CATEGORIES.forEach(cat => yearTotals[cat.key] = ytdTotals[cat.key]);
+    html += `<div class="summary-card"><h3>Year (${year}) Total</h3>`;
+    CATEGORIES.forEach(cat => {
+      const display = cat.type==='money'?fmtMoney(yearTotals[cat.key]):fmtNumber(yearTotals[cat.key]);
+      html += `<div><strong>${escapeHtml(cat.label.split(' ')[0])}:</strong> ${display}</div>`;
+    });
+    html += `</div>`;
+
+    summaryCards.innerHTML = html;
+  }
+
+  function shortLabel(key){ const found = CATEGORIES.find(c=>c.key===key); return found?found.label.split(' ')[0]:key; }
+  function escapeHtml(s){ if(!s) return ''; return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
 
   function toCSV(reports){
     const keys = ['weekLabel','date','adultAttendance','childrenAttendance','teenAttendance','confessions','baptisms','foodPacks','donations','expenses','notes','expenseDetailsUrl'];
@@ -149,24 +228,28 @@
     return fetch('assets/reports/reports.json?v=1').then(r=>r.ok? r.json(): []).catch(()=>[]);
   }
 
-  // initial load: latest by date
+  // initial load: latest by date and show year summary cards
   fetchReports().then(reports=>{
     if(!Array.isArray(reports) || !reports.length){ container.innerHTML = '<p class="no-report">No reports found in assets/reports/reports.json.</p>'; return; }
     const sorted = reports.slice().sort((a,b)=>(a.date||'') > (b.date||'') ? -1:1);
     renderReport(sorted[0]);
-    // set month input to latest report month
     const m = monthKeyFromDate(sorted[0].date);
-    if(m){ monthInput.value = m; }
+    if(m){ monthInput.value = m; const monthKey = m; renderSummaryCards(reports, monthKey, computeMonthTotals(reports, monthKey)); }
   });
+
+  function computeMonthTotals(reports, monthKey){
+    const monthReports = reports.filter(r=>monthKeyFromDate(r.date)===monthKey);
+    const totals={}; CATEGORIES.forEach(cat=>totals[cat.key]=0);
+    monthReports.forEach(r=>{ CATEGORIES.forEach(cat=>{ totals[cat.key] += cat.type==='money'?parseFloat(r[cat.key]||0):Number(r[cat.key]||0); }); });
+    return totals;
+  }
 
   btnLoad.addEventListener('click', ()=>{
     const m = (monthInput.value||'').slice(0,7); if(!m){ alert('Select a month'); return; }
     fetchReports().then(reports=>{ renderMonth(reports,m); });
   });
 
-  btnPrint.addEventListener('click', ()=>{
-    window.print();
-  });
+  btnPrint.addEventListener('click', ()=>{ window.print(); });
 
   btnCSV.addEventListener('click', ()=>{
     const m = (monthInput.value||'').slice(0,7);
@@ -179,6 +262,24 @@
       const a = document.createElement('a'); a.href = url; a.download = `reports_${m||'all'}.csv`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
     });
   });
+
+  btnArchive.addEventListener('click', ()=>{
+    const m = (monthInput.value||'').slice(0,7);
+    if(!m){ alert('Select a month to archive/download.'); return; }
+    fetchReports().then(reports=>{
+      const filtered = reports.filter(r=>monthKeyFromDate(r.date)===m);
+      if(!filtered.length){ alert('No reports for that month.'); return; }
+      const archiveObj = { month: m, archivedAt: new Date().toISOString(), reports: filtered };
+      const fileName = `reports-archive-${m}.json`;
+      const blob = new Blob([JSON.stringify(archiveObj, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = fileName; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      // also offer CSV
+      const csv = toCSV(filtered); const blob2 = new Blob([csv], {type:'text/csv'}); const url2 = URL.createObjectURL(blob2); const a2 = document.createElement('a'); a2.href = url2; a2.download = `reports-${m}.csv`; document.body.appendChild(a2); a2.click(); a2.remove(); URL.revokeObjectURL(url2);
+      alert('Archive downloads ready. To remove archived weeks from the public dataset, update assets/reports/reports.json in the repo with the remaining weeks.');
+    });
+  });
+
 })();
 </script>
 </body>
