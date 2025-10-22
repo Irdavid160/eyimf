@@ -1,3 +1,16 @@
 [
- 
+  {
+    "weekLabel": "25-10-19",
+    "date": "2025-10-20",
+    "adultAttendance": 0,
+    "childrenAttendance": 0,
+    "teenAttendance": 0,
+    "confessions": 0,
+    "baptisms": 0,
+    "foodPacks": 0,
+    "donations": "250.00",
+    "expenses": "0.00",
+    "notes": "We received $250.00 donation for the food program. We will be purchasing and dispensing the food packages next week.",
+    "expenseDetailsUrl": ""
+  }
 ]
