@@ -60,6 +60,14 @@
     display: block;
   }
 
+  /* Specific adjustment for the Adult Services image:
+     move the image content slightly to reveal more of the bottom area.
+     We add 1in to the y-position so the visible crop shifts downward.
+  */
+  .card img.adult-photo {
+    object-position: center calc(20% + 1in);
+  }
+
   .card h3 { margin: 0 0 8px; font-size: 1rem; }
   .card p { margin: 0; color: #444; font-size: .95rem; }
   .card .btn-link { margin-top: 12px; align-self: flex-start; }
@@ -154,7 +162,8 @@
     <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWM7yLdYblLB6dcpWtGK5BGj&si=0uF9HC8dHlPjuyav"
        class="card"
        style="text-decoration:none;color:inherit;display:block;">
-      <img src="assets/photos/adultservice4.jpg"
+      <!-- added class="adult-photo" so the CSS rule above can shift the image by 1in -->
+      <img class="adult-photo" src="assets/photos/adultservice4.jpg"
            alt="Adult Church service in the Philippines"
            style="width:100%;border-radius:8px;margin-bottom:10px;">
       <h3>Adult Church Services (Philippines)</h3>
@@ -189,7 +198,7 @@
        alt="Daily Devotions"
        style="width:100%;border-radius:8px;margin-bottom:10px;">
   <h3>Daily Devotions</h3>
-  <p>These Daily Devotions are more than gentle reflections; they are spiritual wake-up calls. In 3–4 minutes each, they examine the heart, align us with God’s Word, and call believers to live with holy conviction.</p>
+  <p>These Daily Devotions are more than gentle reflections; they are spiritual wake-up calls. In 3–4 minutes each, they examine the heart, align us with God’s Word, and call believers to live wit[...]
 </a>
     <!-- My Philippine Adventures — matched to the other playlist cards -->
 <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWNb6JX4EX3t7hy_0UJ8ePLU&si=4PXMi_x3-IXclwt_"
@@ -248,6 +257,6 @@
   border-radius:4px;
   vertical-align:middle;
 }
-</style
+</style>
 </body>
 </html>
