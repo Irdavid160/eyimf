@@ -45,7 +45,10 @@
     border-radius: 8px;
     padding: 10px;
     box-sizing: border-box;
-    height: 100%;
+
+    /* remove height:100% which can cause layout/overflow issues in grid */
+    min-height: 0;      /* allow children to shrink inside the grid/flex item */
+    overflow: hidden;   /* prevent content from spilling visually into neighbors */
   }
 
   /* Thumbnail image */
@@ -60,9 +63,7 @@
     display: block;
   }
 
-  /* Adult Services image — split the middle between the original and the previous too-high position:
-     set the crop to center calc(20% - 1in) which is halfway between 20% and 20% - 2in.
-  */
+  /* Adult Services image — split the middle between the original and the previous too-high position */
   .card img.adult-photo {
     object-position: center calc(20% - 1in);
   }
@@ -70,11 +71,34 @@
   .card h3 { margin: 0 0 8px; font-size: 1rem; }
   .card p { margin: 0; color: #444; font-size: .95rem; }
   .card .btn-link { margin-top: 12px; align-self: flex-start; }
+
+  /* Header styles */
+  .site-header {
+    background: #faf5ef;
+    border-bottom: 1px solid #eee;
+    padding: 18px 0;
+  }
+
+  .page-title {
+    text-align: center;
+    font-weight: 700;           /* bold title */
+    margin: 0 0 8px;
+    font-size: 1.6rem;
+    color: #4b2e05;
+  }
+
+  .top-links { display:flex; justify-content:center; gap:14px; margin:0; padding:0; }
+  .top-links a { color:#4b2e05; text-decoration:none; padding:6px 8px; border-radius:6px; font-weight:500; }
+  .top-links a:hover { background: rgba(75,46,5,0.06); }
+
+  .navbar .brand .name { font-weight:600; color:#333; }
+  .navlinks a { color:#4b2e05; text-decoration:none; margin-right:12px; }
+
+  .badge-new { margin-left:8px; padding:2px 6px; font-size:0.8rem; color:#fff; background:#e84545; border-radius:4px; vertical-align:middle; }
 </style>
   
 </head>
 <body>
- <!-- Replace the existing <nav> and header area in media.html with this block -->
 <nav>
   <div class="container navbar">
     <div class="brand">
@@ -96,52 +120,7 @@
   </div>
 </header>
 
-<style>
-/* Header styles (paste into media.html's <style> block or your global style.css) */
-.site-header {
-  background: #faf5ef;
-  border-bottom: 1px solid #eee;
-  padding: 18px 0;
-}
-
-.page-title {
-  text-align: center;
-  font-weight: 700;           /* bold title */
-  margin: 0 0 8px;
-  font-size: 1.6rem;
-  color: #4b2e05;
-}
-
-.top-links {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-}
-
-.top-links a {
-  color: #4b2e05;
-  text-decoration: none;
-  padding: 6px 8px;
-  border-radius: 6px;
-  font-weight: 500;
-}
-
-.top-links a:hover {
-  background: rgba(75, 46, 5, 0.06);
-}
-
-/* keep the small-brand/nav look consistent with other pages */
-.navbar .brand .name {
-  font-weight: 600;
-  color: #333;
-}
-.navlinks a { color:#4b2e05; text-decoration:none; margin-right:12px; }
-</style>
-   <!-- Replace the existing <section aria-labelledby="playlists"> ... </section> with this corrected version.
-    Note: both cards are inside the same .grid container (your earlier snippet had an extra closing </div>). -->
+<main>
 <section aria-labelledby="playlists">
  <h2 id="playlists" style="font-size:1.1rem;margin:0 0 10px;text-align:center">Playlists</h2>
 
@@ -197,7 +176,7 @@
        alt="Daily Devotions"
        style="width:100%;border-radius:8px;margin-bottom:10px;">
   <h3>Daily Devotions</h3>
-  <p>These Daily Devotions are more than gentle reflections; they are spiritual wake-up calls. In 3–4 minutes each, they examine the heart, align us with God’s Word, and call believers to live wit[...]
+  <p>These Daily Devotions are more than gentle reflections; they are spiritual wake-up calls. In 3–4 minutes each, they examine the heart, align us with God’s Word, and call believers to live with...</p>
 </a>
     <!-- My Philippine Adventures — matched to the other playlist cards -->
 <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWNb6JX4EX3t7hy_0UJ8ePLU&si=4PXMi_x3-IXclwt_"
@@ -212,8 +191,8 @@
 </a>
 </div>
 </section>
-  </main>
-
+</main>
+  
   <script>
 (async function showYouTubeBadges() {
   try {
@@ -246,16 +225,5 @@
     © <span id="yr"></span> Examine Yourselves International Mission Foundation
     <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
   </footer>
-  <style>
-.badge-new {
-  margin-left:8px;
-  padding:2px 6px;
-  font-size:0.8rem;
-  color:#fff;
-  background:#e84545;
-  border-radius:4px;
-  vertical-align:middle;
-}
-</style>
 </body>
 </html>
