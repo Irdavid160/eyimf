@@ -43,34 +43,40 @@
         These pictures are to give you a face that you can pray for. I pray that you feel the urging of the Spirit to join with us in earnest prayer for the souls of our community.
       </p>
 
-           <!-- Gallery thumbnails (these are the only links now) -->
-      <div class="gallery-grid" id="gallery">
-        <!-- Adult Service (thumbnail provided) -->
-        <figure class="gallery-item" data-category="adult" tabindex="0" aria-label="Open Adult Service images">
-          <img src="assets/photos/adultservice1.jpg" alt="Adult Service" loading="lazy" data-full="assets/photos/adultservice1.jpg">
-          <figcaption class="gallery-caption">Adult Church — Sunday Service</figcaption>
-        </figure>
+     <!-- Gallery thumbnails (these are the only visible links) -->
+<div class="gallery-grid" id="gallery">
+  <!-- Adult Service: list all images for this gallery in data-gallery -->
+  <figure class="gallery-item" data-category="adult" tabindex="0"
+          data-gallery="assets/photos/adultservice1.jpg,assets/photos/adultservice2.jpg,assets/photos/adultservice3.JPEG"
+          aria-label="Open Adult Service images">
+    <img src="assets/photos/adultservice1.jpg" alt="Adult Service" loading="lazy">
+    <figcaption class="gallery-caption">Adult Church — Sunday Service</figcaption>
+  </figure>
 
-        <!-- Teen Outreach (thumbnail provided) -->
-        <figure class="gallery-item" data-category="teen" tabindex="0" aria-label="Open Teen Outreach images">
-          <img src="assets/photos/youth.JPEG" alt="Teen Outreach" loading="lazy" data-full="assets/photos/youth.JPEG">
-          <figcaption class="gallery-caption">Teen Outreach — Street Evangelism</figcaption>
-        </figure>
+  <!-- Teen Outreach -->
+  <figure class="gallery-item" data-category="teen" tabindex="0"
+          data-gallery="assets/photos/youth.JPEG,assets/photos/youth2.JPEG,assets/photos/youth3.JPEG,assets/photos/youth4.JPEG,assets/photos/youth5.JPEG,assets/photos/youth6.JPEG,assets/photos/youth7.JPEG"
+          aria-label="Open Teen Outreach images">
+    <img src="assets/photos/youth.JPEG" alt="Teen Outreach" loading="lazy">
+    <figcaption class="gallery-caption">Teen Outreach — Street Evangelism</figcaption>
+  </figure>
 
-        <!-- Children's Church (thumbnail provided) -->
-        <figure class="gallery-item" data-category="children" tabindex="0" aria-label="Open Children's Church images">
-          <img src="assets/photos/childrenschurch1.jpg" alt="Children's Church" loading="lazy" data-full="assets/photos/childrenschurch1.jpg">
-          <figcaption class="gallery-caption">Children’s Church — Memory Verse</figcaption>
-        </figure>
+  <!-- Children's Church -->
+  <figure class="gallery-item" data-category="children" tabindex="0"
+          data-gallery="assets/photos/childrenschurch1.jpg,assets/photos/childrenschurch2.jpg,assets/photos/childrenschurch3.png,assets/photos/childrenschurch4.jpg,assets/photos/childrenschurch5.jpg"
+          aria-label="Open Children's Church images">
+    <img src="assets/photos/childrenschurch1.jpg" alt="Children's Church" loading="lazy">
+    <figcaption class="gallery-caption">Children’s Church — Memory Verse</figcaption>
+  </figure>
 
-        <!-- Food Distribution (uses same thumbnail as Children's Church per your instruction) -->
-        <figure class="gallery-item" data-category="food" tabindex="0" aria-label="Open Food Distribution images">
-          <img src="assets/photos/feeding2.jpg" alt="Food Distribution" loading="lazy" data-full="assets/photos/feeding2.jpg">
-          <figcaption class="gallery-caption">Food Distribution — Community Meal</figcaption>
-        </figure>
-
-        <!-- Add more image items below. These thumbnails are the only gallery links now -->
-      </div>
+  <!-- Food Distribution -->
+  <figure class="gallery-item" data-category="food" tabindex="0"
+          data-gallery="assets/photos/feeding1.jpg,assets/photos/feeding2.jpg,assets/photos/feeding3.jpg,assets/photos/feeding4.jpg,assets/photos/feeding5.jpg,assets/photos/feeding6.jpg,assets/photos/feeding7.PNG,assets/photos/feeding8.PNG,assets/photos/feeding9.jpg"
+          aria-label="Open Food Distribution images">
+    <img src="assets/photos/childrenschurch1.jpg" alt="Food Distribution" loading="lazy">
+    <figcaption class="gallery-caption">Food Distribution — Community Meal</figcaption>
+  </figure>
+</div>
     </div>
   </section>
 
