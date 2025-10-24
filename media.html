@@ -5,38 +5,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Media • EYIMF</title>
   <link rel="stylesheet" href="style.css" />
+<!-- Add / replace the following CSS inside your <style> block -->
 <style>
   :root {
-    --card-width: 300px;   /* width of each card — change to 280px or 320px if you prefer */
-    --thumb-height: 160px; /* image height (keeps previous setting) */
+    --card-width: 300px;
+    --thumb-height: 160px;
+    --card-height: 360px; /* target equal card height — tweak as needed */
     --gap: 12px;
   }
 
-  /* Grid: 3 fixed-width columns, centered */
   .grid {
     display: grid;
     grid-template-columns: repeat(3, var(--card-width));
     gap: var(--gap);
-    justify-content: center; /* center the 3 columns inside the container */
-    align-items: start;
+    justify-content: center;
+    align-items: start; /* keep start so rows size by content, but card height forces uniformity */
   }
 
-  /* 2 columns on medium screens */
-  @media (max-width: 900px) {
-    .grid {
-      grid-template-columns: repeat(2, min(var(--card-width), 1fr));
-      justify-content: center;
-    }
-  }
-
-  /* 1 column on small screens */
-  @media (max-width: 600px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Card container */
+  /* Card container — use fixed height so all cards are the same size */
   .card {
     display: flex;
     flex-direction: column;
@@ -46,12 +32,12 @@
     padding: 10px;
     box-sizing: border-box;
 
-    /* remove height:100% which can cause layout/overflow issues in grid */
-    min-height: 0;      /* allow children to shrink inside the grid/flex item */
-    overflow: hidden;   /* prevent content from spilling visually into neighbors */
+    height: var(--card-height); /* enforce uniform height */
+    min-height: 0;              /* allow inner flex children to shrink correctly */
+    overflow: hidden;           /* clip any visual overflow from children */
   }
 
-  /* Thumbnail image */
+  /* Thumbnail image remains fixed-height at the top */
   .card img,
   .media-card img {
     width: 100%;
@@ -61,47 +47,26 @@
     border-radius: 8px;
     margin-bottom: 10px;
     display: block;
+    flex-shrink: 0; /* don't let the image be squished by flex */
   }
 
-  /* Adult Services image — split the middle between the original and the previous too-high position */
-  .card img.adult-photo {
-    object-position: center calc(20% - 1in);
+  /* The card-body fills remaining vertical space and scrolls if needed */
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 auto;   /* take remaining height inside .card */
+    min-height: 0;    /* enables proper scrolling in children on some browsers */
+    overflow: hidden; /* prevent body children from escaping the box */
   }
 
-  .card h3 { margin: 0 0 8px; font-size: 1rem; }
-  .card p { margin: 0; color: #444; font-size: .95rem; }
-  .card .btn-link { margin-top: 12px; align-self: flex-start; }
-  /* Micro Devotions: show entire image (no crop) */
-.card img.micro-photo {
-  height: var(--thumb-height); /* keeps the same thumbnail height as other cards */
-  object-fit: contain;         /* show the whole image instead of cropping */
-  background: #fff;            /* fills letterbox areas with white */
-  object-position: center;
-  display: block;
-}
-  /* Header styles */
-  .site-header {
-    background: #faf5ef;
-    border-bottom: 1px solid #eee;
-    padding: 18px 0;
+  .card-body .card-text {
+    overflow: auto; /* allow the description to scroll if it's too long */
+    font-size: .95rem;
+    color: #444;
   }
 
-  .page-title {
-    text-align: center;
-    font-weight: 700;           /* bold title */
-    margin: 0 0 8px;
-    font-size: 1.6rem;
-    color: #4b2e05;
-  }
-
-  .top-links { display:flex; justify-content:center; gap:14px; margin:0; padding:0; }
-  .top-links a { color:#4b2e05; text-decoration:none; padding:6px 8px; border-radius:6px; font-weight:500; }
-  .top-links a:hover { background: rgba(75,46,5,0.06); }
-
-  .navbar .brand .name { font-weight:600; color:#333; }
-  .navlinks a { color:#4b2e05; text-decoration:none; margin-right:12px; }
-
-  .badge-new { margin-left:8px; padding:2px 6px; font-size:0.8rem; color:#fff; background:#e84545; border-radius:4px; vertical-align:middle; }
+  .card h3 { margin: 0; font-size: 1rem; }
 </style>
   
 </head>
