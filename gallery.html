@@ -8,38 +8,18 @@
   <link rel="stylesheet" href="style.css?v=gallery-1">
   <style>
     /* Minimal gallery-specific styles (you can move these into style.css) */
-    .filters { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0; }
-    .filters button { padding:8px 12px; border:1px solid #ccc; background:#fff; border-radius:6px; cursor:pointer; }
-    .filters button.active { background:#333; color:#fff; border-color:#333; }
-
-    .category-tiles { display:flex; gap:12px; flex-wrap:wrap; margin:12px 0 18px; }
-    .category-tile { display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:8px; background:#fff; border:1px solid #ddd; cursor:pointer; min-width:160px; text-align:center; }
-    .category-tile:focus { outline:3px solid #a0c4ff; }
-
-    .gallery-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+    .gallery-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:12px; margin-top:12px; }
     .gallery-item { position:relative; overflow:hidden; border-radius:8px; background:#f7f7f7; cursor:pointer; }
     .gallery-item img { width:100%; height:180px; object-fit:cover; display:block; }
     .gallery-caption { padding:8px; font-size:14px; }
 
-    /* Modal (single image) */
+    /* Modal */
     .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.75); z-index:9999; }
     .modal.open { display:flex; }
     .modal-content { max-width:90%; max-height:90%; position:relative; }
     .modal-content img { max-width:100%; max-height:100%; display:block; border-radius:6px; }
     .modal-close { position:absolute; top:18px; right:18px; color:#fff; background:transparent; border:none; font-size:20px; cursor:pointer; }
-
-    /* Category modal / carousel */
-    .cat-modal .modal-content { max-width:1100px; width:95%; padding:18px; background:transparent; display:flex; flex-direction:column; gap:12px; align-items:center; }
-    .cat-carousel { display:flex; gap:12px; overflow:hidden; align-items:center; justify-content:center; width:100%; }
-    .cat-carousel img { max-height:70vh; max-width:100%; border-radius:6px; display:block; }
-    .carousel-controls { display:flex; gap:8px; align-items:center; justify-content:center; width:100%; }
-    .carousel-btn { background:rgba(255,255,255,0.06); color:#fff; border:1px solid rgba(255,255,255,0.2); padding:8px 12px; border-radius:6px; cursor:pointer; }
-    .carousel-btn:focus { outline:3px solid #a0c4ff; }
-    .carousel-indicator { color:#fff; opacity:.9; font-size:14px; }
-    @media (max-width:640px) {
-      .category-tile { min-width:120px; padding:10px; }
-      .gallery-item img { height:140px; }
-    }
+    @media (max-width:640px) { .gallery-item img { height:140px; } }
   </style>
 </head>
 <body>
@@ -63,46 +43,30 @@
         These pictures are to give you a face that you can pray for. I pray that you feel the urging of the Spirit to join with us in earnest prayer for the souls of our community.
       </p>
 
-      <!-- Category tiles: these open an in-page modal showing only images for that category -->
-      <div class="category-tiles" id="categoryTiles" aria-label="Gallery categories">
-        <button class="category-tile" data-cat="adult" aria-haspopup="dialog">Adult Service</button>
-        <button class="category-tile" data-cat="teen" aria-haspopup="dialog">Teen Outreach</button>
-        <button class="category-tile" data-cat="children" aria-haspopup="dialog">Children's Church</button>
-        <button class="category-tile" data-cat="food" aria-haspopup="dialog">Food Distribution</button>
-      </div>
-
-      <!-- Optional filters (keeps previous functionality) -->
-      <div class="filters" id="filters" aria-hidden="false">
-        <button data-cat="all" class="active">All</button>
-        <button data-cat="adult">Adult Church Services</button>
-        <button data-cat="teen">Teen Outreach</button>
-        <button data-cat="children">Children's Church</button>
-        <button data-cat="food">Food Distribution</button>
-      </div>
-
+      <!-- Gallery thumbnails (these are the only links now) -->
       <div class="gallery-grid" id="gallery">
         <!-- Example items: copy/paste and change src & data-category accordingly -->
-        <figure class="gallery-item" data-category="adult" tabindex="0">
-          <img src="assets/photos/gallery/adultservice1.jpg" alt="Adult Service 1" loading="lazy" data-full="assets/photos/gallery/adultservice1.jpg">
+        <figure class="gallery-item" data-category="adult" tabindex="0" aria-label="Open Adult Service images">
+          <img src="assets/photos/gallery/adult_service1.jpg" alt="Adult Service 1" loading="lazy" data-full="assets/photos/gallery/adult_service1.jpg">
           <figcaption class="gallery-caption">Adult Church — Sunday Service</figcaption>
         </figure>
 
-        <figure class="gallery-item" data-category="teen" tabindex="0">
-          <img src="assets/photos/gallery/youth.JPEG" alt="Teen Outreach 1" loading="lazy" data-full="assets/photos/gallery/youth.JPEG">
+        <figure class="gallery-item" data-category="teen" tabindex="0" aria-label="Open Teen Outreach images">
+          <img src="assets/photos/gallery/teen_outreach1.jpg" alt="Teen Outreach 1" loading="lazy" data-full="assets/photos/gallery/teen_outreach1.jpg">
           <figcaption class="gallery-caption">Teen Outreach — Street Evangelism</figcaption>
         </figure>
 
-        <figure class="gallery-item" data-category="children" tabindex="0">
+        <figure class="gallery-item" data-category="children" tabindex="0" aria-label="Open Children's Church images">
           <img src="assets/photos/gallery/children1.jpg" alt="Children's Church" loading="lazy" data-full="assets/photos/gallery/children1.jpg">
           <figcaption class="gallery-caption">Children’s Church — Memory Verse</figcaption>
         </figure>
 
-        <figure class="gallery-item" data-category="food" tabindex="0">
+        <figure class="gallery-item" data-category="food" tabindex="0" aria-label="Open Food Distribution images">
           <img src="assets/photos/gallery/food_dist1.jpg" alt="Food Distribution" loading="lazy" data-full="assets/photos/gallery/food_dist1.jpg">
           <figcaption class="gallery-caption">Food Distribution — Community Meal</figcaption>
         </figure>
 
-        <!-- Add more image items below. Use data-category values that match the category tiles -->
+        <!-- Add more image items below. These thumbnails are the only gallery links now -->
       </div>
     </div>
   </section>
@@ -112,22 +76,6 @@
     <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
     <div class="modal-content" id="modalContent">
       <img src="" alt="" id="modalImg">
-    </div>
-  </div>
-
-  <!-- Category modal (carousel-like) -->
-  <div class="modal cat-modal" id="catModal" aria-hidden="true" role="dialog" aria-modal="true">
-    <button class="modal-close" id="catModalClose" aria-label="Close category viewer">✕</button>
-    <div class="modal-content" id="catModalContent" role="document">
-      <div class="cat-carousel" id="catCarousel" tabindex="0" aria-live="polite" aria-atomic="true">
-        <!-- image element will be injected here -->
-      </div>
-
-      <div class="carousel-controls" id="catControls" aria-hidden="false">
-        <button class="carousel-btn" id="catPrev" aria-label="Previous image">‹ Prev</button>
-        <div class="carousel-indicator" id="catIndicator">0 / 0</div>
-        <button class="carousel-btn" id="catNext" aria-label="Next image">Next ›</button>
-      </div>
     </div>
   </div>
 
@@ -145,192 +93,78 @@
   </footer>
 
   <script>
-    // ------- Filter logic (guarded) -------
-    const filters = document.getElementById('filters');
+    // Single-image modal logic (gallery thumbnails are the only links)
     const gallery = document.getElementById('gallery');
-
-    if (filters && gallery) {
-      filters.addEventListener('click', (e) => {
-        const btn = e.target.closest('button');
-        if (!btn) return;
-        const cat = btn.dataset.cat;
-        // toggle active
-        filters.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        // show/hide items
-        gallery.querySelectorAll('.gallery-item').forEach(item => {
-          if (cat === 'all' || item.dataset.category === cat) {
-            item.style.display = '';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    }
-
-    // ------- Single-image modal logic -------
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modalImg');
     const modalClose = document.getElementById('modalClose');
 
+    let lastFocus = null;
+
     if (gallery) {
+      // click to open
       gallery.addEventListener('click', (e) => {
         const fig = e.target.closest('.gallery-item');
         if (!fig) return;
         const img = fig.querySelector('img');
         if (!img) return;
-        // show full image in the single-image modal
-        modalImg.src = img.dataset.full || img.src;
-        modalImg.alt = img.alt || '';
-        openModal(modal, modalClose);
+        openImageModal(img, fig);
       });
 
-      // allow opening single-image modal by keyboard (Enter/Space) when a gallery item has focus
+      // keyboard: Enter/Space opens focused gallery item
       gallery.addEventListener('keydown', (e) => {
         if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.gallery-item')) {
           e.preventDefault();
           const fig = e.target.closest('.gallery-item');
           const img = fig.querySelector('img');
-          modalImg.src = img.dataset.full || img.src;
-          modalImg.alt = img.alt || '';
-          openModal(modal, modalClose);
+          openImageModal(img, fig);
         }
       });
     }
 
-    modalClose.addEventListener('click', () => closeModal(modal, modalClose));
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal, modalClose); });
-
-    // ------- Category modal / carousel logic -------
-    const catModal = document.getElementById('catModal');
-    const catModalClose = document.getElementById('catModalClose');
-    const catCarousel = document.getElementById('catCarousel');
-    const catPrev = document.getElementById('catPrev');
-    const catNext = document.getElementById('catNext');
-    const catIndicator = document.getElementById('catIndicator');
-
-    let catImages = []; // array of {src, alt}
-    let catIndex = 0;
-    let lastFocus = null;
-
-    function renderCatImage() {
-      catCarousel.innerHTML = '';
-      if (!catImages.length) {
-        catCarousel.textContent = 'No images available';
-        catIndicator.textContent = '0 / 0';
-        return;
-      }
-      const data = catImages[catIndex];
-      const img = document.createElement('img');
-      img.src = data.src;
-      img.alt = data.alt || '';
-      img.loading = 'lazy';
-      catCarousel.appendChild(img);
-      catIndicator.textContent = (catIndex + 1) + ' / ' + catImages.length;
-    }
-
-    function openCategoryModal(cat, triggerEl) {
+    function openImageModal(imgEl, triggerEl) {
       lastFocus = triggerEl || document.activeElement;
-      // gather images from gallery
-      const items = Array.from(document.querySelectorAll('.gallery-item')).filter(i => i.dataset.category === cat);
-      catImages = items.map(item => {
-        const img = item.querySelector('img');
-        return { src: img.dataset.full || img.src, alt: img.alt || '' };
-      });
-      catIndex = 0;
-      renderCatImage();
-      openModal(catModal, catModalClose, true);
-      // focus for keyboard nav
-      catModalClose.focus();
+      modalImg.src = imgEl.dataset.full || imgEl.src;
+      modalImg.alt = imgEl.alt || '';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      // focus management + small trap
+      trapFocus(modal, modalClose);
+      modalClose.focus();
     }
 
-    function showPrev() {
-      if (!catImages.length) return;
-      catIndex = (catIndex - 1 + catImages.length) % catImages.length;
-      renderCatImage();
-    }
-    function showNext() {
-      if (!catImages.length) return;
-      catIndex = (catIndex + 1) % catImages.length;
-      renderCatImage();
-    }
-
-    // wire category tiles to open the category modal
-    document.querySelectorAll('.category-tile').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const cat = btn.dataset.cat;
-        if (!cat) return;
-        openCategoryModal(cat, btn);
-      });
-      btn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const cat = btn.dataset.cat;
-          openCategoryModal(cat, btn);
-        }
-      });
-    });
-
-    catPrev.addEventListener('click', showPrev);
-    catNext.addEventListener('click', showNext);
-    catModalClose.addEventListener('click', () => closeModal(catModal, catModalClose));
-
-    // close on background click for category modal
-    catModal.addEventListener('click', (e) => { if (e.target === catModal) closeModal(catModal, catModalClose); });
-
-    // ------- Shared modal utilities (open/close, focus management, keyboard handling) -------
-    function openModal(modalEl, closeButton, isCategoryModal = false) {
-      lastFocus = document.activeElement;
-      modalEl.classList.add('open');
-      modalEl.setAttribute('aria-hidden', 'false');
-      // trap focus: simple implementation
-      trapFocus(modalEl, closeButton);
-
-      // keyboard handlers: Esc closes, arrows navigate when category modal open
-      const keyHandler = (e) => {
-        if (e.key === 'Escape') {
-          closeModal(modalEl, closeButton);
-        } else if (isCategoryModal) {
-          if (e.key === 'ArrowLeft') showPrev();
-          if (e.key === 'ArrowRight') showNext();
-        }
-      };
-      modalEl.__keyHandler = keyHandler;
-      document.addEventListener('keydown', keyHandler);
-    }
-
-    function closeModal(modalEl, closeButton) {
-      modalEl.classList.remove('open');
-      modalEl.setAttribute('aria-hidden', 'true');
-      // clear any injected image for cat modal
-      if (modalEl === catModal) {
-        catCarousel.innerHTML = '';
-        catImages = [];
-        catIndex = 0;
-      } else if (modalEl === modal) {
-        modalImg.src = '';
-      }
-      // remove keyboard handler
-      if (modalEl.__keyHandler) {
-        document.removeEventListener('keydown', modalEl.__keyHandler);
-        delete modalEl.__keyHandler;
-      }
+    function closeImageModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.src = '';
       // restore focus
       try { if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus(); } catch (err) {}
+      // remove trap handlers
+      if (modal.__removeTabTrap) modal.__removeTabTrap();
+      if (modal.__keyHandler) {
+        document.removeEventListener('keydown', modal.__keyHandler);
+        delete modal.__keyHandler;
+      }
     }
 
-    // very small focus trap: keep Tab inside the modal's focusable elements
+    modalClose.addEventListener('click', closeImageModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeImageModal(); });
+
+    // Esc closes modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeImageModal();
+    });
+
+    // small focus trap implementation
     function trapFocus(modalEl, closeButton) {
-      const focusablesSelector = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex], [contenteditable]';
-      const focusables = Array.from(modalEl.querySelectorAll(focusablesSelector)).filter(el => el.offsetParent !== null);
+      const focusablesSelector = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      let focusables = Array.from(modalEl.querySelectorAll(focusablesSelector)).filter(el => el.offsetParent !== null);
       if (focusables.length === 0) {
         closeButton.setAttribute('tabindex', '0');
-        focusables.push(closeButton);
+        focusables = [closeButton];
       }
-      // ensure first focusable gets focus
       focusables[0].focus();
 
-      // handle Tab cycling
       function handleTab(e) {
         if (e.key !== 'Tab') return;
         const first = focusables[0];
@@ -345,29 +179,21 @@
       }
       modalEl.__tabHandler = handleTab;
       document.addEventListener('keydown', handleTab);
-      // remove handler on close
+
+      // keep reference to allow cleanup when modal is closed
       modalEl.__removeTabTrap = () => {
         document.removeEventListener('keydown', handleTab);
         delete modalEl.__tabHandler;
         delete modalEl.__removeTabTrap;
       };
-      // ensure removal when modal closed
-      const observer = new MutationObserver(() => {
-        if (!modalEl.classList.contains('open')) {
-          if (modalEl.__removeTabTrap) modalEl.__removeTabTrap();
-          observer.disconnect();
-        }
-      });
-      observer.observe(modalEl, { attributes: true, attributeFilter: ['class'] });
-    }
 
-    // ensure modal(s) close on Escape when open (safety in case handlers didn't attach)
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (modal.classList.contains('open')) closeModal(modal, modalClose);
-        if (catModal.classList.contains('open')) closeModal(catModal, catModalClose);
-      }
-    });
+      // key handler for Esc (ensure closure if needed)
+      const keyHandler = (e) => {
+        if (e.key === 'Escape') closeImageModal();
+      };
+      modalEl.__keyHandler = keyHandler;
+      document.addEventListener('keydown', keyHandler);
+    }
   </script>
 </body>
 </html>
