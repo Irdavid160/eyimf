@@ -60,12 +60,11 @@
     display: block;
   }
 
-  /* Adjustment for the Adult Services image:
-     previously moved down 1in; now move up twice that distance (i.e. 2in upward)
-     by subtracting 2in from the baseline object-position.
+  /* Adult Services image — split the middle between the original and the previous too-high position:
+     set the crop to center calc(20% - 1in) which is halfway between 20% and 20% - 2in.
   */
   .card img.adult-photo {
-    object-position: center calc(20% - 2in);
+    object-position: center calc(20% - 1in);
   }
 
   .card h3 { margin: 0 0 8px; font-size: 1rem; }
@@ -162,7 +161,7 @@
     <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWM7yLdYblLB6dcpWtGK5BGj&si=0uF9HC8dHlPjuyav"
        class="card"
        style="text-decoration:none;color:inherit;display:block;">
-      <!-- class="adult-photo" lets the CSS above shift the crop upward by 2in -->
+      <!-- class="adult-photo" lets the CSS above shift the crop to the midpoint -->
       <img class="adult-photo" src="assets/photos/adultservice4.jpg"
            alt="Adult Church service in the Philippines"
            style="width:100%;border-radius:8px;margin-bottom:10px;">
