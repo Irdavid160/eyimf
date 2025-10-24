@@ -13,13 +13,30 @@
     .gallery-item img { width:100%; height:180px; object-fit:cover; display:block; }
     .gallery-caption { padding:8px; font-size:14px; }
 
-    /* Modal */
-    .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.75); z-index:9999; }
+    /* Modal base */
+    .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.75); z-index:9999; padding:16px; }
     .modal.open { display:flex; }
-    .modal-content { max-width:90%; max-height:90%; position:relative; }
-    .modal-content img { max-width:100%; max-height:100%; display:block; border-radius:6px; }
+    .modal-content { width:100%; max-width:1100px; max-height:90vh; background:transparent; display:flex; flex-direction:column; gap:12px; align-items:center; }
     .modal-close { position:absolute; top:18px; right:18px; color:#fff; background:transparent; border:none; font-size:20px; cursor:pointer; }
-    @media (max-width:640px) { .gallery-item img { height:140px; } }
+
+    /* Main displayed image */
+    .cat-main { display:flex; align-items:center; justify-content:center; width:100%; background:transparent; }
+    .cat-main img { max-height:70vh; max-width:100%; border-radius:6px; object-fit:contain; display:block; }
+
+    /* Thumbnails strip */
+    .thumb-strip { display:flex; gap:8px; overflow-x:auto; padding:8px 6px; width:100%; }
+    .thumb-strip img { height:72px; border-radius:6px; cursor:pointer; opacity:.7; border:2px solid transparent; }
+    .thumb-strip img.active { opacity:1; border-color:#fff; }
+
+    /* Controls */
+    .carousel-controls { display:flex; gap:8px; align-items:center; justify-content:center; width:100%; color:#fff; }
+    .carousel-btn { background:rgba(255,255,255,0.06); color:#fff; border:1px solid rgba(255,255,255,0.2); padding:8px 12px; border-radius:6px; cursor:pointer; }
+    .carousel-indicator { color:#fff; opacity:.9; font-size:14px; }
+
+    @media (max-width:640px) {
+      .gallery-item img { height:140px; }
+      .thumb-strip img { height:52px; }
+    }
   </style>
 </head>
 <body>
@@ -43,44 +60,60 @@
         These pictures are to give you a face that you can pray for. I pray that you feel the urging of the Spirit to join with us in earnest prayer for the souls of our community.
       </p>
 
-     <!-- Gallery thumbnails (these are the only visible links) -->
-<div class="gallery-grid" id="gallery">
-  <!-- Adult Service: list all images for this gallery in data-gallery -->
-  <figure class="gallery-item" data-category="adult" tabindex="0"
-          data-gallery="assets/photos/adultservice1.jpg,assets/photos/adultservice2.jpg,assets/photos/adultservice3.JPEG"
-          aria-label="Open Adult Service images">
-    <img src="assets/photos/adultservice1.jpg" alt="Adult Service" loading="lazy">
-    <figcaption class="gallery-caption">Adult Church — Sunday Service</figcaption>
-  </figure>
+      <!-- Gallery thumbnails: each figure has data-gallery (CSV list of image URLs) -->
+      <div class="gallery-grid" id="gallery">
+        <figure class="gallery-item" data-category="adult" tabindex="0"
+                data-gallery="assets/photos/adultservice1.jpg,assets/photos/adultservice2.jpg,assets/photos/adultservice3.JPEG"
+                aria-label="Open Adult Service images">
+          <img src="assets/photos/adultservice1.jpg" alt="Adult Service" loading="lazy">
+          <figcaption class="gallery-caption">Adult Church — Sunday Service</figcaption>
+        </figure>
 
-  <!-- Teen Outreach -->
-  <figure class="gallery-item" data-category="teen" tabindex="0"
-          data-gallery="assets/photos/youth.JPEG,assets/photos/youth2.JPEG,assets/photos/youth3.JPEG,assets/photos/youth4.JPEG,assets/photos/youth5.JPEG,assets/photos/youth6.JPEG,assets/photos/youth7.JPEG"
-          aria-label="Open Teen Outreach images">
-    <img src="assets/photos/youth.JPEG" alt="Teen Outreach" loading="lazy">
-    <figcaption class="gallery-caption">Teen Outreach — Street Evangelism</figcaption>
-  </figure>
+        <figure class="gallery-item" data-category="teen" tabindex="0"
+                data-gallery="assets/photos/youth.JPEG,assets/photos/youth2.JPEG,assets/photos/youth3.JPEG,assets/photos/youth4.JPEG,assets/photos/youth5.JPEG,assets/photos/youth6.JPEG,assets/photos/youth7.JPEG"
+                aria-label="Open Teen Outreach images">
+          <img src="assets/photos/youth.JPEG" alt="Teen Outreach" loading="lazy">
+          <figcaption class="gallery-caption">Teen Outreach — Street Evangelism</figcaption>
+        </figure>
 
-  <!-- Children's Church -->
-  <figure class="gallery-item" data-category="children" tabindex="0"
-          data-gallery="assets/photos/childrenschurch1.jpg,assets/photos/childrenschurch2.jpg,assets/photos/childrenschurch3.png,assets/photos/childrenschurch4.jpg,assets/photos/childrenschurch5.jpg"
-          aria-label="Open Children's Church images">
-    <img src="assets/photos/childrenschurch1.jpg" alt="Children's Church" loading="lazy">
-    <figcaption class="gallery-caption">Children’s Church — Memory Verse</figcaption>
-  </figure>
+        <figure class="gallery-item" data-category="children" tabindex="0"
+                data-gallery="assets/photos/childrenschurch1.jpg,assets/photos/childrenschurch2.jpg,assets/photos/childrenschurch3.png,assets/photos/childrenschurch4.jpg,assets/photos/childrenschurch5.jpg"
+                aria-label="Open Children's Church images">
+          <img src="assets/photos/childrenschurch1.jpg" alt="Children's Church" loading="lazy">
+          <figcaption class="gallery-caption">Children’s Church — Memory Verse</figcaption>
+        </figure>
 
-  <!-- Food Distribution -->
-  <figure class="gallery-item" data-category="food" tabindex="0"
-          data-gallery="assets/photos/feeding1.jpg,assets/photos/feeding2.jpg,assets/photos/feeding3.jpg,assets/photos/feeding4.jpg,assets/photos/feeding5.jpg,assets/photos/feeding6.jpg,assets/photos/feeding7.PNG,assets/photos/feeding8.PNG,assets/photos/feeding9.jpg"
-          aria-label="Open Food Distribution images">
-    <img src="assets/photos/childrenschurch1.jpg" alt="Food Distribution" loading="lazy">
-    <figcaption class="gallery-caption">Food Distribution — Community Meal</figcaption>
-  </figure>
-</div>
+        <figure class="gallery-item" data-category="food" tabindex="0"
+                data-gallery="assets/photos/feeding1.jpg,assets/photos/feeding2.jpg,assets/photos/feeding3.jpg,assets/photos/feeding4.jpg,assets/photos/feeding5.jpg,assets/photos/feeding6.jpg,assets/photos/feeding7.PNG,assets/photos/feeding8.PNG,assets/photos/feeding9.jpg"
+                aria-label="Open Food Distribution images">
+          <img src="assets/photos/childrenschurch1.jpg" alt="Food Distribution" loading="lazy">
+          <figcaption class="gallery-caption">Food Distribution — Community Meal</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
-  <!-- Modal for enlarged single image -->
+  <!-- Category modal with main image + scrollable thumbnail strip -->
+  <div class="modal" id="catModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="modal-close" id="catModalClose" aria-label="Close gallery">✕</button>
+    <div class="modal-content" id="catModalContent" role="document">
+      <div class="cat-main" id="catMain">
+        <!-- main image injected here -->
+      </div>
+
+      <div class="thumb-strip" id="thumbStrip" aria-label="Image thumbnails">
+        <!-- thumbnails injected here -->
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="catPrev" aria-label="Previous image">‹ Prev</button>
+        <div class="carousel-indicator" id="catIndicator">0 / 0</div>
+        <button class="carousel-btn" id="catNext" aria-label="Next image">Next ›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Single-image modal (kept as fallback) -->
   <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
     <div class="modal-content" id="modalContent">
@@ -102,34 +135,161 @@
   </footer>
 
   <script>
-    // Single-image modal logic (gallery thumbnails are the only links)
-    const gallery = document.getElementById('gallery');
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
-    const modalClose = document.getElementById('modalClose');
+    // --- Category modal carousel logic ---
+    const catModal = document.getElementById('catModal');
+    const catModalClose = document.getElementById('catModalClose');
+    const catMain = document.getElementById('catMain');
+    const thumbStrip = document.getElementById('thumbStrip');
+    const catPrev = document.getElementById('catPrev');
+    const catNext = document.getElementById('catNext');
+    const catIndicator = document.getElementById('catIndicator');
 
-    let lastFocus = null;
+    let catImages = []; // array of src strings
+    let catIndex = 0;
+    let catLastFocus = null;
 
-    if (gallery) {
-      // click to open
-      gallery.addEventListener('click', (e) => {
-        const fig = e.target.closest('.gallery-item');
-        if (!fig) return;
-        const img = fig.querySelector('img');
-        if (!img) return;
-        openImageModal(img, fig);
-      });
-
-      // keyboard: Enter/Space opens focused gallery item
-      gallery.addEventListener('keydown', (e) => {
-        if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.gallery-item')) {
-          e.preventDefault();
-          const fig = e.target.closest('.gallery-item');
-          const img = fig.querySelector('img');
-          openImageModal(img, fig);
+    function renderCatMain() {
+      catMain.innerHTML = '';
+      if (!catImages.length) {
+        catMain.textContent = 'No images';
+        catIndicator.textContent = '0 / 0';
+        return;
+      }
+      const img = document.createElement('img');
+      img.src = catImages[catIndex];
+      img.alt = ''; // optionally set per-image alt if you store them separately
+      img.loading = 'lazy';
+      img.className = 'cat-main-img';
+      catMain.appendChild(img);
+      catIndicator.textContent = (catIndex + 1) + ' / ' + catImages.length;
+      // mark active thumb
+      Array.from(thumbStrip.children).forEach((t, i) => {
+        t.classList.toggle('active', i === catIndex);
+        // ensure active thumb is visible in the strip
+        if (i === catIndex) {
+          t.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
       });
     }
+
+    function renderThumbs() {
+      thumbStrip.innerHTML = '';
+      catImages.forEach((src, i) => {
+        const t = document.createElement('img');
+        t.src = src;
+        t.alt = '';
+        t.loading = 'lazy';
+        t.tabIndex = 0;
+        t.addEventListener('click', () => {
+          catIndex = i;
+          renderCatMain();
+        });
+        t.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            catIndex = i;
+            renderCatMain();
+          }
+        });
+        thumbStrip.appendChild(t);
+      });
+    }
+
+    function openCatModal(images, triggerEl, startIndex = 0) {
+      // images: array of strings
+      catImages = images.slice();
+      catIndex = Math.max(0, Math.min(startIndex, catImages.length - 1));
+      catLastFocus = triggerEl || document.activeElement;
+      renderThumbs();
+      renderCatMain();
+      catModal.classList.add('open');
+      catModal.setAttribute('aria-hidden', 'false');
+      // focus close for accessibility
+      catModalClose.focus();
+
+      // key handlers for navigation and close
+      catModal.__keyHandler = function(e) {
+        if (e.key === 'Escape') closeCatModal();
+        else if (e.key === 'ArrowLeft') showPrevCat();
+        else if (e.key === 'ArrowRight') showNextCat();
+      };
+      document.addEventListener('keydown', catModal.__keyHandler);
+    }
+
+    function closeCatModal() {
+      catModal.classList.remove('open');
+      catModal.setAttribute('aria-hidden', 'true');
+      catMain.innerHTML = '';
+      thumbStrip.innerHTML = '';
+      catImages = [];
+      catIndex = 0;
+      if (catModal.__keyHandler) {
+        document.removeEventListener('keydown', catModal.__keyHandler);
+        delete catModal.__keyHandler;
+      }
+      try { if (catLastFocus && typeof catLastFocus.focus === 'function') catLastFocus.focus(); } catch (err) {}
+    }
+
+    function showPrevCat() {
+      if (!catImages.length) return;
+      catIndex = (catIndex - 1 + catImages.length) % catImages.length;
+      renderCatMain();
+    }
+    function showNextCat() {
+      if (!catImages.length) return;
+      catIndex = (catIndex + 1) % catImages.length;
+      renderCatMain();
+    }
+
+    // Wire controls
+    catPrev.addEventListener('click', showPrevCat);
+    catNext.addEventListener('click', showNextCat);
+    catModalClose.addEventListener('click', closeCatModal);
+    catModal.addEventListener('click', (e) => { if (e.target === catModal) closeCatModal(); });
+
+    // --- Gallery click logic: open category modal using the data-gallery list ---
+    const galleryGrid = document.getElementById('gallery');
+
+    if (galleryGrid) {
+      galleryGrid.addEventListener('click', (e) => {
+        const fig = e.target.closest('.gallery-item');
+        if (!fig) return;
+        const galleryList = fig.dataset.gallery;
+        if (galleryList) {
+          const images = galleryList.split(',').map(s => s.trim()).filter(Boolean);
+          if (images.length) {
+            openCatModal(images, fig, 0); // ensure it opens at first image
+            return;
+          }
+        }
+        // Fallback: if no data-gallery, open single-image modal (kept below)
+        const img = fig.querySelector('img');
+        if (img) openImageModal(img, fig);
+      });
+
+      galleryGrid.addEventListener('keydown', (e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.gallery-item')) {
+          e.preventDefault();
+          const fig = e.target.closest('.gallery-item');
+          const galleryList = fig.dataset.gallery;
+          if (galleryList) {
+            const images = galleryList.split(',').map(s => s.trim()).filter(Boolean);
+            if (images.length) {
+              openCatModal(images, fig, 0);
+              return;
+            }
+          }
+          const img = fig.querySelector('img');
+          if (img) openImageModal(img, fig);
+        }
+      });
+    }
+
+    // --- Single-image modal (fallback) ---
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalClose = document.getElementById('modalClose');
+    let lastFocus = null;
 
     function openImageModal(imgEl, triggerEl) {
       lastFocus = triggerEl || document.activeElement;
@@ -137,72 +297,35 @@
       modalImg.alt = imgEl.alt || '';
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
-      // focus management + small trap
-      trapFocus(modal, modalClose);
       modalClose.focus();
+      // simple key handler
+      modal.__keyHandler = function(e) {
+        if (e.key === 'Escape') closeImageModal();
+      };
+      document.addEventListener('keydown', modal.__keyHandler);
     }
 
     function closeImageModal() {
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
       modalImg.src = '';
-      // restore focus
-      try { if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus(); } catch (err) {}
-      // remove trap handlers
-      if (modal.__removeTabTrap) modal.__removeTabTrap();
       if (modal.__keyHandler) {
         document.removeEventListener('keydown', modal.__keyHandler);
         delete modal.__keyHandler;
       }
+      try { if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus(); } catch (err) {}
     }
 
     modalClose.addEventListener('click', closeImageModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeImageModal(); });
 
-    // Esc closes modal
+    // Global Esc fallback
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeImageModal();
+      if (e.key === 'Escape') {
+        if (catModal.classList.contains('open')) closeCatModal();
+        if (modal.classList.contains('open')) closeImageModal();
+      }
     });
-
-    // small focus trap implementation
-    function trapFocus(modalEl, closeButton) {
-      const focusablesSelector = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
-      let focusables = Array.from(modalEl.querySelectorAll(focusablesSelector)).filter(el => el.offsetParent !== null);
-      if (focusables.length === 0) {
-        closeButton.setAttribute('tabindex', '0');
-        focusables = [closeButton];
-      }
-      focusables[0].focus();
-
-      function handleTab(e) {
-        if (e.key !== 'Tab') return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-      modalEl.__tabHandler = handleTab;
-      document.addEventListener('keydown', handleTab);
-
-      // keep reference to allow cleanup when modal is closed
-      modalEl.__removeTabTrap = () => {
-        document.removeEventListener('keydown', handleTab);
-        delete modalEl.__tabHandler;
-        delete modalEl.__removeTabTrap;
-      };
-
-      // key handler for Esc (ensure closure if needed)
-      const keyHandler = (e) => {
-        if (e.key === 'Escape') closeImageModal();
-      };
-      modalEl.__keyHandler = keyHandler;
-      document.addEventListener('keydown', keyHandler);
-    }
   </script>
 </body>
 </html>
