@@ -5,24 +5,39 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Media • EYIMF</title>
   <link rel="stylesheet" href="style.css" />
-<!-- Add / replace the following CSS inside your <style> block -->
 <style>
   :root {
     --card-width: 300px;
     --thumb-height: 160px;
-    --card-height: 360px; /* target equal card height — tweak as needed */
+    /* Previously cards were taller; reduce by about 1/2 inch as requested.
+       Using calc so you can easily tweak the base (360px) or the -0.5in part. */
+    --card-height: calc(360px - 0.5in);
     --gap: 12px;
   }
 
+  /* Grid: 3 fixed-width columns, centered */
   .grid {
     display: grid;
     grid-template-columns: repeat(3, var(--card-width));
     gap: var(--gap);
     justify-content: center;
-    align-items: start; /* keep start so rows size by content, but card height forces uniformity */
+    align-items: start;
   }
 
-  /* Card container — use fixed height so all cards are the same size */
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(2, min(var(--card-width), 1fr));
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Card container: fixed, equal height for all cards */
   .card {
     display: flex;
     flex-direction: column;
@@ -32,12 +47,12 @@
     padding: 10px;
     box-sizing: border-box;
 
-    height: var(--card-height); /* enforce uniform height */
-    min-height: 0;              /* allow inner flex children to shrink correctly */
-    overflow: hidden;           /* clip any visual overflow from children */
+    height: var(--card-height);  /* enforce uniform height */
+    min-height: 0;
+    overflow: hidden;
   }
 
-  /* Thumbnail image remains fixed-height at the top */
+  /* Thumbnail image */
   .card img,
   .media-card img {
     width: 100%;
@@ -47,28 +62,73 @@
     border-radius: 8px;
     margin-bottom: 10px;
     display: block;
-    flex-shrink: 0; /* don't let the image be squished by flex */
+    flex-shrink: 0;
   }
 
-  /* The card-body fills remaining vertical space and scrolls if needed */
+  /* Adult Services image tweak (kept as you had it) */
+  .card img.adult-photo {
+    object-position: center calc(20% - 1in);
+  }
+
+  /* Micro Devotions: previously requested Option 2 (show entire image) */
+  .card img.micro-photo {
+    height: var(--thumb-height);
+    object-fit: contain;
+    background: #fff;
+    object-position: center;
+    display: block;
+  }
+
+  /* card body fills remaining space and keeps layout tidy */
   .card-body {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    flex: 1 1 auto;   /* take remaining height inside .card */
-    min-height: 0;    /* enables proper scrolling in children on some browsers */
-    overflow: hidden; /* prevent body children from escaping the box */
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .card-body .card-text {
-    overflow: auto; /* allow the description to scroll if it's too long */
+    overflow: auto;
     font-size: .95rem;
     color: #444;
   }
 
   .card h3 { margin: 0; font-size: 1rem; }
+  .card p { margin: 0; color: #444; font-size: .95rem; }
+
+  /* Header styles — ensure the page title is centered */
+  .site-header {
+    background: #faf5ef;
+    border-bottom: 1px solid #eee;
+    padding: 18px 0;
+  }
+
+  /* Center the header container contents without affecting the nav */
+  .site-header .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .page-title {
+    margin: 0 0 8px;
+    font-size: 1.6rem;
+    color: #4b2e05;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .top-links { display:flex; justify-content:center; gap:14px; margin:0; padding:0; }
+  .top-links a { color:#4b2e05; text-decoration:none; padding:6px 8px; border-radius:6px; font-weight:500; }
+  .top-links a:hover { background: rgba(75,46,5,0.06); }
+
+  .navbar .brand .name { font-weight:600; color:#333; }
+  .navlinks a { color:#4b2e05; text-decoration:none; margin-right:12px; }
+
+  .badge-new { margin-left:8px; padding:2px 6px; font-size:0.8rem; color:#fff; background:#e84545; border-radius:4px; vertical-align:middle; }
 </style>
-  
 </head>
 <body>
 <nav>
@@ -94,84 +154,91 @@
 
 <main>
 <section aria-labelledby="playlists">
- <h2 id="playlists" style="font-size:1.1rem;margin:0 0 10px;text-align:center">Playlists</h2>
+  <h2 id="playlists" style="font-size:1.1rem;margin:0 0 10px;text-align:center">Playlists</h2>
 
   <div class="grid">
-    <!-- Children's Church (card links the whole card like "what we do") -->
+    <!-- Children's Church -->
     <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWPDKLOagL8py76eadsWkYrX&si=5Ti7Zr7EH24xftQA"
-       class="card"
-       style="text-decoration:none;color:inherit;display:block;">
-      <img src="assets/photos/childrenschurch1.jpg"
-           alt="Children's Church service in the Philippines"
-           style="width:100%;border-radius:8px;margin-bottom:10px;">
-      <h3>Children's Church (Philippines)</h3>
-      <p>These Children’s Church Services in the Philippines are joyful, powerful moments — teaching the next generation about Jesus with songs and stories.</p>
+       class="card" style="text-decoration:none;color:inherit;display:block;">
+      <img src="assets/photos/childrenschurch1.jpg" alt="Children's Church service in the Philippines">
+      <div class="card-body">
+        <h3>Children's Church (Philippines)</h3>
+        <div class="card-text">
+          <p>These Children’s Church Services in the Philippines are joyful, powerful moments — teaching the next generation about Jesus with songs and stories.</p>
+        </div>
+      </div>
     </a>
 
-    <!-- Adult Church (card links the whole card) -->
+    <!-- Adult Church -->
     <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWM7yLdYblLB6dcpWtGK5BGj&si=0uF9HC8dHlPjuyav"
-       class="card"
-       style="text-decoration:none;color:inherit;display:block;">
-      <!-- class="adult-photo" lets the CSS above shift the crop to the midpoint -->
-      <img class="adult-photo" src="assets/photos/adultservice4.jpg"
-           alt="Adult Church service in the Philippines"
-           style="width:100%;border-radius:8px;margin-bottom:10px;">
-      <h3>Adult Church Services (Philippines)</h3>
-      <p>Powerful gatherings where the Word is proclaimed with boldness — times of worship, conviction, and life change.</p>
+       class="card" style="text-decoration:none;color:inherit;display:block;">
+      <img class="adult-photo" src="assets/photos/adultservice4.jpg" alt="Adult Church service in the Philippines">
+      <div class="card-body">
+        <h3>Adult Church Services (Philippines)</h3>
+        <div class="card-text">
+          <p>Powerful gatherings where the Word is proclaimed with boldness — times of worship, conviction, and life change.</p>
+        </div>
+      </div>
     </a>
 
-   <!-- Full Length Sermons — inline embed card -->
-<a href="https://youtube.com/playlist?list=PLnQmd9SVdUWN4XXts-9mBmHrWUenrTbgn&si=b3ek67ED5yEhmTP8"
-   class="card"
-   style="text-decoration:none;color:inherit;display:block;">
-<img src="assets/photos/fullsermons.png"
-     alt="Full Length Sermons"
-     style="width:100%;height:160px;object-fit:cover;object-position:center 20%;border-radius:8px;margin-bottom:10px;">
-  <h3>Full Length Sermons</h3>
-  <p>Deep, convicting messages designed to strengthen and equip.</p>
-</a>
-    <!-- Micro Devotions — matched to the linked-card style used for other playlists -->
-<a href="https://youtube.com/playlist?list=PLnQmd9SVdUWNAeOMoYXJTnClgxE6o3RHv&si=fEHX9MJ0n0gSoU9X"
-   class="card"
-   style="text-decoration:none;color:inherit;display:block;">
- <img class="micro-photo" src="assets/photos/microdevotion.jpeg"
-     alt="Micro Devotions"
-     style="width:100%;border-radius:8px;margin-bottom:10px;">
-  <h3>Micro Devotions</h3>
-  <p>Micro Devotions are 30 to 40 second, Bible-based messages designed to pierce through the noise of daily life and draw your heart back to the feet of Jesus.</p>
-</a>
-    <!-- Daily Devotions — matched to the other playlist cards -->
-<a href="https://youtube.com/playlist?list=PLnQmd9SVdUWPKW61b85XVfAoBVqSXGDhE&si=VnzqHlYL4bJCbJig"
-   class="card"
-   style="text-decoration:none;color:inherit;display:block;">
-  <img src="assets/photos/dailydevotions.jpeg"
-       alt="Daily Devotions"
-       style="width:100%;border-radius:8px;margin-bottom:10px;">
-  <h3>Daily Devotions</h3>
-  <p>These Daily Devotions are more than gentle reflections; they are spiritual wake-up calls. In 3–4 minutes each, they examine the heart, align us with God’s Word, and call believers to live with...</p>
-</a>
-    <!-- My Philippine Adventures — matched to the other playlist cards -->
-<a href="https://youtube.com/playlist?list=PLnQmd9SVdUWNb6JX4EX3t7hy_0UJ8ePLU&si=4PXMi_x3-IXclwt_"
-   class="card"
-   target="_blank" rel="noopener"
-   style="text-decoration:none;color:inherit;display:block;">
-  <img src="assets/photos/philippineadventures.jpg"
-       alt="My Philippine Adventures"
-       style="width:100%;border-radius:8px;margin-bottom:10px;">
-  <h3>My Philippine Adventures</h3>
-  <p>Everyday life, community, and the beauty of the islands — short videos and highlights from life in the Philippines.</p>
-</a>
-</div>
+    <!-- Full Length Sermons -->
+    <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWN4XXts-9mBmHrWUenrTbgn&si=b3ek67ED5yEhmTP8"
+       class="card" style="text-decoration:none;color:inherit;display:block;">
+      <img src="assets/photos/fullsermons.png" alt="Full Length Sermons" style="height:160px;object-position:center 20%;">
+      <div class="card-body">
+        <h3>Full Length Sermons</h3>
+        <div class="card-text">
+          <p>Deep, convicting messages designed to strengthen and equip.</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- Micro Devotions (Option 2: show whole image) -->
+    <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWNAeOMoYXJTnClgxE6o3RHv&si=fEHX9MJ0n0gSoU9X"
+       class="card" style="text-decoration:none;color:inherit;display:block;">
+      <img class="micro-photo" src="assets/photos/microdevotion.jpeg" alt="Micro Devotions">
+      <div class="card-body">
+        <h3>Micro Devotions</h3>
+        <div class="card-text">
+          <p>Micro Devotions are 30 to 40 second, Bible-based messages designed to pierce through the noise of daily life and draw your heart back to the feet of Jesus.</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- Daily Devotions -->
+    <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWPKW61b85XVfAoBVqSXGDhE&si=VnzqHlYL4bJCbJig"
+       class="card" style="text-decoration:none;color:inherit;display:block;">
+      <img src="assets/photos/dailydevotions.jpeg" alt="Daily Devotions">
+      <div class="card-body">
+        <h3>Daily Devotions</h3>
+        <div class="card-text">
+          <p>These Daily Devotions are more than gentle reflections; they are spiritual wake-up calls. In 3–4 minutes each, they examine the heart, align us with God’s Word, and call believers to live with...</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- My Philippine Adventures -->
+    <a href="https://youtube.com/playlist?list=PLnQmd9SVdUWNb6JX4EX3t7hy_0UJ8ePLU&si=4PXMi_x3-IXclwt_"
+       class="card" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block;">
+      <img src="assets/photos/philippineadventures.jpg" alt="My Philippine Adventures">
+      <div class="card-body">
+        <h3>My Philippine Adventures</h3>
+        <div class="card-text">
+          <p>Everyday life, community, and the beauty of the islands — short videos and highlights from life in the Philippines.</p>
+        </div>
+      </div>
+    </a>
+  </div>
 </section>
 </main>
-  
-  <script>
+
+<script>
 (async function showYouTubeBadges() {
   try {
     const res = await fetch('assets/data/youtube-latest.json', { cache: 'no-store' });
     if (!res.ok) return;
     const data = await res.json();
-    const daysNew = 1; // how many days to mark as New
+    const daysNew = 1;
     document.querySelectorAll('a.card[data-playlist-id]').forEach(a => {
       const pid = a.getAttribute('data-playlist-id');
       const info = data[pid];
@@ -182,7 +249,6 @@
         const badge = document.createElement('span');
         badge.className = 'badge-new';
         badge.textContent = 'New';
-        // put the badge after the title (h3)
         const title = a.querySelector('h3');
         if (title) title.appendChild(badge);
       }
@@ -193,9 +259,9 @@
 })();
 </script>
 
-  <footer>
-    © <span id="yr"></span> Examine Yourselves International Mission Foundation
-    <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
-  </footer>
+<footer>
+  © <span id="yr"></span> Examine Yourselves International Mission Foundation
+  <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+</footer>
 </body>
 </html>
