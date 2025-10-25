@@ -7,6 +7,37 @@
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css?v=20251011a">
   <style>
+    /* Back-to-top floating button */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  background: #2c3e50;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 18px rgba(44,62,80,0.18);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.back-to-top:focus { outline: 3px solid rgba(255,255,255,0.18); outline-offset: 2px; }
+.back-to-top:hover { background: #243241; }
+.back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 480px) {
+  .back-to-top { right: 14px; bottom: 14px; width: 44px; height: 44px; }
+}
     /* ensure anchor targets aren't hidden under sticky nav */
     .story-section { scroll-margin-top: 90px; }
   </style>
@@ -408,6 +439,9 @@
     <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
   </footer>
 
+  <!-- Back to top floating button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top" type="button">↑</button>
+
   <!-- Smooth scrolling to exact IDs (prevents sticky-nav overlap & odd jumps) -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -436,6 +470,51 @@
         setTimeout(function () { scrollToId(id); }, 0);
       }
     });
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+  var backBtn = document.getElementById('backToTop');
+  if (!backBtn) return;
+
+  var showThreshold = 90; // px scrolled before showing the button (matches your header offset)
+
+  function updateBackBtnVisibility() {
+    if (window.scrollY > showThreshold) {
+      backBtn.classList.add('show');
+    } else {
+      backBtn.classList.remove('show');
+    }
+  }
+
+  // If user opened page with a hash (e.g. page.html#feedingcommunity), show button after auto-scroll
+  if (window.location.hash) {
+    // small delay so any other smooth-scroll logic can run first
+    setTimeout(updateBackBtnVisibility, 50);
+  }
+
+  // Click -> smooth scroll to top and move focus to first nav link for accessibility
+  backBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var firstNav = document.querySelector('.navlinks a');
+    if (firstNav) {
+      setTimeout(function () { firstNav.focus(); }, 420);
+    }
+  });
+
+  // Keyboard activation (Enter/Space)
+  backBtn.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      backBtn.click();
+    }
+  });
+
+  window.addEventListener('scroll', updateBackBtnVisibility);
+  window.addEventListener('resize', updateBackBtnVisibility);
+
+  // initial state
+  updateBackBtnVisibility();
+});
+</script>
   </script>
 </body>
 </html>
