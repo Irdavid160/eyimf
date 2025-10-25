@@ -89,8 +89,11 @@
     overflow: hidden;
   }
 
+  /* Use vertical-only scrolling and reserve the scrollbar gutter so tiny subpixel
+     rounding won't force a visible scrollbar when there's no overflow. */
   .card-body .card-text {
-    overflow: auto;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
     font-size: .95rem;
     color: #444;
   }
@@ -212,7 +215,7 @@
       <div class="card-body">
         <h3>Daily Devotions</h3>
         <div class="card-text">
-          <p>These Daily Devotions are more than gentle reflections; they are spiritual wake-up calls. In 3–4 minutes each, they examine the heart, align us with God’s Word, and call believers to grow.</p>
+          <p>These Daily Devotions are more than gentle reflections; they are spiritual wake-up calls. In 3–4 minutes each, they examine the heart, align us with God’s Word, and call believers to [...]</p>
         </div>
       </div>
     </a>
