@@ -90,12 +90,12 @@
 
   /* Use vertical-only scrolling and reserve the scrollbar gutter so tiny subpixel
      rounding won't force a visible scrollbar when there's no overflow. */
-  .card-body .card-text {
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-    font-size: .95rem;
-    color: #444;
-  }
+.card-body .card-text {
+  overflow-y: clip;
+  font-size: .95rem;
+  color: #444;
+}
+
 
   .card h3 { margin: 0; font-size: 1rem; }
   .card p { margin: 0; color: #444; font-size: .95rem; }
