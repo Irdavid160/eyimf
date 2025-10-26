@@ -3,266 +3,170 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Updates • EYIMF</title>
+  <title>EYIMF • Examine Yourselves International Mission Foundation</title>
   <link rel="icon" href="assets/favicon.png">
-  <link rel="stylesheet" href="style.css?v=updates-1">
-
-  <!-- Small, targeted overrides to add vertical spacing between the top lines -->
-  <style>
-    /* Topbar for the daily devotion line */
-    .topbar {
-      background: #f7f7f7;
-      color: #222;
-      font-weight: 600;
-      text-align: center;
-      padding: 10px 12px;
-      font-size: 0.95rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    /* Ensure the nav header items have breathing room and wrap nicely */
-    nav .container.navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 0;
-      flex-wrap: wrap;          /* allow brand and navlinks to stack on small screens */
-      row-gap: 12px;            /* vertical spacing when stacked */
-    }
-
-    /* Slightly increase spacing inside the brand area */
-    nav .brand .name {
-      display: inline-block;
-      line-height: 1.4;
-      font-weight: 700;
-    }
-
-    /* Give nav links some horizontal spacing and increase line-height for readability */
-    .navlinks {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      flex-wrap: wrap;
-      row-gap: 8px;
-    }
-    .navlinks a {
-      text-decoration: none;
-      color: inherit;
-      padding: 6px 4px;
-      line-height: 1.5;
-    }
-
-    /* Small screens: slightly larger top/bottom padding so stacked items aren't crowded */
-    @media (max-width: 640px) {
-      .topbar { padding: 12px 10px; font-size: 0.98rem; }
-      nav .container.navbar { padding: 10px 0; row-gap: 14px; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css?v=20251011d">
 </head>
+
 <body>
-
-  <!-- Topbar: Today's Daily Devotion -->
-  <div class="topbar">
-    Today’s Daily Devotion: WARRIOR ETHOS #2 — I WILL NEVER ACCEPT DEFEAT
-  </div>
-
   <nav>
     <div class="container navbar">
+      <!-- LEFT SIDE: brand text -->
       <div class="brand">
-        <span class="name">Examine Yourselves International Mission Foundation</span>
-      </div>
-      <div class="navlinks">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="whatwedo.html">What We Do</a>
-        <a href="media.html">Media</a>
-        <a href="contact.html">Contact</a>
+  <img src="assets/photos/eyimflogo.png" alt="EYIMF Logo" class="brand-logo">
+  <span class="name">Examine Yourselves International Mission Foundation</span>
+</div>
+
+
+      <!-- RIGHT SIDE: Donate button -->
+<!-- PayPal Donate link/button (replace or drop target if you want same-tab) -->
+<!-- Standard PayPal donate button (place this where your Donate link goes) -->
+<!-- Simple Donate button (drop this into your nav where the Donate link goes) -->
+<a href="https://www.paypal.com/donate/?hosted_button_id=AUW4GKC4SJ8XJ&source=qr"
+   class="donate-btn"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Donate to EYIMF via PayPal (opens in new tab)">
+  Donate
+</a>
       </div>
     </div>
   </nav>
 
-<!-- Replace the existing ministry goals section start with this -->
-<section class="section collapsed" id="ministry-goals" aria-labelledby="ministry-goals-heading">
-  <div class="container mg-content">
-    <h2 id="ministry-goals-heading">Ministry Goals</h2>
-    <span class="mg-toggle-hint">Click "Ministry Goals" above to reveal this section.</span>
-    <!-- ...rest of the ministry goals content unchanged... -->
+  <header class="header rotating-hero">
+    <div class="hero-container">
+      <!-- Slides -->
+      <div class="hero-slide" style="background-image: url('assets/banners/herobanner1.png');"></div>
+      <div class="hero-slide" style="background-image: url('assets/banners/herobanner2.png');"></div>
+      <div class="hero-slide" style="background-image: url('assets/banners/herobanner3.png');"></div>
+
+    <!-- Overlay links -->
+<div class="overlay">
+  <h1 class="hero-title">Examine Yourselves International Mission Foundation</h1>
+  <nav class="hero-links">
+    <a href="about.html">About</a>
+    <a href="updates.html">Updates</a>
+    <a href="whatwedo.html">What We Do</a>
+    <a href="media.html">Media</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- ✅ DAILY DEVOTION LINK goes inside the overlay -->
+  <div id="daily-devotion-link" style="text-align:center; margin-top: 10px;">
+    <a href="devotions.html" class="devotion-link" style="font-size:1.05rem; font-weight:600; color: #fff;">Daily Devotion</a>
+  </div>
+</div>
+      
+    </div>
+  </header>
+
+<section class="overview">
+  <div class="container">
+    <h2>What Is EYIMF?</h2>
+    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion.</p>
+    <a href="about.html" class="button">Learn More</a>
   </div>
 </section>
 
-  <section class="section">
-    <div class="container">
-      <h1>Updates</h1>
-      <p style="text-align:center; max-width:700px; margin:10px auto 24px;">
-        News from our house churches, children’s gatherings, community meals,
-        and the day-to-day ways the Lord is opening doors in our barangay.
-      </p>
-
-      <!-- Small info cards (Ministry Goals + Monthly Report + Gallery) -->
-      <div class="grid cols-3" style="margin-bottom:18px;">
-        <div class="card">
-          <a href="#ministry-goals" style="display:block; text-decoration:none; color:inherit;">
-            <img src="assets/photos/housechurch.png" alt="House Church" loading="lazy"
-                 style="width:100%; height:auto; max-height:160px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
-            <strong>Ministry Goals</strong>
-          </a>
-          <p>Overview of our aims and priorities. Click to jump to the full ministry goals section below.</p>
-        </div>
-
-<!-- Monthly Report card with monthlyreport.png -->
-<div class="card">
-  <a href="ministry-report.html" style="display:block; text-decoration:none; color:inherit;">
-    <img src="assets/photos/monthlyreport.png" alt="Monthly Ministry Report" loading="lazy"
-         style="width:100%; height:auto; max-height:160px; object-fit:cover; object-position:center 20%; border-radius:8px; margin-bottom:8px;">
-    <strong>This Month's Ministry Report</strong>
-  </a>
-  <p>Click to view the latest monthly ministry report and highlights.</p>
-</div>
-
-<!-- Gallery card (replace the previous Gallery block with this) -->
-<div class="card">
-  <a href="gallery.html" style="display:block; text-decoration:none; color:inherit;">
-    <img src="assets/photos/gallerythumb.jpg" alt="Gallery" loading="lazy"
-         style="width:100%; height:auto; max-height:160px; object-fit:cover; object-position:center 40%; border-radius:8px; margin-bottom:8px;">
-    <strong>Gallery</strong>
-  </a>
-  <p>As you view these photos please pray for the souls of our community.</p>
-</div>
-
-      <!-- Updates list -->
-      <div class="grid cols-4 updates-grid">
-
-        <!-- Replaced previous three update cards with one linked review card.
-             Removed: "Neighbors Gathering Around the Table" and "Children’s Church Continues to Grow".
-             Converted the home church card into a direct link to the weekly review page. -->
-            </div>
-          </a>
-        </article>
-
+<footer id="contact" class="footer">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div>
+        <strong>Examine Yourselves International Mission Foundation</strong><br>
+        Email: <a href="mailto:santamissions@gmail.com">santamissions@gmail.com</a>
       </div>
-
+      <div>“Serving souls, meeting needs, glorifying Christ.”</div>
     </div>
-  </section>
-
-  <!-- Ministry Goals anchor section -->
-  <section class="section" id="ministry-goals" aria-labelledby="ministry-goals-heading">
-    <div class="container">
-      <h2 id="ministry-goals-heading">Ministry Goals</h2>
-
-      <h3>Year 1 Goals (Nov 2025 – Nov 2026)</h3>
-      <ul>
-        <li>Establish weekly Sunday services in our home church.</li>
-        <li>Launch Saturday teen outreach.</li>
-        <li>Continue Sunday’s children’s church.</li>
-        <li>Begin Saturday ministry training classes for future leaders.</li>
-        <li>Provide 36 families per week with food packages (goal: 70 by year-end).</li>
-        <li>Distribute 50 parallel Tagalog/KJV Bibles six times per year.</li>
-        <li>Prepare for annual clothing and toy shipments for distribution.</li>
-        <li>Begin groundwork for a second barangay church by August 2026.</li>
-      </ul>
-
-      <h3>Budget Goals</h3>
-      <div style="overflow:auto;">
-      <table style="width:100%; border-collapse:collapse;">
-        <thead>
-          <tr>
-            <th style="text-align:left; border-bottom:2px solid #ddd; padding:8px;">Category</th>
-            <th style="text-align:right; border-bottom:2px solid #ddd; padding:8px;">Monthly Estimate (USD)</th>
-            <th style="text-align:right; border-bottom:2px solid #ddd; padding:8px;">Annual Estimate (USD)</th>
-            <th style="text-align:left; border-bottom:2px solid #ddd; padding:8px;">Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Food Distribution</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$1,200.00</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$14,400.00</td>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Feeds ~36 families/week</td>
-          </tr>
-          <tr>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Clothing Distribution</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$0.00</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$0.00</td>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">TBD – cargo container annually</td>
-          </tr>
-          <tr>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Bibles &amp; Teaching</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$1,000.00</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$12,000.00</td>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Includes 50 Tagalog Bibles, 6x/year</td>
-          </tr>
-          <tr>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Facility (rent/utilities)</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$300.00</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$3,600.00</td>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">When converting current home to church</td>
-          </tr>
-          <tr>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Local Staff Oversight</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$200.00</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$2,400.00</td>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">1 overseer for outreach operations</td>
-          </tr>
-          <tr>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Communication &amp; Tech</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$30.00</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$360.00</td>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Website and editing tools; camera TBD</td>
-          </tr>
-          <tr>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Travel (US round trip)</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$200.00</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$2,400.00</td>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Two trips annually at ~$1200 each</td>
-          </tr>
-          <tr>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">Emergency Fund</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$100.00</td>
-            <td style="padding:8px; text-align:right; border-bottom:1px solid #f0f0f0;">$1,200.00</td>
-            <td style="padding:8px; border-bottom:1px solid #f0f0f0;">For unforeseen ministry needs</td>
-          </tr>
-          <tr>
-            <td style="padding:8px; font-weight:bold;">TOTAL</td>
-            <td style="padding:8px; text-align:right; font-weight:bold;">$3,030.00</td>
-            <td style="padding:8px; text-align:right; font-weight:bold;">$36,360.00</td>
-            <td style="padding:8px;">Excludes clothing &amp; camera equipment</td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-
-      <p style="margin-top:12px;">To meet the monthly goal of <strong>$3,030</strong>, EYIMF seeks <strong>151</strong> monthly supporters at <strong>$20</strong> each.</p>
-
-      <h3>Long-Term Vision</h3>
-      <p>As God provides, we will duplicate this model in other barangays, raising up ministers and churches rooted in sound doctrine and active compassion. EYIMF’s ultimate goal is to see the Phili[...]
-
-      <p style="font-style:italic; margin-top:8px;">“For we preach not ourselves, but Christ Jesus the Lord; and ourselves your servants for Jesus’ sake.” – 2 Corinthians 4:5 (KJV)</p>
-
+    <div style="margin-top:16px;opacity:.8">
+      © <span id="yr"></span> EYIMF • Built for GitHub Pages
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- Monthly Report anchor section (below ministry goals) -->
-  <section class="section" id="monthly-report" aria-labelledby="monthly-report-heading">
-    <div class="container">
-      <h2 id="monthly-report-heading">This Month's Ministry Report</h2>
-      <p class="no-report">Loading this month's ministry report...</p>
-      <!-- Replace the paragraph above with the actual report content (paste HTML or text here). -->
-    </div>
-  </section>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
 
-  <footer class="footer" id="contact">
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;">
-        <div><strong>Examine Yourselves International Mission Foundation</strong><br>
-          Email: <a href="mailto:santamissions@gmail.com">santamissions@gmail.com</a></div>
-        <div><div>“Serving souls, meeting needs, glorifying Christ.”</div>
-          <div style="margin-top:8px;">KJV — James 2:15–17</div></div>
-      </div>
-      <div style="margin-top:16px;opacity:.8">© <span id="yr"></span> EYIMF</div>
-    </div>
-    <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
-  </footer>
+<!-- ✅ Move your rotating hero taglines script here -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.hero-slide');
+    const taglineEl = document.getElementById('heroTagline');
+
+    const taglines = [
+      'Serving souls, meeting needs, glorifying Christ.',
+      'The Gospel is not just words — it is power.',
+      'Raising warriors of the Cross for a new generation.'
+    ];
+
+    if (!slides.length) return;
+
+    let current = 0;
+    slides[current].classList.add('active');
+    if (taglineEl) taglineEl.textContent = taglines[current];
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+      if (taglineEl) taglineEl.textContent = taglines[current];
+    }, 4000);
+  });
+</script>
+
+<!-- ✅ Second script: rotating hero without tagline -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.hero-slide');
+
+    if (slides.length === 1) {
+      slides[0].classList.add('active');
+      return;
+    }
+
+    if (slides.length === 0) return;
+
+    let current = 0;
+    slides[current].classList.add('active');
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000);
+  });
+</script>
+
+  <script>
+  // 📜 Location of your devotions JSON file
+  const DEVOTIONS_JSON = 'assets/devotions/devotions.json?v=2';
+
+  fetch(DEVOTIONS_JSON)
+    .then(response => response.json())
+    .then(devotions => {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      const todayISO = `${yyyy}-${mm}-${dd}`;
+
+      // Find today's devotion or fallback if missing
+      const devotion = devotions.find(d => d.date === todayISO) || devotions[(today.getDate()-1) % devotions.length];
+
+      const linkEl = document.querySelector('#daily-devotion-link a');
+      if (devotion) {
+        linkEl.textContent = `Today’s Daily Devotion: ${devotion.title}`;
+        linkEl.href = `devotions.html?date=${todayISO}`;
+      } else {
+        linkEl.textContent = `Today’s Daily Devotion`;
+        linkEl.href = `devotions.html`;
+      }
+    })
+    .catch(err => {
+      console.error('Error loading daily devotion:', err);
+      document.querySelector('#daily-devotion-link a').textContent = `Today’s Daily Devotion`;
+    });
+</script>
 
 </body>
 </html>
