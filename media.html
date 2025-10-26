@@ -6,14 +6,13 @@
   <title>Media • EYIMF</title>
   <link rel="stylesheet" href="style.css" />
 <style>
-  :root {
-    --card-width: 300px;
-    --thumb-height: 160px;
-    /* Previously cards were taller; reduce by about 1/2 inch as requested.
-       Using calc so you can easily tweak the base (360px) or the -0.5in part. */
-    --card-height: calc(360px - 0.5in);
-    --gap: 12px;
-  }
+:root {
+  --card-width: 300px;
+  --thumb-height: 160px;
+  /* increase card height slightly to avoid fractional overflow / ghost scrollbar */
+  --card-height: calc(360px - 0.5in + 8px);
+  --gap: 12px;
+}
 
   /* Grid: 3 fixed-width columns, centered */
   .grid {
