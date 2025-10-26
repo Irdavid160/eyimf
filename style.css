@@ -1863,3 +1863,28 @@ body {
 @media (max-width:520px){
   .donate-btn{ width:100%; text-align:center; padding:12px 18px; }
 }
+/* Add this near the end of your style.css */
+/* Keep the Ministry Goals collapsed by default, then reveal when not collapsed */
+#ministry-goals .mg-content {
+  max-height: 9999px; /* big default so it shows normally when expanded */
+  opacity: 1;
+  transform-origin: top center;
+  transition: max-height 400ms ease, opacity 300ms ease, transform 300ms ease;
+}
+
+#ministry-goals.collapsed .mg-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-6px);
+  pointer-events: none; /* prevent tabbing into hidden content */
+}
+
+/* Small visual cue for expanded state (optional) */
+#ministry-goals .mg-toggle-hint {
+  display: block;
+  margin-bottom: 10px;
+  color: #666;
+  font-size: 0.95em;
+}
+  
