@@ -1956,3 +1956,39 @@ body {
     box-sizing: border-box;
   }
 }
+
+  /* Fix hero links clipping & prevent word-wrapping in each link */
+.header.rotating-hero .hero-links {
+  display: flex;
+  flex-wrap: wrap;        /* wrap whole link items as units */
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+/* Keep each link's words together and preserve visual padding */
+.header.rotating-hero .hero-links a {
+  white-space: nowrap;    /* prevents splitting "What We Do" into multiple lines */
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+/* Mobile-specific: tighten spacing so first/last characters don't touch the viewport edge */
+@media (max-width: 639px) {
+  .header.rotating-hero .overlay {
+    box-sizing: border-box;
+    padding-left: 0.6rem;    /* reduce horizontal overlay padding */
+    padding-right: 0.6rem;
+    width: calc(100% - 1.2rem);
+  }
+
+  .header.rotating-hero .hero-links {
+    gap: 0.45rem;            /* smaller gap between pills */
+    padding-inline: 0.25rem; /* small inner padding so links don't touch edges */
+  }
+
+  .header.rotating-hero .hero-links a {
+    padding: 0.22rem 0.45rem; /* slightly smaller pill padding */
+    font-size: 0.92rem;       /* slightly reduce font on phones */
+    white-space: nowrap;      /* keep label together */
+  }
+}
