@@ -48,10 +48,12 @@
       .story-section { scroll-margin-top: 150px; }
     }
 
-    @media (max-width: 480px) {
+    /* Add this inside the <style> block */
+@media (max-width: 480px) {
   /* Increase scroll-margin-top on mobile so anchors land lower */
-  .story-section { scroll-margin-top: 190px; }
+  .story-section { scroll-margin-top: 140px; }
 }
+    
   </style>
 </head>
 <body>
@@ -455,89 +457,88 @@
   <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top" type="button">↑</button>
 
   <!-- Smooth scrolling to exact IDs (prevents sticky-nav overlap & odd jumps) -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var cards = document.querySelectorAll('.grid.cols-3 a.card[href^="#"]');
-      var backBtn = document.getElementById('backToTop');
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var cards = document.querySelectorAll('.grid.cols-3 a.card[href^="#"]');
+    var backBtn = document.getElementById('backToTop');
 
-      // compute header offset dynamically so mobile can use a larger offset
-      function getHeaderOffset() {
-        // increase offset on small narrow screens (mobile)
-        return window.matchMedia('(max-width: 480px)').matches ? 150 : 90;
-      }
+    // Dynamic header offset: larger on narrow screens (mobile)
+    function getHeaderOffset() {
+      return window.matchMedia('(max-width: 480px)').matches ? 140 : 90;
+    }
 
-      function scrollToId(id) {
-        var target = document.getElementById(id);
-        if (!target) return;
-        var headerOffset = getHeaderOffset();
-        var y = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-        // show the back-to-top button after navigating to an anchor
-        showBackBtn();
-      }
+    function scrollToId(id) {
+      var target = document.getElementById(id);
+      if (!target) return;
+      var headerOffset = getHeaderOffset();
+      var y = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      // show the back-to-top button after navigating to an anchor
+      showBackBtn();
+    }
 
-      cards.forEach(function (a) {
-        a.addEventListener('click', function (e) {
-          var href = a.getAttribute('href');
-          if (href && href.startsWith('#')) {
-            e.preventDefault();
-            scrollToId(href.slice(1));
-            // update the hash without jumping (so users can copy link)
-            if (history && history.replaceState) {
-              history.replaceState(null, '', href);
-            } else {
-              // fallback — don't change location to avoid instant jump
-            }
-          }
-        });
-      });
-
-      // If landing with a hash, scroll smoothly and show the button
-      if (window.location.hash) {
-        var id = window.location.hash.slice(1);
-        setTimeout(function () { scrollToId(id); }, 0);
-      }
-
-      // Show/hide logic for back-to-top
-      function updateBackBtnVisibility() {
-        var threshold = getHeaderOffset();
-        if (window.scrollY > threshold) {
-          backBtn.classList.add('show');
-        } else {
-          backBtn.classList.remove('show');
-        }
-      }
-
-      function showBackBtn() {
-        backBtn.classList.add('show');
-      }
-
-      // click handler: smooth scroll to top and move focus to the top navigation for accessibility
-      backBtn.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        // after scrolling starts, focus the first nav link for keyboard users
-        var firstNav = document.querySelector('.navlinks a');
-        if (firstNav) {
-          // wait a short moment for the smooth scroll to be noticeable before focusing
-          setTimeout(function () { firstNav.focus(); }, 420);
-        }
-      });
-
-      // keyboard activation support (Enter/Space)
-      backBtn.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
+    cards.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var href = a.getAttribute('href');
+        if (href && href.startsWith('#')) {
           e.preventDefault();
-          backBtn.click();
+          scrollToId(href.slice(1));
+          // update the hash without jumping (so users can copy link)
+          if (history && history.replaceState) {
+            history.replaceState(null, '', href);
+          } else {
+            // fallback — don't change location to avoid instant jump
+          }
         }
       });
-
-      // update on scroll and on resize
-      window.addEventListener('scroll', updateBackBtnVisibility);
-      window.addEventListener('resize', updateBackBtnVisibility);
-
-      // initial visibility
-      updateBackBtnVisibility();
     });
-  </script>
+
+    // If landing with a hash, scroll smoothly and show the button
+    if (window.location.hash) {
+      var id = window.location.hash.slice(1);
+      setTimeout(function () { scrollToId(id); }, 0);
+    }
+
+    // Show/hide logic for back-to-top
+    function updateBackBtnVisibility() {
+      var threshold = getHeaderOffset();
+      if (window.scrollY > threshold) {
+        backBtn.classList.add('show');
+      } else {
+        backBtn.classList.remove('show');
+      }
+    }
+
+    function showBackBtn() {
+      backBtn.classList.add('show');
+    }
+
+    // click handler: smooth scroll to top and move focus to the top navigation for accessibility
+    backBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // after scrolling starts, focus the first nav link for keyboard users
+      var firstNav = document.querySelector('.navlinks a');
+      if (firstNav) {
+        // wait a short moment for the smooth scroll to be noticeable before focusing
+        setTimeout(function () { firstNav.focus(); }, 420);
+      }
+    });
+
+    // keyboard activation support (Enter/Space)
+    backBtn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        backBtn.click();
+      }
+    });
+
+    // update on scroll and on resize
+    window.addEventListener('scroll', updateBackBtnVisibility);
+    window.addEventListener('resize', updateBackBtnVisibility);
+
+    // initial visibility
+    updateBackBtnVisibility();
+  });
+</script>
 </body>
 </html>
