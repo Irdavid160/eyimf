@@ -77,7 +77,7 @@
   <section class="section">
     <div class="container">
       <h1>What We Do</h1>
-      <p>By God’s grace, EYIMF serves communities through Gospel-centered discipleship and practical compassion. Below are our core ministry areas and some stories you can explore and share. Tap on [...]
+      <p>By God’s grace, EYIMF serves communities through Gospel-centered discipleship and practical compassion. Below are our core ministry areas and some stories you can explore and share. Tap[...]  
 
       <!-- 6-up ministry grid -->
     <div class="grid cols-3" style="margin-top:16px;">
@@ -137,7 +137,7 @@
       <!-- PASTE your Children’s Church story here -->
       <h2 class="h2">Children's Church</h2>
       <p style="text-align:justify;line-height:1.8;">
-    On my very first trip to the Philippines, my only intention was to meet the incredible woman I had been talking to for over three years. We began our conversations shortly after COVID began, when [...]
+    On my very first trip to the Philippines, my only intention was to meet the incredible woman I had been talking to for over three years. We began our conversations shortly after COVID began, [...]  
   </p>
 
   <img src="assets/photos/childrenschurch1.jpg" 
@@ -146,11 +146,11 @@
 
 
   <p style="text-align:justify;line-height:1.8;">
-    I should say here that the only thing I hate more than hot weather is hot <em>humid</em> weather. I love the four seasons of Ohio and couldn’t imagine living in a country with only two: hot and [...]
+    I should say here that the only thing I hate more than hot weather is hot <em>humid</em> weather. I love the four seasons of Ohio and couldn’t imagine living in a country with only two: hot[...]  
   </p>
 
   <p style="text-align:justify;line-height:1.8;">
-    They seemed to love me instantly. Whenever I returned from town, I could hear them shouting as I walked back into the barangay. To be fair, the only word I really understood was “Santa,” which[...]
+    They seemed to love me instantly. Whenever I returned from town, I could hear them shouting as I walked back into the barangay. To be fair, the only word I really understood was “Santa,” [...]  
   </p>
 
   <img src="assets/photos/kidsinwindow.png" 
@@ -166,11 +166,11 @@
 
 
   <p style="text-align:justify;line-height:1.8;">
-    There is no such thing as privacy in our Filipino home. I would be sitting at the kitchen table, reading, and hear a tiny voice say, “Hi Santa.” Looking up, I’d see two to six children peeri[...]
+    There is no such thing as privacy in our Filipino home. I would be sitting at the kitchen table, reading, and hear a tiny voice say, “Hi Santa.” Looking up, I’d see two to six children [...]  
   </p>
 
   <p style="text-align:justify;line-height:1.8;">
-    When I returned to the States, I couldn’t get those precious souls off my mind. I prayed and wept for them, their faces vivid in my memory. By the time I returned the next year, I knew I was cal[...]
+    When I returned to the States, I couldn’t get those precious souls off my mind. I prayed and wept for them, their faces vivid in my memory. By the time I returned the next year, I knew I wa[...]  
   </p>
 
 <img src="assets/photos/childrenschurch2.jpg" 
@@ -179,11 +179,11 @@
 
 
   <p style="text-align:justify;line-height:1.8;">
-    That first night, twelve children showed up. I read them Bible stories from books I’d brought for that purpose, and we sang the old Sunday School songs—“Jesus Loves Me,” “Father Abraham,[...]
+    That first night, twelve children showed up. I read them Bible stories from books I’d brought for that purpose, and we sang the old Sunday School songs—“Jesus Loves Me,” “Father Abr[...]  
   </p>
 
   <p style="text-align:justify;line-height:1.8;">
-    Before long, our little living room was packed with thirty-six children every night. Fifteen minutes before start time, the sound of squealing kids would grow louder outside our door. When Dave or[...]
+    Before long, our little living room was packed with thirty-six children every night. Fifteen minutes before start time, the sound of squealing kids would grow louder outside our door. When Da[...]  
   </p>
 
 <img src="assets/photos/childrenschurch3.png" 
@@ -199,7 +199,7 @@
 
 
   <p style="text-align:justify;line-height:1.8;">
-    What began with a few curious faces at the window became the beating heart of our mission in the Philippines. And this is just the beginning of what God has planned as we follow His will for this [...]
+    What began with a few curious faces at the window became the beating heart of our mission in the Philippines. And this is just the beginning of what God has planned as we follow His will for [...]  
   </p>
 
   <p style="margin-top:30px;font-style:italic;text-align:center;color:#2c3e50;font-size:1.1rem;">
@@ -457,88 +457,88 @@
   <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top" type="button">↑</button>
 
   <!-- Smooth scrolling to exact IDs (prevents sticky-nav overlap & odd jumps) -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var cards = document.querySelectorAll('.grid.cols-3 a.card[href^="#"]');
-    var backBtn = document.getElementById('backToTop');
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var cards = document.querySelectorAll('.grid.cols-3 a.card[href^="#"]');
+      var backBtn = document.getElementById('backToTop');
 
-    // Dynamic header offset: larger on narrow screens (mobile)
-    function getHeaderOffset() {
-      return window.matchMedia('(max-width: 480px)').matches ? 160 : 90;
-    }
+      // Dynamic header offset: larger on narrow screens (mobile)
+      function getHeaderOffset() {
+        return window.matchMedia('(max-width: 480px)').matches ? 140 : 90;
+      }
 
-    function scrollToId(id) {
-      var target = document.getElementById(id);
-      if (!target) return;
-      var headerOffset = getHeaderOffset();
-      var y = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-      // show the back-to-top button after navigating to an anchor
-      showBackBtn();
-    }
+      function scrollToId(id) {
+        var target = document.getElementById(id);
+        if (!target) return;
+        var headerOffset = getHeaderOffset();
+        var y = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        // show the back-to-top button after navigating to an anchor
+        showBackBtn();
+      }
 
-    cards.forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        var href = a.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          e.preventDefault();
-          scrollToId(href.slice(1));
-          // update the hash without jumping (so users can copy link)
-          if (history && history.replaceState) {
-            history.replaceState(null, '', href);
-          } else {
-            // fallback — don't change location to avoid instant jump
+      cards.forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var href = a.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            e.preventDefault();
+            scrollToId(href.slice(1));
+            // update the hash without jumping (so users can copy link)
+            if (history && history.replaceState) {
+              history.replaceState(null, '', href);
+            } else {
+              // fallback — don't change location to avoid instant jump
+            }
           }
+        });
+      });
+
+      // If landing with a hash, scroll smoothly and show the button
+      if (window.location.hash) {
+        var id = window.location.hash.slice(1);
+        setTimeout(function () { scrollToId(id); }, 0);
+      }
+
+      // Show/hide logic for back-to-top
+      function updateBackBtnVisibility() {
+        var threshold = getHeaderOffset();
+        if (window.scrollY > threshold) {
+          backBtn.classList.add('show');
+        } else {
+          backBtn.classList.remove('show');
+        }
+      }
+
+      function showBackBtn() {
+        backBtn.classList.add('show');
+      }
+
+      // click handler: smooth scroll to top and move focus to the top navigation for accessibility
+      backBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // after scrolling starts, focus the first nav link for keyboard users
+        var firstNav = document.querySelector('.navlinks a');
+        if (firstNav) {
+          // wait a short moment for the smooth scroll to be noticeable before focusing
+          setTimeout(function () { firstNav.focus(); }, 420);
         }
       });
+
+      // keyboard activation support (Enter/Space)
+      backBtn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          backBtn.click();
+        }
+      });
+
+      // update on scroll and on resize
+      window.addEventListener('scroll', updateBackBtnVisibility);
+      window.addEventListener('resize', updateBackBtnVisibility);
+
+      // initial visibility
+      updateBackBtnVisibility();
     });
-
-    // If landing with a hash, scroll smoothly and show the button
-    if (window.location.hash) {
-      var id = window.location.hash.slice(1);
-      setTimeout(function () { scrollToId(id); }, 0);
-    }
-
-    // Show/hide logic for back-to-top
-    function updateBackBtnVisibility() {
-      var threshold = getHeaderOffset();
-      if (window.scrollY > threshold) {
-        backBtn.classList.add('show');
-      } else {
-        backBtn.classList.remove('show');
-      }
-    }
-
-    function showBackBtn() {
-      backBtn.classList.add('show');
-    }
-
-    // click handler: smooth scroll to top and move focus to the top navigation for accessibility
-    backBtn.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      // after scrolling starts, focus the first nav link for keyboard users
-      var firstNav = document.querySelector('.navlinks a');
-      if (firstNav) {
-        // wait a short moment for the smooth scroll to be noticeable before focusing
-        setTimeout(function () { firstNav.focus(); }, 420);
-      }
-    });
-
-    // keyboard activation support (Enter/Space)
-    backBtn.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        backBtn.click();
-      }
-    });
-
-    // update on scroll and on resize
-    window.addEventListener('scroll', updateBackBtnVisibility);
-    window.addEventListener('resize', updateBackBtnVisibility);
-
-    // initial visibility
-    updateBackBtnVisibility();
-  });
-</script>
+  </script>
 </body>
 </html>
