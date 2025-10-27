@@ -35,39 +35,47 @@
   .devotion-link { font-size: 1.05rem; padding: 0.5rem 0.9rem; }
 }
 
-/* Mobile-only: raise the overlay toward the top of the hero and narrow the link pills */
+/* Mobile-only adjustments: raise overlay and narrow link pills */
 @media (max-width: 639px) {
   .header.rotating-hero .overlay {
-    position: absolute;
-    left: 50%;
-    top: 8%;
-    transform: translateX(-50%);
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
-    gap: 0.45rem;
+    position: absolute !important;  /* ensure absolute for top/left to apply */
+    left: 50% !important;
+    top: 5% !important;             /* raise overlay toward the top; increase for lower */
+    transform: translateX(-50%) !important; /* remove vertical translate */
+    width: calc(100% - 1.2rem);     /* keep a small side gutter */
+    max-width: 92%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    gap: 0.35rem;
     align-items: center;
   }
 
+  /* Slightly smaller title so it doesn't push the overlay down */
   .header.rotating-hero .hero-title {
-    font-size: 1.05rem;
-    line-height: 1.1;
-    margin: 0 0 0.15rem 0;
+    font-size: 1.00rem;
+    line-height: 1.08;
+    margin: 0 0 0.12rem 0;
   }
 
+  /* Tighten nav spacing and make pills narrower (~5 char widths) */
   .header.rotating-hero .hero-links {
-    gap: 0.35rem;
+    gap: 0.28rem;
     justify-content: center;
-    padding-inline: 0.25rem;
+    padding-inline: 0.2rem;
   }
 
   .header.rotating-hero .hero-links a {
-    padding: 0.18rem 0.38rem;
-    font-size: 0.92rem;
+    padding: 0.12rem 0.28rem;    /* reduced horizontal padding -> significantly narrower pills */
+    font-size: 0.88rem;         /* slightly smaller text */
     white-space: nowrap;
     display: inline-block;
     box-sizing: border-box;
   }
-}
+
+  /* Keep daily devotion compact on mobile */
+  #daily-devotion-link { margin-top: 0.35rem; }
+  .devotion-link { font-size: 0.92rem; padding: 0.32rem 0.52rem; }
+}}
 </style>
   
 <body>
