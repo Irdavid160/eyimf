@@ -35,14 +35,14 @@
   .devotion-link { font-size: 1.05rem; padding: 0.5rem 0.9rem; }
 }
 
-/* Mobile-only adjustments: center overlay vertically and adjust spacing */
+/* Mobile-only adjustments: raise overlay toward the top */
 @media (max-width: 639px) {
   .header.rotating-hero .overlay {
-    position: absolute !important;  /* ensure absolute for positioning */
+    position: absolute !important;
     left: 50% !important;
-    top: 50% !important;            /* center vertically */
-    transform: translate(-50%, -50%) !important; /* center both horizontally and vertically */
-    width: calc(100% - 1.2rem);     /* keep a small side gutter */
+    top: 5% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 1.2rem);
     max-width: 92%;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -50,14 +50,14 @@
     align-items: center;
   }
 
-  /* Adjust title size for centered layout */
+  /* Slightly smaller title so it doesn't push the overlay down */
   .header.rotating-hero .hero-title {
     font-size: 1.00rem;
     line-height: 1.08;
     margin: 0 0 0.12rem 0;
   }
 
-  /* Adjust nav spacing and make pills narrower */
+  /* Tighten nav spacing and make pills narrower */
   .header.rotating-hero .hero-links {
     gap: 0.28rem;
     justify-content: center;
@@ -65,8 +65,8 @@
   }
 
   .header.rotating-hero .hero-links a {
-    padding: 0.12rem 0.28rem;    /* reduced horizontal padding -> significantly narrower pills */
-    font-size: 0.88rem;         /* slightly smaller text */
+    padding: 0.12rem 0.28rem;
+    font-size: 0.88rem;
     white-space: nowrap;
     display: inline-block;
     box-sizing: border-box;
@@ -77,11 +77,14 @@
   .devotion-link { font-size: 0.92rem; padding: 0.32rem 0.52rem; }
 }
 
-/* Desktop overrides for banner images (to keep original banners on desktop) */
+/* Desktop overrides: use banner images for first 3 slides, hide the rest */
 @media (min-width: 640px) {
   .hero-slide:nth-child(1) { background-image: url('assets/banners/herobanner1.png') !important; }
   .hero-slide:nth-child(2) { background-image: url('assets/banners/herobanner2.png') !important; }
   .hero-slide:nth-child(3) { background-image: url('assets/banners/herobanner3.png') !important; }
+  .hero-slide:nth-child(4),
+  .hero-slide:nth-child(5),
+  .hero-slide:nth-child(6) { display: none !important; }
 }
     <link rel="stylesheet" href="style.css?v=20251011d">
 <style>
@@ -116,12 +119,12 @@
 
 /* --- Mobile adjustments (<=639px) --- */
 @media (max-width: 639px) {
-  /* Center overlay vertically for better mobile look */
+  /* Raise overlay near the top, ensure positioning applies */
   .header.rotating-hero .overlay {
     position: absolute !important;
     left: 50% !important;
-    top: 50% !important;                     /* center vertically */
-    transform: translate(-50%, -50%) !important; /* center both */
+    top: 5% !important;
+    transform: translateX(-50%) !important;
     width: calc(100% - 1.0rem);
     max-width: 94%;
     padding-left: 0.5rem;
@@ -130,7 +133,7 @@
     align-items: center;
   }
 
-  /* Slightly reduce title so it fits well in centered layout */
+  /* Slightly reduce title so it doesn't push the overlay down */
   .header.rotating-hero .hero-title {
     font-size: 1.00rem;
     line-height: 1.08;
@@ -144,8 +147,8 @@
     padding-inline: 0.18rem;
   }
   .header.rotating-hero .hero-links a {
-    padding: 0.10rem 0.24rem; /* reduce horizontal padding significantly */
-    font-size: 0.86rem;       /* slightly smaller text */
+    padding: 0.10rem 0.24rem;
+    font-size: 0.86rem;
     white-space: nowrap;
     display: inline-block;
     box-sizing: border-box;
