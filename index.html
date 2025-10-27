@@ -6,6 +6,98 @@
   <title>EYIMF • Examine Yourselves International Mission Foundation</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css?v=20251011d">
+
+  <!-- Responsive hero overlay overrides (keeps mobile intact, adds moderate desktop lift) -->
+  <style>
+    /* overlay base: center and use flex column with gap for reliable spacing */
+    .header.rotating-hero .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.25rem;
+      width: 100%;
+      max-width: 1000px;
+      box-sizing: border-box;
+      text-align: center;
+      pointer-events: none; /* allow children with pointer-events:auto to be interactive */
+    }
+
+    /* make interactive children clickable again */
+    .header.rotating-hero .overlay a,
+    .header.rotating-hero .overlay .hero-links a {
+      pointer-events: auto;
+    }
+
+    /* hero title: default none for mobile, smooth transition */
+    .header.rotating-hero .hero-title {
+      transform: none;
+      transition: transform 180ms ease;
+      margin: 0;
+      color: #fff;
+      line-height: 1.15;
+      font-size: clamp(1.15rem, 2.2vw, 1.8rem);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    }
+
+    /* hero links: compact, wrap when needed */
+    .header.rotating-hero .hero-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .header.rotating-hero .hero-links a {
+      color: #fff;
+      text-decoration: none;
+      background: rgba(0,0,0,0.25);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* daily devotion link styling (no inline styles) */
+    #daily-devotion-link { margin-top: 0; text-align: center; }
+    .devotion-link {
+      color: #fff;
+      background: rgba(0,0,0,0.35);
+      padding: 0.45rem 0.8rem;
+      border-radius: 6px;
+      font-weight: 700;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    /* Desktop: apply a moderate visual lift on wider screens only */
+    @media (min-width: 900px) {
+      .header.rotating-hero .hero-title {
+        transform: translateY(-36px);
+        font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+      }
+    }
+
+    /* Medium screens: smaller lift */
+    @media (min-width: 640px) and (max-width: 899px) {
+      .header.rotating-hero .hero-title {
+        transform: translateY(-20px);
+        font-size: clamp(1.4rem, 2.0vw, 1.7rem);
+      }
+    }
+
+    /* Mobile tweaks: ensure no transform and tighter spacing */
+    @media (max-width: 639px) {
+      .header.rotating-hero .overlay { gap: 0.55rem; padding: 0.7rem; }
+      .header.rotating-hero .hero-title { transform: none; font-size: 1.15rem; }
+      .header.rotating-hero .hero-links a { padding: 0.25rem 0.5rem; font-size: 0.9rem; }
+      .devotion-link { padding: 0.35rem 0.6rem; font-size: 0.95rem; }
+    }
+  </style>
 </head>
 
 <body>
@@ -43,7 +135,7 @@
     <!-- Overlay links -->
 <div class="overlay">
   <h1 class="hero-title">Examine Yourselves International Mission Foundation</h1>
-  <nav class="hero-links">
+  <nav class="hero-links" aria-label="Hero navigation">
     <a href="about.html">About</a>
     <a href="updates.html">Updates</a>
     <a href="whatwedo.html">What We Do</a>
@@ -51,9 +143,10 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-<!-- change margin-top: 10px to 1in -->
-<div id="daily-devotion-link" style="text-align:center; margin-top: 1in;">
-  <a href="devotions.html" class="devotion-link" style="font-size:1.05rem; font-weight:600; color: #fff;">Daily Devotion</a>
+  <!-- DAILY DEVOTION LINK (inline styles removed; controlled by CSS above) -->
+  <div id="daily-devotion-link">
+    <a href="devotions.html" class="devotion-link">Daily Devotion</a>
+  </div>
 </div>
       
     </div>
@@ -62,7 +155,7 @@
 <section class="overview">
   <div class="container">
     <h2>What Is EYIMF?</h2>
-    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion.</p>
+    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion[...]
     <a href="about.html" class="button">Learn More</a>
   </div>
 </section>
@@ -86,7 +179,7 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 
-<!-- ✅ Move your rotating hero taglines script here -->
+<!-- Rotating hero scripts (unchanged) -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.hero-slide');
@@ -113,7 +206,6 @@
   });
 </script>
 
-<!-- ✅ Second script: rotating hero without tagline -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.hero-slide');
@@ -136,8 +228,8 @@
   });
 </script>
 
-  <script>
-  // 📜 Location of your devotions JSON file
+<script>
+  // Location of your devotions JSON file
   const DEVOTIONS_JSON = 'assets/devotions/devotions.json?v=2';
 
   fetch(DEVOTIONS_JSON)
