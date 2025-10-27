@@ -8,6 +8,31 @@
   <link rel="stylesheet" href="style.css?v=20251011d">
 </head>
 
+  <style>
+/* Fix hero links clipping on small screens */
+@media (max-width: 639px) {
+  .header.rotating-hero .overlay {
+    box-sizing: border-box;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    width: calc(100% - 1.2rem);
+  }
+
+  .header.rotating-hero .hero-links {
+    gap: 0.45rem;
+    justify-content: center;
+    padding-inline: 0.25rem;
+  }
+
+  .header.rotating-hero .hero-links a {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.95rem;
+    white-space: normal;
+    box-sizing: border-box;
+  }
+}
+</style>
+
 <body>
   <nav>
     <div class="container navbar">
