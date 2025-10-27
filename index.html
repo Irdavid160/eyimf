@@ -76,6 +76,79 @@
   #daily-devotion-link { margin-top: 0.35rem; }
   .devotion-link { font-size: 0.92rem; padding: 0.32rem 0.52rem; }
 }}
+    <link rel="stylesheet" href="style.css?v=20251011d">
+<style>
+/* --- Daily Devotion: base styles --- */
+#daily-devotion-link { margin-top: 0; text-align: center; }
+.devotion-link {
+  color: #fff;
+  background: rgba(0,0,0,0.35);
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Force white on desktop for all link states (higher specificity + !important to beat inline or other rules) */
+@media (min-width: 900px) {
+  #daily-devotion-link .devotion-link,
+  #daily-devotion-link .devotion-link:link,
+  #daily-devotion-link .devotion-link:visited,
+  #daily-devotion-link .devotion-link:hover,
+  #daily-devotion-link .devotion-link:active,
+  #daily-devotion-link .devotion-link:focus {
+    color: #fff !important;
+    background: rgba(0,0,0,0.35) !important;
+    text-decoration: none !important;
+  }
+
+  /* desktop vertical offset requested */
+  #daily-devotion-link { margin-top: 72px !important; }
+}
+
+/* --- Mobile adjustments (<=639px) --- */
+@media (max-width: 639px) {
+  /* Raise overlay near the top, ensure positioning applies */
+  .header.rotating-hero .overlay {
+    position: absolute !important;
+    left: 50% !important;
+    top: 5% !important;                     /* adjust up/down as needed */
+    transform: translateX(-50%) !important; /* horizontal center only */
+    width: calc(100% - 1.0rem);
+    max-width: 94%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    gap: 0.28rem;
+    align-items: center;
+  }
+
+  /* Slightly reduce title so it doesn't push the overlay down */
+  .header.rotating-hero .hero-title {
+    font-size: 1.00rem;
+    line-height: 1.08;
+    margin: 0 0 0.12rem 0;
+  }
+
+  /* Narrow the nav pills (≈5 character widths narrower visually) */
+  .header.rotating-hero .hero-links {
+    gap: 0.22rem;
+    justify-content: center;
+    padding-inline: 0.18rem;
+  }
+  .header.rotating-hero .hero-links a {
+    padding: 0.10rem 0.24rem; /* reduce horizontal padding significantly */
+    font-size: 0.86rem;       /* slightly smaller text */
+    white-space: nowrap;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+
+  /* Keep daily devotion compact on mobile */
+  #daily-devotion-link { margin-top: 0.35rem; }
+  .devotion-link { font-size: 0.9rem; padding: 0.32rem 0.5rem; }
+}
+</style>
 </style>
   
 <body>
