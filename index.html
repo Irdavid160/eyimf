@@ -6,6 +6,38 @@
   <title>EYIMF • Examine Yourselves International Mission Foundation</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css?v=20251011d">
+  <style>
+    /* Responsive styles for hero overlay elements */
+    #daily-devotion-link {
+      text-align: center;
+      margin-top: clamp(0.5rem, 4vw, 1in);
+    }
+
+    #daily-devotion-link .devotion-link {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    #daily-devotion-link .devotion-link:hover,
+    #daily-devotion-link .devotion-link:focus {
+      color: #f1c40f;
+    }
+
+    /* Mobile-specific adjustments */
+    @media (max-width: 540px) {
+      #daily-devotion-link {
+        margin-top: clamp(0.5rem, 3vw, 0.75rem);
+      }
+
+      #daily-devotion-link .devotion-link {
+        font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+        padding: 0.35rem 0.6rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -51,9 +83,8 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-<!-- change margin-top: 10px to 1in -->
-<div id="daily-devotion-link" style="text-align:center; margin-top: 1in;">
-  <a href="devotions.html" class="devotion-link" style="font-size:1.05rem; font-weight:600; color: #fff;">Daily Devotion</a>
+<div id="daily-devotion-link">
+  <a href="devotions.html" class="devotion-link">Daily Devotion</a>
 </div>
       
     </div>
