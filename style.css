@@ -229,6 +229,27 @@ nav {
   transform: translateY(-2px);
 }
 
+/* Daily Devotion Link Styles */
+#daily-devotion-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#daily-devotion-link .devotion-link {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  transition: color 0.3s ease;
+}
+
+#daily-devotion-link .devotion-link:hover,
+#daily-devotion-link .devotion-link:focus {
+  color: #f1c40f;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+}
+
 .section {
   padding: clamp(0px, 1vw, 15px) 0;
 }
