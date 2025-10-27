@@ -98,7 +98,31 @@
     .header.rotating-hero .hero-links a { padding: 0.25rem 0.5rem; font-size: 0.9rem; }
     .devotion-link { padding: 0.35rem 0.6rem; font-size: 0.95rem; }
   }
+/* desktop-only secondary title: hidden by default (mobile) */
+.hero-secondary {
+  display: none;
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+  pointer-events: none; /* decorative duplicate */
+}
 
+/* show on wide screens and position absolutely so it doesn't affect overlay flow */
+@media (min-width: 900px) {
+  .hero-secondary {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* position it relative to the header: push down ~1.5in from the header center */
+    top: calc(50% + 1.5in);
+    z-index: 12; /* above slides/overlay if needed */
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    line-height: 1.2;
+  }
+}
   /* Make sure slides don't overlap the overlay */
   .hero-slide { z-index: 1; }
 </style>
