@@ -42,6 +42,40 @@
     padding: 0.5rem 0.9rem;
   }
 }
+
+/* Mobile-only: raise the overlay toward the top of the hero and narrow the link pills */
+@media (max-width: 639px) {
+  /* move the whole overlay up near the top of the header/hero */
+  .header.rotating-hero .overlay {
+    top: 8%;                     /* moves the overlay up (was 50% center on desktop) */
+    transform: translateX(-50%); /* keep horizontal centering but remove vertical translate */
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    gap: 0.45rem;
+    align-items: center;
+  }
+
+  /* make the title a touch smaller so it doesn't crowd the links */
+  .header.rotating-hero .hero-title {
+    font-size: 1.05rem;
+    line-height: 1.1;
+    margin: 0 0 0.15rem 0;
+  }
+
+  /* tighten the spacing for the nav so pills are narrower — ~3 char spaces visually */
+  .header.rotating-hero .hero-links {
+    gap: 0.35rem;
+    justify-content: center;
+    padding-inline: 0.25rem;
+  }
+  .header.rotating-hero .hero-links a {
+    padding: 0.18rem 0.38rem; /* reduced horizontal padding -> narrower pills */
+    font-size: 0.92rem;
+    white-space: nowrap;      /* keep label together */
+    display: inline-block;
+    box-sizing: border-box;
+  }
+}
 </style>
   
 <body>
