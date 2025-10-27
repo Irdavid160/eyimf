@@ -6,6 +6,54 @@
   <title>EYIMF • Examine Yourselves International Mission Foundation</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css?v=20251011d">
+  <style>
+    /* Responsive hero layout overrides */
+    /* No shift on small screens; shift only on wider screens */
+    .header.rotating-hero .hero-title {
+      transform: none;
+      transition: transform 0.15s ease;
+    }
+
+    /* Apply visual lift only on larger viewports (min-width: 900px) */
+    @media (min-width: 900px) {
+      .header.rotating-hero .hero-title {
+        transform: translateY(-48px);
+      }
+    }
+
+    /* Keep overlay spacing responsive with gap-based layout */
+    .header.rotating-hero .overlay {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.25rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Hero links with flexible wrapping */
+    .header.rotating-hero .hero-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Daily devotion link - remove inline margin-top; controlled by gap */
+    #daily-devotion-link {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    /* Style the devotion link */
+    #daily-devotion-link a.devotion-link {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body>
@@ -51,9 +99,8 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-<!-- change margin-top: 10px to 1in -->
-<div id="daily-devotion-link" style="text-align:center; margin-top: 1in;">
-  <a href="devotions.html" class="devotion-link" style="font-size:1.05rem; font-weight:600; color: #fff;">Daily Devotion</a>
+<div id="daily-devotion-link">
+  <a href="devotions.html" class="devotion-link">Daily Devotion</a>
 </div>
       
     </div>
