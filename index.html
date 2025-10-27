@@ -75,11 +75,29 @@
     text-decoration: none;
   }
 
+  /* Desktop-only title below Daily Devotion */
+  .desktop-only-title {
+    display: none; /* hidden by default (mobile) */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    line-height: 1.2;
+  }
+
   /* Desktop: moderate lift (reduced so title doesn't disappear) */
   @media (min-width: 900px) {
     .header.rotating-hero .hero-title {
       transform: translateY(-18px); /* modest lift keeps title visible */
       font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+    }
+    
+    /* Show desktop-only title and position it ~1.5 inches (108px) below devotion link */
+    .desktop-only-title {
+      display: block;
+      margin-top: 108px; /* approximately 1.5 inches at 72 DPI */
     }
   }
 
@@ -151,6 +169,9 @@
   <div id="daily-devotion-link">
     <a href="devotions.html" class="devotion-link">Daily Devotion</a>
   </div>
+
+  <!-- DESKTOP-ONLY TITLE BELOW DAILY DEVOTION -->
+  <h2 class="desktop-only-title">Examine Yourselves International Mission Foundation</h2>
 </div>
 
       <!-- desktop-only secondary title (insert immediately after #daily-devotion-link) -->
