@@ -483,7 +483,6 @@ nav {
   .brand .name {
     font-size: clamp(0.95rem, 4.5vw, 1.25rem);
     line-height: 1.2;
-    display: none;
   }
 }
 
@@ -660,8 +659,7 @@ nav {
 /* Mobile tweaks */
 @media (max-width: 540px) {
   .header.rotating-hero .overlay { gap: .55rem; padding: .7rem; }
-  .header.rotating-hero .hero-title { font-size: 1.15rem; line-height: 1.15; transform: none; }
-  .header.rotating-hero .hero-links a { padding: .25rem .5rem; font-size: .9rem; }
+  .header.rotating-hero .hero-title { font-size: 1.15rem; line-height: 1.15; transform: none; display: none; }
   #daily-devotion-link a.devotion-link { padding: .35rem .6rem; font-size: .95rem; }
 }
 
@@ -796,7 +794,7 @@ nav {
   align-items: center;
 }
 
- /* Keep images fully visible but make them smaller */
+ /* Keep images fully visible but make them smaller */ 
  .section .card img {
    width: 100%;
    height: auto;           /* keeps original aspect ratio */
