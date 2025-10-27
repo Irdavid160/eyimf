@@ -9,6 +9,44 @@
 </head>
 
   <style>
+    <style>
+/* Quick override — paste directly after your stylesheet link in the <head> */
+/* Fix hero links clipping & prevent word-wrapping in each link */
+.header.rotating-hero .hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+/* Keep each link's text on one line (prevents "What We Do" splitting) */
+.header.rotating-hero .hero-links a {
+  white-space: nowrap;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+/* Mobile: reduce padding/gap and ensure links don't touch edges */
+@media (max-width: 639px) {
+  .header.rotating-hero .overlay {
+    box-sizing: border-box;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    width: calc(100% - 1.2rem);
+  }
+
+  .header.rotating-hero .hero-links {
+    gap: 0.45rem;
+    padding-inline: 0.25rem;
+  }
+
+  .header.rotating-hero .hero-links a {
+    padding: 0.22rem 0.45rem;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+}
+
 /* Fix hero links clipping on small screens */
 @media (max-width: 639px) {
   .header.rotating-hero .overlay {
