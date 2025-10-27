@@ -8,45 +8,42 @@
   <link rel="stylesheet" href="style.css?v=20251011d">
 </head>
 
-   <style>
-/* Mobile hero-link fixes: single clean override placed after the external stylesheet */
-
-/* Keep each link's words together and allow whole links to wrap to the next row */
-.header.rotating-hero .hero-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  justify-content: center;
+  <style>
+/* Desktop-only: push the Daily Devotion down by 0.75in (≈72px) */
+#daily-devotion-link {
+  margin-top: 0;         /* baseline for all sizes; controlled by media queries */
+  text-align: center;
 }
 
-/* Prevent splitting words inside each link label */
-.header.rotating-hero .hero-links a {
-  white-space: nowrap;
+/* visual style for the devotion link — keeps color white, no color change */
+.devotion-link {
+  color: #fff;
+  background: rgba(0,0,0,0.35);
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
   display: inline-block;
-  box-sizing: border-box;
 }
 
-/* Mobile-specific: tighten spacing so first/last characters don't touch the viewport edge */
+/* Mobile: small spacing so layout stays tight */
 @media (max-width: 639px) {
-  .header.rotating-hero .overlay {
-    box-sizing: border-box;
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
-    width: calc(100% - 1.2rem);
-  }
+  #daily-devotion-link { margin-top: 0.4rem; }
+  .devotion-link { font-size: 0.95rem; padding: 0.35rem 0.6rem; }
+}
 
-  .header.rotating-hero .hero-links {
-    gap: 0.45rem;
-    padding-inline: 0.25rem;
+/* Desktop: add the requested downward offset (0.75in) */
+@media (min-width: 900px) {
+  #daily-devotion-link {
+    margin-top: 0.75in; /* ~72px — change to px if you want exact pixels */
   }
-
-  .header.rotating-hero .hero-links a {
-    padding: 0.22rem 0.45rem;
-    font-size: 0.92rem;
+  .devotion-link {
+    font-size: 1.05rem;
+    padding: 0.5rem 0.9rem;
   }
 }
 </style>
-
+  
 <body>
   <nav>
     <div class="container navbar">
@@ -90,7 +87,7 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-<!-- DAILY DEVOTION LINK: no inline styles -->
+<!-- DAILY DEVOTION LINK: remove inline styles so stylesheet controls appearance -->
 <div id="daily-devotion-link">
   <a href="devotions.html" class="devotion-link">Daily Devotion</a>
 </div>
