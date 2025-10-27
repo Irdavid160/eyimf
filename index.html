@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="style.css?v=20251011d">
 </head>
 
-  <style>
-    <style>
-/* Quick override — paste directly after your stylesheet link in the <head> */
-/* Fix hero links clipping & prevent word-wrapping in each link */
+   <style>
+/* Mobile hero-link fixes: single clean override placed after the external stylesheet */
+
+/* Keep each link's words together and allow whole links to wrap to the next row */
 .header.rotating-hero .hero-links {
   display: flex;
   flex-wrap: wrap;
@@ -19,14 +19,14 @@
   justify-content: center;
 }
 
-/* Keep each link's text on one line (prevents "What We Do" splitting) */
+/* Prevent splitting words inside each link label */
 .header.rotating-hero .hero-links a {
   white-space: nowrap;
   display: inline-block;
   box-sizing: border-box;
 }
 
-/* Mobile: reduce padding/gap and ensure links don't touch edges */
+/* Mobile-specific: tighten spacing so first/last characters don't touch the viewport edge */
 @media (max-width: 639px) {
   .header.rotating-hero .overlay {
     box-sizing: border-box;
@@ -43,30 +43,6 @@
   .header.rotating-hero .hero-links a {
     padding: 0.22rem 0.45rem;
     font-size: 0.92rem;
-    white-space: nowrap;
-  }
-}
-
-/* Fix hero links clipping on small screens */
-@media (max-width: 639px) {
-  .header.rotating-hero .overlay {
-    box-sizing: border-box;
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
-    width: calc(100% - 1.2rem);
-  }
-
-  .header.rotating-hero .hero-links {
-    gap: 0.45rem;
-    justify-content: center;
-    padding-inline: 0.25rem;
-  }
-
-  .header.rotating-hero .hero-links a {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.95rem;
-    white-space: normal;
-    box-sizing: border-box;
   }
 }
 </style>
@@ -114,10 +90,9 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- ✅ DAILY DEVOTION LINK goes inside the overlay -->
-  <div id="daily-devotion-link" style="text-align:center; margin-top: 10px;">
-    <a href="devotions.html" class="devotion-link" style="font-size:1.05rem; font-weight:600; color: #fff;">Daily Devotion</a>
-  </div>
+ <!-- Replace the existing daily-devotion block with this (no inline styles) -->
+<div id="daily-devotion-link">
+  <a href="devotions.html" class="devotion-link">Daily Devotion</a>
 </div>
       
     </div>
