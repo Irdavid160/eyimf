@@ -35,13 +35,13 @@
   .devotion-link { font-size: 1.05rem; padding: 0.5rem 0.9rem; }
 }
 
-/* Mobile-only adjustments: raise overlay and narrow link pills */
+/* Mobile-only adjustments: center overlay vertically and adjust spacing */
 @media (max-width: 639px) {
   .header.rotating-hero .overlay {
-    position: absolute !important;  /* ensure absolute for top/left to apply */
+    position: absolute !important;  /* ensure absolute for positioning */
     left: 50% !important;
-    top: 5% !important;             /* raise overlay toward the top; increase for lower */
-    transform: translateX(-50%) !important; /* remove vertical translate */
+    top: 50% !important;            /* center vertically */
+    transform: translate(-50%, -50%) !important; /* center both horizontally and vertically */
     width: calc(100% - 1.2rem);     /* keep a small side gutter */
     max-width: 92%;
     padding-left: 0.5rem;
@@ -50,14 +50,14 @@
     align-items: center;
   }
 
-  /* Slightly smaller title so it doesn't push the overlay down */
+  /* Adjust title size for centered layout */
   .header.rotating-hero .hero-title {
     font-size: 1.00rem;
     line-height: 1.08;
     margin: 0 0 0.12rem 0;
   }
 
-  /* Tighten nav spacing and make pills narrower (~5 char widths) */
+  /* Adjust nav spacing and make pills narrower */
   .header.rotating-hero .hero-links {
     gap: 0.28rem;
     justify-content: center;
@@ -75,7 +75,14 @@
   /* Keep daily devotion compact on mobile */
   #daily-devotion-link { margin-top: 0.35rem; }
   .devotion-link { font-size: 0.92rem; padding: 0.32rem 0.52rem; }
-}}
+}
+
+/* Desktop overrides for banner images (to keep original banners on desktop) */
+@media (min-width: 640px) {
+  .hero-slide:nth-child(1) { background-image: url('assets/banners/herobanner1.png') !important; }
+  .hero-slide:nth-child(2) { background-image: url('assets/banners/herobanner2.png') !important; }
+  .hero-slide:nth-child(3) { background-image: url('assets/banners/herobanner3.png') !important; }
+}
     <link rel="stylesheet" href="style.css?v=20251011d">
 <style>
 /* --- Daily Devotion: base styles --- */
@@ -109,12 +116,12 @@
 
 /* --- Mobile adjustments (<=639px) --- */
 @media (max-width: 639px) {
-  /* Raise overlay near the top, ensure positioning applies */
+  /* Center overlay vertically for better mobile look */
   .header.rotating-hero .overlay {
     position: absolute !important;
     left: 50% !important;
-    top: 5% !important;                     /* adjust up/down as needed */
-    transform: translateX(-50%) !important; /* horizontal center only */
+    top: 50% !important;                     /* center vertically */
+    transform: translate(-50%, -50%) !important; /* center both */
     width: calc(100% - 1.0rem);
     max-width: 94%;
     padding-left: 0.5rem;
@@ -123,14 +130,14 @@
     align-items: center;
   }
 
-  /* Slightly reduce title so it doesn't push the overlay down */
+  /* Slightly reduce title so it fits well in centered layout */
   .header.rotating-hero .hero-title {
     font-size: 1.00rem;
     line-height: 1.08;
     margin: 0 0 0.12rem 0;
   }
 
-  /* Narrow the nav pills (≈5 character widths narrower visually) */
+  /* Narrow the nav pills */
   .header.rotating-hero .hero-links {
     gap: 0.22rem;
     justify-content: center;
@@ -149,7 +156,6 @@
   .devotion-link { font-size: 0.9rem; padding: 0.32rem 0.5rem; }
 }
 </style>
-</style>
   
 <body>
   <nav>
@@ -164,7 +170,6 @@
       <!-- RIGHT SIDE: Donate button -->
 <!-- PayPal Donate link/button (replace or drop target if you want same-tab) -->
 <!-- Standard PayPal donate button (place this where your Donate link goes) -->
-<!-- Simple Donate button (drop this into your nav where the Donate link goes) -->
 <a href="https://www.paypal.com/donate/?hosted_button_id=AUW4GKC4SJ8XJ&source=qr"
    class="donate-btn"
    target="_blank"
@@ -179,9 +184,12 @@
   <header class="header rotating-hero">
     <div class="hero-container">
       <!-- Slides -->
-      <div class="hero-slide" style="background-image: url('assets/banners/herobanner1.png');"></div>
-      <div class="hero-slide" style="background-image: url('assets/banners/herobanner2.png');"></div>
-      <div class="hero-slide" style="background-image: url('assets/banners/herobanner3.png');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/adultservice1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/kidsinwindow.png');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/feeding1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/compassion1.JPEG');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/childrenschurch3.png');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/childrenschurch1.jpg');"></div>
 
     <!-- Overlay links -->
 <div class="overlay">
@@ -205,7 +213,7 @@
 <section class="overview">
   <div class="container">
     <h2>What Is EYIMF?</h2>
-    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion.</p>
+    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion[...]
     <a href="about.html" class="button">Learn More</a>
   </div>
 </section>
