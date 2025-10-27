@@ -6,6 +6,145 @@
   <title>EYIMF • Examine Yourselves International Mission Foundation</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css?v=20251011d">
+
+  <!-- Final responsive hero overrides:
+       - single responsive page approach
+       - overlay centered and gap-based (no inline spacing)
+       - main title visible on all viewports (small/moderate lifts at larger breakpoints)
+       - desktop-only secondary title positioned absolutely (doesn't affect overlay flow)
+  -->
+  <style>
+    /* slides should stay behind overlay */
+    .hero-slide { z-index: 1; }
+
+    /* overlay: absolutely centered, flex column, gap-based spacing */
+    .header.rotating-hero .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.25rem;
+      width: 100%;
+      max-width: 1000px;
+      box-sizing: border-box;
+      text-align: center;
+      z-index: 20;               /* sits above slides */
+      pointer-events: none;      /* allow only interactive children to receive pointer events */
+    }
+
+    /* make interactive children clickable */
+    .header.rotating-hero .overlay a,
+    .header.rotating-hero .overlay .hero-links a {
+      pointer-events: auto;
+    }
+
+    /* main hero title: visible always, modest responsive scaling and small lifts on wider screens */
+    .header.rotating-hero .hero-title {
+      transform: none;
+      transition: transform 180ms ease;
+      margin: 0;
+      color: #fff;
+      line-height: 1.15;
+      font-size: clamp(1.15rem, 2.2vw, 1.9rem);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    }
+
+    /* hero links styling */
+    .header.rotating-hero .hero-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .header.rotating-hero .hero-links a {
+      color: #fff;
+      text-decoration: none;
+      background: rgba(0,0,0,0.25);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* daily devotion link styling (no inline styles) */
+    #daily-devotion-link { margin-top: 0; text-align: center; }
+    .devotion-link {
+      color: #fff;
+      background: rgba(0,0,0,0.35);
+      padding: 0.45rem 0.8rem;
+      border-radius: 6px;
+      font-weight: 700;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    /* Medium screens: slight lift so the hero title visually separates from the links */
+    @media (min-width: 640px) and (max-width: 899px) {
+      .header.rotating-hero .hero-title {
+        transform: translateY(-12px);
+        font-size: clamp(1.4rem, 2.0vw, 1.7rem);
+      }
+    }
+
+    /* Desktop: moderate lift but reduced to avoid disappearing */
+    @media (min-width: 900px) {
+      .header.rotating-hero .hero-title {
+        transform: translateY(-18px);
+        font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+      }
+    }
+
+    /* Mobile tweaks: compact spacing, no lift */
+    @media (max-width: 639px) {
+      .header.rotating-hero .overlay {
+        gap: 0.55rem;
+        padding: 0.7rem;
+      }
+      .header.rotating-hero .hero-title {
+        transform: none;
+        font-size: 1.15rem;
+      }
+      .header.rotating-hero .hero-links a {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.9rem;
+      }
+      .devotion-link {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* desktop-only secondary title: hidden by default (mobile) */
+    .hero-secondary {
+      display: none;
+      margin: 0;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+      pointer-events: none;   /* decorative duplicate; not interactive */
+      z-index: 18;
+    }
+
+    /* show and absolutely position the secondary title on desktop */
+    @media (min-width: 900px) {
+      .hero-secondary {
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        /* place roughly 1.5 inches below the header center (visual distance below the overlay center) */
+        top: calc(50% + 1.5in);
+        font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+        line-height: 1.2;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -13,23 +152,18 @@
     <div class="container navbar">
       <!-- LEFT SIDE: brand text -->
       <div class="brand">
-  <img src="assets/photos/eyimflogo.png" alt="EYIMF Logo" class="brand-logo">
-  <span class="name">Examine Yourselves International Mission Foundation</span>
-</div>
-
+        <img src="assets/photos/eyimflogo.png" alt="EYIMF Logo" class="brand-logo">
+        <span class="name">Examine Yourselves International Mission Foundation</span>
+      </div>
 
       <!-- RIGHT SIDE: Donate button -->
-<!-- PayPal Donate link/button (replace or drop target if you want same-tab) -->
-<!-- Standard PayPal donate button (place this where your Donate link goes) -->
-<!-- Simple Donate button (drop this into your nav where the Donate link goes) -->
-<a href="https://www.paypal.com/donate/?hosted_button_id=AUW4GKC4SJ8XJ&source=qr"
-   class="donate-btn"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Donate to EYIMF via PayPal (opens in new tab)">
-  Donate
-</a>
-      </div>
+      <a href="https://www.paypal.com/donate/?hosted_button_id=AUW4GKC4SJ8XJ&source=qr"
+         class="donate-btn"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Donate to EYIMF via PayPal (opens in new tab)">
+        Donate
+      </a>
     </div>
   </nav>
 
@@ -40,30 +174,35 @@
       <div class="hero-slide" style="background-image: url('assets/banners/herobanner2.png');"></div>
       <div class="hero-slide" style="background-image: url('assets/banners/herobanner3.png');"></div>
 
-    <!-- Overlay links -->
-<div class="overlay">
-  <h1 class="hero-title">Examine Yourselves International Mission Foundation</h1>
-  <nav class="hero-links">
-    <a href="about.html">About</a>
-    <a href="updates.html">Updates</a>
-    <a href="whatwedo.html">What We Do</a>
-    <a href="media.html">Media</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+      <!-- Overlay (keeps main title, links, and daily-devotion in flow) -->
+      <div class="overlay">
+        <h1 class="hero-title">Examine Yourselves International Mission Foundation</h1>
 
-  <!-- ✅ DAILY DEVOTION LINK goes inside the overlay -->
-  <div id="daily-devotion-link" style="text-align:center; margin-top: 10px;">
-    <a href="devotions.html" class="devotion-link" style="font-size:1.05rem; font-weight:600; color: #fff;">Daily Devotion</a>
-  </div>
-</div>
-      
+        <nav class="hero-links" aria-label="Hero navigation">
+          <a href="about.html">About</a>
+          <a href="updates.html">Updates</a>
+          <a href="whatwedo.html">What We Do</a>
+          <a href="media.html">Media</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <!-- DAILY DEVOTION LINK (inline styles removed; controlled by CSS above) -->
+        <div id="daily-devotion-link">
+          <a href="devotions.html" class="devotion-link">Daily Devotion</a>
+        </div>
+      </div>
     </div>
+
+    <!-- Desktop-only secondary title (placed outside overlay so it doesn't change overlay flow) -->
+    <h2 class="hero-secondary" aria-hidden="true">
+      Examine Yourselves International Mission Foundation
+    </h2>
   </header>
 
 <section class="overview">
   <div class="container">
     <h2>What Is EYIMF?</h2>
-    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion.</p>
+    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion[...]
     <a href="about.html" class="button">Learn More</a>
   </div>
 </section>
@@ -87,7 +226,7 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 
-<!-- ✅ Move your rotating hero taglines script here -->
+<!-- Rotating hero scripts (unchanged) -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.hero-slide');
@@ -114,7 +253,6 @@
   });
 </script>
 
-<!-- ✅ Second script: rotating hero without tagline -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.hero-slide');
@@ -137,8 +275,8 @@
   });
 </script>
 
-  <script>
-  // 📜 Location of your devotions JSON file
+<script>
+  // Location of your devotions JSON file
   const DEVOTIONS_JSON = 'assets/devotions/devotions.json?v=2';
 
   fetch(DEVOTIONS_JSON)
