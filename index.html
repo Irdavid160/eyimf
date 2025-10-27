@@ -9,13 +9,10 @@
 </head>
 
   <style>
-/* Desktop-only: push the Daily Devotion down by 0.75in (≈72px) */
-#daily-devotion-link {
-  margin-top: 0;         /* baseline for all sizes; controlled by media queries */
-  text-align: center;
-}
+/* Daily Devotion and mobile overlay adjustments */
 
-/* visual style for the devotion link — keeps color white, no color change */
+/* Base daily devotion */
+#daily-devotion-link { margin-top: 0; text-align: center; }
 .devotion-link {
   color: #fff;
   background: rgba(0,0,0,0.35);
@@ -32,46 +29,41 @@
   .devotion-link { font-size: 0.95rem; padding: 0.35rem 0.6rem; }
 }
 
-/* Desktop: add the requested downward offset (0.75in) */
+/* Desktop: add the requested downward offset (≈72px) */
 @media (min-width: 900px) {
-  #daily-devotion-link {
-    margin-top: 0.75in; /* ~72px — change to px if you want exact pixels */
-  }
-  .devotion-link {
-    font-size: 1.05rem;
-    padding: 0.5rem 0.9rem;
-  }
+  #daily-devotion-link { margin-top: 72px; }
+  .devotion-link { font-size: 1.05rem; padding: 0.5rem 0.9rem; }
 }
 
 /* Mobile-only: raise the overlay toward the top of the hero and narrow the link pills */
 @media (max-width: 639px) {
-  /* move the whole overlay up near the top of the header/hero */
   .header.rotating-hero .overlay {
-    top: 8%;                     /* moves the overlay up (was 50% center on desktop) */
-    transform: translateX(-50%); /* keep horizontal centering but remove vertical translate */
+    position: absolute;
+    left: 50%;
+    top: 8%;
+    transform: translateX(-50%);
     padding-left: 0.6rem;
     padding-right: 0.6rem;
     gap: 0.45rem;
     align-items: center;
   }
 
-  /* make the title a touch smaller so it doesn't crowd the links */
   .header.rotating-hero .hero-title {
     font-size: 1.05rem;
     line-height: 1.1;
     margin: 0 0 0.15rem 0;
   }
 
-  /* tighten the spacing for the nav so pills are narrower — ~3 char spaces visually */
   .header.rotating-hero .hero-links {
     gap: 0.35rem;
     justify-content: center;
     padding-inline: 0.25rem;
   }
+
   .header.rotating-hero .hero-links a {
-    padding: 0.18rem 0.38rem; /* reduced horizontal padding -> narrower pills */
+    padding: 0.18rem 0.38rem;
     font-size: 0.92rem;
-    white-space: nowrap;      /* keep label together */
+    white-space: nowrap;
     display: inline-block;
     box-sizing: border-box;
   }
