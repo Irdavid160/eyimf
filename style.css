@@ -1888,7 +1888,47 @@ body {
   font-size: 0.95em;
 }
   
-/* uses clamp so the shift scales a bit on different viewports */
+/* --- Recommended: no shift on small screens; shift only on wider screens --- */
 .header.rotating-hero .hero-title {
-  transform: translateY(clamp(-32px, -2.5vw, -48px));
+  transform: none;
+  transition: transform 0.15s ease;
+}
+
+/* apply the ~0.5in (~48px) visual lift only on larger viewports */
+@media (min-width: 900px) {
+  .header.rotating-hero .hero-title {
+    transform: translateY(-48px);
+  }
+}
+
+/* keep overlay spacing responsive */
+.header.rotating-hero .overlay {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;            /* vertical spacing between title, links and devotion */
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* make the hero-links and devotion behave better on small screens */
+.header.rotating-hero .hero-links {
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#daily-devotion-link { /* remove inline margin-top; controlled by gap */
+  margin-top: 0;
+}
+
+/* Mobile tweaks */
+@media (max-width: 540px) {
+  .header.rotating-hero .overlay { gap: .55rem; padding: .7rem; }
+  .header.rotating-hero .hero-title { font-size: 1.15rem; line-height: 1.15; transform: none; }
+  .header.rotating-hero .hero-links a { padding: .25rem .5rem; font-size: .9rem; }
+  #daily-devotion-link a.devotion-link { padding: .35rem .6rem; font-size: .95rem; }
 }
