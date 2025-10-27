@@ -6,126 +6,6 @@
   <title>EYIMF • Examine Yourselves International Mission Foundation</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css?v=20251011d">
-
-  <!-- REPLACE the current hero override <style> block in the <head> with this block -->
-<style>
-  /* Updated hero overlay: visible above slides, balanced mobile/desktop spacing */
-  .header.rotating-hero .overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 1.25rem;
-    width: 100%;
-    max-width: 1000px;
-    box-sizing: border-box;
-    text-align: center;
-    z-index: 10;               /* ensure overlay sits above slides */
-    pointer-events: none;      /* children with pointer-events:auto remain clickable */
-  }
-
-  /* allow interactive children to receive pointer events */
-  .header.rotating-hero .overlay a,
-  .header.rotating-hero .overlay .hero-links a {
-    pointer-events: auto;
-  }
-
-  /* Hero title: default (mobile) has no lift, smooth transition for desktop */
-  .header.rotating-hero .hero-title {
-    transform: none;
-    transition: transform 180ms ease;
-    margin: 0;
-    color: #fff;
-    line-height: 1.15;
-    font-size: clamp(1.15rem, 2.2vw, 1.8rem);
-    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
-  }
-
-  /* Hero links styling */
-  .header.rotating-hero .hero-links {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .header.rotating-hero .hero-links a {
-    color: #fff;
-    text-decoration: none;
-    background: rgba(0,0,0,0.25);
-    padding: 0.35rem 0.75rem;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-
-  /* Daily devotion link */
-  #daily-devotion-link { margin-top: 0; text-align: center; }
-  .devotion-link {
-    color: #fff;
-    background: rgba(0,0,0,0.35);
-    padding: 0.45rem 0.8rem;
-    border-radius: 6px;
-    font-weight: 700;
-    display: inline-block;
-    text-decoration: none;
-  }
-
-  /* Desktop: moderate lift (reduced so title doesn't disappear) */
-  @media (min-width: 900px) {
-    .header.rotating-hero .hero-title {
-      transform: translateY(-18px); /* modest lift keeps title visible */
-      font-size: clamp(1.6rem, 2.2vw, 2.1rem);
-    }
-  }
-
-  /* Medium screens: smaller lift */
-  @media (min-width: 640px) and (max-width: 899px) {
-    .header.rotating-hero .hero-title {
-      transform: translateY(-12px);
-      font-size: clamp(1.4rem, 2.0vw, 1.7rem);
-    }
-  }
-
-  /* Mobile: no transform and tighter spacing */
-  @media (max-width: 639px) {
-    .header.rotating-hero .overlay { gap: 0.55rem; padding: 0.7rem; }
-    .header.rotating-hero .hero-title { transform: none; font-size: 1.15rem; }
-    .header.rotating-hero .hero-links a { padding: 0.25rem 0.5rem; font-size: 0.9rem; }
-    .devotion-link { padding: 0.35rem 0.6rem; font-size: 0.95rem; }
-  }
-/* desktop-only secondary title: hidden by default (mobile) */
-.hero-secondary {
-  display: none;
-  margin: 0;
-  color: #fff;
-  font-weight: 700;
-  text-align: center;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.45);
-  pointer-events: none; /* decorative duplicate */
-}
-
-/* show on wide screens and position absolutely so it doesn't affect overlay flow */
-@media (min-width: 900px) {
-  .hero-secondary {
-    display: block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    /* position it relative to the header: push down ~1.5in from the header center */
-    top: calc(50% + 1.5in);
-    z-index: 12; /* above slides/overlay if needed */
-    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-    line-height: 1.2;
-  }
-}
-  /* Make sure slides don't overlap the overlay */
-  .hero-slide { z-index: 1; }
-</style>
 </head>
 
 <body>
@@ -163,7 +43,7 @@
     <!-- Overlay links -->
 <div class="overlay">
   <h1 class="hero-title">Examine Yourselves International Mission Foundation</h1>
-  <nav class="hero-links" aria-label="Hero navigation">
+  <nav class="hero-links">
     <a href="about.html">About</a>
     <a href="updates.html">Updates</a>
     <a href="whatwedo.html">What We Do</a>
@@ -171,16 +51,11 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- DAILY DEVOTION LINK (inline styles removed; controlled by CSS above) -->
-  <div id="daily-devotion-link">
-    <a href="devotions.html" class="devotion-link">Daily Devotion</a>
+  <!-- ✅ DAILY DEVOTION LINK goes inside the overlay -->
+  <div id="daily-devotion-link" style="text-align:center; margin-top: 10px;">
+    <a href="devotions.html" class="devotion-link" style="font-size:1.05rem; font-weight:600; color: #fff;">Daily Devotion</a>
   </div>
 </div>
-
-<!-- place this directly inside <header class="header rotating-hero">, after the .hero-container -->
-<h2 class="hero-secondary" aria-hidden="true">
-  Examine Yourselves International Mission Foundation
-</h2>
       
     </div>
   </header>
@@ -188,7 +63,7 @@
 <section class="overview">
   <div class="container">
     <h2>What Is EYIMF?</h2>
-    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion[...]
+    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion.</p>
     <a href="about.html" class="button">Learn More</a>
   </div>
 </section>
@@ -212,7 +87,7 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 
-<!-- Rotating hero scripts (unchanged) -->
+<!-- ✅ Move your rotating hero taglines script here -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.hero-slide');
@@ -239,6 +114,7 @@
   });
 </script>
 
+<!-- ✅ Second script: rotating hero without tagline -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.hero-slide');
@@ -261,8 +137,8 @@
   });
 </script>
 
-<script>
-  // Location of your devotions JSON file
+  <script>
+  // 📜 Location of your devotions JSON file
   const DEVOTIONS_JSON = 'assets/devotions/devotions.json?v=2';
 
   fetch(DEVOTIONS_JSON)
