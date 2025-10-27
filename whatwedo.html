@@ -42,6 +42,10 @@
     /* Small screens: slightly smaller button */
     @media (max-width: 480px) {
       .back-to-top { right: 14px; bottom: 14px; width: 44px; height: 44px; }
+
+      /* On mobile devices we need a larger scroll-margin-top so anchors land a bit lower */
+      /* Increase this value if you still see the section tucked under the nav on some phones. */
+      .story-section { scroll-margin-top: 150px; }
     }
   </style>
 </head>
@@ -66,7 +70,7 @@
   <section class="section">
     <div class="container">
       <h1>What We Do</h1>
-      <p>By God’s grace, EYIMF serves communities through Gospel-centered discipleship and practical compassion. Below are our core ministry areas and some stories you can explore and share. Tap on the picture links below.
+      <p>By God’s grace, EYIMF serves communities through Gospel-centered discipleship and practical compassion. Below are our core ministry areas and some stories you can explore and share. Tap on [...]
 
       <!-- 6-up ministry grid -->
     <div class="grid cols-3" style="margin-top:16px;">
@@ -449,13 +453,18 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var cards = document.querySelectorAll('.grid.cols-3 a.card[href^="#"]');
-      var headerOffset = 90;
       var backBtn = document.getElementById('backToTop');
-      var showThreshold = headerOffset; // show button after scrolling past the header offset
+
+      // compute header offset dynamically so mobile can use a larger offset
+      function getHeaderOffset() {
+        // increase offset on small narrow screens (mobile)
+        return window.matchMedia('(max-width: 480px)').matches ? 150 : 90;
+      }
 
       function scrollToId(id) {
         var target = document.getElementById(id);
         if (!target) return;
+        var headerOffset = getHeaderOffset();
         var y = target.getBoundingClientRect().top + window.scrollY - headerOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
         // show the back-to-top button after navigating to an anchor
@@ -486,7 +495,8 @@
 
       // Show/hide logic for back-to-top
       function updateBackBtnVisibility() {
-        if (window.scrollY > showThreshold) {
+        var threshold = getHeaderOffset();
+        if (window.scrollY > threshold) {
           backBtn.classList.add('show');
         } else {
           backBtn.classList.remove('show');
