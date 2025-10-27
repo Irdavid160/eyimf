@@ -243,7 +243,7 @@
 <!-- ✅ Move your rotating hero taglines script here -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const slides = document.querySelectorAll('.hero-slide');
+    const slides = Array.from(document.querySelectorAll('.hero-slide')).filter(slide => getComputedStyle(slide).display !== 'none');
     const taglineEl = document.getElementById('heroTagline');
 
     const taglines = [
@@ -270,7 +270,7 @@
 <!-- ✅ Second script: rotating hero without tagline -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const slides = document.querySelectorAll('.hero-slide');
+    const slides = Array.from(document.querySelectorAll('.hero-slide')).filter(slide => getComputedStyle(slide).display !== 'none');
 
     if (slides.length === 1) {
       slides[0].classList.add('active');
