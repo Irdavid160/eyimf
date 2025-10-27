@@ -658,11 +658,10 @@ nav {
 
 /* Mobile tweaks */
 @media (max-width: 540px) {
-  .header.rotating-hero .overlay { gap: .55rem; padding: .7rem; }
+  .header.rotating-hero .overlay { gap: .55rem; padding: .7rem; padding-top: 48px; }  /* Added padding-top to move down 0.5 inch */
   .header.rotating-hero .hero-title { font-size: 1.15rem; line-height: 1.15; transform: none; display: none; }
   #daily-devotion-link a.devotion-link { padding: .35rem .6rem; font-size: .95rem; }
 }
-
 
 /* === Mobile photo carousel (for story sections) === */
 .mobile-carousel { display: none; }
