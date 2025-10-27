@@ -1934,3 +1934,25 @@ body {
   margin-top: 0;
 }
 
+/* Fix hero links clipping on small screens */
+@media (max-width: 639px) {
+  .header.rotating-hero .overlay {
+    box-sizing: border-box;
+    padding-left: 0.6rem;    /* reduce horizontal padding */
+    padding-right: 0.6rem;
+    width: calc(100% - 1.2rem);
+  }
+
+  .header.rotating-hero .hero-links {
+    gap: 0.45rem;            /* reduce gap between links */
+    justify-content: center;
+    padding-inline: 0.25rem; /* small inner padding so links don't touch edges */
+  }
+
+  .header.rotating-hero .hero-links a {
+    padding: 0.25rem 0.5rem; /* smaller pill padding */
+    font-size: 0.95rem;      /* slightly smaller on phones */
+    white-space: normal;     /* allow wrapping so text won't be clipped */
+    box-sizing: border-box;
+  }
+}
