@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+<p><em>By {{ page.author }} on {{ page.date | date: "%B %d, %Y" }}</em></p>
+<img src="{{ page.author_image }}" alt="{{ page.author }} profile" style="width:50px; height:50px; border-radius:50%; margin-bottom:10px;">
+
+{{ content }}
+
+<hr>
+<p><strong>Author:</strong> {{ page.author }}</p>
+<img src="{{ page.author_image }}" alt="{{ page.author }} profile" style="width:100px; height:100px; border-radius:50%;">
