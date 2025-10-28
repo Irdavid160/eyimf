@@ -115,6 +115,13 @@
 
   /* desktop vertical offset requested */
   #daily-devotion-link { margin-top: 72px !important; }
+
+  /* Make devotion link stack vertically on desktop */
+  .devotion-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* --- Mobile adjustments (<=639px) --- */
@@ -207,7 +214,10 @@
 
 <!-- DAILY DEVOTION LINK: remove inline styles so stylesheet controls appearance -->
 <div id="daily-devotion-link">
-  <a href="devotions.html" class="devotion-link">Daily Devotion</a>
+  <a href="devotions.html" class="devotion-link">
+    <span class="devotion-label">Daily Devotion</span>
+    <span class="devotion-title"></span>
+  </a>
 </div>
       
     </div>
@@ -216,7 +226,7 @@
 <section class="overview">
   <div class="container">
     <h2>What Is EYIMF?</h2>
-    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compassion[...]
+    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry dedicated to proclaiming the Gospel, discipling believers, and serving the poor through outreach and compa[...]
     <a href="about.html" class="button">Learn More</a>
   </div>
 </section>
@@ -308,16 +318,16 @@
 
       const linkEl = document.querySelector('#daily-devotion-link a');
       if (devotion) {
-        linkEl.textContent = `Today’s Daily Devotion: ${devotion.title}`;
+        linkEl.querySelector('.devotion-title').textContent = devotion.title;
         linkEl.href = `devotions.html?date=${todayISO}`;
       } else {
-        linkEl.textContent = `Today’s Daily Devotion`;
+        linkEl.querySelector('.devotion-title').textContent = '';
         linkEl.href = `devotions.html`;
       }
     })
     .catch(err => {
       console.error('Error loading daily devotion:', err);
-      document.querySelector('#daily-devotion-link a').textContent = `Today’s Daily Devotion`;
+      document.querySelector('#daily-devotion-link a .devotion-title').textContent = '';
     });
 </script>
 
