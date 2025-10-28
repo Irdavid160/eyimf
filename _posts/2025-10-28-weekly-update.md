@@ -1,7 +1,11 @@
-## Planning My Return
-## David (Santa) Riddell
-## 10-28-2025
-<img src="/assets/images/blog/DavidPreaching.png" alt="Holding hands in prayer" style="width: 25%; height: auto;">
+<div style="display: flex; align-items: flex-start;">
+<div>
+<h2 style="border-bottom: none;">Planning My Return</h2>
+<h2 style="border-bottom: none;">David (Santa) Riddell</h2>
+<h2 style="border-bottom: none;">10-28-2025</h2>
+</div>
+<img src="/assets/images/blog/DavidPreaching.png" alt="David (Santa) Riddell profile" style="width: 25%; height: auto; margin-left: 20px;">
+</div>
 
 ## A Season of Testing and Grace
 
