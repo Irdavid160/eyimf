@@ -2,8 +2,7 @@
 title: "Planning My Return"
 date: 2025-10-28
 author: "David (Santa) Riddell"
-<img src="/assets/images/blog/DavidPreaching.png" alt="Holding hands in prayer" style="width: 25%; height: auto;">
-
+author_image:<img src="/assets/images/authors/DavidPreaching.png"
 ---
 
 ## A Season of Testing and Grace
