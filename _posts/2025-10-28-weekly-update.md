@@ -3,7 +3,7 @@ title: "Preparing To Return"
 date: 2025-10-28
 author: "David (Santa) Riddell"
 author_image: "/assets/images/authors/DavidPreaching.png"
----
+-
 
 
 ## A Season of Testing and Grace
