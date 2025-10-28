@@ -53,6 +53,13 @@
   /* Increase scroll-margin-top on mobile so anchors land lower */
   .story-section { scroll-margin-top: 140px; }
 }
+    /* 📱 Mobile view (small screens) */
+@media (max-width: 600px) {
+  .grid.cols-3 {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    justify-items: center; /* center the cards horizontally */
+  }
+}
     
   </style>
 </head>
