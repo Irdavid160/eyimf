@@ -1,19 +1,10 @@
 ---
-layout: default
+title: "Planning My Return"
+date: 2025-10-28
+author: "David (Santa) Riddell"
+author_image: "/assets/images/authors/DavidPreaching.png"
+layout: post
 ---
-
-<article class="blog-post">
-  <header class="post-header" style="margin-bottom: 1.5rem; text-align: center;">
-    {% if page.author_image %}
-    <img src="{{ page.author_image }}" alt="{{ page.author }}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
-    {% endif %}
-
-    <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">{{ page.title }}</h1>
-
-    <p style="font-size: 0.9rem; color: #666;">
-      {{ page.date | date: "%B %d, %Y" }} &nbsp;|&nbsp; By {{ page.author }}
-    </p>
-  </header>
 
 ## A Season of Testing and Grace
 
