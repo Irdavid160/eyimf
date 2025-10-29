@@ -64,7 +64,7 @@ God Bless,
 
   <h2 style="color: #333; margin-bottom: 20px; font-family: Arial, sans-serif;">Support the Mission</h2>
 
-  <img src="/assets/images/blog/helingothers.png" alt="Hands together in prayer" style="width: 20%; height: auto; margin-bottom: 15px; border-radius: 10px;">
+  <img src="/assets/images/blog/logo.png" alt="Hands together in prayer" style="width: 20%; height: auto; margin-bottom: 15px; border-radius: 10px;">
 
   <p style="font-size: 18px; color: #555; margin-bottom: 20px; font-family: Arial, sans-serif;">Your generosity fuels our mission. Every contribution brings hope and change!</p>
 
