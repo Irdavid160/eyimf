@@ -8,7 +8,7 @@ author_image: "/assets/images/blog/DavidPreaching.png"
 
 ## A Season of Testing and Grace
 
-<img src="/assets/images/momandme.JPEG" alt="Holding hands in prayer" style="width: 15%; height: auto;">
+<img src="/assets/images/blog/momandme.JPEG" style="width: 15%; height: auto;">
 
 Let me first say how much I **love and appreciate my sweet wife**. This has been a very difficult time for her. Within days of our wedding, I had to return to America due to my mother suffering a stroke. The damage she incurred completely changed our family forever.  
 
