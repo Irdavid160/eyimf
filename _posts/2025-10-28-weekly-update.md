@@ -6,8 +6,6 @@
 </div>
 <img src="/assets/images/blog/DavidPreaching.png" alt="David (Santa) Riddell profile" style="width: 15%; height: auto; margin-left: 20px;">
 </div>
-<img src="/assets/images/blog/DavidPreaching.png" alt="David (Santa) Riddell profile" style="width: 15%; height: auto; margin-left: 20px;">
-</div>
 
 ## A Season of Testing and Grace
 
