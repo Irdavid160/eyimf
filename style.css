@@ -819,3 +819,13 @@ nav {
 
 /* 4) Ensure the anchor jump doesn't hide under sticky nav anywhere */
 .story-section { scroll-margin-top: 90px; }
+
+/* Reduce hero height by ~48px (~0.5 inches) on mobile only */
+@media (max-width: 480px) {
+  .header.rotating-hero,
+  .hero-container,
+  .hero-slide {
+    height: 292px !important;  /* Reduced from 340px min-height */
+    min-height: 292px !important;
+  }
+
