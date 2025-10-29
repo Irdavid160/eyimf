@@ -1,5 +1,5 @@
 title: "EYIMF Blog"
 description: "Weekly updates from Examine Yourselves International Mission Foundation"
-baseurl: "/eyimf"
-url: "https://irdavid160.github.io"
-permalink: /blog/:year/:month/:day/:title.html
+baseurl: ""
+url: "https://www.santamissions.org"
+permalink: /:year/:month/:day/:title/
