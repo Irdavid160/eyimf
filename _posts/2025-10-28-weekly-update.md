@@ -68,7 +68,7 @@ God Bless,
   <p style="font-size: 18px; color: #555; margin-bottom: 20px; font-family: Arial, sans-serif;">Your generosity fuels our mission. Every contribution brings hope and change!</p>
 
   <p>
-    <a href="https://www.paypal.com/donate/?hosted_button_id=AUW4GKC4SJ8XJ&source=qr" style="background-color:#007BFF;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:b[...]  
+    <a href="https://www.paypal.com/donate/?hosted_button_id=AUW4GKC4SJ8XJ&source=qr" style="background-color:#007BFF;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;">Donate Now</a>
   </p>
 
 </div>
@@ -78,11 +78,11 @@ God Bless,
   <h2 style="color: #333; font-family: Arial, sans-serif;">Explore Our Work</h2>
 
   <p>
-    <a href="https://www.paypal.com/donate/?hosted_button_id=AUW4GKC4SJ8XJ&source=qr" style="background-color:#28a745;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;font-size:16px;transition: background-[...]  
+    <a href="https://www.santamissions.org" style="background-color:#28a745;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;font-size:16px;transition: background-color 0.3s;">Visit Our Website</a>
   </p>
 
 </div>
 
 <p align="center">
-  <a href="https://www.santamissions.org" style="background-color:#28a745;color:white;padding:12px 24px;text-decoration:none;border-radius:5px;font-weight:bold;">🌏 Visit Our Website</a>
+  <a href="https://www.paypal.com/donate/?hosted_button_id=AUW4GKC4SJ8XJ&source=qr" style="background-color:#007BFF;color:white;padding:12px 24px;text-decoration:none;border-radius:5px;font-weight:bold;">💰 Donate</a>
 </p>
