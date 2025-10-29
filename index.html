@@ -164,6 +164,25 @@
   /* Keep daily devotion compact on mobile */
   #daily-devotion-link { margin-top: 0.35rem; }
   .devotion-link { font-size: 0.9rem; padding: 0.32rem 0.5rem; }
+
+  /* Reduce hero height by ~48px (~0.5 inches) on mobile only */
+@media (max-width: 480px) {
+  .header.rotating-hero,
+  .hero-container,
+  .hero-slide {
+    height: 292px !important;
+    min-height: 292px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .header.rotating-hero,
+  .hero-container,
+  .hero-slide {
+    height: 332px !important;
+    min-height: 332px !important;
+  }
+}
 }
 </style>
   
