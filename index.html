@@ -87,6 +87,7 @@
   .hero-slide:nth-child(6) { display: none !important; }
 }
     <link rel="stylesheet" href="style.css?v=20251011d">
+
 <style>
 /* --- Daily Devotion: base styles --- */
 #daily-devotion-link { margin-top: 0; text-align: center; }
@@ -97,7 +98,9 @@
   border-radius: 6px;
   font-weight: 700;
   text-decoration: none;
-  display: inline-block;
+  display: flex;              /* Changed from inline-block */
+  flex-direction: column;     /* Stack label and title vertically */
+  align-items: center;        /* Center align both spans */
 }
 
 /* Force white on desktop for all link states (higher specificity + !important to beat inline or other rules) */
