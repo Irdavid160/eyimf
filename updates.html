@@ -27,6 +27,12 @@
     justify-items: center; /* center the cards horizontally */
   }
 }
+    /* Fix for mobile thumbnail cropping: Remove max-height restriction on card images for mobile only */
+@media (max-width: 600px) {
+  .card img {
+    max-height: none !important;
+  }
+}
   </style>
 </head>
 <body>
