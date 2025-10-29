@@ -1,8 +1,8 @@
 <div style="display: flex; align-items: flex-start;">
 <div>
-<h2 class="no-underline">{{ Planning My Return }}</h2>
-<h2 class="no-underline">{{ David (Santa) Riddell }}</h2>
-<h2 class="no-underline">{{ page.date | date: "%m-%d-%Y" }}</h2>
+<h2 class="no-underline">Planning My Return</h2>
+<h2 class="no-underline">David (Santa) Riddell</h2>
+<h2 class="no-underline">10-28-2025</h2>
 </div>
 <img src="/assets/images/blog/DavidPreaching.png" alt="David (Santa) Riddell profile" style="width: 15%; height: auto; margin-left: 20px;">
 </div>
