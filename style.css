@@ -299,6 +299,11 @@ nav {
     position: static;
   }
 
+  .navlinks {
+  gap: 8px;
+  font-size: 0.85rem;
+}
+  
   .navbar {
     flex-direction: column;
     align-items: stretch;
