@@ -4,8 +4,41 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EYIMF • Examine Yourselves International Mission Foundation</title>
+  <meta name="description" content="David Riddell — Examine Yourselves International Mission Foundation. Sermons, devotions and ministry updates.">
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css?v=20251011d">
+
+  <!-- Open Graph / Social preview -->
+  <meta property="og:title" content="David Riddell • Examine Yourselves International Mission Foundation">
+  <meta property="og:description" content="Sermons, devotions and ministry updates from David Riddell and Santa Missions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.santamissions.org/">
+  <meta property="og:image" content="https://www.santamissions.org/assets/photos/david-riddell-og.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="David Riddell • Examine Yourselves International Mission Foundation">
+  <meta name="twitter:description" content="Sermons, devotions and ministry updates from David Riddell.">
+  <meta name="twitter:image" content="https://www.santamissions.org/assets/photos/david-riddell-og.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "David Riddell",
+    "url": "https://www.santamissions.org/david-riddell",
+    "sameAs": [
+      "https://www.youtube.com/@65BigDaddyDave",
+      "https://www.facebook.com/david.l.riddell/"
+    ],
+    "jobTitle": "Pastor",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Examine Yourselves International Mission Foundation",
+      "url": "https://www.santamissions.org"
+    }
+  }
+  </script>
 </head>
 
   <style>
@@ -86,9 +119,7 @@
   .hero-slide:nth-child(5),
   .hero-slide:nth-child(6) { display: none !important; }
 }
-    <link rel="stylesheet" href="style.css?v=20251011d">
 
-<style>
 /* --- Daily Devotion: base styles --- */
 #daily-devotion-link { margin-top: 0; text-align: center; }
 .devotion-link {
@@ -167,8 +198,9 @@
   /* Keep daily devotion compact on mobile */
   #daily-devotion-link { margin-top: 0.35rem; }
   .devotion-link { font-size: 0.9rem; padding: 0.32rem 0.5rem; }
+}
 
-  /* Reduce hero height by ~48px (~0.5 inches) on mobile only */
+/* Reduce hero height by ~48px (~0.5 inches) on small mobile */
 @media (max-width: 480px) {
   .header.rotating-hero,
   .hero-container,
@@ -178,6 +210,7 @@
   }
 }
 
+/* Further adjustment for very small screens */
 @media (max-width: 430px) {
   .header.rotating-hero,
   .hero-container,
@@ -185,7 +218,6 @@
     height: 332px !important;
     min-height: 332px !important;
   }
-}
 }
 </style>
   
