@@ -11,9 +11,9 @@
   <meta property="og:description" content="David (Santa) Riddell — Christian minister, missionary, and Bible teacher serving in the United States and the Philippines." />
   <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://www.santamissions.org/david-riddell.html" />
-  <!-- Replace with a real 1200x630 image URL if available -->
   <meta property="og:image" content="https://www.santamissions.org/assets/images/david-riddell-og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <!-- Person structured data -->
   <script type="application/ld+json">
   {
@@ -31,15 +31,17 @@
     "description": "David (Santa) Riddell is a Christian minister, missionary, and Bible teacher devoted to preaching the Gospel of Jesus Christ and serving in both the United States and the Philippines."
   }
   </script>
+
   <style>
     :root{color-scheme:light dark}
     body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;line-height:1.6;color:#111;margin:0 auto;padding:28px;max-width:900px}
     header{margin:0 0 20px}
+    nav.home{margin-bottom:14px}
+    nav.home a{color:#0366d6;text-decoration:none}
     h1{font-size:32px;margin:0 0 8px}
     h2{font-size:20px;margin:18px 0 8px}
     .byline{color:#555;margin:0 0 16px}
     .bio p{margin:0 0 12px}
-    .home-link{display:inline-block;margin-bottom:14px}
     .sameas a{margin-right:12px;color:#0366d6;text-decoration:none}
     .media iframe{width:100%;height:360px;max-height:640px;border:0}
     footer{margin-top:36px;color:#666;font-size:14px}
@@ -48,13 +50,14 @@
 </head>
 <body>
   <header>
-    <nav class="home-link"><a href="/" rel="index">Home</a></nav>
+    <nav class="home"><a href="/" rel="index">← Home</a></nav>
     <h1>David (Santa) Riddell</h1>
     <p class="byline">Christian minister, missionary, Bible teacher — Santa Missions</p>
   </header>
 
   <main>
     <section class="bio" id="about">
+      <h2>About</h2>
       <p>
         David (Santa) Riddell is a Christian minister, missionary, and Bible teacher devoted to preaching the Gospel of Jesus Christ and serving in both the United States and the Philippines.
         Raised in a godly home under the ministry of his father, Pastor Paul (Bud) Riddell, David developed a deep love for Scripture from childhood.
@@ -76,8 +79,7 @@
       <h2>Featured Video</h2>
       <p>A short introduction to the mission work of David (Santa) Riddell.</p>
       <div style="max-width:100%;aspect-ratio:16/9">
-        <!-- Embedded video: using the embed origin. DO NOT use the /shorts or /watch URL here. -->
-        <!-- Video ID for your Shorts: spWgMTazM2Q -->
+        <!-- Correct embed origin for the Shorts video ID spWgMTazM2Q -->
         <iframe
           src="https://www.youtube-nocookie.com/embed/spWgMTazM2Q"
           title="David (Santa) Riddell — Short Sermon / Introduction"
@@ -88,12 +90,15 @@
 
     <section class="connect" id="connect">
       <h2>Connect</h2>
-      <p class="sameas">
+      <p>
         <strong>Profiles:</strong>
-        <a href="https://www.youtube.com/channel/REPLACE_WITH_YOUR_CHANNEL" rel="nofollow">YouTube</a>
-        <a href="https://www.facebook.com/REPLACE_WITH_PROFILE" rel="nofollow">Facebook</a>
+        <span class="sameas">
+          <a href="https://www.youtube.com/channel/REPLACE_WITH_YOUR_CHANNEL" rel="nofollow">YouTube</a>
+          <a href="https://www.facebook.com/REPLACE_WITH_PROFILE" rel="nofollow">Facebook</a>
+        </span>
       </p>
-      <p>If you would like to support or partner with Santa Missions, please visit the <a href="/" rel="index">home page</a> for contact and giving options.</p>
+
+      <p>If you'd like to learn more or support Santa Missions, please visit the <a href="/" rel="index">home page</a> for contact and giving options.</p>
     </section>
   </main>
 
@@ -101,10 +106,7 @@
     <p>&copy; Santa Missions. <a href="/privacy.html">Privacy</a></p>
   </footer>
 
-  <!-- VideoObject structured data for the embedded video.
-       Replace uploadDate and duration with the real values for best results.
-       Replace thumbnailUrl if you have a custom thumbnail.
-  -->
+  <!-- VideoObject structured data for the embedded video -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
