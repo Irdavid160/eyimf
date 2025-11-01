@@ -14,7 +14,7 @@
   <!-- Replace with a real 1200x630 image URL if available -->
   <meta property="og:image" content="https://www.santamissions.org/assets/images/david-riddell-og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <!-- Visible page structured data (Person) - keep this up to date -->
+  <!-- Person structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,13 +32,18 @@
   }
   </script>
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.5;color:#111;padding:24px;max-width:900px;margin:0 auto}
-    header{margin-bottom:20px}
+    :root{color-scheme:light dark}
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;line-height:1.6;color:#111;margin:0 auto;padding:28px;max-width:900px}
+    header{margin:0 0 20px}
     h1{font-size:32px;margin:0 0 8px}
+    h2{font-size:20px;margin:18px 0 8px}
     .byline{color:#555;margin:0 0 16px}
-    .bio{margin-bottom:18px}
-    .home-link{display:inline-block;margin-bottom:18px}
-    .sameas a{margin-right:12px;color:#0366d6}
+    .bio p{margin:0 0 12px}
+    .home-link{display:inline-block;margin-bottom:14px}
+    .sameas a{margin-right:12px;color:#0366d6;text-decoration:none}
+    .media iframe{width:100%;height:360px;max-height:640px;border:0}
+    footer{margin-top:36px;color:#666;font-size:14px}
+    @media (min-width:900px){ .media iframe{height:480px} }
   </style>
 </head>
 <body>
@@ -49,7 +54,7 @@
   </header>
 
   <main>
-    <section class="bio">
+    <section class="bio" id="about">
       <p>
         David (Santa) Riddell is a Christian minister, missionary, and Bible teacher devoted to preaching the Gospel of Jesus Christ and serving in both the United States and the Philippines.
         Raised in a godly home under the ministry of his father, Pastor Paul (Bud) Riddell, David developed a deep love for Scripture from childhood.
@@ -67,44 +72,52 @@
       </p>
     </section>
 
-    <!-- Example embed (replace VIDEO_ID with an actual YouTube id) -->
-    <section class="media">
+    <section class="media" id="video">
       <h2>Featured Video</h2>
       <p>A short introduction to the mission work of David (Santa) Riddell.</p>
       <div style="max-width:100%;aspect-ratio:16/9">
-        <iframe width="560" height="315" src="https://youtube.com/shorts/spWgMTazM2Q?feature=share" title="YouTube video player"
-          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- Embedded video: using the embed origin. DO NOT use the /shorts or /watch URL here. -->
+        <!-- Video ID for your Shorts: spWgMTazM2Q -->
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/spWgMTazM2Q"
+          title="David (Santa) Riddell — Short Sermon / Introduction"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
       </div>
     </section>
 
-    <section class="contact">
+    <section class="connect" id="connect">
       <h2>Connect</h2>
       <p class="sameas">
         <strong>Profiles:</strong>
         <a href="https://www.youtube.com/channel/REPLACE_WITH_YOUR_CHANNEL" rel="nofollow">YouTube</a>
         <a href="https://www.facebook.com/REPLACE_WITH_PROFILE" rel="nofollow">Facebook</a>
       </p>
+      <p>If you would like to support or partner with Santa Missions, please visit the <a href="/" rel="index">home page</a> for contact and giving options.</p>
     </section>
   </main>
 
-  <footer style="margin-top:36px;color:#666;font-size:14px">
+  <footer>
     <p>&copy; Santa Missions. <a href="/privacy.html">Privacy</a></p>
   </footer>
 
-  <!-- Optional: add a VideoObject JSON-LD for the embedded video (replace placeholders) -->
+  <!-- VideoObject structured data for the embedded video.
+       Replace uploadDate and duration with the real values for best results.
+       Replace thumbnailUrl if you have a custom thumbnail.
+  -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "name": "Featured: Short Sermon / Ministry Introduction",
+    "name": "Short Introduction — David (Santa) Riddell",
     "description": "Short excerpt: David (Santa) Riddell preaching and introducing Santa Missions.",
     "thumbnailUrl": [
-      "https://i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg"
+      "https://i.ytimg.com/vi/spWgMTazM2Q/maxresdefault.jpg"
     ],
     "uploadDate": "2025-01-01T00:00:00Z",
-    "duration": "PT5M30S",
-    "contentUrl": "https://www.youtube.com/watch?v=VIDEO_ID",
-    "embedUrl": "https://www.youtube.com/embed/VIDEO_ID",
+    "duration": "PT0M30S",
+    "contentUrl": "https://www.youtube.com/watch?v=spWgMTazM2Q",
+    "embedUrl": "https://www.youtube.com/embed/spWgMTazM2Q",
     "publisher": {
       "@type": "Organization",
       "name": "Santa Missions",
