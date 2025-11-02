@@ -219,6 +219,83 @@
     min-height: 332px !important;
   }
 }
+
+    /* ================================
+   DESKTOP HERO: ~2" SHORTER + RE-LAYOUT
+   (No changes to mobile)
+   ================================ */
+@media (min-width: 1024px) {
+  /* Shorten the hero by ~2" (≈192px). If your current desktop hero
+     is around 600–640px tall, this sets it to ~420–448px.
+     Adjust the value if you want slightly more/less height. */
+  .header.rotating-hero,
+  .hero-container,
+  .hero-slide {
+    height: 380px !important;    /* choose 420–460px to taste */
+    min-height: 380px !important;
+  }
+
+  /* Reposition and tighten the overlay to fit the shorter hero */
+  .header.rotating-hero .overlay {
+    position: absolute !important;
+    left: 50% !important;
+    top: 6% !important;          /* was lower; raise a bit on shorter hero */
+    transform: translateX(-50%) !important;
+    width: min(100%, 1100px);
+    padding: 0 16px;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Title—allow two lines comfortably and scale down a touch */
+  .header.rotating-hero .hero-title {
+    max-width: 980px;
+    margin: 0 auto 8px auto;
+    line-height: 1.15;
+    /* clamp keeps it readable on all large screens, and allows a clean 2-line wrap if needed */
+    font-size: clamp(18px, 2.0vw, 34px);
+    font-weight: 800;
+  }
+
+  /* Main links: keep on ONE line, nudge size/padding to fit */
+  .header.rotating-hero .hero-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;                   /* slightly tighter to prevent wrapping */
+    flex-wrap: nowrap;           /* keep to one line */
+    white-space: nowrap;         /* prevent wrapping */
+    padding: 0 8px;
+    max-width: 100%;
+    overflow: hidden;            /* ensures it never spills to a new line */
+  }
+
+  .header.rotating-hero .hero-links a {
+    display: inline-block;
+    font-size: 0.98rem;          /* a touch smaller to ensure single line */
+    padding: 0.28rem 0.55rem;    /* slightly slimmer pills */
+    line-height: 1.1;
+  }
+
+  /* Daily Devotion: bring closer since hero is shorter */
+  #daily-devotion-link {
+    margin-top: 36px !important; /* was 72px */
+  }
+
+  .devotion-link {
+    font-size: 1rem;
+    padding: 0.42rem 0.8rem;
+  }
+
+  @media (min-width: 1024px) {
+  .hero-slide {
+    background-position: calc(50% - 2px) center;
+  }
+}
+
+}
+
 </style>
   
 <body>
@@ -257,7 +334,8 @@
 
     <!-- Overlay links -->
 <div class="overlay">
-  <h1 class="hero-title">Examine Yourselves International Mission Foundation</h1>
+  <h1 class="hero-title">Examine Yourselves International<br>
+    Mission Foundation</h1>
   <nav class="hero-links">
     <a href="about.html">About</a>
     <a href="updates.html">Updates</a>
