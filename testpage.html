@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EYIMF • Examine Yourselves International Mission Foundation</title>
+  <meta name="description" content="David Riddell — Examine Yourselves International Mission Foundation. Sermons, devotions and ministry updates.">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="style.css?v=20251011d">
+
+  <!-- Open Graph / Social preview -->
+  <meta property="og:title" content="David Riddell • Examine Yourselves International Mission Foundation">
+  <meta property="og:description" content="Sermons, devotions and ministry updates from David Riddell and Santa Missions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.santamissions.org/">
+  <meta property="og:image" content="https://www.santamissions.org/assets/photos/david-riddell-og.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="David Riddell • Examine Yourselves International Mission Foundation">
+  <meta name="twitter:description" content="Sermons, devotions and ministry updates from David Riddell.">
+  <meta name="twitter:image" content="https://www.santamissions.org/assets/photos/david-riddell-og.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "David Riddell",
+    "url": "https://www.santamissions.org/david-riddell",
+    "sameAs": [
+      "https://www.youtube.com/@65BigDaddyDave",
+      "https://www.facebook.com/david.l.riddell/"
+    ],
+    "jobTitle": "Pastor",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Examine Yourselves International Mission Foundation",
+      "url": "https://www.santamissions.org"
+    }
+  }
+  </script>
+</head>
+
+  <style>
+/* Daily Devotion and mobile overlay adjustments */
+
+/* Base daily devotion */
+#daily-devotion-link { margin-top: 0; text-align: center; }
+.devotion-link {
+  color: #fff;
+  background: rgba(0,0,0,0.35);
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Mobile: small spacing so layout stays tight */
+@media (max-width: 639px) {
+  #daily-devotion-link { margin-top: 0.4rem; }
+  .devotion-link { font-size: 0.95rem; padding: 0.35rem 0.6rem; }
+}
+
+/* Desktop: add the requested downward offset (≈72px) */
+@media (min-width: 900px) {
+  #daily-devotion-link { margin-top: 72px; }
+  .devotion-link { font-size: 1.05rem; padding: 0.5rem 0.9rem; }
+}
+
+/* Mobile-only adjustments: raise overlay toward the top */
+@media (max-width: 639px) {
+  .header.rotating-hero .overlay {
+    position: absolute !important;
+    left: 50% !important;
+    top: 5% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 1.2rem);
+    max-width: 92%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    gap: 0.35rem;
+    align-items: center;
+  }
+
+  /* Slightly smaller title so it doesn't push the overlay down */
+  .header.rotating-hero .hero-title {
+    font-size: 1.00rem;
+    line-height: 1.08;
+    margin: 0 0 0.12rem 0;
+  }
+
+  /* Tighten nav spacing and make pills narrower */
+  .header.rotating-hero .hero-links {
+    gap: 0.28rem;
+    justify-content: center;
+    padding-inline: 0.2rem;
+  }
+
+  .header.rotating-hero .hero-links a {
+    padding: 0.12rem 0.28rem;
+    font-size: 0.88rem;
+    white-space: nowrap;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+
+  /* Keep daily devotion compact on mobile */
+  #daily-devotion-link { margin-top: 0.35rem; }
+  .devotion-link { font-size: 0.92rem; padding: 0.32rem 0.52rem; }
+}
+
+/* Desktop overrides: use banner images for first 3 slides, hide the rest */
+@media (min-width: 640px) {
+  .hero-slide:nth-child(1) { background-image: url('assets/banners/herobanner1.png') !important; }
+  .hero-slide:nth-child(2) { background-image: url('assets/banners/herobanner2.png') !important; }
+  .hero-slide:nth-child(3) { background-image: url('assets/banners/herobanner3.png') !important; }
+  .hero-slide:nth-child(4),
+  .hero-slide:nth-child(5),
+  .hero-slide:nth-child(6) { display: none !important; }
+}
+
+/* --- Daily Devotion: base styles --- */
+#daily-devotion-link { margin-top: 0; text-align: center; }
+.devotion-link {
+  color: #fff;
+  background: rgba(0,0,0,0.35);
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;              /* Changed from inline-block */
+  flex-direction: column;     /* Stack label and title vertically */
+  align-items: center;        /* Center align both spans */
+}
+
+/* Force white on desktop for all link states (higher specificity + !important to beat inline or other rules) */
+@media (min-width: 900px) {
+  #daily-devotion-link .devotion-link,
+  #daily-devotion-link .devotion-link:link,
+  #daily-devotion-link .devotion-link:visited,
+  #daily-devotion-link .devotion-link:hover,
+  #daily-devotion-link .devotion-link:active,
+  #daily-devotion-link .devotion-link:focus {
+    color: #fff !important;
+    background: rgba(0,0,0,0.35) !important;
+    text-decoration: none !important;
+  }
+
+  /* desktop vertical offset requested */
+  #daily-devotion-link { margin-top: 72px !important; }
+
+  /* Make devotion link stack vertically on desktop */
+  .devotion-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* --- Mobile adjustments (<=639px) --- */
+@media (max-width: 639px) {
+  /* Raise overlay near the top, ensure positioning applies */
+  .header.rotating-hero .overlay {
+    position: absolute !important;
+    left: 50% !important;
+    top: 5% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 1.0rem);
+    max-width: 94%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    gap: 0.28rem;
+    align-items: center;
+  }
+
+  /* Slightly reduce title so it doesn't push the overlay down */
+  .header.rotating-hero .hero-title {
+    font-size: 1.00rem;
+    line-height: 1.08;
+    margin: 0 0 0.12rem 0;
+  }
+
+  /* Narrow the nav pills */
+  .header.rotating-hero .hero-links {
+    gap: 0.22rem;
+    justify-content: center;
+    padding-inline: 0.18rem;
+  }
+  .header.rotating-hero .hero-links a {
+    padding: 0.10rem 0.24rem;
+    font-size: 0.86rem;
+    white-space: nowrap;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+
+  /* Keep daily devotion compact on mobile */
+  #daily-devotion-link { margin-top: 0.35rem; }
+  .devotion-link { font-size: 0.9rem; padding: 0.32rem 0.5rem; }
+}
+
+/* Reduce hero height by ~48px (~0.5 inches) on small mobile */
+@media (max-width: 480px) {
+  .header.rotating-hero,
+  .hero-container,
+  .hero-slide {
+    height: 292px !important;
+    min-height: 292px !important;
+  }
+}
+
+/* Further adjustment for very small screens */
+@media (max-width: 430px) {
+  .header.rotating-hero,
+  .hero-container,
+  .hero-slide {
+    height: 332px !important;
+    min-height: 332px !important;
+  }
+}
+
+    /* ================================
+   DESKTOP HERO: ~2" SHORTER + RE-LAYOUT
+   (No changes to mobile)
+   ================================ */
+@media (min-width: 1024px) {
+  /* Shorten the hero by ~2" (≈192px). If your current desktop hero
+     is around 600–640px tall, this sets it to ~420–448px.
+     Adjust the value if you want slightly more/less height. */
+  .header.rotating-hero,
+  .hero-container,
+  .hero-slide {
+    height: 440px !important;    /* choose 420–460px to taste */
+    min-height: 440px !important;
+  }
+
+  /* Reposition and tighten the overlay to fit the shorter hero */
+  .header.rotating-hero .overlay {
+    position: absolute !important;
+    left: 50% !important;
+    top: 12% !important;          /* was lower; raise a bit on shorter hero */
+    transform: translateX(-50%) !important;
+    width: min(100%, 1100px);
+    padding: 0 16px;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Title—allow two lines comfortably and scale down a touch */
+  .header.rotating-hero .hero-title {
+    max-width: 980px;
+    margin: 0 auto 8px auto;
+    line-height: 1.15;
+    /* clamp keeps it readable on all large screens, and allows a clean 2-line wrap if needed */
+    font-size: clamp(24px, 2.8vw, 40px);
+    font-weight: 800;
+  }
+
+  /* Main links: keep on ONE line, nudge size/padding to fit */
+  .header.rotating-hero .hero-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;                   /* slightly tighter to prevent wrapping */
+    flex-wrap: nowrap;           /* keep to one line */
+    white-space: nowrap;         /* prevent wrapping */
+    padding: 0 8px;
+    max-width: 100%;
+    overflow: hidden;            /* ensures it never spills to a new line */
+  }
+
+  .header.rotating-hero .hero-links a {
+    display: inline-block;
+    font-size: 0.98rem;          /* a touch smaller to ensure single line */
+    padding: 0.28rem 0.55rem;    /* slightly slimmer pills */
+    line-height: 1.1;
+  }
+
+  /* Daily Devotion: bring closer since hero is shorter */
+  #daily-devotion-link {
+    margin-top: 36px !important; /* was 72px */
+  }
+
+  .devotion-link {
+    font-size: 1rem;
+    padding: 0.42rem 0.8rem;
+  }
+}
+
+</style>
+  
+<body>
+  <nav>
+    <div class="container navbar">
+      <!-- LEFT SIDE: brand text -->
+      <div class="brand">
+  <img src="assets/photos/eyimflogo.png" alt="EYIMF Logo" class="brand-logo">
+  <span class="name">Examine Yourselves International Mission Foundation</span>
+</div>
+
+
+      <!-- RIGHT SIDE: Donate button -->
+<!-- PayPal Donate link/button (replace or drop target if you want same-tab) -->
+<!-- Standard PayPal donate button (place this where your Donate link goes) -->
+<a href="https://www.paypal.com/donate/?hosted_button_id=AUW4GKC4SJ8XJ&source=qr"
+   class="donate-btn"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Donate to EYIMF via PayPal (opens in new tab)">
+  Donate
+</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="header rotating-hero">
+    <div class="hero-container">
+      <!-- Slides -->
+      <div class="hero-slide" style="background-image: url('assets/photos/adultservice1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/updatedkids.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/updatedfeeding1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/updatedyouth6.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/kidsinwindow.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/photos/childrenschurch1.jpg');"></div>
+
+    <!-- Overlay links -->
+<div class="overlay">
+  <h1 class="hero-title">Examine Yourselves International Mission Foundation</h1>
+  <nav class="hero-links">
+    <a href="about.html">About</a>
+    <a href="updates.html">Updates</a>
+    <a href="whatwedo.html">What We Do</a>
+    <a href="media.html">Media</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+<!-- DAILY DEVOTION LINK: remove inline styles so stylesheet controls appearance -->
+<div id="daily-devotion-link">
+  <a href="devotions.html" class="devotion-link">
+    <span class="devotion-label">Daily Devotion</span>
+    <span class="devotion-title"></span>
+  </a>
+</div>
+      
+    </div>
+  </header>
+
+<section class="overview">
+  <div class="container">
+    <h2>What Is EYIMF?</h2>
+    <p>Examine Yourselves International Mission Foundation is a Christ-centered ministry devoted to inspiring believers worldwide to examine their hearts, align their lives with God’s Word,
+      and serve others through both spiritual and practical means. EYIMF seeks to unite churches and volunteers across nations to share the Gospel, provide aid, and strengthen communities through
+      faith-driven action and discipleship.</p>
+  </div>
+</section>
+
+<footer id="contact" class="footer">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div>
+        <strong>Examine Yourselves International Mission Foundation</strong><br>
+        Email: <a href="mailto:santamissions@gmail.com">santamissions@gmail.com</a>
+      </div>
+      <div>“Serving souls, meeting needs, glorifying Christ.”</div>
+    </div>
+    <div style="margin-top:16px;opacity:.8">
+      © <span id="yr"></span> EYIMF • 
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+<!-- ✅ Move your rotating hero taglines script here -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = Array.from(document.querySelectorAll('.hero-slide')).filter(slide => getComputedStyle(slide).display !== 'none');
+    const taglineEl = document.getElementById('heroTagline');
+
+    const taglines = [
+      'Serving souls, meeting needs, glorifying Christ.',
+      'The Gospel is not just words — it is power.',
+      'Raising warriors of the Cross for a new generation.'
+    ];
+
+    if (!slides.length) return;
+
+    let current = 0;
+    slides[current].classList.add('active');
+    if (taglineEl) taglineEl.textContent = taglines[current];
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+      if (taglineEl) taglineEl.textContent = taglines[current];
+    }, 4000);
+  });
+</script>
+
+<!-- ✅ Second script: rotating hero without tagline -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = Array.from(document.querySelectorAll('.hero-slide')).filter(slide => getComputedStyle(slide).display !== 'none');
+
+    if (slides.length === 1) {
+      slides[0].classList.add('active');
+      return;
+    }
+
+    if (slides.length === 0) return;
+
+    let current = 0;
+    slides[current].classList.add('active');
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000);
+  });
+</script>
+
+  <script>
+  // 📜 Location of your devotions JSON file
+  const DEVOTIONS_JSON = 'assets/devotions/devotions.json?v=2';
+
+  fetch(DEVOTIONS_JSON)
+    .then(response => response.json())
+    .then(devotions => {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      const todayISO = `${yyyy}-${mm}-${dd}`;
+
+      // Find today's devotion or fallback if missing
+      const devotion = devotions.find(d => d.date === todayISO) || devotions[(today.getDate()-1) % devotions.length];
+
+      const linkEl = document.querySelector('#daily-devotion-link a');
+      if (devotion) {
+        linkEl.querySelector('.devotion-title').textContent = devotion.title;
+        linkEl.href = `devotions.html?date=${todayISO}`;
+      } else {
+        linkEl.querySelector('.devotion-title').textContent = '';
+        linkEl.href = `devotions.html`;
+      }
+    })
+    .catch(err => {
+      console.error('Error loading daily devotion:', err);
+      document.querySelector('#daily-devotion-link a .devotion-title').textContent = '';
+    });
+</script>
+
+</body>
+</html>
