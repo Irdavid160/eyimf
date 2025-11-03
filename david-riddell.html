@@ -65,6 +65,28 @@
   object-fit: cover;
 }
 
+  @media (max-width: 640px) {
+  .bio-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+  /* Mobile-only tweaks: make the headshot smaller */
+@media (max-width: 640px) {
+  .bio-header {
+    flex-direction: column;       /* stacks name above photo */
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .bio-photo {
+    height: 64px;                 /* ↓ make it smaller on phones (tweak this) */
+    width: auto;
+    max-width: 40vw;              /* prevents it from getting too wide */
+    object-fit: cover;
+  }
+}
 
 </style>
 
