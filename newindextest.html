@@ -325,4 +325,411 @@
     .card {
       background-color: var(--color-bg-alt);
       border-radius: var(--radius-xl);
-      padding
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+    }
+
+    .card a {
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* DEVOTIONS / FEATURED CONTENT */
+    .devotions-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px, 1.4fr);
+      gap: 2rem;
+    }
+
+    .devotion-item {
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .devotion-item h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .devotion-item p {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+    }
+
+    .devotion-all {
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .devotion-side {
+      background-color: var(--color-bg-alt);
+      border-radius: var(--radius-xl);
+      padding: 1.2rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.88rem;
+      color: var(--color-muted);
+    }
+
+    /* GET INVOLVED */
+    .involved-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1.3rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      background-color: rgba(250,204,21,0.16);
+      color: #92400e;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.4rem;
+    }
+
+    @media (max-width: 800px) {
+      .involved-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* CONTACT / FOOTER */
+    .contact {
+      background-color: #111827;
+      color: #e5e7eb;
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .contact-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px, 1.2fr);
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .contact h2 {
+      font-family: "Playfair Display", serif;
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+      font-size: 1.6rem;
+    }
+
+    .contact p {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 1rem;
+      max-width: 28rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.7rem 0.8rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 0.85rem;
+      background-color: #1f2937;
+      color: #e5e7eb;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .contact-form button {
+      margin-top: 0.4rem;
+      align-self: flex-start;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background-color: var(--color-accent);
+      color: #111827;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    }
+
+    .contact-form button:hover {
+      background-color: #fde047;
+    }
+
+    .contact-side ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: #9ca3af;
+      display: grid;
+      gap: 0.3rem;
+    }
+
+    .footer {
+      max-width: var(--max-width);
+      margin: 1.5rem auto 0;
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 800px) {
+      .contact-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="nav-logo">
+        <div class="nav-logo-mark">EYM</div>
+        <div class="nav-logo-text">Examine Yourselves Ministries</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#mission">What We Do</a>
+        <a href="#devotions">Devotions</a>
+        <a href="#involved">Get Involved</a>
+        <a href="#contact">Contact</a>
+        <a href="#give" class="nav-cta">Give</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">Ordinary believers • Eternal mission</div>
+        <h1 class="hero-title">Equipping saints to walk in holiness and serve a world in need.</h1>
+        <p class="hero-subtitle">
+          A Christ-centered ministry committed to discipleship, biblical preaching, and sustainable missions
+          in the Philippines and beyond.
+        </p>
+        <div class="hero-buttons">
+          <!-- Replace # with real links -->
+          <a href="#involved"><button class="btn-primary">Join the Mission</button></a>
+          <a href="#devotions"><button class="btn-outline">Read Today&rsquo;s Devotion</button></a>
+        </div>
+        <div class="hero-note">
+          Placeholder: You can swap this background with a photo of your mission work or a subtle looping video.
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Weekend / Online Gatherings</h3>
+        <p><strong>Service / Broadcast Times:</strong> [Add times or “Coming Soon”]</p>
+        <p><strong>Location:</strong> [City, Region, Philippines / Online]</p>
+        <a href="#visit">Plan your visit &raquo;</a>
+
+        <h3 style="margin-top: 1rem;">Latest Message</h3>
+        <p>“[Placeholder title for your latest sermon or teaching]”</p>
+        <a href="#messages">Watch / Listen &raquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner about-grid">
+      <div>
+        <h2 class="section-heading">Who We Are</h2>
+        <p class="section-subtitle">
+          This is a short, clear paragraph explaining your heart: repentance, holiness, discipleship,
+          and love for the people you serve.
+        </p>
+        <p>
+          Use this area to tell your story in 3–5 sentences: how God led you, why the Philippines,
+          why “Examine Yourselves,” and what sets this ministry apart.
+        </p>
+      </div>
+      <div class="about-photo">
+        IMAGE PLACEHOLDER<br/>
+        Drop in a real photo of your team, outreach, or preaching moment here
+        (1200×800 recommended).
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO / MINISTRIES -->
+  <section id="mission">
+    <div class="section-inner">
+      <h2 class="section-heading">What We Do</h2>
+      <p class="section-subtitle">
+        Briefly describe the main arms of your ministry. These cards link to deeper pages if needed.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Daily Devotions</h3>
+          <p>Short, scripture-rich messages calling believers to examine their walk and pursue holiness.</p>
+          <a href="/devotions.html">View Devotions &raquo;</a>
+        </div>
+        <div class="card">
+          <h3>Philippines Missions</h3>
+          <p>Evangelism, discipleship, and support for local believers with a focus on long-term spiritual fruit.</p>
+          <a href="/missions.html">Explore the Mission &raquo;</a>
+        </div>
+        <div class="card">
+          <h3>Training & Camps</h3>
+          <p>Future plans for ministry training, youth camps, and equipping saints for service.</p>
+          <a href="/training.html">Learn More &raquo;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVOTIONS / MESSAGES -->
+  <section id="devotions">
+    <div class="section-inner devotions-layout">
+      <div>
+        <h2 class="section-heading">Latest Devotions</h2>
+        <p class="section-subtitle">
+          Automatically list your latest 3–5 devotions here, or update manually.
+        </p>
+
+        <!-- Repeatable devotion teaser blocks -->
+        <div class="devotion-item">
+          <h4>[Devotion Title Placeholder]</h4>
+          <p>Short 1–2 sentence teaser for your devotion. Call believers to self-examination and faith.</p>
+        </div>
+        <div class="devotion-item">
+          <h4>[Devotion Title Placeholder]</h4>
+          <p>Another sample teaser pointing to the full archive on your devotions page.</p>
+        </div>
+
+        <a href="/devotions.html" class="devotion-all">View All Devotions &raquo;</a>
+      </div>
+
+      <aside class="devotion-side">
+        <strong>Feature:</strong> Spotlight a key message, testimony, or video.
+        <br/><br/>
+        [Embed YouTube iframe here in the future]<br/>
+        Example: Your “Examine Yourselves” introductory sermon, or a Philippines mission story.
+      </aside>
+    </div>
+  </section>
+
+  <!-- GET INVOLVED -->
+  <section id="involved">
+    <div class="section-inner">
+      <h2 class="section-heading">Get Involved</h2>
+      <p class="section-subtitle">
+        Make it very obvious how someone can respond: pray, give, go, or share.
+      </p>
+      <div class="involved-grid">
+        <div class="card">
+          <div class="pill">Pray</div>
+          <h3>Prayer Partners</h3>
+          <p>Invite believers to receive updates and commit to praying for specific needs.</p>
+          <a href="#contact">Join the Prayer List &raquo;</a>
+        </div>
+        <div class="card">
+          <div class="pill">Give</div>
+          <h3>Financial Support</h3>
+          <p>Explain how donations are used: missions, devotions, training, outreach.</p>
+          <a id="give" href="/give.html">Give Securely &raquo;</a>
+        </div>
+        <div class="card">
+          <div class="pill">Go / Serve</div>
+          <h3>Serve with Us</h3>
+          <p>Short-term or long-term opportunities to serve on the field or remotely.</p>
+          <a href="/serve.html">Explore Opportunities &raquo;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <section id="contact" class="contact">
+    <div class="contact-inner">
+      <div>
+        <h2>Contact & Updates</h2>
+        <p>
+          Have questions, desire counseling, want to host teaching, or feel led to partner?
+          Use the form below to reach us.
+        </p>
+        <form class="contact-form" action="#" method="post">
+          <!-- Hook this to your backend or a service like Formspree -->
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Email Address" required />
+          <textarea name="message" rows="4" placeholder="How can we serve or partner with you?"></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <aside class="contact-side">
+        <ul>
+          <li><strong>Examine Yourselves Ministries</strong></li>
+          <li>[City/Province], Philippines (update as needed)</li>
+          <li>Email: <a href="mailto:info@santamissions.org">info@santamissions.org</a></li>
+          <li>Facebook: [link placeholder]</li>
+          <li>YouTube: [link placeholder]</li>
+          <li>TikTok: [link placeholder]</li>
+          <li>Registered nonprofit details: [placeholder]</li>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Examine Yourselves Ministries. All rights reserved.</div>
+      <div>“Examine yourselves, whether ye be in the faith.”</div>
+    </div>
+  </section>
+
+  <script>
+    // Auto year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
